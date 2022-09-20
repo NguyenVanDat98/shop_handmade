@@ -1,0 +1,29 @@
+.list-item {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    grid-gap: 30px;
+
+    justify-content: center;
+    padding: 0;
+}
+
+.total-item {
+
+    text-align: left;
+
+    padding-top: 10px;
+    font-weight: 600;
+    color: darkviolet;
+    font-size: 18px;
+}
+
+.body {
+    display: block;
+}
+
+@media (max-width:768px) {
+    .list-item {
+        grid-template-columns: repeat(2, 250px);
+    }
+}

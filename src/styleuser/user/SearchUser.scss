@@ -1,0 +1,53 @@
+:root {
+    --heii: 50px
+}
+
+.Searh-header {
+    position: relative;
+    display: flex;
+    background-color: #fff;
+    border-radius: 20px;
+
+    .form-control {
+        flex-grow: 1;
+        width: 500px;
+        position: relative;
+        height: var(--heii);
+        border-radius: 20px;
+        border: unset;
+
+        &:focus-visible {
+            outline: unset !important;
+        }
+
+        &::placeholder {
+            font-size: 20px;
+        }
+    }
+}
+
+.iconSearch {
+    position: absolute;
+    right: 6px;
+    top: 0px;
+    height: var(--heii);
+    line-height: var(--heii);
+    width: 30px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &>i {
+        font-size: 20px;
+    }
+
+}
+
+@media (max-width:768px) {
+    .Searh-header {
+        .form-control {
+            width: 70%;
+        }
+    }
+}

@@ -1,0 +1,61 @@
+.slideshow {
+    max-width: 80vw;
+    margin: 0 auto;
+    margin-top: 50px;
+
+
+    &>h2 {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 400;
+        font-style: italic;
+        text-align: center;
+        color: purple
+    }
+
+    .card {
+        border: 1px solid #fff;
+        background: #d8bd9f;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 420px;
+        color: #fff;
+        cursor: pointer;
+
+        .card-top h1 {
+            font-size: 14px;
+            margin: 20px;
+        }
+
+        .card-top>img {
+            width: 100%;
+            height: 275px;
+            object-fit: cover;
+        }
+
+        .card-bottom {
+            margin: 10px 20px;
+
+            .category {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    background: rgb(255, 61, 61);
+                    position: absolute;
+                    top: calc(100% + 10px);
+                    left: 0;
+                    right: 0;
+                    height: 2px;
+                }
+            }
+        }
+    }
+}
+
+.slick-slide>div {
+    margin: 0 10px;
+}
+
+.slick-list {
+    margin: 0 -10px;
+}
