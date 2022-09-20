@@ -1,7 +1,8 @@
 import React from 'react';
+import SlideShow from '../../../components/user/slider';
 import ListProduct from '../../../componentuser/user/listProduct';
 import SearchUser from '../../../componentuser/user/SearchUser';
-import SlideShow from '../../../componentuser/user/slider';
+
 import Pageroot from '../pageroot/Pageroot';
 
 const Homepage = props => {

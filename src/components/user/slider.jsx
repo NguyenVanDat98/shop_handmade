@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { dataDigitalBestSeller } from '../common/data';
 import Slider from "react-slick";
+import { dataDigitalBestSeller } from './../../common/data.js';
+
 function SlideShow() {
     // const [defaultImage, setDefaultImage] = useState({});
     const settings = {
