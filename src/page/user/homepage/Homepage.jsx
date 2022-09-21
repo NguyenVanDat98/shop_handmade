@@ -1,7 +1,5 @@
 import React from 'react';
-import SlideShow from '../../../components/user/slider';
-import ListProduct from '../../../componentuser/user/listProduct';
-import SearchUser from '../../../componentuser/user/SearchUser';
+import { SlideShow , ListProduct,SearchUser } from '../../../components/index.js';
 
 import Pageroot from '../pageroot/Pageroot';
 

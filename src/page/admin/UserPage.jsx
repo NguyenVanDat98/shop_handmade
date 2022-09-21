@@ -1,6 +1,5 @@
 import React from 'react';
-import ListUser from '../../components/admin/ListUser';
-import SearchAd from '../../components/admin/SearchAd';
+import {SearchAd,ListUser} from '../../components/index.js';
 import RootPage from './RootPage';
 
 const UserPage = props => {

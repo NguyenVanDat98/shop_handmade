@@ -8,6 +8,13 @@ import SidebarAd from './admin/SidebarAd';
 import Account from './admin/Account';
 
 import BodyUser from './user/BodyUser';
+import FooterUser from './user/FooterUser';
+import Header from './user/header';
+import ListProduct from './user/listProduct';
+import product from './user/product';
+import SearchUser from './user/SearchUser';
+import Sidebar from './user/sidebar';
+import SlideShow from './user/slider';
 
 
 
@@ -18,5 +25,5 @@ import BodyUser from './user/BodyUser';
 
 
 
-export {BodyAd,ButtonSidebar,HeaderAd,ItemUser,ListUser,SearchAd,SidebarAd,Account,BodyAd }
-export {BodyUser }
+export {BodyAd,ButtonSidebar,HeaderAd,ItemUser,ListUser,SearchAd,SidebarAd,Account}
+export {BodyUser,FooterUser,Header,ListProduct,product,SearchUser,Sidebar,SlideShow  }
