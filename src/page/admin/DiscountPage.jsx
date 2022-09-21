@@ -6,7 +6,7 @@ const DiscountPage = props => {
     return (
         <div>
             <RootPage search={<SearchAd/>}> 
-
+                
             </RootPage>
         </div>
     );

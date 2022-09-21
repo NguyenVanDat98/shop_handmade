@@ -1,3 +1,4 @@
+//admin import
 import BodyAd from './admin/BodyAd';
 import ButtonSidebar from './admin/ButtonSidebar';
 import HeaderAd from './admin/HeaderAd';
@@ -7,6 +8,8 @@ import SearchAd from './admin/SearchAd';
 import SidebarAd from './admin/SidebarAd';
 import Account from './admin/Account';
 
+
+//user import
 import BodyUser from './user/BodyUser';
 import FooterUser from './user/FooterUser';
 import Header from './user/header';
@@ -15,13 +18,6 @@ import product from './user/product';
 import SearchUser from './user/SearchUser';
 import Sidebar from './user/sidebar';
 import SlideShow from './user/slider';
-
-
-
-
-
-
-
 
 
 
