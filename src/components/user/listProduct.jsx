@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCallback, useEffect, useState } from "react";
-import Product from './product';
+import Product from './Product';
 ListProduct.propTypes = {
 
 };
@@ -8,6 +8,8 @@ ListProduct.propTypes = {
 function ListProduct(props) {
     const URL = "http://localhost:8000/listProduct";
     const [listItem, setListItem] = useState([]);
+    const [skip, setSkip] = useState(0);
+    const [limit, setLimit] = useState(4);
     const fetchData = useCallback(async () => {
         await fetch(URL)
             .then((res) => res.json())
@@ -21,19 +23,19 @@ function ListProduct(props) {
     useEffect(() => {
         fetchData()
     }, [fetchData]);
-    // useEffect(() => {
 
-    // }, [listItem])
+
     return (
         <div className='body'>
-            <p className='total-item'> Total: {listItem.length} Product</p>
             <ul className='list-item'>
                 {listItem.length > 0 && listItem.map((item, index) => (
                     <Product key={index} item={item} listItem={listItem} />
                 ))}
             </ul>
+            <div className="loading">
+                <button className="loading__btn">Load More</button>
+            </div>
         </div>
-
     );
 }
 

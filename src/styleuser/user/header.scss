@@ -5,6 +5,9 @@
     background-color: #d8bd9f;
     height: 80px;
 
+    img:hover {
+        cursor: pointer;
+    }
 
     &__cart {
         text-align: center;
@@ -111,5 +114,11 @@
             }
         }
 
+    }
+}
+
+@media (max-width:768px) {
+    .header {
+        width: 102.5%;
     }
 }

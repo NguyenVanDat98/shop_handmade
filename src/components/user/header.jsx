@@ -23,7 +23,7 @@ function Header({ search }) {
                     {account ? (<ul className="header__account">
                         <li><a href="#">My account</a></li>
                         <li><a href='#'> Transaction history</a></li>
-                        <li><a href='#'>Logout</a></li>
+                        <li><a href='#'>{account ? "Login" : "Logout"}</a></li>
                     </ul>) : ("")}
                 </span>
             </div>

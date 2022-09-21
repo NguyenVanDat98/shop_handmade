@@ -1,8 +1,6 @@
 .slideshow {
     max-width: 80vw;
-    margin: 0 auto;
-    margin-top: 50px;
-
+    margin: 20px auto;
 
     &>h2 {
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -30,6 +28,12 @@
             width: 100%;
             height: 275px;
             object-fit: cover;
+            transition: 500ms ease all;
+            background-position: center center;
+
+            &:hover {
+                transform: scale(1.1);
+            }
         }
 
         .card-bottom {
@@ -58,4 +62,10 @@
 
 .slick-list {
     margin: 0 -10px;
+}
+
+@media (max-width:768px) {
+    .slideshow {
+        padding-right: 10px;
+    }
 }

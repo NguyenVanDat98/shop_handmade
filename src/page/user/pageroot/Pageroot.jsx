@@ -1,7 +1,7 @@
 import React from 'react';
-import BodyUser from '../../../componentuser/user/BodyUser';
-import FooterUser from '../../../componentuser/user/FooterUser';
-import Header from '../../../componentuser/user/header';
+import BodyUser from './../../../components/user/BodyUser';
+import FooterUser from './../../../components/user/FooterUser';
+import Header from '../../../components/user/Header';
 
 const Pageroot = ({ search, children }) => {
     return (

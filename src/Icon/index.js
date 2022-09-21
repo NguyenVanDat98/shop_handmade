@@ -4,3 +4,7 @@ export const IconUser = "fa-solid fa-user";
 export const IconHome = "fa-solid fa-house-chimney";
 export const IconMail = "fa-solid fa-envelope";
 export const IconStar = "fa-regular fa-star";
+export const IconFacebook = "fa-brands fa-facebook";
+export const IconInstagram = "fa-brands fa-square-instagram";
+export const IconTwitter = "fa-brands fa-square-twitter";
+export const IconFunnel = "fa-solid fa-filter";

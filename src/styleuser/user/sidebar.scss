@@ -12,13 +12,21 @@
     flex-direction: column;
     text-align: center;
     margin: 20px;
+    box-shadow: 2px 2px 10px #ccc;
 
     &>span {
         width: 100%;
 
         i {
             font-size: 35px;
-
         }
+    }
+}
+
+@media (max-width:768px) {
+    .sidebar {
+        margin: 22px 10px 10px 10px;
+        width: 90px;
+        height: 460px;
     }
 }

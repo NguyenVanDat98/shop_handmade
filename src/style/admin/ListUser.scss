@@ -1,0 +1,50 @@
+    .listUser {
+    align-self: flex-start;
+    flex-grow: 1;
+    background-color: #fff;
+ 
+    text-align: left;
+    border-radius: 10px 10px 0 0;
+    height: 40px;
+    
+    thead {
+        font-weight: 700;
+        justify-content: center;
+        border: 1px solid #eee;
+
+        th:nth-child(1) {
+        width: 50px;
+        text-align: center;
+        }
+        //No.
+        th:nth-child(2) {
+        width: 14%;
+        }
+        //telephone
+        th:nth-child(3) {
+        width: 12%;
+        }
+        //description
+        
+        // Money
+        th:nth-child(5) {
+        width: 10%;
+        }
+        
+        th:nth-child(6) {
+        width: 60px;
+        }
+        th:nth-child(7) {
+        width: 60px;
+        }
+        
+    }
+    tbody {
+        margin-top: 5px;
+        tr {
+            td:nth-child(1){
+                text-align: center;
+            }
+        }
+    }
+    }

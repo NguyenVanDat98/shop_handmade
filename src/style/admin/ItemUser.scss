@@ -1,0 +1,19 @@
+.btnUser{
+    display: flex;
+    button{
+        flex-grow: 1;
+        height: 26px;
+        border: none;
+        background-color: #4F58D8;
+        border-radius: 5px;
+        font-weight: 700;
+    }
+    .allow{
+        background-color: #81D84F;
+        border-radius: 5px 0 0 5px;
+    }
+    .delete{
+        background-color: #AB0F23;
+        border-radius:  0   5px 5px 0;
+    }
+}

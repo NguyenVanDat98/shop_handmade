@@ -4,7 +4,7 @@ import { IconStar } from '../../Icon';
 function Product({ item }) {
     return (
         <div className="product" key={item.id}>
-            <img src={item.img} class="product__img" alt="product-top" />
+            <img src={item.img} className="product__img" alt="product-top" />
             <span>-{item.discount}</span>
             <div className="product__body">
                 <div className='product-info'>
@@ -19,7 +19,7 @@ function Product({ item }) {
                     <p className='product-rate__amount'>{item.sold} Sold</p>
                 </div>
                 <div className='product-btn'>
-                    <button type="submit" className='product-btn__add'>Add to cart</button>
+                    <button type="submit" className='product-btn__add'>Details</button>
                 </div>
             </div>
         </div>
