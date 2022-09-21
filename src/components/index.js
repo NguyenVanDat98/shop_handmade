@@ -19,4 +19,4 @@ import BodyUser from './user/BodyUser';
 
 
 export {BodyAd,ButtonSidebar,HeaderAd,ItemUser,ListUser,SearchAd,SidebarAd,Account,BodyAd }
-export {BodyUser,Foot }
+export {BodyUser }
