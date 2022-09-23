@@ -1,16 +1,13 @@
 import React from 'react';
-import SlideShow from './../../../components/user/Slider';
-
-import SearchUser from './../../../components/user/SearchUser';
-import ListProduct from './../../../components/user/ListProduct';
+import { SlideShow, ListProduct, SearchUser, Filter, Sort } from '../../../components/index.js';
+import Text from '../../../components/user/Text.jsx';
 import Pageroot from '../pageroot/Pageroot';
-import Filter from '../../../components/user/Filter';
-import Sort from '../../../components/user/Sort';
+
 
 const Homepage = props => {
     return (
         <div>
-            <Pageroot search={<SearchUser />}>
+            <Pageroot search={<SearchUser />} account={<Text />}>
                 <SlideShow />
                 <div style={{ display: "flex", justifyContent: "flex-end", paddingRight: "55px" }}>
                     <Filter />

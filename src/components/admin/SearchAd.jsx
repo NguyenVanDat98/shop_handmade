@@ -1,12 +1,13 @@
 
 import React from 'react';
+import { ICONSEARCH } from '../../Icon';
 
 
 const SearchAd = props => {
     return (
         <div className='searchBox'>
             <input type="text" placeholder='Search...' />
-            <i className="fa-solid fa-magnifying-glass"></i>
+            <i className={ICONSEARCH}></i>
         </div>
     );
 };

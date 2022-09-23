@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconFunnel } from './../../Icon/index';
+import { ICONFUNNEL } from './../../Icon/index';
 
 function Filter(props) {
     return (
@@ -10,7 +10,7 @@ function Filter(props) {
                 <option value="3">$30 - $60</option>
                 <option value="4">$60 -100$</option>
             </select>
-            <i className={IconFunnel}></i>
+            <i className={ICONFUNNEL}></i>
         </div>
     );
 }

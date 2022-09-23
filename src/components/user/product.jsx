@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconStar } from '../../Icon';
+import { ICONSTAR } from '../../Icon';
 
 function Product({ item }) {
     return (
@@ -13,7 +13,7 @@ function Product({ item }) {
                 </div>
                 <div className='product-rate'>
                     <p className="product-rate__text">
-                        <i className={IconStar}></i>
+                        <i className={ICONSTAR}></i>
                         {item.rating}
                     </p>
                     <p className='product-rate__amount'>{item.sold} Sold</p>

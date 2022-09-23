@@ -1,12 +1,13 @@
 import React from 'react';
-import {SearchAd,ListUser} from '../../components/index.js';
 import RootPage from './RootPage';
+import {SearchAd} from './../../components/index.js';
 
-const UserPage = props => {
+
+const OrderPage = props => {
     return (
-        <div >
+        <div>
             <RootPage search={<SearchAd/>}>
-                <ListUser/>
+                
             </RootPage>
         </div>
     );
@@ -14,4 +15,4 @@ const UserPage = props => {
 
 
 
-export default UserPage;
+export default OrderPage;

@@ -1,12 +1,10 @@
 import React from 'react';
-import BodyUser from './../../../components/user/BodyUser';
-import FooterUser from './../../../components/user/FooterUser';
-import Header from '../../../components/user/Header';
+import { Header, BodyUser, FooterUser } from "../../../components/index.js"
 
-const Pageroot = ({ search, children }) => {
+const Pageroot = ({ search, children, account }) => {
     return (
         <div>
-            <Header search={search}></Header>
+            <Header search={search} >{account}</Header>
             <BodyUser>
                 {children}
             </BodyUser>
@@ -15,6 +13,7 @@ const Pageroot = ({ search, children }) => {
 
     );
 };
+
 
 
 

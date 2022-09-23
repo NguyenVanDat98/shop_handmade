@@ -1,0 +1,121 @@
+.rolemodal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    background-image: url(../../img/bglogin.jpg);
+    // object-fit: cover;
+    height: 88.8vh;
+
+    .login {
+        width: 490px;
+        height: 590px;
+        border: 1px solid #000;
+        border-radius: 6px;
+        padding: 40px;
+        box-shadow: 2px 2px 6px rgb(183, 179, 179);
+        z-index: 2;
+        background-color: #fff;
+
+        h1 {
+            color: #493a59;
+        }
+
+        // text-align: center;  
+        input {
+            width: 408px;
+            height: 60px;
+            border-radius: 6px;
+            padding: 0 10px;
+            outline: none;
+            border: 1px solid #493a59;
+
+            &::placeholder {
+                font-size: 20px;
+            }
+        }
+
+        &__name {
+            padding: 30px 0 45px;
+        }
+
+        &__pass {
+            position: relative;
+
+            p {
+                padding-top: 10px;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            i {
+                position: absolute;
+                font-size: 35px;
+                right: 25px;
+                top: 12px;
+                color: rgb(125, 120, 120);
+            }
+        }
+
+        &__btn {
+            text-align: center;
+            padding-top: 35px;
+
+            p {
+                img {
+                    width: 35px;
+                    height: 35px;
+                }
+            }
+
+            button {
+                width: 280px;
+                height: 56px;
+                border: none;
+                background-color: #d8bd9f;
+                font-size: 25px;
+                color: #000;
+                font-weight: 450;
+                border-radius: 6px;
+
+                &:hover {
+                    opacity: 0.85;
+                }
+            }
+
+            p:nth-child(2) {
+                padding-top: 5px;
+                height: 45px;
+                width: 95px;
+                border-radius: 2px;
+                border: 1px solid green;
+                margin: 35px 0 0 155px;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: rgba(0, 0, 0, 0.1)
+                }
+            }
+
+            p:last-child {
+                padding-top: 20px;
+
+                a {
+                    text-decoration: none;
+                    color: #000;
+                    padding-left: 10px;
+
+                    span {
+                        font-weight: 500;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

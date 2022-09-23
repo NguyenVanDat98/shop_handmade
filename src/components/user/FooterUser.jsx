@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconFacebook, IconInstagram, IconTwitter } from './../../Icon/index';
+import { ICONFACEBOOK, ICONINSTA, ICONTWITTER } from './../../Icon/index';
 
 
 const FooterUser = props => {
@@ -17,9 +17,9 @@ const FooterUser = props => {
             </div>
             <div className="footer__social">
                 <h5>Social Media</h5>
-                <p><i className={IconFacebook}></i> Facebook</p>
-                <p><i className={IconInstagram}></i> Instagram</p>
-                <p><i className={IconTwitter}></i> Twitter</p>
+                <p><i className={ICONFACEBOOK}></i> Facebook</p>
+                <p><i className={ICONINSTA}></i> Instagram</p>
+                <p><i className={ICONTWITTER}></i> Twitter</p>
             </div>
         </div>
     );

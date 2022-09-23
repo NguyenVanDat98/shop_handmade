@@ -1,14 +1,14 @@
 import React from 'react';
-import { IconCart, IconHome, IconMail } from '../../Icon';
+import { ICONCART, ICONHOME, ICONMAIL } from '../../Icon';
 
 
 function Sidebar(props) {
     return (
         <div style={{ position: "relative", width: "100px", margin: '20px' }}>
             <div className="sidebar">
-                <span><i className={IconHome}></i></span>
-                <span><i className={IconCart}></i></span>
-                <span><i className={IconMail}></i></span>
+                <span><i className={ICONHOME}></i></span>
+                <span><i className={ICONCART}></i></span>
+                <span><i className={ICONMAIL}></i></span>
             </div>
         </div>
     );
