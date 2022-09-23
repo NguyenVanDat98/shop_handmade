@@ -13,7 +13,7 @@ import Account from './admin/Account';
 import BodyUser from './user/BodyUser';
 import FooterUser from './user/FooterUser';
 import Header from './user/Header';
-import ListProduct from './user/ListProduct';
+import ListProduct from './user/listProduct';
 import Product from './user/Product';
 import SearchUser from './user/SearchUser';
 import Sidebar from './user/Sidebar';
