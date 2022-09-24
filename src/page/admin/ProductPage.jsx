@@ -1,12 +1,14 @@
 import React from 'react';
-import {SearchAd} from '../../components/index.js';
+import {ListProductAd, SearchAd} from '../../components/index.js';
 
 import RootPage from './RootPage';
 
 const ProductPage = props => {
     return (
         <div>
-            <RootPage search={<SearchAd/>}></RootPage>
+            <RootPage search={<SearchAd/>}>
+                <ListProductAd/>
+            </RootPage>
         </div>
     );
 };

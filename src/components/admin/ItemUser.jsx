@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 
-const ItemUser = (props) => {
+const ItemUser = ({No}) => {
   const [status, setStatus] = useState(true);
   return (
-    <tr>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
+    <div className="itemUser">
+      <p>{No}</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
+      <p>1</p>
       {status ? (
-        <td className="btnUser">
+        <p className="btnUser">
           <button onClick={() => setStatus(false)}> x</button>
-        </td>
+        </p>
       ) : (
-        <td className="btnUser">
+        <p className="btnUser">
           <button className="allow" onClick={() => setStatus(true)}><i className="fa-solid fa-check"></i></button>
           <button className="delete" onClick={() => setStatus(true)}><i className="fa-sharp fa-solid fa-ban"></i></button>
-        </td>
+        </p>
       )}
-    </tr>
+    </div>
   );
 };
 

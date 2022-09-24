@@ -16,8 +16,7 @@ const ICONVOUCHER = "fa-solid fa-gift";
 const ICONPASS = "fa-regular fa-eye";
 const ICONPLUS = "fa-solid fa-plus";
 const ICONMINUS = "fa-solid fa-minus";
-
-
+const ICONADD = "fa-solid fa-plus";
 
 export {
   ICONCHART,
@@ -37,5 +36,6 @@ export {
   ICONFUNNEL,
   ICONPASS,
   ICONMINUS,
-  ICONPLUS
+  ICONPLUS,
+  ICONADD,
 };

@@ -1,3 +1,44 @@
+.itemUser{
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgb(131, 130, 130);
+    &:hover {
+        background-color: rgba(184, 184, 184, 0.623);
+    }
+ 
+    background-color: white;
+    p {
+         margin-bottom: 0;  
+     }
+     p:nth-child(1) {
+     width: 50px;
+     text-align: center;
+     }
+     //No.
+     p:nth-child(2) {
+     width: 14%;
+     }
+     //telephone
+     p:nth-child(3) {
+     width: 12%;
+     }
+     //description
+     p:nth-child(4) {
+        flex-grow: 1;
+     }
+     // Money
+     p:nth-child(5) {
+     width: 10%;
+     }
+     
+     p:nth-child(6) {
+     width: 60px;
+     }
+     p:nth-child(7) {
+     width: 60px;
+     }
+}
+
 .btnUser{
     display: flex;
     button{

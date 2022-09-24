@@ -7,6 +7,9 @@ import ListUser from './admin/ListUser';
 import SearchAd from './admin/SearchAd';
 import SidebarAd from './admin/SidebarAd';
 import Account from './admin/Account';
+import ListProductAd from './admin/ListProductAd';
+import ItemProductAd from './admin/ItemProductAd';
+
 
 
 //user import
@@ -28,5 +31,5 @@ import Text from './user/Text';
 
 
 
-export { BodyAd, ButtonSidebar, HeaderAd, ItemUser, ListUser, SearchAd, SidebarAd, Account }
+export {ItemProductAd, BodyAd, ButtonSidebar, HeaderAd, ItemUser, ListUser, SearchAd, SidebarAd, Account,ListProductAd }
 export { BodyUser, Text, FooterUser, Header, ListProduct, Product, SearchUser, Sidebar, SlideShow, Filter, Sort, Login, SignUp, AccountUser, DetailProduct }
