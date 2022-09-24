@@ -2,7 +2,7 @@ import React from 'react';
 import { ICONCART, ICONHOME, ICONMAIL } from '../../Icon';
 
 
-function Sidebar(props) {
+function SideBar(props) {
     return (
         <div style={{ position: "relative", width: "100px", margin: '20px' }}>
             <div className="sidebar">
@@ -14,4 +14,4 @@ function Sidebar(props) {
     );
 }
 
-export default Sidebar;
+export default SideBar;

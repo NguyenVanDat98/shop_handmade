@@ -8,7 +8,7 @@
     &__photos {
         img {
             width: 715px;
-            height: 490px;
+            height: 450px;
             background-position: center center;
             background-size: contain;
             border-radius: 8px;
@@ -19,7 +19,7 @@
             display: grid;
             grid-template-columns: repeat(5, 120px);
             grid-gap: 25px;
-            padding-top: 15px;
+            padding-top: 25px;
 
             img {
                 width: 132px;
@@ -56,7 +56,8 @@
             font-size: 18px;
 
             .detail-stock,
-            .detail-discount {
+            .detail-discount,
+            .detail-sold {
                 font-weight: 400;
 
                 span {

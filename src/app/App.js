@@ -11,11 +11,13 @@ import {
   LoginPage,
   SignUpPage,
   DetailPage,
+  CartPage,
 } from "../page/index.js";
 
 import "./App.css";
 import "../style/index.scss";
 import "../styleuser/index.scss";
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/detail" element={<DetailPage />} />
+        <Route path="/cartpage" element={<CartPage />} />
         <Route path="/admin/users" element={<UserPage />} />
         <Route path="/admin/" element={<Dashboard />} />
         <Route path="/admin/Product" element={<ProductPage />} />

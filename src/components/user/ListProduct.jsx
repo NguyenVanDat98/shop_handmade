@@ -8,8 +8,6 @@ ListProduct.propTypes = {
 function ListProduct(props) {
     const URL = "http://localhost:8000/listProduct";
     const [listItem, setListItem] = useState([]);
-    const [skip, setSkip] = useState(0);
-    const [limit, setLimit] = useState(4);
     const fetchData = useCallback(async () => {
         await fetch(URL)
             .then((res) => res.json())

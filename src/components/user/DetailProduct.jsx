@@ -39,6 +39,10 @@ function DetailProduct(props) {
                             <span>Discount:</span>
                             8%
                         </p>
+                        <p className='detail-sold'>
+                            <span>Amount Sold:</span>
+                            90
+                        </p>
                     </div>
                     <div>
                         <button><i className={ICONMINUS}></i></button>

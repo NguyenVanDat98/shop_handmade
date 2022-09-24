@@ -1,11 +1,11 @@
 import React from 'react';
-import { Sidebar } from './../../components/index.js';
+import { SideBar } from './../../components/index.js';
 
 
 const BodyUser = ({ children }) => {
     return (
         <div className='body-user'>
-            <Sidebar />
+            <SideBar />
             <div style={{ display: "block", flexGrow: 1, margin: "0 auto" }}>
                 {children}
             </div>

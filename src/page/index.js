@@ -10,10 +10,11 @@ import Pageroot from './user/pageroot/Pageroot';
 import LoginPage from './user/loginpage/LoginPage';
 import SignUpPage from './user/signuppage/SignUpPage';
 import DetailPage from './user/detailpage/DetailPage';
+import CartPage from './user/cartpage/CartPage';
 
 
 
 
 
 export { Dashboard, DiscountPage, OrderPage, ProductPage, RootPage, UserPage, VoucherPage }
-export { Homepage, Pageroot, LoginPage, SignUpPage, DetailPage }
+export { Homepage, Pageroot, LoginPage, SignUpPage, DetailPage, CartPage }

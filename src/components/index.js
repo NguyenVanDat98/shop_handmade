@@ -16,7 +16,7 @@ import Header from './user/Header';
 import ListProduct from './user/ListProduct';
 import Product from './user/Product';
 import SearchUser from './user/SearchUser';
-import Sidebar from './user/Sidebar';
+import SideBar from './user/SideBar';
 import SlideShow from './user/Slider';
 import Filter from './user/Filter';
 import Sort from './user/Sort';
@@ -25,8 +25,9 @@ import SignUp from './user/SignUp';
 import AccountUser from './user/AccountUser';
 import DetailProduct from './user/DetailProduct';
 import Text from './user/Text';
+import CartUser from './user/CartUser';
 
 
 
 export { BodyAd, ButtonSidebar, HeaderAd, ItemUser, ListUser, SearchAd, SidebarAd, Account }
-export { BodyUser, Text, FooterUser, Header, ListProduct, Product, SearchUser, Sidebar, SlideShow, Filter, Sort, Login, SignUp, AccountUser, DetailProduct }
+export { BodyUser, Text, FooterUser, Header, ListProduct, Product, SearchUser, SideBar, SlideShow, Filter, Sort, Login, SignUp, AccountUser, DetailProduct, CartUser }
