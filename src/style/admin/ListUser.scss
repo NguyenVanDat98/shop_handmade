@@ -6,35 +6,46 @@
     text-align: left;
     border-radius: 10px 10px 0 0;
     height: 40px;
-    
-    thead {
-        font-weight: 700;
-        justify-content: center;
-        border: 1px solid #eee;
-
-        th:nth-child(1) {
+    .body-listUser{
+        max-height: 70vh;
+        overflow: auto;
+        margin-bottom: -20px;
+   
+    }
+    .listUser-header {
+        display: flex;
+        height: 40px;
+        margin-bottom: 3px;
+        align-items: center;
+        p {
+           font-weight: 600; 
+           margin-bottom: 0;          
+        }
+        p:nth-child(1) {
         width: 50px;
         text-align: center;
         }
         //No.
-        th:nth-child(2) {
+        p:nth-child(2) {
         width: 14%;
         }
         //telephone
-        th:nth-child(3) {
+        p:nth-child(3) {
         width: 12%;
         }
         //description
-        
+        p:nth-child(4) {
+           flex-grow: 1;
+        }
         // Money
-        th:nth-child(5) {
+        p:nth-child(5) {
         width: 10%;
         }
         
-        th:nth-child(6) {
+        p:nth-child(6) {
         width: 60px;
         }
-        th:nth-child(7) {
+        p:nth-child(7) {
         width: 60px;
         }
         

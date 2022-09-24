@@ -18,6 +18,7 @@ const ICONPLUS = "fa-solid fa-plus";
 const ICONMINUS = "fa-solid fa-minus";
 const ICONTRASH = "fa-solid fa-trash-can";
 
+const ICONADD = "fa-solid fa-plus";
 
 export {
   ICONCHART,
@@ -38,5 +39,6 @@ export {
   ICONPASS,
   ICONMINUS,
   ICONPLUS,
-  ICONTRASH
+  ICONTRASH,
+  ICONADD,
 };

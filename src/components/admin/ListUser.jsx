@@ -5,23 +5,23 @@ import ItemUser from './ItemUser';
 
 const ListUser = props => {
     return (
-        <table className='listUser'>
-            <thead>
-             <th>No.</th>
-                <th>Name</th>
-                <th>Telephone</th>
-                <th>Description</th>
-                <th>Money</th>
-                <th> </th>
-                <th></th>   
-            </thead>
+        <div className='listUser'>
+            <div className='listUser-header'>
+             <p>No.</p>
+                <p>Name</p>
+                <p>Telephone</p>
+                <p>Description</p>
+                <p>Money</p>
+                <p> </p>
+                <p></p>   
+            </div>
                 
             
-            <tbody>
-                <ItemUser/>
-            </tbody>
+            <div className='body-listUser' >
+                 {[...new Array(30)].map((_,i)=><ItemUser No={i+1}/>)   }
+            </div>
 
-        </table>
+        </div>
     );
 };
 
