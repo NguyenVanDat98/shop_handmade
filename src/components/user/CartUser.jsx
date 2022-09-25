@@ -19,7 +19,7 @@ function CartUser(props) {
         fetchData()
     }, [fetchData]);
     return (
-        <div>
+        <div style={{ display: "flex" }}>
             <ul className="list-product">
                 {listProduct.length > 0 && listProduct.map((goods, index) => (
                     <li key={index} className="list-product__add">
@@ -43,7 +43,43 @@ function CartUser(props) {
                     <button type='button'>Clear All</button>
                 </div>
             </ul>
-
+            <div className='list-selection'>
+                <div className='list-goods'>
+                    <div className='list-goods__item'>
+                        <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="" />
+                        <div>
+                            <div>
+                                <p>Boat</p>
+                                <p>Decoration</p>
+                            </div>
+                            <p>$20</p>
+                        </div>
+                    </div>
+                    <div className='list-goods__item'>
+                        <img src="https://img.alicdn.com/imgextra/i1/201255257/TB2czvEj9B0XKJjSZFsXXaxfpXa_!!201255257.jpg" alt="" />
+                        <div>
+                            <div>
+                                <p>Rickshaw</p>
+                                <p>Decoration</p>
+                            </div>
+                            <p>$40</p>
+                        </div>
+                    </div>
+                </div>
+                <div className='list-payment'>
+                    <div>
+                        <p>Amount product: </p>
+                        <p>2</p>
+                    </div>
+                    <div>
+                        <p>Total: </p>
+                        <p>$60</p>
+                    </div>
+                    <div>
+                        <button>Payment</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

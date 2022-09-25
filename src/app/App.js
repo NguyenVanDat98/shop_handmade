@@ -12,6 +12,7 @@ import {
   SignUpPage,
   DetailPage,
   CartPage,
+  PaymentPage,
 } from "../page/index.js";
 
 import "./App.css";
@@ -27,7 +28,8 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/detail" element={<DetailPage />} />
-        <Route path="/cartpage" element={<CartPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/payment" element={<PaymentPage />} />
         <Route path="/admin/users" element={<UserPage />} />
         <Route path="/admin/" element={<Dashboard />} />
         <Route path="/admin/Product" element={<ProductPage />} />

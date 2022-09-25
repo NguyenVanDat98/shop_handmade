@@ -5,18 +5,18 @@
     width: 700px;
     padding: 10px 0 0 25px;
     margin-top: 20px;
-    // background-color: rgba(0, 0, 0, 0.12);
     height: 640px;
-    overflow-y: auto;
 
+    // overflow-y: auto;
     &__add {
+        background-color: #eee;
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         width: 650px;
         height: 135px;
         margin: 5px 0;
-        padding: 0 10px 0 0;
+        padding: 0 10px;
 
         .list-product__detail {
             width: 300px;
@@ -50,6 +50,7 @@
             margin: 0 15px;
             border-radius: 6px;
             object-fit: cover;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         &>div:last-child {
@@ -71,7 +72,7 @@
 
     &__btn {
         text-align: right;
-        padding: 0 40px 20px 0;
+        padding: 10px 30px 20px 0;
 
         button {
             width: 120px;
@@ -85,6 +86,97 @@
 
         &:hover {
             opacity: 0.87;
+        }
+    }
+}
+
+.list-selection {
+    margin: 20px 0 0 50px;
+    border: 1px solid green;
+    width: 600px;
+    padding: 50px;
+    height: 640px;
+    border-radius: 6px;
+
+    .list-goods {
+        height: 400px;
+        overflow-y: auto;
+        width: 520px;
+
+        &__item {
+            display: flex;
+            width: 500px;
+            // border: 1px solid green;
+            background-color: #ddd;
+            padding: 10px;
+            margin-bottom: 15px;
+
+            &>div {
+                height: 80px;
+                display: flex;
+                justify-content: space-between;
+                width: 380px;
+
+                div {
+                    p:first-child {
+                        padding-bottom: 20px;
+                        font-weight: 600;
+                    }
+
+                    p:last-child {
+                        font-weight: 600;
+                    }
+                }
+
+                p {
+                    font-weight: 600;
+                }
+            }
+
+            img {
+                width: 120px;
+                height: 80px;
+                margin-right: 10px;
+                border-radius: 6px;
+                box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+    .list-payment {
+        width: 500px;
+        border-top: 1px dashed pink;
+        padding-top: 10px;
+
+        div:first-child,
+        div:nth-child(2) {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                font-size: 16px;
+                font-weight: 600;
+            }
+        }
+
+        div:last-child {
+            text-align: center;
+            padding-top: 30px;
+
+            button {
+                background-color: coral;
+                color: #fff;
+                width: 160px;
+                padding: 10px 0;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 22px;
+
+                &:hover {
+                    opacity: 0.85;
+                }
+            }
         }
     }
 }
