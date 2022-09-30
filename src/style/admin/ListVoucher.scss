@@ -15,6 +15,7 @@ grid-template-columns: repeat(2,1fr);
 grid-template-rows: repeat(auto-fill, 110px);
 gap: 10px;
 padding: 10px;
+
 justify-items: center;
   overflow-y: scroll;
 &::-webkit-scrollbar { 

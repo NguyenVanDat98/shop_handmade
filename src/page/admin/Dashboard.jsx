@@ -1,5 +1,5 @@
 import React from 'react';
-import MainDashboard from '../../components/admin/MainDashboard';
+import {MainDashboard} from '../../components/';
 import RootPage from './RootPage';
 
 const Dashboard = props => {

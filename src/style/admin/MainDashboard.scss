@@ -1,8 +1,9 @@
 .main-dashboard{
-    flex-grow: 1;
+    width: 100%;
     min-height: 60%;
     background-color: rgba($color: #171519, $alpha: 0.52);
     border-radius: 10px;
+    padding: 20px;
 }
 .item-view{
     background-color: rgba($color: #373C48, $alpha: 0.77);
@@ -11,7 +12,7 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
-    padding: 30px;
+    padding: 0 30px;
     color: white;
     font-size: 20px;
     justify-content: space-between;

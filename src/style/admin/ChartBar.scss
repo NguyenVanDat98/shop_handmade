@@ -1,5 +1,7 @@
 .chart-bar{
-    width: 70%;
+    flex-grow: 1;
+   max-height: 400px;
+    padding-right: 20px;
 }
 .chart-body{
     width: 100%;

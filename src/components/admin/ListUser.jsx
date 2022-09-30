@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ItemUser from './ItemUser';
+import {ItemUser} from './../index.js';
 
 
 const ListUser = props => {

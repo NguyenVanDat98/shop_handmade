@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Account from './Account';
+import {Account} from './../index';
 
 const HeaderAd = ({search}) => {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { ICONADD } from "../../Icon";
-import ItemProductAd from "./ItemProductAd";
+import {ItemProductAd} from "./../index.js";
 
 const ListProductAd = (props) => {
   return (

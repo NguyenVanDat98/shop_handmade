@@ -20,11 +20,11 @@ import {
     Legend
   );
   
-  export const options = {
+const options = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: 'bottom',
       },
       title: {
         display: true,
@@ -35,17 +35,17 @@ import {
   
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   
-  export const data = {
+const data = {
     labels,
     datasets: [
       {
         label: 'Dataset 1',
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Dataset 2',
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
@@ -53,6 +53,7 @@ import {
   
 
 const ChartBar = props => {
+
     return (
         <div className='chart-bar'>
              <Bar options={options} data={data} />

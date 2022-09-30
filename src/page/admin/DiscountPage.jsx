@@ -1,5 +1,5 @@
 import React from 'react';
-import {SearchAd} from '../../components/index.js';
+import {SearchAd} from '../../components/';
 import RootPage from './RootPage';
 
 const DiscountPage = props => {

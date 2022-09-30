@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { ListVoucher, SearchAd } from "../../components/index.js";
+import { ListVoucher, SearchAd } from "../../components/";
 import RootPage from "./RootPage";
 
 const VoucherPage = (props) => {
@@ -31,22 +31,22 @@ const VoucherPage = (props) => {
               <section>
                 <h4>VIEW DETAIL </h4>
                 <div>
-                  <p>Name : </p>
+                  <strong>Name : </strong>
                   <span>2</span>{" "}
                 </div>
                 <div>
                   {" "}
-                  <p>Expiry : </p>
+                  <strong>Expiry : </strong>
                   <span>3</span>{" "}
                 </div>
                 <div>
                   {" "}
-                  <p>Code : </p>
+                  <strong>Code : </strong>
                   <span>4</span>
                 </div>
                 <div>
                   {" "}
-                  <p>Discount : </p>
+                  <strong>Discount : </strong>
                   <span>5</span>
                 </div>
 
