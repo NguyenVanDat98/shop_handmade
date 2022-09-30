@@ -9,6 +9,12 @@ import SidebarAd from "./admin/SidebarAd";
 import Account from "./admin/Account";
 import ListProductAd from "./admin/ListProductAd";
 import ItemProductAd from "./admin/ItemProductAd";
+import ListVoucher from "./admin/ListVoucher";
+import ItemVoucher from "./admin/ItemVoucher";
+import MainDashboard from "./admin/MainDashboard";
+import ItemView from "./admin/ItemView";
+import ChartBar from "./admin/ChartBar";
+import PieChart from "./admin/PieChart";
 
 //user import
 import BodyUser from "./user/BodyUser";
@@ -40,6 +46,12 @@ export {
   SearchAd,
   SidebarAd,
   Account,
+  ListVoucher,
+  ItemVoucher,
+  MainDashboard,
+  ItemView,
+  ChartBar,
+  PieChart,
 };
 export {
   BodyUser,

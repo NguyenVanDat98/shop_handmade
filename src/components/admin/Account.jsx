@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Account = props => {
     return (
@@ -9,10 +8,6 @@ const Account = props => {
             <p>Admin</p>
         </div>
     );
-};
-
-Account.propTypes = {
-    
 };
 
 export default Account;

@@ -1,5 +1,4 @@
-import React, { memo } from "react";
-import { useState, useEffect } from "react";
+import React from "react";
 import {
     ICONBAG,
     ICONCHART,
@@ -10,47 +9,24 @@ import {
 } from "../../Icon";
 import ButtonSidebar from "./ButtonSidebar";
 
-const SidebarAd = ({ }) => {
-    const [page, setPage] = useState({
-        page1: false,
-        page2: false,
-        page3: false,
-        page4: false,
-        page5: false,
-        page6: false,
-    });
-    useEffect(() => {
-        switch (window.location.href) {
-            case "http://localhost:3000/admin/Discount":
-                setPage({ ...page, page6: true });
-                break;
-            case "http://localhost:3000/admin/":
-                setPage({ ...page, page1: true });
-                break;
-            case "http://localhost:3000/admin/users":
-                setPage({ ...page, page2: true });
-                break;
-            case "http://localhost:3000/admin/Product":
-                setPage({ ...page, page3: true });
-                break;
-            case "http://localhost:3000/admin/Order":
-                setPage({ ...page, page4: true });
-                break;
-            case "http://localhost:3000/admin/Voucher":
-                setPage({ ...page, page5: true });
-                break;
-
-            default:
-                break;
-        }
-    }, []);
+const SidebarAd = (props) => {  
+    const url = window.location.href
+    const page={
+        page1: url.includes("/Dashboard"),
+        page2: url.includes("/users"),
+        page3: url.includes("/Product"),
+        page4: url.includes("/Order"),
+        page5: url.includes("/Voucher"),
+        page6: url.includes("/Discount"),
+    }
+    
     return (
         <div className="sidebarAd">
             <ButtonSidebar
                 iconName={ICONCHART}
                 active={page.page1}
                 innerText="Dashboard"
-                pathName="/admin/"
+                pathName="/admin/Dashboard"
             />
             <ButtonSidebar
                 iconName={ICONUSER}
@@ -86,4 +62,4 @@ const SidebarAd = ({ }) => {
     );
 };
 
-export default memo(SidebarAd);
+export default SidebarAd;

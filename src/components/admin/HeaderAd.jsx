@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Account from './Account';
+import {Account} from './../index';
 
 const HeaderAd = ({search}) => {
     return (
@@ -11,8 +11,6 @@ const HeaderAd = ({search}) => {
     );
 };
 
-HeaderAd.propTypes = {
-    
-};
+
 
 export default HeaderAd;
