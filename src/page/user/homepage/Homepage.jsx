@@ -1,10 +1,12 @@
 import React from 'react';
-import { SlideShow, ListProduct, SearchUser, Filter, Sort } from '../../../components/index.js';
-import Text from '../../../components/user/Text.jsx';
+
+import { SlideShow, ListProduct, SearchUser, Filter, Sort, Text } from '../../../components/index.js';
+
 import Pageroot from '../pageroot/Pageroot';
 
 
 const Homepage = props => {
+
     return (
         <div>
             <Pageroot search={<SearchUser />} account={<Text />}>
@@ -15,6 +17,7 @@ const Homepage = props => {
                 </div>
                 <ListProduct />
             </Pageroot>
+
         </div>
     );
 };

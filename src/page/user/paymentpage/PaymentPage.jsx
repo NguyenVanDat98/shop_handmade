@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Pageroot from '../pageroot/Pageroot';
-import { AccountUser, SearchUser } from '../../../components';
+import { AccountUser, PaymentUser, SearchUser } from '../../../components';
 
 PaymentPage.propTypes = {
 
@@ -10,8 +10,8 @@ PaymentPage.propTypes = {
 function PaymentPage(props) {
     return (
         <div>
-            <Pageroot search={<SearchUser />} account={<AccountUser />}>
-
+            <Pageroot account={<AccountUser />}>
+                <PaymentUser />
             </Pageroot>
         </div>
     );

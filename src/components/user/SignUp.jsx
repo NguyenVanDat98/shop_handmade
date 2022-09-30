@@ -13,7 +13,7 @@ function SignUp(props) {
                         <input type="number" placeholder='Phone' />
                     </div>
                     <div className='sign__address'>
-                        <input type="text" placeholder='Address' />
+                        <input type="text" placeholder='Shipping Address' />
                     </div>
                     <div className='sign__password'>
                         <input type="password" placeholder='Password' />

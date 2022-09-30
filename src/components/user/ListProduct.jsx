@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCallback, useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import { Product } from '../index.js';
 ListProduct.propTypes = {
 
@@ -26,8 +27,19 @@ function ListProduct(props) {
     return (
         <div className='body'>
             <ul className='list-item'>
-                {listItem.length > 0 && listItem.map((item, index) => (
-                    <Product key={index} item={item} listItem={listItem} />
+                {listItem.length > 0 && listItem.map((e) => (
+                    <Link to={`/${e.id}`}>
+                        <Product
+                            key={e}
+                            item={e}
+                            img={e.img}
+                            rating={e.rating}
+                            discount={e.discount}
+                            sold={e.sold}
+                            status={e.status}
+                            name={e.name}
+                            price={e.price} />
+                    </Link>
                 ))}
             </ul>
             <div className="loading">

@@ -1,12 +1,12 @@
 import React from 'react';
 import { ICONMINUS, ICONPLUS, ICONSTAR } from '../../Icon';
-
 function DetailProduct(props) {
+    const { name, img, price, discount, status, sold, rating, } = props;
     return (
         <div>
             <div className='detail'>
                 <div className='detail__photos'>
-                    <img src="https://s.alicdn.com/@sc04/kf/H7127b8b74e404752a3926e05d84bc7bcB.jpg_960x960.jpg" alt="" className='' />
+                    <img src={img} alt="" className='' />
                     <div className='detail__photos--list'>
                         <img src="https://s.alicdn.com/@sc04/kf/H7127b8b74e404752a3926e05d84bc7bcB.jpg_960x960.jpg" alt="" />
                         <img src="https://s.alicdn.com/@sc04/kf/HTB1kpVHa0fvK1RjSszhq6AcGFXaC.jpg_280x280.jpg" alt="" />
@@ -16,10 +16,10 @@ function DetailProduct(props) {
                     </div>
                 </div>
                 <div className='detail__info'>
-                    <h2>Dog</h2>
+                    <h2>{name}</h2>
                     <div className='d-flex justify-content-between'>
-                        <h4>$30</h4>
-                        <p><i className={ICONSTAR}></i> 4.5/5</p>
+                        <h4>{price}</h4>
+                        <p><i className={ICONSTAR}></i> {rating}/5</p>
                     </div>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                         Sed voluptas autem molestiae nisi quia laudantium,
@@ -33,15 +33,15 @@ function DetailProduct(props) {
                     <div>
                         <p className='detail-stock'>
                             <span>Available:</span>
-                            In stock
+                            {status}
                         </p>
                         <p className='detail-discount'>
                             <span>Discount:</span>
-                            8%
+                            {discount}
                         </p>
                         <p className='detail-sold'>
                             <span>Amount Sold:</span>
-                            90
+                            {sold}
                         </p>
                     </div>
                     <div>

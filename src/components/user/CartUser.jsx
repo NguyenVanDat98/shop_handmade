@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useCallback, useState } from 'react';
-import { ICONTRASH } from '../../Icon';
+import { ICONMINUS, ICONPLUS, ICONTRASH } from '../../Icon';
 
 function CartUser(props) {
     const URL = "http://localhost:8000/listProduct";
@@ -37,6 +37,11 @@ function CartUser(props) {
                             <p>${goods.price}</p>
                             <i className={ICONTRASH}></i>
                         </div>
+                        <div>
+                            <button><i className={ICONMINUS}></i></button>
+                            <span>1</span>
+                            <button><i className={ICONPLUS}></i></button>
+                        </div>
                     </li>
                 ))}
                 <div className='list-product__btn'>
@@ -52,7 +57,10 @@ function CartUser(props) {
                                 <p>Boat</p>
                                 <p>Decoration</p>
                             </div>
-                            <p>$20</p>
+                            <div>
+                                <p>$20</p>
+                                <p>1</p>
+                            </div>
                         </div>
                     </div>
                     <div className='list-goods__item'>
@@ -62,7 +70,10 @@ function CartUser(props) {
                                 <p>Rickshaw</p>
                                 <p>Decoration</p>
                             </div>
-                            <p>$40</p>
+                            <div>
+                                <p>$40</p>
+                                <p>1</p>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ function Header({ search, children }) {
             </Link>
             {search}
             <span className="header__cart">
-                <i className={ICONCART} total-product={5}></i>
+                <i className={ICONCART} total-product={0}></i>
             </span>
             {children}
         </div >

@@ -8,7 +8,7 @@
             "description": "Decoration",
             "discount": "5%",
             "time_making": "",
-            "status": "",
+            "status": "In stock",
             "sold": 120,
             "rating": 4.8
         },
@@ -20,7 +20,7 @@
             "description": "Decoration",
             "discount": "6%",
             "time_making": "",
-            "status": "",
+            "status": "In stock",
             "sold": 70,
             "rating": 4.2
         },
@@ -32,7 +32,7 @@
             "description": "Decoration",
             "discount": "4%",
             "time_making": "",
-            "status": "",
+            "status": "In stock",
             "sold": 99,
             "rating": 4.3
         },
@@ -44,7 +44,7 @@
             "description": "Decoration",
             "discount": "8%",
             "time_making": "",
-            "status": "",
+            "status": "In stock",
             "sold": 56,
             "rating": 4.95
         }
