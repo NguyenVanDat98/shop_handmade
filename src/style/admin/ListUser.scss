@@ -10,7 +10,10 @@
         max-height: 70vh;
         overflow: auto;
         margin-bottom: -20px;
-   
+        &::-webkit-scrollbar { 
+            width: 0 !important;
+            display: none; 
+          }
     }
     .listUser-header {
         display: flex;

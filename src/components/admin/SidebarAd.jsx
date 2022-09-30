@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { useState, useEffect } from "react";
 import {
     ICONBAG,
@@ -10,7 +10,7 @@ import {
 } from "../../Icon";
 import ButtonSidebar from "./ButtonSidebar";
 
-const SidebarAd = ({ }) => {
+const SidebarAd = (props) => {
     const [page, setPage] = useState({
         page1: false,
         page2: false,
@@ -24,7 +24,7 @@ const SidebarAd = ({ }) => {
             case "http://localhost:3000/admin/Discount":
                 setPage({ ...page, page6: true });
                 break;
-            case "http://localhost:3000/admin/":
+            case "http://localhost:3000/admin/Dashboard":
                 setPage({ ...page, page1: true });
                 break;
             case "http://localhost:3000/admin/users":
@@ -43,14 +43,14 @@ const SidebarAd = ({ }) => {
             default:
                 break;
         }
-    }, []);
+    }, [page]);
     return (
         <div className="sidebarAd">
             <ButtonSidebar
                 iconName={ICONCHART}
                 active={page.page1}
                 innerText="Dashboard"
-                pathName="/admin/"
+                pathName="/admin/Dashboard"
             />
             <ButtonSidebar
                 iconName={ICONUSER}
@@ -86,4 +86,4 @@ const SidebarAd = ({ }) => {
     );
 };
 
-export default memo(SidebarAd);
+export default SidebarAd;

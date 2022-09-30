@@ -29,7 +29,7 @@ function App() {
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/cartpage" element={<CartPage />} />
         <Route path="/admin/users" element={<UserPage />} />
-        <Route path="/admin/" element={<Dashboard />} />
+        <Route path="/admin/Dashboard" element={<Dashboard />} />
         <Route path="/admin/Product" element={<ProductPage />} />
         <Route path="/admin/Order" element={<OrderPage />} />
         <Route path="/admin/Voucher" element={<VoucherPage />} />

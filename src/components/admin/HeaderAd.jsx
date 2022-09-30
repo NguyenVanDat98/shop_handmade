@@ -11,8 +11,6 @@ const HeaderAd = ({search}) => {
     );
 };
 
-HeaderAd.propTypes = {
-    
-};
+
 
 export default HeaderAd;
