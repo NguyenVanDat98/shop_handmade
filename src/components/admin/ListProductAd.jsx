@@ -4,7 +4,7 @@ import {ItemProductAd} from "./../index.js";
 
 const ListProductAd = (props) => {
   return (
-    <div className="list-product-Ad">
+    <div className="list-product-Ad viewFirst">
       <div className="list-product-Ad_header">
         <button>
           <i className={ICONADD}> ADD PRODUCT</i>
