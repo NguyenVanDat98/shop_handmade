@@ -5,7 +5,7 @@ import {ItemUser} from './../index.js';
 
 const ListUser = props => {
     return (
-        <div className='listUser'>
+        <div className='listUser viewFirst'>
             <div className='listUser-header'>
              <p>No.</p>
                 <p>Name</p>

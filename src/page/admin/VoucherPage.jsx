@@ -8,9 +8,9 @@ const VoucherPage = (props) => {
   return (
     <div>
       <RootPage search={<SearchAd />}>
-        <div className="body-voucher">
+        <div className="body-voucher body-padding-15 viewFirst">
           <ListVoucher />
-          <div className="controler-voucherpage">
+          <div className="controler-voucherpage ">
             <div className="header-controler">
               {check && (
                 <button

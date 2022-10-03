@@ -63,17 +63,3 @@
 .slick-list {
     margin: 0 -10px;
 }
-
-@media (min-width:740px) and (max-width: 1023px) {
-    .slideshow {
-        max-width: 120vw;
-        padding-left: 5px;
-    }
-}
-
-@media (max-width:739px) {
-    .slideshow {
-        max-width: 200vw;
-        padding-left: 5px;
-    }
-}

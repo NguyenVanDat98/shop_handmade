@@ -3,7 +3,7 @@ import { ItemVoucher } from "./../../components/";
 
 const ListVoucher = (props) => {
   return (
-    <div className="list-voucher">
+    <div className="list-voucher body-padding-15">
       {" "}
       {[...new Array(20)].map((i) => (
         <ItemVoucher key={i} />

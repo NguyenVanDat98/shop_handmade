@@ -3,6 +3,7 @@ import {
     ICONCART,
     ICONHOME,
     ICONMAIL,
+    ICONUSER,
 } from "../../Icon";
 import ButtonSidebar from "../admin/ButtonSidebar";
 
@@ -10,9 +11,9 @@ const SideBar = (props) => {
     const url = window.location.href
     const page = {
         page1: url.includes("/Dashboard"),
-        page2: url.includes("/users"),
+        page2: url.includes("/cart"),
         page3: url.includes("/Product"),
-        page4: url.includes("/Order"),
+        page4: url.includes("/login"),
         page5: url.includes("/Voucher"),
         page6: url.includes("/Discount"),
     }
@@ -36,6 +37,12 @@ const SideBar = (props) => {
                 active={page.page3}
                 innerText="Mail"
                 pathName=""
+            />
+            <ButtonSidebar
+                iconName={ICONUSER}
+                active={page.page4}
+                innerText="Profile"
+                pathName="/login"
             />
         </div>
     );

@@ -4,7 +4,7 @@ import {ItemProductAd} from "./../index.js";
 
 const ListProductAd = (props) => {
   return (
-    <div className="list-product-Ad">
+    <div className="list-product-Ad viewFirst ">
       <div className="list-product-Ad_header">
         <button>
           <i className={ICONADD}> ADD PRODUCT</i>
@@ -17,8 +17,8 @@ const ListProductAd = (props) => {
           <option value="">4</option>
         </select>
       </div>
-      <div className="example-container list-product-Ad_body   ">
-        <div className="row gap-2 row-cols-xs-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-6">
+      <div className="example-container list-product-Ad_body body-padding-15  ">
+        <div className=" row gap-2  row-cols-sm-3 row-cols-md-4 row-cols-lg-6 row-cols-xs-1">
           {[...new Array(50)].map((_, i) => (
             <ItemProductAd key={i} />
           ))}

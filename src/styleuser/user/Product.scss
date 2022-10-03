@@ -10,6 +10,7 @@ a {
 
         &__img {
             width: 100%;
+            object-fit: cover;
             height: 300px;
             transition: 500ms ease all;
 
@@ -86,16 +87,11 @@ a {
     }
 }
 
-@media (min-width:740px) and (max-width: 1023px) {
+@media (max-width: 820px) {
     a {
         .product {
             &__img {
-                width: 280px;
-                object-fit: cover;
-            }
-
-            &__body {
-                width: 280px;
+                height: 200px;
             }
         }
     }

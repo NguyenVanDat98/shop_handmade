@@ -3,7 +3,7 @@ import React from 'react';
 function SignUp(props) {
     return (
         <div>
-            <div className='sign-modal'>
+            <div className='rolemodal'>
                 <div className='sign'>
                     <h1>Sign Up</h1>
                     <div className='sign__name'>

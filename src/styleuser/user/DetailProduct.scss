@@ -1,14 +1,18 @@
 .detail {
+    padding: 15px;
+    box-sizing: border-box;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 600px;
-    grid-gap: 40px;
-    padding: 20px;
+    width: calc(100vw - 104px);
+    grid-template-columns: 57% 1fr;
+    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-gap: 24px;
+    // padding: 20px;
 
     &__photos {
         img {
-            width: 715px;
-            height: 450px;
+            width: 100%;
+            height: fit-content;
+            max-height: 400px;
             background-position: center center;
             background-size: contain;
             border-radius: 8px;
@@ -17,13 +21,14 @@
 
         .detail__photos--list {
             display: grid;
-            grid-template-columns: repeat(5, 120px);
+            width: 100%;
+            grid-template-columns: repeat(5, 1fr);
             grid-gap: 25px;
             padding-top: 25px;
 
             img {
-                width: 132px;
-                height: 132px;
+                width: 100%;
+                height: fit-content;
                 box-shadow: 2px 2px 6px rgb(178, 168, 168);
                 border-radius: 4px;
             }
@@ -36,12 +41,33 @@
         justify-content: space-between;
         padding: 10px;
 
+
         &>p {
             font-weight: 450;
-            font-size: 18px;
+            font-size: 1rem;
         }
 
-        div:nth-child(2) {
+        &>p:nth-of-type(1) {
+            width: 100%;
+            height: 300px;
+            overflow-y: scroll;
+            text-overflow: ellipsis;
+            text-align: justify;
+
+
+            &::-webkit-scrollbar {
+                width: 0 !important;
+                display: none;
+            }
+        }
+
+        &>div:nth-of-type(3) {
+            align-self: center;
+        }
+
+        &>div:nth-child(2) {
+
+
             p {
                 font-weight: 500;
                 font-size: 20px;
@@ -113,6 +139,23 @@
                     opacity: 0.9;
                 }
             }
+        }
+    }
+}
+
+@media (max-width:800px) {
+    .detail {
+        grid-template-columns: 1fr;
+        padding: 0;
+        width: 100%;
+        margin-top: 15px;
+
+
+        &__info {
+            &>p:nth-of-type(1) {
+                height: max-content;
+            }
+
         }
     }
 }

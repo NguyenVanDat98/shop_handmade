@@ -10,10 +10,10 @@ function Text(props) {
     return (
         <div className='text'>
             <Link to="/login">
-                <h4>Log In</h4>
+                <h5>Log In</h5>
             </Link>
             <Link to="/signup">
-                <h4>Sign Up</h4>
+                <h5>Sign Up</h5>
             </Link>
         </div>
     );

@@ -2,6 +2,11 @@
     background-color: #57a9a8;
     width: 70px;
     margin-top: 5px;
+    margin-right: 0;
+
+    &>.itemSidebar:last-child {
+        display: none;
+    }
 
     .itemSidebar {
         margin: 10px 0;
@@ -26,4 +31,26 @@
             }
         }
     }
+}
+
+@media (max-width:500px) {
+    .sidebar-user {
+        width: 100%;
+    }
+
+    .footer {
+        margin-bottom: 72px;
+    }
+}
+
+@media (max-width:800px) {
+    .sidebar-user {
+        &>.itemSidebar:last-child {
+            display: flex;
+        }
+    }
+
+
+
+
 }

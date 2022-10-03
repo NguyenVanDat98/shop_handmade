@@ -2,7 +2,8 @@
     --heii: 50px;
 }
 
-.Searh-header {
+.search-header {
+    width: max-content;
     position: relative;
     display: flex;
     background-color: #fff;
@@ -10,21 +11,30 @@
 
 
     .form-control {
-        width: 500px;
-        flex-grow: 1;
+
+        width: 22vw;
         position: relative;
         height: var(--heii);
         border-radius: 20px;
         border: unset;
 
+
+
         &:focus-visible {
             outline: unset !important;
+
+        }
+
+        &:focus {
+            width: calc(50vw - 6.7rem);
+            transition: all 0.3s ease-in-out;
         }
 
         &::placeholder {
             font-size: 20px;
         }
     }
+
 }
 
 .ICONSEARCH {
@@ -45,17 +55,14 @@
 
 }
 
-//Mobile
-@media (max-width: 739px) {
-    .Searh-header {
-        margin-left: 60px;
-
+@media (max-width:500px) {
+    .search-header {
         .form-control {
-            width: 400px;
-            font-size: 20px;
+            min-width: 40vw;
 
-            &::placeholder {
-                font-size: 25px;
+            &:focus {
+                width: 90vw;
+
             }
         }
     }
@@ -63,11 +70,11 @@
 
 //Tablet
 @media (max-width:1023px) and (min-width: 740px) {
-    .Searh-header {
-        .form-control {
-            width: 400px;
-        }
-    }
+    // .search-header {
+    //     .form-control {
+    //         width: 400px;
+    //     }
+    // }
 }
 
 //PC

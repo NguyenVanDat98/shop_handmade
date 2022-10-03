@@ -26,7 +26,7 @@ function SlideShow() {
                 },
             },
             {
-                breakpoint: 600,
+                breakpoint: 800,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
@@ -34,9 +34,9 @@ function SlideShow() {
                 },
             },
             {
-                breakpoint: 480,
+                breakpoint: 500,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 1,
                     slidesToScroll: 1,
                 },
             },
