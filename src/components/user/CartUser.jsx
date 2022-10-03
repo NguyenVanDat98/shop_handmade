@@ -19,7 +19,7 @@ function CartUser(props) {
         fetchData()
     }, [fetchData]);
     return (
-        <div style={{ display: "flex" }}>
+        <div className='list'>
             <ul className="list-product">
                 {listProduct.length > 0 && listProduct.map((goods, index) => (
                     <li key={index} className="list-product__add">

@@ -8,7 +8,9 @@ function Header({ search, children }) {
     return (
         <div className="header">
             <Link to="/">
-                <img src={logo} alt="" className="header__image" />
+                <div className='header__img'>
+                    <img src={logo} alt="" className="header__image" />
+                </div>
             </Link>
             {search}
             <span className="header__cart">

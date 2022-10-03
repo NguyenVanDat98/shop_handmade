@@ -1,18 +1,18 @@
 .rolemodal {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-    background-image: url(../../img/bglogin.jpg);
+    padding-top: 25px;
     // object-fit: cover;
-    height: 88.8vh;
+    min-height: 88.8vh;
+    background-image: url(../../img/bglogin.jpg);
+
 
     .login {
         width: 490px;
-        height: 590px;
+        max-height: 590px;
         border: 1px solid #000;
         border-radius: 6px;
-        padding: 40px;
+        padding: 30px;
         box-shadow: 2px 2px 6px rgb(183, 179, 179);
         z-index: 2;
         background-color: #fff;
@@ -23,7 +23,7 @@
 
         // text-align: center;  
         input {
-            width: 408px;
+            width: 428px;
             height: 60px;
             border-radius: 6px;
             padding: 0 10px;

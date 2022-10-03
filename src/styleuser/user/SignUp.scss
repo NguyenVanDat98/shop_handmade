@@ -1,11 +1,10 @@
 .sign-modal {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding-top: 10px;
+    padding-top: 20px;
     background-image: url(../../img/bglogin.jpg);
     // object-fit: cover;
-    height: 88.8vh;
+    min-height: 88.8vh;
 
     .sign {
         width: 490px;

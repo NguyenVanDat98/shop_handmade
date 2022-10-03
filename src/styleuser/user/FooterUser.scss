@@ -23,8 +23,8 @@
     }
 }
 
-@media (max-width: 770px) {
+@media (min-width: 740px) and (max-width: 1023px) {
     .footer {
-        width: 102.5%;
+        width: 142%;
     }
 }

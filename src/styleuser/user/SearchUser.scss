@@ -8,9 +8,10 @@
     background-color: #fff;
     border-radius: 20px;
 
+
     .form-control {
-        flex-grow: 1;
         width: 500px;
+        flex-grow: 1;
         position: relative;
         height: var(--heii);
         border-radius: 20px;
@@ -44,10 +45,30 @@
 
 }
 
-@media (max-width:768px) {
+//Mobile
+@media (max-width: 739px) {
     .Searh-header {
+        margin-left: 60px;
+
         .form-control {
-            width: 70%;
+            width: 400px;
+            font-size: 20px;
+
+            &::placeholder {
+                font-size: 25px;
+            }
         }
     }
 }
+
+//Tablet
+@media (max-width:1023px) and (min-width: 740px) {
+    .Searh-header {
+        .form-control {
+            width: 400px;
+        }
+    }
+}
+
+//PC
+@media (min-width: 1024px) {}
