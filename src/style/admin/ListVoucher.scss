@@ -1,17 +1,16 @@
 .body-voucher {
     display: flex;
-    flex-grow: 1;
-    
-    min-height: 1fr;
+    flex-grow: 1;    
+
 }
 .list-voucher{
-min-width: 700px;
+min-width: 60vw;
 padding-bottom: 20px;
 height: 82vh;
 background-color: rgba($color: #171519, $alpha: 0.52);
 border-radius: 5px;
 display: grid;
-grid-template-columns: repeat(2,1fr);
+grid-template-columns: repeat(3,1fr);
 grid-template-rows: repeat(auto-fill, 110px);
 gap: 10px;
 padding: 10px;

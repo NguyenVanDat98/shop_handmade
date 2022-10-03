@@ -10,10 +10,13 @@ function Header({ search, children }) {
             <Link to="/">
                 <img src={logo} alt="" className="header__image" />
             </Link>
-            {search}
-            <span className="header__cart">
+            <div className='d-flex'> 
+                {search}
+            <span className="header__cart " style={{marginLeft: "3px"}}>
                 <i className={ICONCART} total-product={0}></i>
             </span>
+            </div>
+            
             {children}
         </div >
     );

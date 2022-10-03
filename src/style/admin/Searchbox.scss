@@ -4,7 +4,7 @@
 .searchBox {
   display: flex;
   width: 338px;
-  height: 49px;
+  height: 40px;
   background-color: #fff;
   align-items: center;
   border-radius: var(--bor);
@@ -12,7 +12,7 @@
   input {
     flex-grow: 1;
     border-radius: var(--bor);
-    height: 49px;
+    height: inherit;
     border: unset;
     padding-left: 10px;
     font-size: 18px;

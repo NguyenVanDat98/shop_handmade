@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Account = props => {
     return (
-        <div className='account'>
+        <Link to="/admin/profile" className='account'>
             <div className='avt'>
             </div>
             <p>Admin</p>
-        </div>
+        </Link>
     );
 };
 

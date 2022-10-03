@@ -3,27 +3,36 @@
 }
 
 .Searh-header {
+    width: max-content;
     position: relative;
     display: flex;
     background-color: #fff;
     border-radius: 20px;
 
     .form-control {
-        flex-grow: 1;
-        width: 500px;
+    
+        width: 22vw ;
         position: relative;
         height: var(--heii);
         border-radius: 20px;
         border: unset;
+        
+
 
         &:focus-visible {
             outline: unset !important;
+            
+        }
+        &:focus {
+            width: calc(50vw - 6.7rem);
+            transition: all 0.3s ease-in-out ;
         }
 
         &::placeholder {
             font-size: 20px;
         }
-    }
+    } 
+   
 }
 
 .ICONSEARCH {
@@ -44,7 +53,7 @@
 
 }
 
-@media (max-width:768px) {
+@media (max-width:800px) {
     .Searh-header {
         .form-control {
             width: 70%;

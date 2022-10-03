@@ -1,49 +1,51 @@
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #d8bd9f;
-    height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #d8bd9f;
+  padding: 0 25px;
+  height: 80px;
 
-    img:hover {
-        cursor: pointer;
+  img:hover {
+    cursor: pointer;
+  }
+
+  &__cart {
+    text-align: center;
+    background-color: #fff;
+    width: 60px;
+    height: 50px;
+    border-radius: 6px;
+
+    & > i {
+      font-size: 25px;
+      padding-top: 15px;
+      padding-right: 5px;
+      position: relative;
+
+      &::after {
+        content: attr(total-product);
+        display: block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: red;
+        position: absolute;
+        top: 8px;
+        right: -3px;
+        font-size: 14px;
+        color: #000;
+        padding-top: 3px;
+      }
     }
-
-    &__cart {
-        text-align: center;
-        background-color: #fff;
-        width: 60px;
-        height: 50px;
-        border-radius: 6px;
-
-        &>i {
-            font-size: 25px;
-            padding-top: 15px;
-            padding-right: 5px;
-            position: relative;
-
-            &::after {
-                content: attr(total-product);
-                display: block;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: red;
-                position: absolute;
-                top: 8px;
-                right: -3px;
-                font-size: 14px;
-                color: #000;
-                padding-top: 3px;
-            }
-        }
-    }
-
-
+  }
 }
 
-@media (max-width:768px) {
-    .header {
-        width: 102.5%;
+@media (max-width: 800px) {
+  .header {
+    width: 100vw;
+    .text {
+      display: none;
     }
+  }
 }
