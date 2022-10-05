@@ -11,7 +11,7 @@ function Product(props) {
                 <div className='product-info'>
                     <h5 className="product-info__title">{name}</h5>
                     {discount ? <section className='product-info__discount-price'>
-                        <p className="product-info__price">$ {(price - price * parseInt(discount) / 100).toFixed(2)}</p> <p className='product-info__sale'>$ {price}</p>
+                        <p className="product-info__price">$ {(price - price * parseInt(discount) / 100).toFixed(1)}</p> <p className='product-info__sale'>$ {price}</p>
                     </section> : <p className="product-info__price">$ {price}</p>}
 
 

@@ -5,7 +5,7 @@ import { useState } from "react";
 function PaymentUser(props) {
     const [display, setDisplay] = useState(false);
     return (
-        <div className='user d-flex'>
+        <div className='user'>
             <div className='user__info'>
                 <div className='user__info--address'>
                     <div className='d-flex justify-content-between align-items-start'>

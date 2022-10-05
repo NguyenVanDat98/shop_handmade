@@ -128,6 +128,18 @@ a {
             &__img {
                 height: 200px;
             }
+
+            &__body {
+                .product-info {
+                    &__discount-price {
+                        width: 35%;
+                    }
+
+                    &__title {
+                        padding-right: 20px;
+                    }
+                }
+            }
         }
     }
 }

@@ -34,6 +34,7 @@ import DetailProduct from "./user/DetailProduct";
 import Text from "./user/Text";
 import CartUser from "./user/CartUser";
 import PaymentUser from './user/PaymentUser';
+import ProfileUser from './user/ProfileUser';
 
 export {
   ListProductAd,
@@ -70,5 +71,6 @@ export {
   AccountUser,
   DetailProduct,
   CartUser,
-  PaymentUser
+  PaymentUser,
+  ProfileUser
 };
