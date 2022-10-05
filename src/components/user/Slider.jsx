@@ -53,7 +53,7 @@ function SlideShow() {
 
     return (
         <div className="slideshow">
-            <h2>Featured New Product</h2>
+            <h2> New Product</h2>
             <Slider {...settings}>
                 {dataDigitalBestSeller.map((item) => (
                     <div className="card">

@@ -1,71 +1,84 @@
     .listUser {
-    align-self: flex-start;
-    flex-grow: 1;
-    background-color: #fff;
- 
-    text-align: left;
-    border-radius: 10px 10px 0 0;
-    height: 40px;
-    .itemUser:nth-child(odd) {
-        p{
-            background-color: rgba(51, 51, 51, 0.562);
+        align-self: flex-start;
+        flex-grow: 1;
+        background-color: #fff;
 
-        }
-    }
-    .body-listUser{
-        max-height: 70vh;
-        overflow: auto;
-        margin-bottom: -20px;
-        &::-webkit-scrollbar { 
-            width: 0 !important;
-            display: none; 
-          }
-    }
-    .listUser-header {
-        display: flex;
+        text-align: left;
+        border-radius: 10px 10px 0 0;
         height: 40px;
-        margin-bottom: 3px;
-        align-items: center;
-        p {
-           font-weight: 600; 
-           margin-bottom: 0;  
-           text-overflow: ellipsis;        
-        }
-        p:nth-child(1) {
-        width: 50px;
-        text-align: center;
-        }
-        //No.
-        p:nth-child(2) {
-        width: 14%;
-        }
-        //telephone
-        p:nth-child(3) {
-        width: 12%;
-        }
-        //description
-        p:nth-child(4) {
-           flex-grow: 1;
-        }
-        // Money
-        p:nth-child(5) {
-        width: 10%;
-        }
-        
-        p:nth-child(6) {
-        width: 60px;
-        }
-        p:nth-child(7) {
-        width: 60px;
-        }
-        
-    }
-    tbody {
-        margin-top: 5px;
-        tr {
-            td:nth-child(1){
-                text-align: center;
+
+        .itemUser:nth-child(odd) {
+            p {
+                background-color: rgba(51, 51, 51, 0.562);
+
             }
         }
-    }
+
+        .body-listUser {
+            max-height: 70vh;
+            overflow: auto;
+            margin-bottom: -20px;
+
+            &::-webkit-scrollbar {
+                width: 0 !important;
+                display: none;
+            }
+        }
+
+        .listUser-header {
+            display: flex;
+            height: 40px;
+            margin-bottom: 3px;
+            align-items: center;
+
+            p {
+                font-weight: 600;
+                margin-bottom: 0;
+                text-overflow: ellipsis;
+            }
+
+            p:nth-child(1) {
+                width: 50px;
+                text-align: center;
+            }
+
+            //No.
+            p:nth-child(2) {
+                width: 14%;
+            }
+
+            //telephone
+            p:nth-child(3) {
+                width: 12%;
+            }
+
+            //description
+            p:nth-child(4) {
+                flex-grow: 1;
+            }
+
+            // Money
+            p:nth-child(5) {
+                width: 10%;
+            }
+
+            p:nth-child(6) {
+                width: 60px;
+            }
+
+            p:nth-child(7) {
+                width: 60px;
+            }
+
+        }
+
+        tbody {
+            margin-top: 5px;
+
+            tr {
+                td:nth-child(1) {
+                    text-align: center;
+                }
+            }
+        }
     }

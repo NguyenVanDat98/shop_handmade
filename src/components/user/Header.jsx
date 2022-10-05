@@ -3,7 +3,7 @@ import logo from "../../img/logo.png"
 import { ICONCART } from '../../Icon';
 import { Link } from 'react-router-dom';
 Header.defaultProps = {
-    cart: <span className="header__cart" style={{ marginLeft: "3px" }}>
+    cart: <span className="header__cart" style={{ marginLeft: "8px" }}>
         <i className={ICONCART} total-product={0}></i>
     </span>
 }

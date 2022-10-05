@@ -1,6 +1,7 @@
 .list {
     width: 100%;
     display: flex;
+    min-height: calc(100vh - 80px);
 
     .list-product {
         padding-top: 20px;
@@ -10,7 +11,12 @@
         padding: 10px 0 0 25px;
         margin-top: 20px;
         height: 640px;
-        // overflow-y: auto;
+        overflow-y: auto;
+        margin-left: 20px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         &__add {
             background-color: #eee;

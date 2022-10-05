@@ -42,9 +42,16 @@
         padding: 10px;
 
 
+
         &>p {
             font-weight: 450;
             font-size: 1rem;
+        }
+
+        &>p:nth-child(3) {
+            &::-webkit-scrollbar {
+                display: none;
+            }
         }
 
         &>p:nth-of-type(1) {
@@ -54,11 +61,6 @@
             text-overflow: ellipsis;
             text-align: justify;
 
-
-            &::-webkit-scrollbar {
-                width: 0 !important;
-                display: none;
-            }
         }
 
         &>div:nth-of-type(3) {
