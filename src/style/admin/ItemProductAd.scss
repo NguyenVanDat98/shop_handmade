@@ -1,30 +1,35 @@
 .list-product-Ad_body_item{
     border-radius: 5px;
     height: max-content;
-    background-color: rgb(255, 255, 255);
-    img{
+    width: 100%;
+    background-color: azure;
+    padding:  8px;
+    .product-item-img{
         width: 100%;
-        display: block;
-        height: 120px;
-        
-        margin-top: 5px;
-      
         
     }
+    img{
+        width: 100%;
+        border-radius: 5px;
+        display: block;
+        height: 120px;        
+        margin-top: 5px;  
+        overflow: hidden;
+        filter: drop-shadow(5px 5px 10px black);
+    }
     section{
+        
         height: max-content;
-        margin-bottom: 10px;
-        margin: 0 -12px 10px;
-        p{
-            height:1.4rem ;
-            margin-bottom: 0;
-            overflow: hidden;
-            padding: 0 10px;
+        margin: 10px 0;
+        i{
+            color: yellow;
+            background: linear-gradient(90deg, rgba(255,226,0,1) 0%, rgba(255,226,0,1) var(--current) , rgba(255,255,255,1) var(--current), rgba(255,255,255,1) 100%);
+
         }
-        p:nth-child(1) {
-            width: 100%;
-            white-space: nowrap; 
-            text-overflow: ellipsis; 
-        }
+       h6{
+        display: flex;
+        justify-content: space-between;
+        text-transform: capitalize;
+       }
     }
 }

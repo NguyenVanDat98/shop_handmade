@@ -1,71 +1,247 @@
-    .listUser {
-    align-self: flex-start;
-    flex-grow: 1;
-    background-color: #fff;
- 
-    text-align: left;
-    border-radius: 10px 10px 0 0;
-    height: 40px;
-    .itemUser:nth-child(odd) {
-        p{
-            background-color: rgba(51, 51, 51, 0.562);
+:root {
+  --height-header: 2rem;
+  --height-listcontent: 100%;
+  --height-avt: 5rem;
+}
 
-        }
-    }
-    .body-listUser{
-        max-height: 70vh;
-        overflow: auto;
-        margin-bottom: -20px;
-        &::-webkit-scrollbar { 
-            width: 0 !important;
-            display: none; 
-          }
-    }
-    .listUser-header {
-        display: flex;
-        height: 40px;
-        margin-bottom: 3px;
-        align-items: center;
-        p {
-           font-weight: 600; 
-           margin-bottom: 0;  
-           text-overflow: ellipsis;        
-        }
-        p:nth-child(1) {
-        width: 50px;
+.content-listuser {
+  display: flex;
+  position: relative;
+  width: calc(100vw - 82px);
+  min-height: calc(100vh - 80px );
+  padding-bottom: 20px;
+  
+  .module-profile{
+    position: absolute;
+    right: 0;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;    
+    z-index: 1000;
+    background: linear-gradient(57deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 24%, rgba(0,212,255,1) 100%);
+    border-radius: 15px;
+    box-shadow: 5px 10px 10px black;
+    opacity: 0; 
+    visibility: hidden;
+    .avt{
+        background-color: #fff;
+        width: var(--height-avt) ;
+        height: var(--height-avt);
+        border-radius: calc(var(--height-avt) / 2);
         text-align: center;
+        i{
+            font-size: calc(var(--height-avt) / 2);
+            line-height: var(--height-avt);
+            
         }
-        //No.
-        p:nth-child(2) {
-        width: 14%;
-        }
-        //telephone
-        p:nth-child(3) {
-        width: 12%;
-        }
-        //description
-        p:nth-child(4) {
-           flex-grow: 1;
-        }
-        // Money
-        p:nth-child(5) {
-        width: 10%;
-        }
-        
-        p:nth-child(6) {
-        width: 60px;
-        }
-        p:nth-child(7) {
-        width: 60px;
-        }
-        
     }
-    tbody {
-        margin-top: 5px;
-        tr {
-            td:nth-child(1){
-                text-align: center;
+    .profile{
+        width: 100%;
+        height: max-content;
+        min-height: 100px;
+        padding: 15px 8px;
+        border-radius: 10px;
+        background-color: #f0f8ff69;
+        &>i{
+           
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 2.5rem;
+            transform: rotate(180deg);
+            &:hover{
+                cursor: pointer;
             }
         }
+        p{
+            margin-bottom: 0;
+            text-align: justify;
+        }
+        p:nth-of-type(1){
+            text-indent: 2rem;
+        }
+        strong,h6{
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+        h6 {
+            display: flex;
+            justify-content: space-between;
+            
+        }
     }
+  }
+  .top-users {  
+    height: max-content;
+    background-color: rgb(50, 61, 83);
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px black;
+    width: 300px;
+    h3{
+        margin-left: 15px;
+        margin-top: 5px;
+        color: white;
+        filter: drop-shadow(2px 0 10px black);
     }
+  }
+  .item-user-top {
+    margin-bottom: 5px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px black;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    animation: reveal .3s forwards var(--disdelay);
+  
+        strong{font-weight: 500;
+        }
+        strong:nth-of-type(2){
+            flex-grow: 1;
+            text-align: right;
+            margin: 2px 3px;
+        }
+    
+    .avatar {
+      height: 100%;
+      width: 30%;
+      position: relative;
+      overflow: hidden;
+      span {
+        z-index: 100;
+        font-size: 2rem;
+        color: black;
+        margin: 0 10px;
+        line-height: 40px;
+        position: absolute;
+      }
+      .aaa {
+        z-index: 0;
+        width: 75px;
+        height: 115px;
+        background-color: red;
+        transform: rotate(45deg);
+        position: absolute;
+        bottom: -20px;
+        left: -7px;
+      }
+    }
+  }
+}
+
+.listUser {
+  flex-grow: 1;
+  height: var(--hieght-listcontent);
+  margin-right: 15px;
+  background-color: #fff;
+  text-align: left;
+  border-radius: 10px 10px 0 0;
+  .listUser-header {
+    height: --height-header;
+    padding: 0 15px;
+    h3 {
+      line-height: var(--height-header);
+      margin-bottom: 0;
+    }
+  }
+ 
+  .body-listUser {
+    height: calc(100vh - 100px);
+    overflow: auto;
+    width: 100%;
+    &::-webkit-scrollbar {
+      width: 0 !important;
+      display: none;
+    }
+  }
+}
+.animation-reveal{
+    animation: reveal .3s ease-in-out var(--disdelay);
+
+}
+.moduleIN{
+    
+    animation: moduleIN 0.3s forwards ;
+}
+.moduleOUT{  
+    animation: moduleOUT 0.3s forwards ;
+}
+@keyframes reveal {
+    0%{
+        translate: 0 20px ;
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        translate: none ; opacity: 1;
+        visibility: visible;
+    }
+}
+@keyframes moduleIN {
+    from{
+        transform: translateX(100%);
+        opacity: 0; 
+        visibility: hidden;
+        height: 0;      
+        padding: 0;
+    }
+    to{
+      padding: 10px;
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+      height: max-content;
+
+    }
+}
+@keyframes moduleOUT {
+    from{     
+        transform: translateX(0);  
+        opacity: 1;
+        height: max-content;
+       visibility: visible;
+       padding: 10px;
+
+    }
+    to {     
+      display: none;
+      padding: 0;
+      
+        height: 0;
+        transform: translateX(100%);  
+        opacity: 0; 
+       visibility: hidden;
+    }
+}
+@media (max-width: 800px) {
+  .content-listuser{
+    flex-direction: column;
+    height: max-content;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  .listUser{
+    order: 2;
+    width: 100%;
+    
+  }
+  
+  .top-users{
+      order: 1;
+      margin-bottom: 10px;
+    }
+}
+@media (max-width:500px) {
+  .content-listuser{
+    width: 100vw;
+    margin-bottom: 60px;
+    padding: 10px;
+  }
+  .listUser{
+    margin-right: 0;
+
+  }
+}

@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: #d8bd9f;
   padding: 0 25px;
-  height: 80px;
+  height: 80px; 
 
   img:hover {
     cursor: pointer;
@@ -44,6 +44,10 @@
 @media (max-width: 800px) {
   .header {
     width: 100vw;
+    padding: 0 5px;
+    img{
+        max-width: 40vw;
+    }
     .text {
       display: none;
     }

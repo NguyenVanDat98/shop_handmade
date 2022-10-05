@@ -79,6 +79,9 @@
         padding-right: 0;
         height: 100%;
     }
+    .account{
+        display: none;
+    }
     .body-voucher{
         flex-direction: column;
     }
@@ -88,8 +91,8 @@
         height: 56vh;
         grid-template-columns: 1fr;
     }
-    .list-product-Ad_body_item{
-        width:80vw !important;
+    .list-product-Ad{
+        width:100vw !important;
     }
     .listUser {
         align-self: center;
@@ -116,6 +119,9 @@
         left: 0;
         right: 0;
         bottom: 0;
+        & .itemSidebar:last-child{
+            display: flex;
+        }
         .itemSidebar {
         padding-left: 0;
         justify-content: center;

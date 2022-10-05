@@ -1,33 +1,21 @@
 import React from "react";
+import { ICONSTAR } from "../../Icon";
 
-const DISPLAY_ITEM = "d-flex justify-content-between"
-
-const ItemProductAd = (props) => {
+const ItemProductAd = ({linkImg,nameProduct,category,price,sold,rating,discount}) => {
   return (
     <div className="list-product-Ad_body_item  ">
-      <img src="" alt="" />
+      <div className="product-item-img">
+      <img src={linkImg} />
+
+      </div>
       <section>
-        <p>Name :as dasdas da sdaf  asdasdas dasd asda sdaw sda</p>
-        <div className={DISPLAY_ITEM}> 
-        <p>Price :</p> 
-        <p>1</p>
-        </div>
-        <div className={DISPLAY_ITEM}>
-        <p>Category : </p>
-          <p>a</p>
-        </div>
-        <div className={DISPLAY_ITEM} style={{backgroundColor: "green"}}>
-        <p>Status : </p>
-          <p>a</p>
-        </div>
-        <div className={DISPLAY_ITEM} style={{backgroundColor:"orange"}}>
-        <p>Discount : </p>
-          <p>a</p>
-        </div>
-        <div className={DISPLAY_ITEM } style={{backgroundColor: "blue"}}>
-        <p>Sold : </p>
-          <p>a</p>
-        </div>
+        <h6>Name : <span>  {nameProduct}</span></h6>    
+        <h6>Price :<span> $ {price}</span> </h6>         
+        <h6>Rating :<span>{rating}<i style={{"--current": `${rating*2*10}%`}} className={ICONSTAR}></i> </span> </h6>         
+        <h6>Category : <span>{category}</span></h6>          
+        <h6>Status : <span>a</span> </h6>          
+        <h6>Discount :<span>{discount}</span> </h6>          
+        <h6>Sold : <span>{sold}</span> </h6>         
       </section>
     </div>
   );
