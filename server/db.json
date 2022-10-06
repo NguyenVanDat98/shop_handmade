@@ -34,6 +34,7 @@
             "description": "Decoration",
             "discount": "5%",
             "time_making": "",
+            "category": "5 table decor 3",
             "status": "In stock",
             "sold": 120,
             "rating": 4.8
@@ -46,6 +47,7 @@
             "description": "Decoration",
             "discount": "6%",
             "time_making": "",
+            "category": "5 table decor 1",
             "status": "In stock",
             "sold": 56,
             "rating": 4.95
@@ -84,6 +86,7 @@
             "description": "Decoration",
             "discount": "5%",
             "time_making": "",
+            "category": "5 table decor 4",
             "status": "In stock",
             "sold": 120,
             "rating": 4.8
@@ -96,6 +99,7 @@
             "description": "Decoration",
             "discount": "6%",
             "time_making": "",
+            "category": "5 table decor 5",
             "status": "In stock",
             "sold": 70,
             "rating": 4.2
@@ -108,6 +112,7 @@
             "description": "Decoration",
             "discount": "5%",
             "time_making": "",
+            "category": "5 table decor 5",
             "status": "In stock",
             "sold": 120,
             "rating": 4.8
@@ -120,6 +125,7 @@
             "description": "Decoration",
             "discount": "6%",
             "time_making": "",
+            "category": "5 table decor 5",
             "status": "In stock",
             "sold": 70,
             "rating": 4.2

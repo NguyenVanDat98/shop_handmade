@@ -1,4 +1,4 @@
-export default function makeId(length) {
+export function makeId(length) {
     let result = "";
     let characters =
         "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm-0123456789";
@@ -7,8 +7,9 @@ export default function makeId(length) {
         result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-}
-export default function makeCode() {
+};
+
+export function makeCode() {
     let result = "";
     let characters =
         "0123456789";
