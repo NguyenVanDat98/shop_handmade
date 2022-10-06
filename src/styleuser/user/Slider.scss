@@ -50,6 +50,7 @@
                     left: 0;
                     right: 0;
                     height: 2px;
+                    width: 65%;
                 }
             }
         }
@@ -62,10 +63,4 @@
 
 .slick-list {
     margin: 0 -10px;
-}
-
-@media (max-width:768px) {
-    .slideshow {
-        padding-right: 10px;
-    }
 }

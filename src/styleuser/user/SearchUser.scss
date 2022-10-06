@@ -2,37 +2,39 @@
     --heii: 50px;
 }
 
-.Searh-header {
+.search-header {
     width: max-content;
     position: relative;
     display: flex;
     background-color: #fff;
     border-radius: 20px;
 
+
     .form-control {
-    
-        width: 22vw ;
+
+        width: 22vw;
         position: relative;
         height: var(--heii);
         border-radius: 20px;
         border: unset;
-        
+
 
 
         &:focus-visible {
             outline: unset !important;
-            
+
         }
+
         &:focus {
             width: calc(50vw - 6.7rem);
-            transition: all 0.3s ease-in-out ;
+            transition: all 0.3s ease-in-out;
         }
 
         &::placeholder {
             font-size: 20px;
         }
-    } 
-   
+    }
+
 }
 
 .ICONSEARCH {
@@ -53,6 +55,27 @@
 
 }
 
-@media (max-width:800px) {
-    
+@media (max-width:500px) {
+    .search-header {
+        .form-control {
+            min-width: 40vw;
+
+            &:focus {
+                width: 90vw;
+
+            }
+        }
+    }
 }
+
+//Tablet
+@media (max-width:1023px) and (min-width: 740px) {
+    // .search-header {
+    //     .form-control {
+    //         width: 400px;
+    //     }
+    // }
+}
+
+//PC
+@media (min-width: 1024px) {}

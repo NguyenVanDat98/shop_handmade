@@ -6,7 +6,7 @@ const BodyUser = ({ children }) => {
     return (
         <div className='body-user'>
             <SideBar />
-            <div style={{ display: "block", flexGrow: 1, margin: "0 auto" }}>
+            <div className='main-content'>
                 {children}
             </div>
         </div>

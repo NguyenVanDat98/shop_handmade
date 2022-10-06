@@ -3,7 +3,7 @@ import { Header, SignUp } from '../../../components';
 function SignUpPage(props) {
     return (
         <div>
-            <Header />
+            <Header cart={""} />
             <SignUp />
         </div>
     );

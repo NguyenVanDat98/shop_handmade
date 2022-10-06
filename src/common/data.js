@@ -25,7 +25,7 @@ export const dataDigitalBestSeller = [
     },
     {
         id: 4,
-        title: 'Super Mario™ 3D World + Bowser’s Fury',
+        title: 'Super Mario™ 3D World',
         price: '$43',
         category: 'Nintendo Switch',
         linkImg:

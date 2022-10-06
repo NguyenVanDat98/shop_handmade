@@ -11,11 +11,14 @@ const Homepage = props => {
         <div>
             <Pageroot search={<SearchUser />} account={<Text />}>
                 <SlideShow />
-                <div style={{ display: "flex", justifyContent: "flex-end", paddingRight: "55px" }}>
-                    <Filter />
-                    <Sort />
+                <div>
+                    <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
+                        <Filter />
+                        <Sort />
+                    </div>
+                    <ListProduct />
                 </div>
-                <ListProduct />
+
             </Pageroot>
 
         </div>

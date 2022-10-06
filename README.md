@@ -1,6 +1,7 @@
 # Note 
 
-pleale install : "npm install --save chart.js react-chartjs-2"
+pleale install : "npm install --save chart.js react-chartjs-2 @faker-js/faker"
+ 
 
 
 

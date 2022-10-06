@@ -69,3 +69,9 @@
     }
 
 }
+
+@media (min-width: 740px) and (max-width: 1023px) {
+    .header__login {
+        padding-left: 140px;
+    }
+}

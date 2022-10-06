@@ -10,12 +10,16 @@ function Product(props) {
             <div className="product__body">
                 <div className='product-info'>
                     <h5 className="product-info__title">{name}</h5>
-                    <p className="product-info__price">$ {price}</p>
+                    {discount ? <section className='product-info__discount-price'>
+                        <p className="product-info__price">$ {(price - price * parseInt(discount) / 100).toFixed(1)}</p> <p className='product-info__sale'>$ {price}</p>
+                    </section> : <p className="product-info__price">$ {price}</p>}
+
+
                 </div>
                 <div className='product-rate'>
                     <p className="product-rate__text">
                         <i className={ICONSTAR}></i>
-                        {rating}
+                        <strong>{rating}/5</strong>
                     </p>
                     <p className='product-rate__amount'>{sold} Sold</p>
                 </div>
