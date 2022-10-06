@@ -27,102 +27,6 @@
             "rating": 4.2
         },
         {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
             "id": 3,
             "img": "https://img.alicdn.com/imgextra/i1/201255257/TB2czvEj9B0XKJjSZFsXXaxfpXa_!!201255257.jpg",
             "name": "Rickshaw",
@@ -158,7 +62,7 @@
              "category": "table decor 1",
             "status": "In stock",
             "sold": 120,
-            "rating": 4.8
+            "rating": 5
         },
         {
             "id": 6,
@@ -168,7 +72,7 @@
             "description": "Decoration",
             "discount": "6%",
             "time_making": "",
-             "category": "5 table decor 5",
+             "category": "7 table decor 5",
             "status": "In stock",
             "sold": 70,
             "rating": 4.2

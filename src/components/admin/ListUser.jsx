@@ -3,9 +3,9 @@ import { useState } from "react";
 import {  ICONCLOSE, ICONUSER } from "../../Icon/index.js";
 
 import { ItemUser } from "./../index.js";
-const ModuleUserProfile =({ displayModule,onClick})=>{
+const ModuleUserProfile =({ displayModule,onClick,style})=>{
     return (
-        <div className={`module-profile ${displayModule}`} >
+        <div className={`module-profile ${displayModule}`} style={{display:style}} >
             <div className="avt m-3">
                 <i className={ICONUSER}></i>
             </div>
@@ -58,7 +58,7 @@ const ListUser = (props) => {
         <h3>TOP MEMBER</h3>
         { [...new Array(5)].map((e,i)=><ItemTop seClose={()=>{setClose("moduleIN")}} No={i}/>)}       
       </div>
-       <ModuleUserProfile onClick={()=>{setClose("moduleOUT")}}  displayModule={close}/>       
+       <ModuleUserProfile style={close==""? "none": close==="moduleIN"?"flex": "none" } onClick={()=>{setClose("moduleOUT")}}  displayModule={close}/>       
     </div>
   );
 };

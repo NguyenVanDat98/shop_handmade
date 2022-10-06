@@ -22,8 +22,12 @@
         height: max-content;
         margin: 10px 0;
         i{
-            color: yellow;
-            background: linear-gradient(90deg, rgba(255,226,0,1) 0%, rgba(255,226,0,1) var(--current) , rgba(255,255,255,1) var(--current), rgba(255,255,255,1) 100%);
+            color: black; 
+            // border: 1px solid rgb(0, 0, 0);
+            background: -webkit-linear-gradient(0deg, rgba(255,226,0,1) 0%, rgba(255,226,0,1) var(--current) , rgb(0, 0, 0) var(--current), rgb(2, 2, 2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
 
         }
        h6{

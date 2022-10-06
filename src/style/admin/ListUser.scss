@@ -12,9 +12,9 @@
   padding-bottom: 20px;
   
   .module-profile{
-    position: absolute;
+    position: relative;
     right: 0;
-    width: 300px;
+    // width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,10 +78,12 @@
     background-color: rgb(50, 61, 83);
     border-radius: 20px;
     box-shadow: 5px 5px 10px black;
+
     width: 300px;
     h3{
         margin-left: 15px;
         margin-top: 5px;
+        
         color: white;
         filter: drop-shadow(2px 0 10px black);
     }
@@ -162,9 +164,8 @@
     animation: reveal .3s ease-in-out var(--disdelay);
 
 }
-.moduleIN{
-    
-    animation: moduleIN 0.3s forwards ;
+.moduleIN{    
+    animation: moduleIN 0.3s forwards;
 }
 .moduleOUT{  
     animation: moduleOUT 0.3s forwards ;
@@ -181,37 +182,53 @@
     }
 }
 @keyframes moduleIN {
-    from{
-        transform: translateX(100%);
+    0%{
+        // transform: translateX(100%);
         opacity: 0; 
         visibility: hidden;
         height: 0;      
         padding: 0;
+        width: 0;
     }
-    to{
+    80%{
+      width: 0;
+      
+    }
+    90%{
+      opacity: 0; 
+        visibility: hidden;
+    }
+    100%{
       padding: 10px;
-      transform: translateX(0);
+      // transform: translateX(0);
       opacity: 1;
       visibility: visible;
       height: max-content;
+      width: 300px;
 
     }
 }
 @keyframes moduleOUT {
     from{     
-        transform: translateX(0);  
+        // transform: translateX(0);  
         opacity: 1;
         height: max-content;
        visibility: visible;
        padding: 10px;
+       width: 300px;
 
+    }
+    40%{
+      width: 0;
+      opacity: 0;
+      visibility: hidden;
     }
     to {     
       display: none;
       padding: 0;
-      
+      width: 0;
         height: 0;
-        transform: translateX(100%);  
+        // transform: translateX(100%);  
         opacity: 0; 
        visibility: hidden;
     }
@@ -239,6 +256,9 @@
     width: 100vw;
     margin-bottom: 60px;
     padding: 10px;
+    .module-profile{
+      position: absolute;
+    }
   }
   .listUser{
     margin-right: 0;
