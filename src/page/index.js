@@ -12,10 +12,11 @@ import LoginPage from './user/loginpage/LoginPage';
 import SignUpPage from './user/signuppage/SignUpPage';
 import CartPage from './user/cartpage/CartPage';
 import PaymentPage from './user/paymentpage/PaymentPage';
+import ProfileUserPage from "./user/profilepage/ProfileUserPage";
 
 
 
 
 
-export { Dashboard, DiscountPage, OrderPage, ProductPage, RootPage, UserPage, VoucherPage,ProfilePage }
-export { Homepage, Pageroot, LoginPage, SignUpPage, CartPage, PaymentPage }
+export { Dashboard, DiscountPage, OrderPage, ProductPage, RootPage, UserPage, VoucherPage, ProfilePage }
+export { Homepage, Pageroot, LoginPage, SignUpPage, CartPage, PaymentPage, ProfileUserPage }

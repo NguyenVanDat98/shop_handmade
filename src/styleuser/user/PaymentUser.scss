@@ -304,14 +304,14 @@
         &__order {
             width: 100%;
             height: max-content;
-            margin: 0 0 20px 0;
-            order: -1;
+            margin: 20px 0 20px 0;
+            // order: -1;
         }
 
         &__form {
             width: 100%;
-            margin: 0 0 20px 0;
-            order: -1;
+            margin: 15px 0 20px 0;
+            // order: -1;
         }
     }
 }
@@ -324,6 +324,7 @@
 
         &__info {
             width: 100%;
+            margin-top: 10px;
 
             &--cart {
                 height: max-content;
@@ -335,14 +336,14 @@
             height: max-content;
             margin-left: 0;
             margin-top: 10px;
-            order: -1;
+            // order: -1;
         }
 
         &__form {
             width: 100%;
             margin-left: 0;
             margin-top: 10px;
-            order: -1;
+            // order: -1;
         }
     }
 }

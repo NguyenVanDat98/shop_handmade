@@ -13,7 +13,8 @@ import {
   CartPage,
   PaymentPage,
   Pageroot,
-  ProfilePage
+  ProfilePage,
+  ProfileUserPage
 } from "../page/index.js";
 import "./App.css";
 import "../style/index.scss";
@@ -47,6 +48,7 @@ function App(e) {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/payment" element={<PaymentPage />} />
+        <Route path="/profileuser" element={<ProfileUserPage />} />
         <Route path="/admin/users" element={<UserPage />} />
         <Route path="/admin/profile" element={<ProfilePage />} />
         <Route path="/admin/Dashboard" element={<Dashboard />} />
