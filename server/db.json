@@ -25,103 +25,103 @@
             "rating": 4.2
         },
         {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
-            "id": 1,
-            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-            "name": "Boat",
-            "price": 20,
-            "description": "Decoration",
-            "discount": "5%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 120,
-            "rating": 4.8
-        },
-        {
-            "id": 2,
-            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-            "name": "Kitchen",
-            "price": 30,
-            "description": "Decoration",
-            "discount": "6%",
-            "time_making": "",
-            "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
-        },
-        {
             "id": 3,
+            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
+            "name": "Boat",
+            "price": 20,
+            "description": "Decoration",
+            "discount": "5%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 120,
+            "rating": 4.8
+        },
+        {
+            "id": 4,
+            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
+            "name": "Kitchen",
+            "price": 30,
+            "description": "Decoration",
+            "discount": "6%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 70,
+            "rating": 4.2
+        },
+        {
+            "id": 5,
+            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
+            "name": "Boat",
+            "price": 20,
+            "description": "Decoration",
+            "discount": "5%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 120,
+            "rating": 4.8
+        },
+        {
+            "id": 6,
+            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
+            "name": "Kitchen",
+            "price": 30,
+            "description": "Decoration",
+            "discount": "6%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 70,
+            "rating": 4.2
+        },
+        {
+            "id": 7,
+            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
+            "name": "Boat",
+            "price": 20,
+            "description": "Decoration",
+            "discount": "5%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 120,
+            "rating": 4.8
+        },
+        {
+            "id": 8,
+            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
+            "name": "Kitchen",
+            "price": 30,
+            "description": "Decoration",
+            "discount": "6%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 70,
+            "rating": 4.2
+        },
+        {
+            "id": 9,
+            "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
+            "name": "Boat",
+            "price": 20,
+            "description": "Decoration",
+            "discount": "5%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 120,
+            "rating": 4.8
+        },
+        {
+            "id": 10,
+            "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
+            "name": "Kitchen",
+            "price": 30,
+            "description": "Decoration",
+            "discount": "6%",
+            "time_making": "",
+            "status": "In stock",
+            "sold": 70,
+            "rating": 4.2
+        },
+        {
+            "id": 11,
             "img": "https://img.alicdn.com/imgextra/i1/201255257/TB2czvEj9B0XKJjSZFsXXaxfpXa_!!201255257.jpg",
             "name": "Rickshaw",
             "price": 40,
@@ -133,7 +133,7 @@
             "rating": 4.3
         },
         {
-            "id": 4,
+            "id": 12,
             "img": "https://img.alicdn.com/imgextra/i1/201255257/TB2tfgBpEQIL1JjSZFhXXaDZFXa_!!201255257.jpg",
             "name": "Wells",
             "price": 45,
@@ -195,6 +195,72 @@
         {
             "id": "",
             "payment_id": ""
+        }
+    ],
+    "slideShow": [
+        {
+            "id": 1,
+            "id_Product": 1,
+            "name": "Mario Kart™ 8 Deluxe",
+            "price": 23,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/1.3-dong-ho-go-de-ban-lam-viec.jpg?1543302833739"
+        },
+        {
+            "id": 2,
+            "id_Product": 2,
+            "name": "TRIANGLE STRATEGY™",
+            "price": 50,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/7.1-khay-go-trang-tri-ban-lam-viec.jpg?1542340827144"
+        },
+        {
+            "id": 3,
+            "id_Product": 3,
+            "name": "Pokémon™ Legends: Arceus",
+            "price": 45,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/1.1d-khay-go-de-ban-lam-viec.jpg?1543301692016"
+        },
+        {
+            "id": 4,
+            "id_Product": 4,
+            "name": "Super Mario™ 3D World",
+            "price": 43,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/2.2a-do-thu-cong-trang-tri-ban-lam-viec.jpg?1543302553933"
+        },
+        {
+            "id": 5,
+            "id_Product": 5,
+            "name": "Cuphead",
+            "price": 27,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/2.2c-do-thu-cong-trang-tri-ban-lam-viec.jpg?1543302728272"
+        },
+        {
+            "id": 6,
+            "id_Product": 6,
+            "name": "Minecraft",
+            "price": 30,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/7.2b-do-thu-cong-trang-tri-ban-lam-viec.jpg?1542340610727"
+        },
+        {
+            "id": 7,
+            "id_Product": 7,
+            "name": "Mario + Rabbids® Kingdom Battle",
+            "price": 55,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/1.1c-khay-go-de-ban-lam-viec.jpg?1543301709639"
+        },
+        {
+            "id": 8,
+            "id_Product": 8,
+            "name": "'Unravl Two",
+            "price": 63,
+            "category": "Nintendo Switch",
+            "img": "https://homeoffice.com.vn/images/companies/1/SEO/H%C3%ACnh%20%E1%BA%A2nh%20N%E1%BB%99i%20Th%E1%BA%A5t/Ph%C3%B2ng%20L%C3%A0m%20Vi%E1%BB%87c/%C4%90%E1%BB%93%20trang%20tr%C3%AD%20b%C3%A0n%20l%C3%A0m%20vi%E1%BB%87c/1.4a-phu-kien-de-ban-lam-viec-dung-do-cong-nghe.jpg?1543302984324"
         }
     ]
 }

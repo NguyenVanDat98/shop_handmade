@@ -2,10 +2,23 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
-import { dataDigitalBestSeller } from '../../common/data.js';
-
+import { useCallback, useEffect, useState } from "react";
 function SlideShow() {
-    // const [defaultImage, setDefaultImage] = useState({});
+    const URL = "http://localhost:8000/slideShow";
+    const [slideshow, setSlideShow] = useState([]);
+    const fetchData = useCallback(async () => {
+        await fetch(URL)
+            .then((res) => res.json())
+            .then((data) => {
+                setSlideShow(data);
+            })
+            .catch(err => console.log(err))
+
+    }, [])
+
+    useEffect(() => {
+        fetchData()
+    }, [fetchData]);
     const settings = {
         dots: true,
         infinite: true,
@@ -13,7 +26,7 @@ function SlideShow() {
         slidesToShow: 4,
         slidesToScroll: 2,
         initialSlide: 0,
-        // autoplay: true,
+        autoplay: true,
         autoplaySpeed: 2000,
         responsive: [
             {
@@ -43,29 +56,24 @@ function SlideShow() {
         ],
     };
 
-    // const handleErrorImage = (data) => {
-    //     setDefaultImage((prev) => ({
-    //         ...prev,
-    //         [data.target.alt]: data.target.alt,
-    //         linkDefault: logo,
-    //     }));
-    // };
 
     return (
         <div className="slideshow">
             <h2> New Product</h2>
             <Slider {...settings}>
-                {dataDigitalBestSeller.map((item) => (
+                {slideshow && slideshow.map((item) => (
                     <div className="card">
                         <div className="card-top">
-                            <img
-                                src={item.linkImg}
-                                alt={item.title}
-                            />
-                            <h1>{item.title}</h1>
+                            <div>
+                                <img
+                                    src={item.img}
+                                    alt={item.name}
+                                />
+                            </div>
+                            <h5>{item.name}</h5>
                         </div>
                         <div className="card-bottom">
-                            <h3>{item.price}</h3>
+                            <h3>${item.price}</h3>
                             <span className="category">{item.category}</span>
                         </div>
                     </div>
