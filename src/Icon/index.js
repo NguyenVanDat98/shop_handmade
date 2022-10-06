@@ -17,6 +17,11 @@ const ICONPASS = "fa-regular fa-eye";
 const ICONPLUS = "fa-solid fa-plus";
 const ICONMINUS = "fa-solid fa-minus";
 const ICONTRASH = "fa-solid fa-trash-can";
+const ICONSETTNG = "fa-solid fa-gears";
+const ICONBACK = "fa-solid fa-chevron-left";
+const ICONCLOSE = "fa-solid fa-xmark";
+
+
 const ICONCREDIT = "fa-regular fa-credit-card";
 const ICONWALLET = "fa-solid fa-wallet";
 const ICONVISA = "fa-brands fa-cc-visa";
@@ -44,6 +49,9 @@ export {
   ICONPLUS,
   ICONTRASH,
   ICONADD,
+  ICONSETTNG,
+  ICONBACK,
+  ICONCLOSE,
   ICONCREDIT,
   ICONWALLET,
   ICONVISA

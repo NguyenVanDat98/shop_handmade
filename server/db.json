@@ -8,6 +8,7 @@
             "description": "Decoration",
             "discount": "5%",
             "time_making": "",
+            "category": "table decor 1",
             "status": "In stock",
             "sold": 120,
             "rating": 4.8
@@ -20,6 +21,7 @@
             "description": "Decoration",
             "discount": "6%",
             "time_making": "",
+            "category": "5 table decor 5",
             "status": "In stock",
             "sold": 70,
             "rating": 4.2
@@ -45,8 +47,8 @@
             "discount": "6%",
             "time_making": "",
             "status": "In stock",
-            "sold": 70,
-            "rating": 4.2
+            "sold": 56,
+            "rating": 4.95
         },
         {
             "id": 5,
@@ -56,9 +58,10 @@
             "description": "Decoration",
             "discount": "5%",
             "time_making": "",
+            "category": "table decor 1",
             "status": "In stock",
             "sold": 120,
-            "rating": 4.8
+            "rating": 5
         },
         {
             "id": 6,
@@ -68,6 +71,7 @@
             "description": "Decoration",
             "discount": "6%",
             "time_making": "",
+            "category": "7 table decor 5",
             "status": "In stock",
             "sold": 70,
             "rating": 4.2
@@ -128,6 +132,7 @@
             "description": "Decoration",
             "discount": "4%",
             "time_making": "",
+            "category": "5 table decor 4",
             "status": "In stock",
             "sold": 99,
             "rating": 4.3
@@ -140,6 +145,7 @@
             "description": "Decoration",
             "discount": "8%",
             "time_making": "",
+            "category": "table decor",
             "status": "In stock",
             "sold": 56,
             "rating": 4.95
@@ -158,6 +164,7 @@
     "listProfile": [
         {
             "id": "",
+            "id_account": "",
             "first_name": "",
             "last_name": "",
             "city": "",
@@ -167,6 +174,7 @@
     "listVoucher": [
         {
             "id": "",
+            "expiry": "",
             "code": "",
             "description": ""
         }

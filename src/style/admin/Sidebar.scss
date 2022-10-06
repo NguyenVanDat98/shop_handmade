@@ -19,7 +19,9 @@
         color: #fff;
         font-size: 20px;
     }
-    
+    .itemSidebar:last-child{
+        display: none;
+    }
     .itemSidebar{
         display: flex;
         
