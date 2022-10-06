@@ -1,7 +1,7 @@
 .bodyAd{
     width: 100%;
-    min-height: calc(100vh - 100px);
-    height: 100%;
+    height: max-content;
+    min-height: calc(100vh - 80px);
     background-color: #1D1D42;
     display: flex;
     padding-right: 20px;

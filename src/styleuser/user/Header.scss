@@ -1,8 +1,10 @@
 .header {
     display: flex;
+    position: relative;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #d8bd9f;
+    padding: 0 25px;
     height: 80px;
 
     img:hover {
@@ -11,13 +13,13 @@
 
     &__cart {
         text-align: center;
-        background-color: #fff;
+        // background-color: #fff;
         width: 60px;
         height: 50px;
-        border-radius: 6px;
+        // border-radius: 6px;
 
         &>i {
-            font-size: 25px;
+            font-size: 30px;
             padding-top: 15px;
             padding-right: 5px;
             position: relative;
@@ -38,12 +40,35 @@
             }
         }
     }
+}
 
+@media (max-width: 800px) {
+    .header {
+        width: 100vw;
+        padding: 0 10px;
+
+        .text {
+            display: none;
+        }
+
+        .header__login {
+            display: none;
+        }
+    }
 
 }
 
-@media (max-width:768px) {
+@media (max-width: 500px) {
     .header {
-        width: 102.5%;
+
+
+        img {
+            position: absolute;
+            top: 3px;
+        }
+
+        &__cart {
+            display: none;
+        }
     }
 }

@@ -5,7 +5,7 @@ import Login from '../../../components/user/Login';
 function LoginPage(props) {
     return (
         <div>
-            <Header />
+            <Header cart={""} />
             <Login />
         </div>
     );

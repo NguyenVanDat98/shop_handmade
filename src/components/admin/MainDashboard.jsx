@@ -9,7 +9,7 @@ const MainDashboard = props => {
                  {[...new Array(3)].map((a,i)=><ItemView total={i} key={i}>{itemView[i]} </ItemView>)}
 
             </div>
-            <div className='chart-body d-flex w-100'>
+            <div className='chart-body d-grid w-100'>
                     <ChartBar/>
                     <PieChart/>     
             </div>

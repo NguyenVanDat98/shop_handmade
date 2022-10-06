@@ -10,7 +10,7 @@ PaymentPage.propTypes = {
 function PaymentPage(props) {
     return (
         <div>
-            <Pageroot account={<AccountUser />}>
+            <Pageroot account={<AccountUser />} cart={""}>
                 <PaymentUser />
             </Pageroot>
         </div>

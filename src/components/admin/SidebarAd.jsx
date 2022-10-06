@@ -4,6 +4,7 @@ import {
     ICONCHART,
     ICONDISCOUNT,
     ICONORDER,
+    ICONSETTNG,
     ICONUSER,
     ICONVOUCHER,
 } from "../../Icon";
@@ -18,6 +19,7 @@ const SidebarAd = (props) => {
         page4: url.includes("/Order"),
         page5: url.includes("/Voucher"),
         page6: url.includes("/Discount"),
+        page7: url.includes("/profile"),
     }
     
     return (
@@ -57,6 +59,12 @@ const SidebarAd = (props) => {
                 active={page.page6}
                 innerText="Discount"
                 pathName="/admin/Discount"
+            />
+            <ButtonSidebar
+                iconName={ICONSETTNG}
+                active={page.page7}
+                innerText="Profile"
+                pathName="/admin/profile"
             />
         </div>
     );

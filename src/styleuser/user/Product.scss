@@ -7,16 +7,17 @@ a {
         box-shadow: 2px 2px 7px #ccc;
         border-radius: 20px;
         overflow: hidden;
+        transition: all 0.3s ease-in;
+
+        &:hover {
+            transform: translateY(-1.5%);
+            box-shadow: 3px 3px 9px rgb(136, 116, 116);
+        }
 
         &__img {
-            max-width: 300px;
+            width: 100%;
+            object-fit: cover;
             height: 300px;
-            transition: 500ms ease all;
-
-            &:hover {
-                transform: scale(1.07);
-                cursor: pointer;
-            }
         }
 
         span {
@@ -33,7 +34,7 @@ a {
         }
 
         &__body {
-            width: 300px;
+            width: 100%;
             border-top: none;
             padding: 8px;
             background-color: #fff;
@@ -42,10 +43,45 @@ a {
             .product-rate {
                 display: flex;
                 justify-content: space-between;
+                padding: 0 3px;
+
+                p {
+                    margin-bottom: 5px;
+                }
+
+                &__title {
+                    overflow: auto;
+                    padding-right: 30px;
+                    flex-grow: 1;
+                    text-overflow: ellipsis;
+                }
 
                 &__price {
                     color: red;
-                    font-weight: bold;
+                    font-weight: 600;
+                    width: 30%;
+                    text-align: right;
+                    flex-shrink: 0;
+                    font-size: 1.3rem;
+                }
+
+                &__discount-price {
+                    width: 30%;
+                    text-align: right;
+
+                    .product-info__price {
+                        flex-grow: 1;
+                        text-align: right;
+                        width: 100%;
+                        margin-bottom: 0px;
+                    }
+
+                    .product-info__sale {
+                        text-decoration: line-through;
+                        font-size: 1.1rem;
+                        color: rgba($color: #333, $alpha: 0.7);
+                        font-weight: 500;
+                    }
                 }
 
                 &__amount {
@@ -56,7 +92,7 @@ a {
                 &__text {
                     i {
                         padding-right: 2px;
-                        color: orange;
+                        color: gold;
                     }
                 }
             }
@@ -86,10 +122,24 @@ a {
     }
 }
 
-@media (max-width:768px) {
-    .product {
-        &__body {
-            width: 250px;
+@media (max-width: 820px) {
+    a {
+        .product {
+            &__img {
+                height: 200px;
+            }
+
+            &__body {
+                .product-info {
+                    &__discount-price {
+                        width: 35%;
+                    }
+
+                    &__title {
+                        padding-right: 20px;
+                    }
+                }
+            }
         }
     }
 }
