@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { getAccount } from "../../api/apiMethod";
 import { makeId } from "../../common/common";
 import { ICONBACK } from "../../Icon";
-import { createAccountAsyn, toastId } from "../../redux/thunk/actionThunk";
+import { createAccountAsyn} from "../../redux/thunk/actionThunk";
 
 function SignUp(props) {
   const [step, setStep] = useState(true);
