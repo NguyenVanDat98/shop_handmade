@@ -2,9 +2,6 @@ import React from 'react';
 import { useCallback, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { Product } from '../index.js';
-ListProduct.propTypes = {
-
-};
 
 function ListProduct(props) {
     const URL = "http://localhost:8000/listProduct";

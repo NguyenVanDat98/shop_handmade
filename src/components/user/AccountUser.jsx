@@ -8,10 +8,8 @@ function AccountUser(props) {
     const [account, setAccount] = useState(false);
     const navi = useNavigate()
     const logOut = () => {
-        console.log("ads");
         window.localStorage.removeItem("infoAccount")
         navi("/login", { replace: true })
-
     }
     return (
         <div className="header__login">

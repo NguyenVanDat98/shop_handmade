@@ -1,4 +1,5 @@
-import { getAccount } from "../../api/apiMethod"
+import toast from "react-hot-toast";
+import { createAccount, createProfileAccount, getAccount } from "../../api/apiMethod"
 import { fetchAccount } from "../userReducer/action-reduce";
 
 
@@ -15,5 +16,19 @@ export const fetDataAsyn = (path = "") => {
             }
         })();
 
+    }
+}
+export const createAccountAsyn =(data)=>{
+    return()=>{
+        (async()=>{
+            try {
+               await createAccount(data.account)
+               await createProfileAccount(data.profile)
+               toast.loading("Wating...")
+             
+            } catch (error) {
+                
+            }
+        })()
     }
 }
