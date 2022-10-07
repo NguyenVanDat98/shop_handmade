@@ -2,23 +2,15 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { getSlide } from '../../redux/thunk/actionThunk';
 function SlideShow() {
-    const URL = "http://localhost:8000/slideShow";
-    const [slideshow, setSlideShow] = useState([]);
-    const fetchData = useCallback(async () => {
-        await fetch(URL)
-            .then((res) => res.json())
-            .then((data) => {
-                setSlideShow(data);
-            })
-            .catch(err => console.log(err))
-
-    }, [])
-
+    const dispatch = useDispatch();
+    const dataSlider = useSelector((state) => state.users.slider);
     useEffect(() => {
-        fetchData()
-    }, [fetchData]);
+        dispatch(getSlide());
+    }, [getSlide]);
     const settings = {
         dots: true,
         infinite: true,
@@ -61,7 +53,7 @@ function SlideShow() {
         <div className="slideshow">
             <h2> New Product</h2>
             <Slider {...settings}>
-                {slideshow && slideshow.map((item) => (
+                {dataSlider && dataSlider.map((item) => (
                     <div className="card">
                         <div className="card-top">
                             <div>

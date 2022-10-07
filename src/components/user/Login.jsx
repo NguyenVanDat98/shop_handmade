@@ -64,7 +64,7 @@ function Login(props) {
             <div className='login'>
                 <h1>Log in</h1>
                 <div className='login__name'>
-                    <input ref={focusUserName} type="text" placeholder='Phone number/ Username' autoComplete='off' name="username" onChange={getValueInput} />
+                    <input ref={focusUserName} type="text" placeholder='Username' autoComplete='off' name="username" onChange={getValueInput} />
                 </div>
                 <div className='login__pass'>
                     <input ref={focusPass} type={typePass ? "password" : "text"} placeholder='Password' name="password" autoComplete='off' onChange={getValueInput} />

@@ -3,7 +3,16 @@
     align-items: center;
     position: relative;
 
+    &>p:first-child {
+        font-weight: 400;
+        font-size: 1.1rem;
+        text-transform: capitalize;
+        line-height: 40px;
+        margin-bottom: 0;
+    }
+
     .header__account {
+
         li {
             width: 100%;
         }
@@ -18,7 +27,6 @@
         position: absolute;
         list-style: none;
         right: 0;
-        top: 40px;
         width: 160px;
         height: max-content;
         background-color: #fff;
@@ -37,29 +45,35 @@
             height: 18px;
             transform: rotate(45deg);
             background-color: white;
-
-
             position: absolute;
             cursor: pointer;
             z-index: 1;
+        }
 
+        &>a {
+            &>li {
+                padding: 7px 5px 8px 15px;
+                font-weight: 400;
+
+                &:hover {
+                    background-color: rgba(0, 0, 0, 0.03);
+                    cursor: pointer;
+                    color: blue;
+                }
+            }
         }
 
         &>li {
             padding: 7px 5px 8px 15px;
 
+            span {
+                font-weight: 400;
+            }
+
             &:hover {
                 background-color: rgba(0, 0, 0, 0.03);
                 cursor: pointer;
-            }
-
-            a {
-                text-decoration: none;
-                color: #000;
-
-                &:hover {
-                    color: blue;
-                }
+                color: blue;
             }
         }
     }
@@ -71,7 +85,6 @@
         border-radius: 50%;
         background-color: steelblue;
         overflow: hidden;
-
 
         &:hover {
             cursor: pointer;

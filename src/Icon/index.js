@@ -3,9 +3,10 @@ const ICONSEARCH = "fa-sharp fa-solid fa-magnifying-glass";
 const ICONHOME = "fa-solid fa-house-chimney";
 const ICONMAIL = "fa-solid fa-envelope";
 const ICONSTAR = "fa-solid fa-star";
-const ICONFACEBOOK = "fa-brands fa-facebook";
+const ICONFACEBOOK = "fa-brands fa-facebook-f";
 const ICONINSTA = "fa-brands fa-square-instagram";
-const ICONTWITTER = "fa-brands fa-square-twitter";
+const ICONTWITTER = "fa-brands fa-twitter";
+const ICONLINKINED = "fa-brands fa-linkedin-in";
 const ICONFUNNEL = "fa-solid fa-filter";
 const ICONCHART = "fa-solid fa-chart-simple";
 const ICONUSER = "fa-solid fa-user";
@@ -20,7 +21,9 @@ const ICONTRASH = "fa-solid fa-trash-can";
 const ICONSETTNG = "fa-solid fa-gears";
 const ICONBACK = "fa-solid fa-chevron-left";
 const ICONCLOSE = "fa-solid fa-xmark";
-
+const ICONLOCATION = "fa-sharp fa-solid fa-location-dot";
+const ICONPHONE = "fa-solid fa-phone";
+const ICONPINTEREST = "fa-brands fa-pinterest-p";
 
 const ICONCREDIT = "fa-regular fa-credit-card";
 const ICONWALLET = "fa-solid fa-wallet";
@@ -54,5 +57,9 @@ export {
   ICONCLOSE,
   ICONCREDIT,
   ICONWALLET,
-  ICONVISA
+  ICONVISA,
+  ICONLOCATION,
+  ICONPHONE,
+  ICONLINKINED,
+  ICONPINTEREST
 };

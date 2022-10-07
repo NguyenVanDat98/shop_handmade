@@ -20,8 +20,7 @@ function AccountUser(props) {
                 <i className={ICONUSER}></i>
             </span>
             {account && (<ul className="header__account">
-                <li><Link to="/profileUser" >My Account</Link></li>
-
+                <Link to="/profileuser" ><li>My Account</li></Link>
                 <li><span onClick={() => logOut()} >Log Out</span></li>
             </ul>)}
         </div>

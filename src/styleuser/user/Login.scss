@@ -30,6 +30,7 @@
             padding: 0 10px;
             outline: none;
             border: 1px solid #493a59;
+            font-weight: 400;
 
             &::placeholder {
                 font-size: 20px;
@@ -45,6 +46,7 @@
 
             p {
                 padding-top: 10px;
+                font-weight: 400;
 
                 &:hover {
                     cursor: pointer;
@@ -56,7 +58,8 @@
                 font-size: 2rem;
                 right: 25px;
                 top: calc(50% - 2rem);
-                color: rgb(125, 120, 120);
+                color: rgb(35, 34, 34);
+                cursor: pointer;
             }
         }
 

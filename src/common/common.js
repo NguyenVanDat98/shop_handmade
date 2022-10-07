@@ -20,3 +20,21 @@ export function makeCode() {
     return result;
 }
 
+export const Sort = (data, value) =>
+    [...data].sort((a, b) => {
+        switch (value) {
+            case "nameUp":
+                return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+            case "nameDown":
+                return a.name > b.name ? -1 : a.name < b.name ? 1 : 0;
+
+            case "priceUp":
+                return a.price - b.price;
+
+            case "priceDown":
+                return b.price - a.price;
+
+            default:
+                return false;
+        }
+    });
