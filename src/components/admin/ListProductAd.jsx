@@ -10,6 +10,10 @@ const ListProductAd = (props) => {
   const [disForm, setDisForm] = useState("");
   const [data, setData] = useState([]);
   const [newData, setNewData] = useState([]);
+  const today = new Date(Date.now());
+  const dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${
+    today.getDay() + 1 < 10 ? "0" + (today.getDay() + 1) : today.getDay() + 1
+  }`;
 
   const fetchData = useCallback(() => {
     try {
@@ -37,7 +41,8 @@ const ListProductAd = (props) => {
     }
     return arr;
   }, [data]);
-  const rootData = useMemo(() =>
+  const rootData = useMemo(
+    () =>
       listCategory.map((e, i) => {
         return {
           name: e,
@@ -56,7 +61,7 @@ const ListProductAd = (props) => {
         <i onClick={() => setDisForm("disFalse")} className={ICONCLOSE}></i>{" "}
         <span> Create product</span>
         <form className="d-flex flex-column ">
-          <div className="form-floating">
+          <div className="item-input">
             <input
               className="form-control"
               autoComplete="off"
@@ -65,7 +70,7 @@ const ListProductAd = (props) => {
             />{" "}
             <label htmlFor="nameProduct">Name product </label>{" "}
           </div>
-          <div className="form-floating">
+          <div className="item-input">
             <input
               className="form-control"
               autoComplete="off"
@@ -74,7 +79,7 @@ const ListProductAd = (props) => {
             />{" "}
             <label htmlFor="price">Price </label>{" "}
           </div>
-          <div className="form-floating">
+          <div className="item-input">
             <input
               className="form-control"
               autoComplete="off"
@@ -83,7 +88,7 @@ const ListProductAd = (props) => {
             />{" "}
             <label htmlFor="category">Category </label>{" "}
           </div>
-          <div className="form-floating">
+          <div className="item-input">
             <input
               className="form-control"
               autoComplete="off"
@@ -91,6 +96,26 @@ const ListProductAd = (props) => {
               id="image"
             />{" "}
             <label htmlFor="img">Img link </label>{" "}
+          </div>
+          <div className="item-input">
+            <input
+              className="form-control"
+              autoComplete="off"
+              type="text"
+              id="discount"
+            />{" "}
+            <label htmlFor="discount">Discount </label>{" "}
+          </div>
+          <div className="item-input">
+            <input
+              className="form-control"
+              autoComplete="off"
+              type="date"
+              readOnly
+              id="date"
+              value={dateNow}
+            />{" "}
+            <label htmlFor="date">Date making </label>{" "}
           </div>
           <button type="button" className="btn btn-primary">
             ADD
@@ -120,10 +145,19 @@ const ListProductAd = (props) => {
           newData.map((e, i) => {
             return (
               <div key={i} className="list-allProduct">
-                <span> {e.name}</span>
+                <span> {e.name} ({e.data.length})</span>
                 <div className="main-content-list-product ">
                   {e.data.map((item, i) => (
-                    <ItemProductAd linkImg={item.img} sold={item.sold} price={item.price} category={item.category} nameProduct={item.name} rating={item.rating} discount={item.discount} key={i} />
+                    <ItemProductAd
+                      linkImg={item.img}
+                      sold={item.sold}
+                      price={item.price}
+                      category={item.category}
+                      nameProduct={item.name}
+                      rating={item.rating}
+                      discount={item.discount}
+                      key={i}
+                    />
                   ))}
                 </div>
               </div>

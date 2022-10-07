@@ -9,7 +9,7 @@ CartPage.propTypes = {
 function CartPage(props) {
     return (
         <div>
-            <Pageroot search={<SearchUser />} cart={""} account={<AccountUser />}>
+            <Pageroot search={<SearchUser />} cart={false} account={<AccountUser />}>
                 <CartUser />
             </Pageroot>
         </div>

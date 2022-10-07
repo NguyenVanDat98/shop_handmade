@@ -54,7 +54,8 @@ const ListUser = (props) => {
           ))}
         </div>
       </div>
-      <div className={`top-users ${close=="" ?" ": close=="moduleOUT"?"moduleIN" :"moduleOUT"}`}>      
+      <div className="empty"></div>
+      <div className={`top-users ${close=="" ?" ": close=="moduleOUT"?"moduleIN" :"moduleOUT"}`} style={{"--diss":close===""||close==="moduleOUT"?"block": "none"}} >      
         <h3>TOP MEMBER</h3>
         { [...new Array(5)].map((e,i)=><ItemTop seClose={()=>{setClose("moduleIN")}} No={i}/>)}       
       </div>

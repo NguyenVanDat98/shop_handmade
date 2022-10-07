@@ -46,7 +46,28 @@
       text-transform: capitalize;
     }
     form{
+      .item-input{
+        position: relative;
+        margin-top: 1rem ;
+        label{
+          position: absolute;
+          font-size: 1.2rem;
+          top: -15px;
+          left: 2px;
+          right: 50%;
+          border-radius: 10px 10px 0 0 ;
+          background-color: white;
+          padding: 0 4px;
+        }
+        .form-control{
+          padding-top: 10px;
+          padding-bottom: 0.2rem;
+          
+
+        }
+      }
       button {
+        margin-top: 10px;
         width: 100px;
         align-self: center;
       }

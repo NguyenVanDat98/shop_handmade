@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import logo from "../../img/logo.png"
 import { ICONCART } from '../../Icon';
 import { Link } from 'react-router-dom';
 Header.defaultProps = {
-    cart: <span className="header__cart" style={{ marginLeft: "8px" }}>
-        <i className={ICONCART} total-product={0}></i>
-    </span>
+    cart: true
 }
 
 function Header({ search, children, cart }) {
@@ -19,7 +17,9 @@ function Header({ search, children, cart }) {
             </Link>
             <div className='d-flex'>
                 {search}
-                {cart}
+                {cart && <span className="header__cart" style={{ marginLeft: "8px" }}>
+                    <i className={ICONCART} total-product={0}></i>
+                </span>}
 
             </div>
 
@@ -28,4 +28,4 @@ function Header({ search, children, cart }) {
     );
 }
 
-export default Header;
+export default memo(Header);

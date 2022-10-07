@@ -2,9 +2,9 @@ import React from 'react';
 import { ICONSTAR } from '../../Icon';
 
 function Product(props) {
-    const { name, img, price, discount, status, sold, rating, } = props;
+    const { name, img, price, discount, status, sold, rating, e } = props;
     return (
-        <div className="product" >
+        <div className="product">
             <img src={img} className="product__img" alt="product-top" />
             <span>-{discount}</span>
             <div className="product__body">

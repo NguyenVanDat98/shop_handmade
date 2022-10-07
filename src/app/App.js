@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 
 import {
   UserPage,
@@ -72,6 +73,7 @@ function App(e) {
           </Pageroot>} />)
         }
       </Routes>
+      <Toaster position='top-center' reverseOrder={false} />
     </div>
   );
 }

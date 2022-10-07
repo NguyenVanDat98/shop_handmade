@@ -4,21 +4,19 @@ import { SlideShow, ListProduct, SearchUser, Filter, Sort, Text } from '../../..
 
 import Pageroot from '../pageroot/Pageroot';
 
+import AccountUser from './../../../components/user/AccountUser';
+
 
 const Homepage = props => {
 
+
+
+
     return (
         <div>
-            <Pageroot search={<SearchUser />} account={<Text />}>
+            <Pageroot search={<SearchUser />} >
                 <SlideShow />
-                <div>
-                    <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
-                        <Filter />
-                        <Sort />
-                    </div>
-                    <ListProduct />
-                </div>
-
+                <ListProduct />
             </Pageroot>
 
         </div>
