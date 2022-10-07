@@ -1,12 +1,9 @@
 import React from 'react';
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetListProduct } from '../../redux/thunk/actionThunk.js';
 import { Product, Sort, Filter } from '../index.js';
-ListProduct.propTypes = {
-
-};
 
 function ListProduct(props) {
     const dispatch = useDispatch();

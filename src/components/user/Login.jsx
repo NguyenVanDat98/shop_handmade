@@ -22,46 +22,81 @@ function Login(props) {
             [e.target.name]: e.target.value,
         })
     }
-    const wait = () => {
-        navi("/")
-    }
-
+   
     const handleChangeType = () => {
         setTypePass(!typePass)
     }
     const CheckLogin = async () => {
-        getAccount(`?user_name=${formInput.username}`).then((res) => res.json())
-            .then(res => {
-                if (res.length !== 0) {
-                    if (res[0].type !== "admin") {
-                        if (res[0].password === formInput.password) {
-                            localStorage.setItem("infoAccount", JSON.stringify({ id: res[0].id, userName: res[0].user_name }))
-                            setTimeout(wait, 2000)
-                            toast.success("Success Login!")
+        toast.loading("Loading....")
+        // getAccount(`?user_name=${formInput.username}`).then((res) => res.json())
+        //     .then(res => {
+        //         if (res.length !== 0) {
+        //             if (res[0].type !== "admin") {
+        //                 if (res[0].password === formInput.password) {
+        //                     localStorage.setItem("infoAccount", JSON.stringify({ id: res[0].id, userName: res[0].user_name }))
+        //                      const toats = toast.loading('Waiting...');
+        //                     setTimeout(()=>{ navi("/");toast.dismiss(toats); toast.promise(
+        //                         getAccount(`?user_name=${formInput.username}&password=${formInput.password}`).then(res=>res.json()),
+        //                          {
+        //                            loading: 'Saving...',
+        //                            success: <b>Login Success</b>,
+        //                            error: <b>Login Error</b>,
+        //                          }
+        //                        ); }, 3000)
 
-                        } else {
-                            toast.error("Please enter password again!")
-                            focusPass.current.focus()
-                            focusPass.current.value = ""
-                        }
-                    } else {
-                        //admin
-                    }
-                } else {
-                    toast.error("Please enter again user name!")
-                    focusUserName.current.focus();
-                    focusPass.current.value = "";
-                    focusUserName.current.value = "";
+        //                 } else {
+        //                     toast.error("Please enter password again!")
+        //                     focusPass.current.focus()
+        //                     focusPass.current.value = ""
+        //                 }
+        //             } else {
+        //                 //admin
+        //             }
+        //         } else {
+        //             toast.error("Please enter again user name!")
+        //             focusUserName.current.focus();
+        //             focusPass.current.value = "";
+        //             focusUserName.current.value = "";
+        //         }
+
+        //     })
+
+     getAccount(`?user_name=${formInput.username}&password=${formInput.password}`)
+       .then(res=> res.json()
+       ).catch(err =>{
+            toast.dismiss();
+            toast.error("Login fail_server!")
+       }).then(res=>{
+            if(res.length===0){
+                toast.dismiss();                
+                switch ("") {
+                    case formInput.username:
+                        focusUserName.current.focus()
+                        toast.error(`Enter ${focusUserName.current.name} again!`)
+                        break;
+                    case formInput.password:
+                        focusPass.current.focus()
+                        toast.error(`Enter ${focusPass.current.name} again!`)
+                        break;                
+                    default:
+                        toast.error(`Enter ${focusUserName.current.name}/ ${focusPass.current.name} again!`)
+                        focusPass.current.focus()
+                        break;
                 }
-
-            })
-
-
+            }else{
+                setTimeout(() => {
+                    res[0].type==="admin" ? navi("/admin/Dashboard") : navi("/");
+                    toast.dismiss();
+                    toast.success("Login Success ",{duration: 2000,})
+                }, 2000);
+                localStorage.setItem("infoAccount", JSON.stringify({ id: res[0].id, userName: res[0].user_name }))             
+            }
+       })
     }
 
     return (
         <div className='rolemodal'>
-            <div className='login'>
+            <div className='login signInanimation'>
                 <h1>Log in</h1>
                 <div className='login__name'>
                     <input ref={focusUserName} type="text" placeholder='Username' autoComplete='off' name="username" onChange={getValueInput} />

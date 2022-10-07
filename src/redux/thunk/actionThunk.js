@@ -1,8 +1,6 @@
-import { fetProducts, fetSlide, getAccount } from "../../api/apiMethod"
+import toast from "react-hot-toast";
+import { fetProducts, fetSlide,createAccount, createProfileAccount, getAccount } from "../../api/apiMethod"
 import { fetchAccount, getProduct, getSlider } from "../userReducer/action-reduce";
-
-
-
 export const fetDataAsyn = (path = "") => {
 
     return (dispatch) => {
@@ -43,5 +41,17 @@ export const getSlide = () => {
             }
         })();
 
+export const createAccountAsyn =(data)=>{
+    return()=>{
+        (async()=>{
+            try {
+               await createAccount(data.account)
+               await createProfileAccount(data.profile)
+               toast.loading("Wating...")
+             
+            } catch (error) {
+                
+            }
+        })()
     }
 }

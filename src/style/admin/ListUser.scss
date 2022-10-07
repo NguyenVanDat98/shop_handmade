@@ -12,18 +12,20 @@
   padding-bottom: 20px;
   
   .module-profile{
-    position: relative;
+    position: absolute;
     right: 0;
     // width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: max-content;    
+    height: max-content;
+    max-height: 70vh;    
     z-index: 1000;
     background: linear-gradient(57deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 24%, rgba(0,212,255,1) 100%);
     border-radius: 15px;
     box-shadow: 5px 10px 10px black;
     opacity: 0; 
+    overflow: hidden;
     visibility: hidden;
     .avt{
         background-color: #fff;
@@ -75,11 +77,14 @@
   }
   .top-users {  
     height: max-content;
+    position: absolute;
+    right: 0;
+    display: var(--diss);
     background-color: rgb(50, 61, 83);
     border-radius: 20px;
     box-shadow: 5px 5px 10px black;
-
     width: 300px;
+    max-height: 70%;
     h3{
         margin-left: 15px;
         margin-top: 5px;
@@ -87,6 +92,10 @@
         color: white;
         filter: drop-shadow(2px 0 10px black);
     }
+  }
+  .empty{
+    width: 300px;
+    height: 1px;
   }
   .item-user-top {
     margin-bottom: 5px;
@@ -137,7 +146,7 @@
 .listUser {
   flex-grow: 1;
   height: var(--hieght-listcontent);
-  margin-right: 15px;
+  margin-right: 2px;
   background-color: #fff;
   text-align: left;
   border-radius: 10px 10px 0 0;
@@ -165,10 +174,10 @@
 
 }
 .moduleIN{    
-    animation: moduleIN 0.3s forwards;
+    animation: moduleIN 0.5s forwards;
 }
 .moduleOUT{  
-    animation: moduleOUT 0.3s forwards ;
+    animation: moduleOUT 0.5s forwards ;
 }
 @keyframes reveal {
     0%{
@@ -183,24 +192,16 @@
 }
 @keyframes moduleIN {
     0%{
-        // transform: translateX(100%);
+        transform: translateX(100%);
         opacity: 0; 
         visibility: hidden;
         height: 0;      
         padding: 0;
         width: 0;
     }
-    80%{
-      width: 0;
-      
-    }
-    90%{
-      opacity: 0; 
-        visibility: hidden;
-    }
     100%{
       padding: 10px;
-      // transform: translateX(0);
+      transform: translateX(0);
       opacity: 1;
       visibility: visible;
       height: max-content;
@@ -210,7 +211,7 @@
 }
 @keyframes moduleOUT {
     from{     
-        // transform: translateX(0);  
+        transform: translateX(0);  
         opacity: 1;
         height: max-content;
        visibility: visible;
@@ -218,17 +219,12 @@
        width: 300px;
 
     }
-    40%{
-      width: 0;
-      opacity: 0;
-      visibility: hidden;
-    }
     to {     
       display: none;
       padding: 0;
       width: 0;
         height: 0;
-        // transform: translateX(100%);  
+        transform: translateX(100%);  
         opacity: 0; 
        visibility: hidden;
     }
@@ -256,6 +252,9 @@
     width: 100vw;
     margin-bottom: 60px;
     padding: 10px;
+    .empty{
+      width: 0;
+    }
     .module-profile{
       position: absolute;
     }
