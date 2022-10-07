@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { fetProducts, fetSlide,createAccount, createProfileAccount, getAccount } from "../../api/apiMethod"
 import { fetchAccount, getProduct, getSlider } from "../userReducer/action-reduce";
+
 export const fetDataAsyn = (path = "") => {
 
     return (dispatch) => {
@@ -30,7 +31,6 @@ export const fetListProduct = (path) => {
     }
 }
 export const getSlide = () => {
-
     return (dispatch) => {
         (async () => {
             try {
@@ -40,9 +40,11 @@ export const getSlide = () => {
 
             }
         })();
+    }
+}
 
 export const createAccountAsyn =(data)=>{
-    return()=>{
+    return(dispatch)=>{
         (async()=>{
             try {
                await createAccount(data.account)

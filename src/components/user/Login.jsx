@@ -28,39 +28,6 @@ function Login(props) {
     }
     const CheckLogin = async () => {
         toast.loading("Loading....")
-        // getAccount(`?user_name=${formInput.username}`).then((res) => res.json())
-        //     .then(res => {
-        //         if (res.length !== 0) {
-        //             if (res[0].type !== "admin") {
-        //                 if (res[0].password === formInput.password) {
-        //                     localStorage.setItem("infoAccount", JSON.stringify({ id: res[0].id, userName: res[0].user_name }))
-        //                      const toats = toast.loading('Waiting...');
-        //                     setTimeout(()=>{ navi("/");toast.dismiss(toats); toast.promise(
-        //                         getAccount(`?user_name=${formInput.username}&password=${formInput.password}`).then(res=>res.json()),
-        //                          {
-        //                            loading: 'Saving...',
-        //                            success: <b>Login Success</b>,
-        //                            error: <b>Login Error</b>,
-        //                          }
-        //                        ); }, 3000)
-
-        //                 } else {
-        //                     toast.error("Please enter password again!")
-        //                     focusPass.current.focus()
-        //                     focusPass.current.value = ""
-        //                 }
-        //             } else {
-        //                 //admin
-        //             }
-        //         } else {
-        //             toast.error("Please enter again user name!")
-        //             focusUserName.current.focus();
-        //             focusPass.current.value = "";
-        //             focusUserName.current.value = "";
-        //         }
-
-        //     })
-
      getAccount(`?user_name=${formInput.username}&password=${formInput.password}`)
        .then(res=> res.json()
        ).catch(err =>{
