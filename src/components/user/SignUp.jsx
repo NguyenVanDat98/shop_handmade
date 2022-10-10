@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useRef } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { getAccount } from "../../api/apiMethod";
 import { makeId } from "../../common/common";
 import { ICONBACK } from "../../Icon";
-import { createAccountAsyn, toastId } from "../../redux/thunk/actionThunk";
+
+import { createAccountAsyn} from "../../redux/thunk/actionThunk";
 
 function SignUp(props) {
   const [step, setStep] = useState(true);
@@ -34,10 +35,10 @@ function SignUp(props) {
   };
   const handleContinue = () => {
     if (
-      formValue.user_name.length == 0 ||
-      formValue.telephone.length == 0 ||
-      formValue.address.length == 0 ||
-      formValue.password.length == 0
+      formValue.user_name.length === 0 ||
+      formValue.telephone.length === 0 ||
+      formValue.address.length === 0 ||
+      formValue.password.length === 0
     ) {
       switch ("") {
         case formValue.user_name:
@@ -74,7 +75,7 @@ function SignUp(props) {
             focusInputName.current.focus();
           } else if (
             formValue.password !== rePass ||
-            formValue.password.length == 0
+            formValue.password.length === 0
           ) {
             toast.error("Please enter password again!");
             focusInputPass.current.focus();

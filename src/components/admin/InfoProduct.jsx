@@ -10,7 +10,7 @@ const InputText = memo(({ value, name, handleOnchange, type, edit }) => {
     <div className="h6">
       <span>{name}: </span>
       <input
-        value={type == "number" ? parseFloat(value) : value}
+        value={type === "number" ? parseFloat(value) : value}
         name={name}
         onChange={(e) => {
           handleOnchange(e);
@@ -42,7 +42,7 @@ const InfoProduct = ({ data, handleClose }) => {
 
   const handleInput = (e) => {
     setCheck(false);
-    setItemData({ ...itemdata, [e.target.name]: e.target.type == "text" ? e.target.value : parseFloat(e.target.value) });
+    setItemData({ ...itemdata, [e.target.name]: e.target.type === "text" ? e.target.value : parseFloat(e.target.value) });
   };
   const checkDiffrent = () => {
     let valid = true
@@ -80,7 +80,7 @@ const InfoProduct = ({ data, handleClose }) => {
       </div>
       <form className="Info-product">
         <section>
-          <img src={itemdata.img} />
+          <img src={itemdata.img} alt="" />
         </section>
         <section className="info-product-title">
           <InputText

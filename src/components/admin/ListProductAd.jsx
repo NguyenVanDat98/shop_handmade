@@ -25,7 +25,7 @@ const ListProductAd = (props) => {
   const [dataOutput, setDataOutput] = useState([]);
   useEffect(() => {
     dispatch(fetchDataProduct());
-  }, [render]);
+  }, [render,dispatch]);
 
   const handleChangeFilter = (e) => {
     const temp = dataDevide.filter((item) => item.name === e.target.value);
@@ -47,7 +47,7 @@ const ListProductAd = (props) => {
       name: e,
       data: data.filter((el) => el.category.toLowerCase() === e),
     })),
-    [data]
+    [data,listCategory]
   );
   //set data when data update
   useEffect(() => {
