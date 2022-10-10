@@ -1,13 +1,14 @@
 import React, { memo } from "react";
+import PropTypes from 'prop-types';
 import { useRef } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import {
-  PostProduct,
-} from "../../redux/adminReducer/actionThunkAd/actionThunk";
+import { PostProduct } from "../../redux/adminReducer/actionThunkAd/actionThunk";
 import { ICONBACK, ICONCLOSE } from "../../Icon";
-const InputFormCreate = memo(
+
+
+const InputFormCreate = 
   ({ refName, name, valueInput, handleInputValue, type }) => {
     return (
       <input
@@ -22,22 +23,38 @@ const InputFormCreate = memo(
       />
     );
   }
-);
+;
+InputFormCreate.propTypes  = {
+  type: PropTypes.string,
+  valueInput: PropTypes.number | PropTypes.string,
+  refName: PropTypes.object ,
+  handleInputValue: PropTypes.func,
+  name: PropTypes.string ,
+};
 InputFormCreate.defaultProps = {
   type: "text",
+  valueInput:""
 };
 
-const ModuleCreateProduct = ({ check, disForm, data, listCategory, onclickClose, render }) => {
+
+const ModuleCreateProduct = ({
+  check,
+  disForm,
+  listCategory,
+  onclickClose,
+  render,
+}) => {
   const today = new Date(Date.now());
-  const dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate() < 10 ? "0" + today.getDate() : today.getDate()
-    }`;
+  const dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${
+    today.getDate() < 10 ? "0" + today.getDate() : today.getDate()
+  }`;
   const [formCreateValue, setForm] = useState({
-    name: String,
+    name: "",
     price: Number,
-    category: String,
+    category: "",
     img: "",
-    discount: 0,
-    description: String,
+    discount: Number,
+    description: "",
   });
   const dispatch = useDispatch();
   const refName = useRef();
@@ -46,34 +63,41 @@ const ModuleCreateProduct = ({ check, disForm, data, listCategory, onclickClose,
   const refImg = useRef();
   const refDiscount = useRef();
   const handleInputValue = (e) => {
-    setForm({ ...formCreateValue, [e.target.name]: e.target.type !== "number" ? e.target.value : parseFloat(e.target.value) });
+    setForm({
+      ...formCreateValue,
+      [e.target.name]:
+        e.target.type !== "number"
+          ? e.target.value
+          : parseFloat(e.target.value),
+    });
   };
+  const setTime =(time=1000)=>{
+    setTimeout(() => {
+      toast.dismiss();
+    }, time);
+  }
   const handleAddProduct = () => {
     toast.loading("Creating....");
     switch ("") {
       case refName.current.value:
         refName.current.focus();
-        setTimeout(() => {
-          toast.dismiss();
-        }, 500);
+        toast.error( refName.current.innerHTML)
+        setTime()
         break;
       case refPrice.current.value:
         refPrice.current.focus();
-        setTimeout(() => {
-          toast.dismiss();
-        }, 500);
+        toast.error( refPrice.current.innerHTML)
+        setTime()
         break;
       case refCategory.current.value:
         refCategory.current.focus();
-        setTimeout(() => {
-          toast.dismiss();
-        }, 500);
+        toast.error( refCategory.current.innerHTML)
+        setTime()
         break;
       case refImg.current.value:
         refImg.current.focus();
-        setTimeout(() => {
-          toast.dismiss();
-        }, 500);
+        toast.error( refImg.current.innerHTML)
+        setTime()
         break;
 
       default:
@@ -102,7 +126,7 @@ const ModuleCreateProduct = ({ check, disForm, data, listCategory, onclickClose,
         refCategory.current.value = "";
         refPrice.current.value = 0;
         refDiscount.current.value = 0;
-        render()
+        render();
         break;
     }
   };
@@ -113,7 +137,7 @@ const ModuleCreateProduct = ({ check, disForm, data, listCategory, onclickClose,
         <div className={`${disForm} module-create-product `}>
           <i
             onClick={() => {
-              onclickClose()
+              onclickClose();
             }}
             className={ICONCLOSE}
           ></i>

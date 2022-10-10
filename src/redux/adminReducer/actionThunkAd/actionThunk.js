@@ -12,7 +12,7 @@ export const fetchDataProduct = () => {
   return (dispatch) => {
     (async () => {
       try {
-        const data = await GetDataProduct()
+         await GetDataProduct()
           .then((res) => res.status === 200 && res.json())
           .then((res) => {
             dispatch(SetDataProduct(res));
@@ -30,7 +30,7 @@ export const PostProduct = (data) => {
   return (dispatch) => {
     (async () => {
       try {
-        const rest = await PostDataProduct(data)
+         await PostDataProduct(data)
           .then((res) =>
             res.status !== 201
               ? console.error(res.message)
@@ -52,7 +52,7 @@ export const PutProductThunk = (data) => {
   return (dispatch) => {
     (async () => {
       try {
-        const rest = await PutDataProduct(data)
+         await PutDataProduct(data)
           .then((res) => {
             if (res.status !== 200) {
               console.error(res.message);
@@ -88,9 +88,8 @@ return ( dispatch)=>{
     (async ()=>{
       try {
         const rest = await GetDataSlideShow().then(res=> res.json())
-        let text = "?";
-        rest.data.map((e,i)=>{text+=`&id=${e}`})
-        const data = await GetDataProduct(text).then(res=>res.json())
+        const teemp= rest.data.reduce((a,b)=>a + `&id=${b}`,"?")
+        const data = await GetDataProduct(teemp).then(res=>res.json())
         dispatch(saveSlideShow(data))
       } catch (error) {
         
@@ -104,7 +103,7 @@ export const PutSlideShow =(data)=>{
         try {
           const temp = data.map((e,i)=>e.id)
             dispatch(saveSlideShow(data))
-            await PutDataSlideShow(temp).then(res=>{res.status===200&&toast.success("Delete Success!")})
+            await PutDataSlideShow(temp).then(res=>{res.status===200&&toast.success("Change Success!")})
             .catch(error=> {toast.error("Put Data SlideShow Fail!")})
         } catch (error) {
           console.log(error);

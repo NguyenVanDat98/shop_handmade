@@ -6,7 +6,7 @@ const ItemProductAd = ({ handleSelect, data }) => {
   return (
     <div onClick={() => handleSelect(data)} className="list-product-Ad_body_item  ">
       <div className="product-item-img">
-        <img src={img} />
+        <img src={img} alt="" />
 
       </div>
       <section>

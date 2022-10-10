@@ -179,6 +179,32 @@
       "sold": 0,
       "rating": 0,
       "id": 14
+    },
+    {
+      "name": "uuu",
+      "price": 666666666666,
+      "category": "u8u8u8",
+      "img": "ujujuj",
+      "discount": 0,
+      "description": "",
+      "time_making": "2022-10-10",
+      "status": true,
+      "sold": 0,
+      "rating": 0,
+      "id": 15
+    },
+    {
+      "name": "ii",
+      "price": 88877,
+      "category": "table decor 1",
+      "img": "i",
+      "discount": 0,
+      "description": "",
+      "time_making": "2022-10-10",
+      "status": true,
+      "sold": 0,
+      "rating": 0,
+      "id": 16
     }
   ],
   "listAccount": [
@@ -289,10 +315,14 @@
   ],
   "slideShow": {
     "data": [
-      11,
+      10,
       12,
       13,
-      14
+      14,
+      16,
+      2,
+      8,
+      3
     ]
   }
 }
