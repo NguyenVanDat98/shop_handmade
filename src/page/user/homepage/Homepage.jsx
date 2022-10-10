@@ -14,7 +14,6 @@ const Homepage = props => {
     const navi = useNavigate()
     useEffect(() => {
         (navigatePage.type === "admin") && navi("/admin/Dashboard")
-
     }, [])
 
 
