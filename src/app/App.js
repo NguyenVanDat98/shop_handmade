@@ -57,8 +57,7 @@ function App(e) {
         <Route path="/admin/Order" element={<OrderPage />} />
         <Route path="/admin/Voucher" element={<VoucherPage />} />
         <Route path="/admin/Discount" element={<DiscountPage />} />
-        {
-          listItem && listItem.map((e, i) => <Route key={i} path={`/${e.id}`} element={<Pageroot search={<SearchUser />} account={<AccountUser />}>
+        {listItem && listItem.map((e, i) => <Route key={i} path={`/${e.id}`} element={<Pageroot search={<SearchUser />} account={<AccountUser />}>
             <DetailProduct
               item={e}
               img={e.img}

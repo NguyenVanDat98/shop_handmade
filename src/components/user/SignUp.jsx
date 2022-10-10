@@ -102,14 +102,20 @@ function SignUp(props) {
       password: password,
       type: "",
       profile_id: makeId(5),
+      cart_id: makeId(5),
     };
     const itemProfile = {
       id: itemAccount.profile_id,
+      address:address,
       first_name: first_name,
       last_name: last_name,
       email: email,
     };
-    dispatch(createAccountAsyn({account: itemAccount,profile: itemProfile}))
+    const cartItem = {
+      id: itemAccount.cart_id,
+      cart : []
+    };
+    dispatch(createAccountAsyn({account: itemAccount,profile: itemProfile,cartItem:cartItem}))
     for (const key in formValue) {formValue[key]="" }
         setFormValue(formValue);
         setRepass("");

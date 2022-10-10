@@ -1,16 +1,16 @@
-import React from "react";
+import React, { memo } from "react";
 import { useState } from "react";
 import {  ICONCLOSE, ICONUSER } from "../../Icon/index.js";
 
 import { ItemUser } from "./../index.js";
-const ModuleUserProfile =({ displayModule,onClick,style})=>{
+const ModuleUserProfile = memo(({ displayModule,onClick,data})=>{
     return (
-        <div className={`module-profile ${displayModule}`} style={{display:style}} >
+        <div className={`module-profile ${displayModule}`}  >
             <div className="avt m-3">
                 <i className={ICONUSER}></i>
             </div>
             <div className="profile">
-                <i onClick={()=>{onClick()}} className={ICONCLOSE}></i>
+                <i onClick={()=>{ onClick()}} className={ICONCLOSE}></i>
                 <h6>Name asd asd </h6>
                 <h6>Email: <span>@gmail.com</span>  </h6>
                 <h6>Telephone:  <span> 0905450804</span></h6>
@@ -22,6 +22,9 @@ const ModuleUserProfile =({ displayModule,onClick,style})=>{
             </div>
         </div>
     )
+})
+ModuleUserProfile.defaultProps={
+  displayModule:"moduleIN"
 }
 const ItemTop=({No,seClose})=>{
     return(        
@@ -41,7 +44,8 @@ const ItemTop=({No,seClose})=>{
 }
 
 const ListUser = (props) => {
-    const [close ,setClose]= useState("")
+    const [close ,setClose]= useState(true)
+    const [displayModule ,setDisplay]= useState("")
   return (
     <div className="content-listuser">
       <div className="listUser viewFirst">
@@ -50,16 +54,30 @@ const ListUser = (props) => {
         </div>
         <div className="body-listUser">
           {[...new Array(30)].map((_, i) => (
-            <ItemUser onClick={()=>{setClose("moduleIN")}}  No={i+1} />
+            <ItemUser onClick={()=>{
+              setDisplay("moduleIN")
+              setClose(false)}}  No={i+1} />
           ))}
         </div>
       </div>
       <div className="empty"></div>
-      <div className={`top-users ${close=="" ?" ": close=="moduleOUT"?"moduleIN" :"moduleOUT"}`} style={{"--diss":close===""||close==="moduleOUT"?"block": "none"}} >      
+     {close && <div className={`top-users ${close? "moduleIN":""}`}  >      
         <h3>TOP MEMBER</h3>
-        { [...new Array(5)].map((e,i)=><ItemTop seClose={()=>{setClose("moduleIN")}} No={i}/>)}       
-      </div>
-       <ModuleUserProfile style={close==""? "none": close==="moduleIN"?"flex": "none" } onClick={()=>{setClose("moduleOUT")}}  displayModule={close}/>       
+        { [...new Array(5)].map((e,i)=><ItemTop seClose={()=>{
+          
+          setDisplay("moduleIN")  
+          
+         setClose(false)
+         }} No={i}/>)}       
+      </div>}
+       {!close && <ModuleUserProfile displayModule={displayModule} onClick={()=>{
+        
+        setDisplay("moduleOUT")
+        setTimeout(() => {
+          setClose(true)
+        }, 100);
+        
+        }} />  }     
     </div>
   );
 };
