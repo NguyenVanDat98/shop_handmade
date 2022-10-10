@@ -12,7 +12,7 @@ function DetailProduct(props) {
         fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" }).then(res => {
             setItemData(res[0])
         })
-    }, [])
+    }, [param.id])
     return (
         <Pageroot search={<SearchUser />} >
                 {itemData && <div className='detail viewFirst'>
