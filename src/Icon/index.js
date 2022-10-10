@@ -30,6 +30,8 @@ const ICONWALLET = "fa-solid fa-wallet";
 const ICONVISA = "fa-brands fa-cc-visa";
 
 const ICONADD = "fa-solid fa-plus";
+const ICONEDIT = "fa-solid fa-pen-to-square";
+export const ICONSAVE ="fa-solid fa-floppy-disk"
 
 export {
   ICONCHART,
@@ -61,5 +63,6 @@ export {
   ICONLOCATION,
   ICONPHONE,
   ICONLINKINED,
-  ICONPINTEREST
+  ICONPINTEREST,
+  ICONEDIT,
 };
