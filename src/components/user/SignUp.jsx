@@ -106,21 +106,21 @@ function SignUp(props) {
     };
     const itemProfile = {
       id: itemAccount.profile_id,
-      address:address,
+      address: address,
       first_name: first_name,
       last_name: last_name,
       email: email,
     };
     const cartItem = {
       id: itemAccount.cart_id,
-      cart : []
+      cart: []
     };
-    dispatch(createAccountAsyn({account: itemAccount,profile: itemProfile,cartItem:cartItem}))
-    for (const key in formValue) {formValue[key]="" }
-        setFormValue(formValue);
-        setRepass("");
-        setTimeout(()=>{toast.dismiss();toast.success("Signup complete!");navi("/login");},2000)
-        ;
+    dispatch(createAccountAsyn({ account: itemAccount, profile: itemProfile, cartItem: cartItem }))
+    for (const key in formValue) { formValue[key] = "" }
+    setFormValue(formValue);
+    setRepass("");
+    setTimeout(() => { toast.dismiss(); toast.success("Signup complete!"); navi("/login"); }, 2000)
+      ;
   };
   return (
     <div className="rolemodal">
@@ -128,7 +128,7 @@ function SignUp(props) {
         <div className="sign signInanimation">
           <h1>Sign Up (step 1)</h1>
           <div className="sign__name">
-          
+
             <input
               onChange={handleChangeInput}
               value={formValue.user_name}
@@ -136,10 +136,10 @@ function SignUp(props) {
               ref={focusInputName}
               name="user_name"
               type="text"
-              
+
               placeholder="Name (required)"
             />
-           
+
           </div>
           <div className="sign__phone">
             <input

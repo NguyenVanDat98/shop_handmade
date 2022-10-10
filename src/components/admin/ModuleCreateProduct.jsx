@@ -4,9 +4,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import {
-    PostProduct,
-  } from "../../redux/adminReducer/actionThunkAd/actionThunk";
-  import {ICONBACK, ICONCLOSE } from "../../Icon";
+  PostProduct,
+} from "../../redux/adminReducer/actionThunkAd/actionThunk";
+import { ICONBACK, ICONCLOSE } from "../../Icon";
 const InputFormCreate = memo(
   ({ refName, name, valueInput, handleInputValue, type }) => {
     return (
@@ -27,11 +27,10 @@ InputFormCreate.defaultProps = {
   type: "text",
 };
 
-const ModuleCreateProduct = ({ check,disForm, data, listCategory,onclickClose,render}) => {
-    const today = new Date(Date.now());
-    const dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${
-        today.getDate() < 10 ? "0" + today.getDate() : today.getDate()
-      }`;
+const ModuleCreateProduct = ({ check, disForm, data, listCategory, onclickClose, render }) => {
+  const today = new Date(Date.now());
+  const dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate() < 10 ? "0" + today.getDate() : today.getDate()
+    }`;
   const [formCreateValue, setForm] = useState({
     name: String,
     price: Number,
@@ -47,7 +46,7 @@ const ModuleCreateProduct = ({ check,disForm, data, listCategory,onclickClose,re
   const refImg = useRef();
   const refDiscount = useRef();
   const handleInputValue = (e) => {
-    setForm({ ...formCreateValue, [e.target.name]:e.target.type!=="number"? e.target.value:parseFloat( e.target.value) });
+    setForm({ ...formCreateValue, [e.target.name]: e.target.type !== "number" ? e.target.value : parseFloat(e.target.value) });
   };
   const handleAddProduct = () => {
     toast.loading("Creating....");
@@ -107,7 +106,7 @@ const ModuleCreateProduct = ({ check,disForm, data, listCategory,onclickClose,re
         break;
     }
   };
- 
+
   return (
     <>
       {check && (

@@ -1,8 +1,8 @@
-import React , { useEffect,useState, useMemo} from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ICONADD } from "../../Icon";
 import {
-  fetchDataProduct,  
+  fetchDataProduct,
 } from "../../redux/adminReducer/actionThunkAd/actionThunk";
 import { ItemProductAd } from "./../index.js";
 import InfoProduct from "./InfoProduct";
@@ -43,10 +43,10 @@ const ListProductAd = (props) => {
   }, [data]);
   // divide dat flow category
   const dataDevide = useMemo(() =>
-      listCategory.map((e, i) =>({
-          name: e,
-          data: data.filter((el) => el.category.toLowerCase() === e),
-      })),
+    listCategory.map((e, i) => ({
+      name: e,
+      data: data.filter((el) => el.category.toLowerCase() === e),
+    })),
     [data]
   );
   //set data when data update
@@ -69,13 +69,13 @@ const ListProductAd = (props) => {
       <ModuleCreateProduct
         check={disForm.formCreate}
         listCategory={listCategory}
-        onclickClose={()=>{
-          setAnimation({...anima,formCreate:"disFalse"})
-          setTimeout(() => {            
-            setDisForm({...disForm,formCreate:!disForm.formCreate})
+        onclickClose={() => {
+          setAnimation({ ...anima, formCreate: "disFalse" })
+          setTimeout(() => {
+            setDisForm({ ...disForm, formCreate: !disForm.formCreate })
           }, 500);
         }}
-          disForm={anima.formCreate}
+        disForm={anima.formCreate}
         render={() => {
           setRender(!render);
         }}
@@ -84,11 +84,11 @@ const ListProductAd = (props) => {
       <ModuleListSlider
         check={disForm.moduleSlide}
         data={productSelect}
-        onclickClose={()=>{
-          setAnimation({...anima,moduleSlide:"animation-list-slider-off"})
+        onclickClose={() => {
+          setAnimation({ ...anima, moduleSlide: "animation-list-slider-off" })
           setTimeout(() => {
-            setDisForm({...disForm,moduleSlide:!disForm.moduleSlide})            
-          }, 500);        
+            setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide })
+          }, 500);
         }}
         disForm={anima.moduleSlide}
       />
@@ -96,14 +96,14 @@ const ListProductAd = (props) => {
         <div className="list-product-Ad_header">
           <button
             onClick={() => {
-              if(!disForm.formCreate){
-                  setAnimation({...anima,formCreate:"disTrue"})
-                  setDisForm({ ...disForm, formCreate: !disForm.formCreate});
-              }else{
-                  setAnimation({...anima,formCreate:"disFalse"})
-                  setTimeout(() => {
-                    setDisForm({ ...disForm, formCreate: !disForm.formCreate});
-                  }, 500);
+              if (!disForm.formCreate) {
+                setAnimation({ ...anima, formCreate: "disTrue" })
+                setDisForm({ ...disForm, formCreate: !disForm.formCreate });
+              } else {
+                setAnimation({ ...anima, formCreate: "disFalse" })
+                setTimeout(() => {
+                  setDisForm({ ...disForm, formCreate: !disForm.formCreate });
+                }, 500);
               }
             }}
           >
@@ -112,14 +112,14 @@ const ListProductAd = (props) => {
           <button
             onClick={() => {
               if (!disForm.moduleSlide) {
-                setAnimation({...anima,moduleSlide:"animation-list-slider-on"})
-                setDisForm({ ...disForm,moduleSlide:!disForm.moduleSlide });
-                
-              }else{
-                setAnimation({...anima,moduleSlide:"animation-list-slider-off"})
+                setAnimation({ ...anima, moduleSlide: "animation-list-slider-on" })
+                setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide });
+
+              } else {
+                setAnimation({ ...anima, moduleSlide: "animation-list-slider-off" })
                 setTimeout(() => {
-                  setDisForm({ ...disForm,moduleSlide:!disForm.moduleSlide });
-                  
+                  setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide });
+
                 }, 500);
               }
             }}
