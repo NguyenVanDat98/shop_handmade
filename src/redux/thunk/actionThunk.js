@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { GetDataProduct } from "../../api/adminMethodAip";
-import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart, fetProductsAll } from "../../api/apiMethod"
-import { fetchAccount, getProduct, getProductAll, getSlider } from "../userReducer/action-reduce";
+import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
+import { fetchAccount, getProduct,  getSlider } from "../userReducer/action-reduce";
 import { isLoadmore } from './../userReducer/action-reduce';
 
 export const fetDataAsyn = (path = "") => {
@@ -15,35 +15,17 @@ export const fetDataAsyn = (path = "") => {
                 console.log(error);
             }
         })();
+    }
+}
 
-    }
-}
-export const fetchDataProductAll = () => {
-    return (dispatch) => {
-        (async () => {
-            try {
-                const rest = await fetProductsAll()
-                dispatch(getProductAll(rest))
-            } catch (error) {
-                console.log(error);
-            }
-        })()
-    }
-}
 
 export const fetListProduct = (path) => {
     return (dispatch) => {
         (async () => {
             try {
-                console.log(path);
-                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter })
-
+                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter })    
                 const load = await fetProducts({ ...path, limit: 4, page: path.page + 1 })
-                if (load.length === 0) {
-                    dispatch(isLoadmore(false));
-                } else {
-                    dispatch(isLoadmore(true));
-                }
+                dispatch(isLoadmore(load.length === 0?false:true ));            
                 dispatch(getProduct(data))
             } catch (error) {
                 console.log(error);
@@ -56,8 +38,7 @@ export const getSlide = () => {
         (async () => {
             try {
                 const data = await fetSlide();
-                let text = "?";
-                data.data.map((e, i) => { text += `&id=${e}` })
+                const text=  data.data.reduce((a, b) => a + `&id=${b}` ,"?")
                 const response = await GetDataProduct(text).then(res => res.json())
                 dispatch(getSlider(response))
             } catch (error) {
@@ -75,7 +56,6 @@ export const createAccountAsyn = (data) => {
                 await createProfileAccount(data.profile)
                 await createItemCart(data.cartItem)
                 toast.loading("Wating...")
-
             } catch (error) {
                 console.log(error);
             }

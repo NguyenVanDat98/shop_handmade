@@ -13,9 +13,9 @@ const ModuleListSlider = ({ data, check, onclickClose, disForm, }) => {
   const dataSlider = useSelector(state => state.adminData.slideShow)
 
    const newlistSlide = useMemo(()=>{
-    const validData = dataSlider.findIndex(e=>e.id==data.id)
-    return (validData===-1&&editSlider==true)?dataSlider.push(data):dataSlider
-   },[dataSlider,data])
+    const validData = dataSlider.findIndex(e=>e.id===data.id)
+    return (validData===-1&&editSlider===true)?dataSlider.push(data):dataSlider
+   },[dataSlider,data,editSlider])
   useEffect(() => {
     dispatch(GetSlideShow())
   }, [dispatch])
@@ -24,9 +24,11 @@ const ModuleListSlider = ({ data, check, onclickClose, disForm, }) => {
     dispatch(PutSlideShow(newlistSlide))
     setEditSlider(false)
 
+
   }
 const handleSave =()=>{
-   dispatch(PutSlideShow(newlistSlide))
+  console.log(dataSlider===newlistSlide)
+  //  dispatch(PutSlideShow(newlistSlide))
 }
   return (
     <>
