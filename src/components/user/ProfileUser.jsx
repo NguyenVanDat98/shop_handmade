@@ -17,7 +17,6 @@ function ProfileUser(props) {
                 <div>
                     <button className='btn btn-primary'>Infomation</button>
                     <button className='btn btn-danger'>Order History</button>
-                    <button className='btn btn-success'>Viewed Products</button>
                 </div>
             </div>
             {show ? ("") : (<div className="profile__info">
