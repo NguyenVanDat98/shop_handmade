@@ -27,8 +27,10 @@
         }
 
         .card-top {
-            div {
+
+            &>a {
                 overflow-y: hidden;
+                display: block;
 
                 &::-webkit-scrollbar {
                     width: 0;

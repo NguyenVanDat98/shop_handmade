@@ -20,31 +20,25 @@ import {
 import "./App.css";
 import "../style/index.scss";
 import "../styleuser/index.scss";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AccountUser, DetailProduct, SearchUser } from "../components/index.js";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchDataProductAll, fetListProduct } from "../redux/thunk/actionThunk.js";
+
 
 
 function App(e) {
-  const URL = "http://localhost:8000/listProduct";
-  const [listItem, setListItem] = useState([]);
-  const fetchData = useCallback(async () => {
-    await fetch(URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setListItem(data);
-      })
-      .catch(err => console.log(err))
-
-  }, [])
+  const dispatch = useDispatch();
+  const listItem = useSelector((state) => state.users.listProductAll)
 
   useEffect(() => {
-    fetchData()
-  }, [fetchData]);
+    dispatch(fetchDataProductAll())
+  }, [dispatch]);
+
 
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/cart" element={<CartPage />} />
@@ -57,7 +51,9 @@ function App(e) {
         <Route path="/admin/Order" element={<OrderPage />} />
         <Route path="/admin/Voucher" element={<VoucherPage />} />
         <Route path="/admin/Discount" element={<DiscountPage />} />
-        {listItem && listItem.map((e, i) => <Route key={i} path={`/${e.id}`} element={<Pageroot search={<SearchUser />} account={<AccountUser />}>
+
+        {/* <Route path="/:id" element={
+          <Pageroot search={<SearchUser />} account={<AccountUser />}>
             <DetailProduct
               item={e}
               img={e.img}
@@ -69,8 +65,13 @@ function App(e) {
               rating={e.rating}
               discount={e.discount}
             />
-          </Pageroot>} />)
-        }
+          </Pageroot>
+        } /> */}
+        {<Route path="/:id" element={<Pageroot search={<SearchUser />} >
+          <DetailProduct />
+        </Pageroot>} />}
+        <Route path="/" element={<Homepage />} />
+
       </Routes>
       <Toaster position='top-center' reverseOrder={false} />
     </div>

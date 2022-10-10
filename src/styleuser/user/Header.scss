@@ -25,6 +25,7 @@
             padding-right: 5px;
             padding-top: 15px;
             position: relative;
+            cursor: pointer;
 
             &::after {
                 content: attr(total-product);

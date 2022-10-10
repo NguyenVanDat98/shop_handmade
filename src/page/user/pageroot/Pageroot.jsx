@@ -10,20 +10,21 @@ const Pageroot = ({ search, children, account, cart }) => {
     const [check, setCheck] = useState(false)
     const infoUser = useMemo(() => {
         return JSON.parse(localStorage.getItem("infoAccount"))
-    }, [localStorage.getItem("infoAccount")])
+    }, [])
 
     const fetAccount = useCallback(() => {
         if (infoUser !== null) {
-            getAccount(`?id=${infoUser.id}`).then(res => res.status == 200 && res.json())
-                .then(res => setData(res))
+            getAccount(`?id=${infoUser.id}`)
+                .then(res => res.status === 200 && res.json())
+                .then(res => setData(res[0]))
         }
     }, [infoUser])
     useEffect(() => {
         fetAccount()
-    }, [infoUser])
+    }, [fetAccount])
     useEffect(() => {
         if (data.length !== 0) {
-            if (data[0].id === infoUser.id) {
+            if (data.id === infoUser.id) {
                 setCheck(true)
             } else {
                 setCheck(false)

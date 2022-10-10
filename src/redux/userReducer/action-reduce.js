@@ -27,3 +27,17 @@ export const getProduct = (data) => {
     }
 
 }
+export const getProductAll = (data) => {
+    return {
+        type: actionTypes.FETCH_PRODUCT_ALL,
+        payload: data,
+    }
+
+}
+export const isLoadmore = (data) => {
+    return {
+        type: actionTypes.LOADMORE,
+        payload: data
+    }
+
+}

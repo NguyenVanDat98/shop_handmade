@@ -8,23 +8,32 @@ import { Product, Sort, Filter } from '../index.js';
 function ListProduct(props) {
     const dispatch = useDispatch();
     const listProduct = useSelector((state) => state.users.listProduct);
+    const isLoad = useSelector((state) => state.users.isLoadmore);
     const [sort, setSort] = useState("");
     const [limit, setLimit] = useState(4);
     const [filter, setFilter] = useState("");
+    const [page, setPage] = useState(1);
     useEffect(() => {
-        dispatch(fetListProduct({ limit: limit, sort: sort, filter: filter }))
-    }, [sort, limit, filter]);
+        dispatch(fetListProduct({ limit: limit, sort: sort, filter: filter, page: page }));
+
+    }, [sort, limit, filter, page]);
 
     return (
         <>
             <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
-                <Filter handleChangeValueFilter={(e) => setFilter(e.target.value)} />
-                <Sort handleChangeValueSort={(e) => setSort(e.target.value)} />
+                <Filter handleChangeValueFilter={(e) => {
+                    // setPage(1);
+                    setFilter(e.target.value)
+                }} />
+                <Sort handleChangeValueSort={(e) => {
+                    // setPage(1);
+                    setSort(e.target.value)
+                }} />
             </div>
             <div className='body'>
                 <ul className='list-item'>
-                    {listProduct.length > 0 && listProduct.map((e) => (
-                        <Link to={`/${e.id}`}>
+                    {listProduct.length > 0 && listProduct.map((e, i) => (
+                        <Link to={`/${e.id}`} key={i}>
                             <Product
                                 key={e}
                                 item={e}
@@ -34,13 +43,17 @@ function ListProduct(props) {
                                 sold={e.sold}
                                 status={e.status}
                                 name={e.name}
-                                price={e.price} />
+                                price={e.price}
+                                category={e.category} />
                         </Link>
                     ))}
                 </ul>
-                <div className="loading">
-                    <button onClick={() => setLimit((limit) => limit + 4)} className="loading__btn">Load More</button>
-                </div>
+                {isLoad && (<div className="loading">
+                    <button onClick={() => {
+                        setPage((page) => page + 1)
+                        setLimit((limit) => limit + 4)
+                    }} className="loading__btn">Load More</button>
+                </div>)}
             </div>
         </>
     );

@@ -2,19 +2,20 @@ import React from 'react';
 import { ICONSTAR } from '../../Icon';
 
 function Product(props) {
-    const { name, img, price, discount, status, sold, rating, e } = props;
+    const { name, img, price, discount, sold, rating, category } = props;
     return (
         <div className="product">
             <img src={img} className="product__img" alt="product-top" />
-            <span>-{discount}</span>
+            {discount ? (<span>-{discount}</span>) : ("")}
             <div className="product__body">
                 <div className='product-info'>
-                    <h5 className="product-info__title">{name}</h5>
+                    <div className='d-flex flex-column'>
+                        <h5 className="product-info__title">{name}</h5>
+                        <h6 className="product-info__title">{category}</h6>
+                    </div>
                     {discount ? <section className='product-info__discount-price'>
                         <p className="product-info__price">$ {(price - price * parseInt(discount) / 100).toFixed(1)}</p> <p className='product-info__sale'>$ {price}</p>
                     </section> : <p className="product-info__price">$ {price}</p>}
-
-
                 </div>
                 <div className='product-rate'>
                     <p className="product-rate__text">
