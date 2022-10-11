@@ -3,7 +3,9 @@ import { ICONUSER } from '../../Icon';
 import { useState } from 'react';
 
 function ProfileUser(props) {
-    const [show, setShow] = useState(false);
+    const [info, setInfo] = useState(false);
+    const [form, setForm] = useState(false);
+    const [order, setOrder] = useState(false);
     return (
         <div className='profile d-flex'>
             <div className="profile__image">
@@ -15,13 +17,13 @@ function ProfileUser(props) {
                     <p>Vân Đồn Street, Nại Hiên Đông Ward,Sơn Trà District, Đà Nẵng city</p>
                 </div>
                 <div>
-                    <button className='btn btn-primary'>Infomation</button>
-                    <button className='btn btn-danger'>Order History</button>
+                    <button className='btn btn-primary' onClick={() => { setOrder(false); setInfo(false); setForm(false) }}>Infomation</button>
+                    <button className='btn btn-danger' onClick={() => { setOrder(true); setInfo(true); setForm(false) }}>Order History</button>
                 </div>
             </div>
-            {show ? ("") : (<div className="profile__info">
+            {info ? ("") : (<div className="profile__info">
                 <div>
-                    <button className='btn btn-warning' onClick={() => setShow(true)}>Edit</button>
+                    <button className='btn btn-warning' onClick={() => { setInfo(true); setForm(true); }}>Edit</button>
                 </div>
                 <div>
                     <label>User Name</label>
@@ -38,7 +40,7 @@ function ProfileUser(props) {
                     <p>20</p>
                 </div>
             </div>)}
-            {show ? (<div className='profile__form'>
+            {form ? (<div className='profile__form'>
                 <form action="" >
                     <h4>UPDATE INFORMATION</h4>
                     <div>
@@ -58,11 +60,59 @@ function ProfileUser(props) {
                         <input type="text" className="form-control" />
                     </div>
                     <div>
-                        <button className='btn btn-danger' onClick={() => setShow(false)}>Cancel</button>
+                        <button className='btn btn-danger' onClick={() => { setForm(false); setInfo(false) }}>Cancel</button>
                         <button className='btn btn-success'>Update</button>
                     </div>
                 </form>
             </div>) : ("")}
+            {order ? (<table className="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Order</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Purchase date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Boat</td>
+                        <td>3</td>
+                        <td>$60</td>
+                        <td >4-9-2022</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>RickShaw</td>
+                        <td>4</td>
+                        <td>$80</td>
+                        <td >13-7-2022</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Kitchen</td>
+                        <td>1</td>
+                        <td>$30</td>
+                        <td >10-5-2022</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Wells</td>
+                        <td>2</td>
+                        <td>$40</td>
+                        <td >14-4-2022</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Shelf</td>
+                        <td>2</td>
+                        <td>$60</td>
+                        <td>22-2-2022</td>
+                    </tr>
+                </tbody>
+            </table>) : ("")}
         </div>
     );
 }

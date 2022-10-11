@@ -20,21 +20,11 @@ import {
 import "./App.css";
 import "../style/index.scss";
 import "../styleuser/index.scss";
-import { useEffect } from "react";
-import { AccountUser, DetailProduct, SearchUser } from "../components/index.js";
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchDataProductAll, fetListProduct } from "../redux/thunk/actionThunk.js";
+import { DetailProduct, SearchUser } from "../components/index.js";
 
 
 
 function App(e) {
-  const dispatch = useDispatch();
-  const listItem = useSelector((state) => state.users.listProductAll)
-
-  useEffect(() => {
-    dispatch(fetchDataProductAll())
-  }, [dispatch]);
-
 
   return (
     <div className="App">
@@ -51,22 +41,6 @@ function App(e) {
         <Route path="/admin/Order" element={<OrderPage />} />
         <Route path="/admin/Voucher" element={<VoucherPage />} />
         <Route path="/admin/Discount" element={<DiscountPage />} />
-
-        {/* <Route path="/:id" element={
-          <Pageroot search={<SearchUser />} account={<AccountUser />}>
-            <DetailProduct
-              item={e}
-              img={e.img}
-              name={e.name}
-              price={e.price}
-              sold={e.sold}
-              status={e.status}
-              id={e.id}
-              rating={e.rating}
-              discount={e.discount}
-            />
-          </Pageroot>
-        } /> */}
         {<Route path="/:id" element={<Pageroot search={<SearchUser />} >
           <DetailProduct />
         </Pageroot>} />}

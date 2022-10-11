@@ -42,7 +42,7 @@ function DetailProduct(props) {
                     <div>
                         <p className='detail-stock'>
                             <span>Available:</span>
-                            {status}
+                            {status ? "In stock" : "Out of stock"}
                         </p>
                         <p className='detail-discount'>
                             <span>Discount:</span>

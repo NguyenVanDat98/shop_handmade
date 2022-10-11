@@ -12,10 +12,10 @@ const ModuleListSlider = ({ data, check, onclickClose, disForm, }) => {
   const dispatch = useDispatch()
   const dataSlider = useSelector(state => state.adminData.slideShow)
 
-   const newlistSlide = useMemo(()=>{
-    const validData = dataSlider.findIndex(e=>e.id==data.id)
-    return (validData===-1&&editSlider==true)?dataSlider.push(data):dataSlider
-   },[dataSlider,data])
+  const newlistSlide = useMemo(() => {
+    const validData = dataSlider.findIndex(e => e.id === data.id)
+    return (validData === -1 && editSlider === true) ? dataSlider.push(data) : dataSlider
+  }, [dataSlider, data])
   useEffect(() => {
     dispatch(GetSlideShow())
   }, [dispatch])
@@ -25,9 +25,11 @@ const ModuleListSlider = ({ data, check, onclickClose, disForm, }) => {
     setEditSlider(false)
 
   }
-const handleSave =()=>{
-   dispatch(PutSlideShow(newlistSlide))
-}
+  const handleSave = () => {
+    dispatch(PutSlideShow(newlistSlide))
+    setEditSlider(false)
+
+  }
   return (
     <>
       {check && (
@@ -56,7 +58,7 @@ const handleSave =()=>{
               return (
                 <div className="item-slider" key={i}>
                   <div className="img">
-                    <img src={e.img} alt=""   />
+                    <img src={e.img} alt="" />
                   </div>
                   <div className="item-slider-detail">
                     <h6>{e.name}</h6>
