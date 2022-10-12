@@ -1,11 +1,12 @@
 import React, { memo, useState } from 'react';
 import logo from "../../img/logo.png"
 import { ICONCART } from '../../Icon';
-import { Link, useLocation } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useMemo } from 'react';
 // import { getCart } from './../../redux/thunk/actionThunk';
 import { getCartItem } from '../../api/apiMethod';
-import SearchAd from '../admin/SearchAd';
+
+import SearchUser from './SearchUser';
 Header.defaultProps = {
     cart: true,
     search:false
@@ -26,7 +27,7 @@ function Header({ search, children, cart }) {
                 </div>
             </Link>
             <div className='d-flex'>
-                {search &&<SearchAd/>}
+                {search &&<SearchUser/>}
                 {cart && <span className="header__cart" style={{ marginLeft: "8px" }}>
                     <i className={ICONCART} total-product={0} onClick={() => setShow(!show)}></i>
                     {show ? (<ul className='cart-list'>
