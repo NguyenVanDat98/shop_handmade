@@ -1,10 +1,5 @@
 import React from 'react';
-import Pageroot from '../pageroot/Pageroot';
-import { AccountUser, CartUser, SearchUser } from '../../../components';
-import { useParams } from 'react-router-dom';
-
-
-
+import { CartUser } from '../../../components';
 function CartPage(props) {
     return (
         <CartUser />

@@ -2,7 +2,7 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSlide } from '../../redux/thunk/actionThunk';
 import { Link } from 'react-router-dom';
@@ -11,7 +11,7 @@ function SlideShow() {
     const dataSlider = useSelector((state) => state.users.slider);
     useEffect(() => {
         dispatch(getSlide());
-    }, [getSlide]);
+    }, [dispatch]);
     const settings = {
         dots: true,
         infinite: true,

@@ -5,10 +5,10 @@ import { Header, Forgot } from '../../../components';
 
 function ForgotPage(props) {
     return (
-        <div>
+        <>
             <Header cart={false} />
             <Forgot />
-        </div>
+        </>
     );
 }
 

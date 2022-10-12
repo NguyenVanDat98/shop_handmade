@@ -7,7 +7,6 @@ import {
   userRoute
 } from "../page/index.jsx";
 import Pageroot from "../page/user/pageroot/Pageroot.jsx";
-import { SearchAd, SearchUser } from "../components/index.js";
 import { CommonComponent } from './../page/index';
 import "./App.css";
 import "../style/index.scss";
