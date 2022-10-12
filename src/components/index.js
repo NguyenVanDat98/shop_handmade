@@ -12,7 +12,9 @@ export { default as ItemProductAd } from "./admin/ItemProductAd";
 export { default as ListVoucher } from "./admin/ListVoucher";
 export { default as ItemVoucher } from "./admin/ItemVoucher";
 export { default as MainDashboard } from "./admin/MainDashboard";
+export { default as ModuleUserProfile } from "./admin/ModuleUserProfile";
 export { default as ItemView } from "./admin/ItemView";
+export { default as ChartFiveUser } from "./admin/ChartFiveUser";
 export { default as ChartBar } from "./admin/ChartBar";
 export { default as PieChart } from "./admin/PieChart";
 
