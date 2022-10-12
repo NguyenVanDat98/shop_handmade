@@ -23,12 +23,13 @@ function DetailProduct(props) {
     }, [locale])
 
     const param = useParams()
+ 
     useEffect(() => {
-        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" }).then(res => {
+        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
+        .then(res => 
             setItemData(res[0])
-        }, [])
-
-    }, [param.id,])
+        )
+    }, [param.id,fetProducts])
 
     const handleAddToCart = (item) => {
         if (locale.userName) {

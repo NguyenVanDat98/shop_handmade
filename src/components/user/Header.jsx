@@ -1,16 +1,17 @@
 import React, { memo, useState } from 'react';
 import logo from "../../img/logo.png"
 import { ICONCART } from '../../Icon';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 // import { getCart } from './../../redux/thunk/actionThunk';
 import { getCartItem } from '../../api/apiMethod';
+import SearchAd from '../admin/SearchAd';
 Header.defaultProps = {
-    cart: true
+    cart: true,
+    search:false
 }
 
 function Header({ search, children, cart }) {
-
     const [show, setShow] = useState(false);
     const listCard = useMemo(() => {
         const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
@@ -25,7 +26,7 @@ function Header({ search, children, cart }) {
                 </div>
             </Link>
             <div className='d-flex'>
-                {search}
+                {search &&<SearchAd/>}
                 {cart && <span className="header__cart" style={{ marginLeft: "8px" }}>
                     <i className={ICONCART} total-product={0} onClick={() => setShow(!show)}></i>
                     {show ? (<ul className='cart-list'>

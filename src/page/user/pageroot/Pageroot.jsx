@@ -4,36 +4,18 @@ import { getAccount } from '../../../api/apiMethod.js';
 import { useState } from 'react';
 import { useMemo } from 'react';
 import { Header, BodyUser, FooterUser, AccountUser, Text } from "../../../components/index.js"
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation} from 'react-router-dom';
 
-const Pageroot = ({ search, cart }) => {
+
+const Pageroot = ({ search }) => {
     const [data, setData] = useState([])
     const [check, setCheck] = useState(false)
     const infoUser = useMemo(() => {
         return JSON.parse(localStorage.getItem("infoAccount"))
     }, [])
-    const pram = useParams()
-    console.log(pram);
-
-    const checkCart = () => {
-        switch (pram.cart) {
-            case "cart":
-
-                return false;
-            case "profileuser":
-
-                return false;
-            case "payment":
-
-                return false;
-            case "cart":
-
-                return false;
-
-            default:
-                return true;
-        }
-    }
+    const param = useLocation()
+    const pathCart = ["/cart","/payment","/profileuser"]
+    const pathSearch = ["/","/cart",()=>param.pathname.includes("/detail")]
     const fetAccount = useCallback(() => {
         if (infoUser !== null) {
             getAccount(`?id=${infoUser.id}`)
@@ -57,7 +39,7 @@ const Pageroot = ({ search, cart }) => {
 
     return (
         <div>
-            <Header search={search} cart={checkCart()}>{check ? <AccountUser namee={infoUser.userName} /> : <Text />} </Header>
+            <Header search={ param.pathname.includes("/detail")&& true || pathSearch.includes(param.pathname)?true:false} cart={pathCart.includes(param.pathname)?false:true } >{check ? <AccountUser namee={infoUser.userName} /> : <Text />} </Header>
             <BodyUser>
                 <Outlet />
             </BodyUser>

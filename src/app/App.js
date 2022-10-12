@@ -18,7 +18,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {CommonComponent.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
-          <Route path="/" element={<Pageroot search={<SearchAd />} />} >
+          <Route path="/" element={<Pageroot/>} >
             {userRoute.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
           </Route>
           {adminRotes.map((e, a) => <Route key={a} path={e.path} element={<e.Component />} exact={e.isExact} />)}

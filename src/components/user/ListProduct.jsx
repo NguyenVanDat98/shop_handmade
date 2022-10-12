@@ -30,7 +30,7 @@ function ListProduct(props) {
             <div className='body'>
                 <ul className='list-item'>
                     {listProduct.length > 0 && listProduct.map((e, i) => (
-                        <Link to={`/${e.id}`} key={i}>
+                        <Link to={`detail/${e.id}`} key={i}>
                             <Product
                                 key={e}
                                 item={e}

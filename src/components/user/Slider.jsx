@@ -57,7 +57,7 @@ function SlideShow() {
                 {dataSlider && dataSlider.map((item, i) => (
                     <div className="card" key={i}>
                         <div className="card-top">
-                            <Link to={`/${item.id}`}>
+                            <Link to={`/detail/${item.id}`}>
                                 <img
                                     src={item.img}
                                     alt={item.name}

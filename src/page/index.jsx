@@ -56,22 +56,22 @@ export const userRoute = [
     },
     {
         isExact: true,
-        path: "/:cart",
+        path: "cart",
         Component: lazy(() => import('./user/cartpage/CartPage')),
     },
     {
         isExact: true,
-        path: "/:payment",
+        path: "payment",
         Component: lazy(() => import('./user/paymentpage/PaymentPage')),
     },
     {
         isExact: true,
-        path: "/:profileuser",
+        path: "profileuser",
         Component: lazy(() => import("./user/profilepage/ProfileUserPage")),
     },
     {
         isExact: true,
-        path: "/:id",
+        path: "/detail/:id",
         Component: () => <DetailProduct />,
     },
 ]
