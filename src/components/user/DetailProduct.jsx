@@ -1,39 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ICONSTAR } from '../../Icon';
-import Pageroot from '../../page/user/pageroot/Pageroot';
 import { fetProducts } from './../../api/apiMethod';
-import SearchUser from './SearchUser';
-import { useDispatch, useSelector } from 'react-redux';
-import { useMemo } from 'react';
-import { getCart, putCart } from '../../redux/thunk/actionThunk';
+import { useDispatch } from 'react-redux';
+
+import {  putCart } from '../../redux/thunk/actionThunk';
 import { useNavigate } from 'react-router-dom';
 import { listImage } from '../../common/common';
-import { SaveCart } from '../../redux/userReducer/action-reduce';
+import { useCallback } from 'react';
+
 function DetailProduct(props) {
     const [itemData, setItemData] = useState(Object);
     const [index, setIndex] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const listCart = useSelector((state) => state.users.cart);
-    // console.log(listCart);
+
     const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
-    const infoAccount = useMemo(() => {
-        return locale.length ? locale : {}
-    }, [locale])
 
     const param = useParams()
- 
-    useEffect(() => {
-        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
+    const FetProduct  =useCallback(()=>{
+         fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
         .then(res => 
             setItemData(res[0])
         )
-    }, [param.id,fetProducts])
+    },[param])
+ 
+    useEffect(() => {
+        FetProduct()
+    }, [param,FetProduct])
 
     const handleAddToCart = (item) => {
         if (locale.userName) {
-
             dispatch(putCart({ data: { product_id: itemData.id, quantity: 1 }, id: locale.cart_id }))
         } else {
             navigate("/login");

@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useCallback } from "react";
 import { getAccount } from "../../../api/apiMethod.js";
 import { useState } from "react";
-import { useMemo } from "react";
+
 import {
   Header,
   BodyUser,
@@ -12,13 +12,10 @@ import {
 } from "../../../components/index.js";
 import { Outlet, useLocation } from "react-router-dom";
 
-const Pageroot = ({ }) => {
+const Pageroot = (props) => {
   const [data, setData] = useState([]);
   const [check, setCheck] = useState(false);
-  const infoUser = useMemo(() => {
-    return JSON.parse(localStorage.getItem("infoAccount"));
-  }, [localStorage.getItem("infoAccount")]);
-  console.log(infoUser);
+  const infoUser = JSON.parse(localStorage.getItem("infoAccount"));
   const param = useLocation();
   const pathCart = ["/cart", "/payment", "/profileuser"];
   const pathSearch = ["/", "/cart", () => param.pathname.includes("/detail")];
