@@ -73,7 +73,7 @@ export const userRoute = [
         isExact: true,
         path: "/detail/:id",
         Component: () => <DetailProduct />,
-    },
+    }
 ]
 export const CommonComponent = [
     {
