@@ -32,7 +32,6 @@ function DetailProduct(props) {
 
     const handleAddToCart = (item) => {
         if (locale.userName) {
-
             dispatch(putCart({ data: { product_id: id, quantity: 1 }, id: locale.cart_id }))
         } else {
             navigate("/login");
