@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-// import { DetailProduct, SearchUser } from '../components';
+import { DetailProduct } from '../components';
 // import Pageroot from './user/pageroot/Pageroot';
 
 
@@ -46,7 +46,7 @@ export const adminRotes = [
     {
         isExact: true,
         path: "/:id",
-        Component: lazy(() => import('../components/user/DetailProduct'))
+        Component: () => <DetailProduct />
     },
 ]
 

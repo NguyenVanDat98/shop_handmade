@@ -42,7 +42,7 @@ function DetailProduct(props) {
         <Pageroot search={<SearchUser />} >
             {itemData && <div className='detail viewFirst'>
                 <div className='detail__photos'>
-                    <img src={index} alt="" className='detail__photos--main' />
+                    <img src={!index ? img : index} alt="" className='detail__photos--main' />
                     <div className='detail__photos--list'>
                         <img onClick={(e) => { setIndex(e.target.src) }} src={img} alt="" />
                         {listImage.map((item, id) => (
