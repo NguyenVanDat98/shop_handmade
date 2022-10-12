@@ -1,12 +1,14 @@
 @mixin animationFrom {
     width: 0;
     padding: 0;
+    min-width: 0;
     opacity: 0;
     visibility: hidden;
 }
 @mixin animationtTo($padd,$width) {
     padding: $padd;
     width: $width;
+    min-width: $width;
     opacity: 1;
     visibility: visible;
 }
@@ -41,15 +43,14 @@
 
 }
 
-@mixin moduleUserPage ($dis:block) {
+@mixin moduleUserPage ($dis:block,$hei:max-content) {
     height: calc(100vh - 80px);
     position: absolute;
     right: 0;
     display: $dis;
-    border-radius: 20px;
+    border-radius: 15px;
     box-shadow: 5px 5px 10px black;
     width: var(--widthModule);
-    max-height: 70%;
+    max-height: $hei;
     @content
 }
-

@@ -1,22 +1,25 @@
 :root {
   --height-header: 2rem;
-  --height-listcontent: 100%;
-  --height-avt: 5rem;
-  --widthModule:280px;
+  --height-listcontent: 100vh - 100px;
+  --avt-size: 5rem;
+  --width-info-Module:400px;
+  --width-listUser :100vw - 120px - var(--width-info-Module)
 }
 
 .content-listuser {
   display: flex;
   position: relative;
   width: calc(100vw - 82px);
-  min-height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
+  overflow: hidden;
   padding-bottom: 20px;
   
   .module-profile {
     z-index: 1000;
-    @include moduleUserPage(flex){
+    @include moduleUserPage(flex,calc(100vh - 80px)){
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       background: linear-gradient(
         57deg,
         rgba(2, 0, 36, 1) 0%,
@@ -24,23 +27,44 @@
         rgba(0, 212, 255, 1) 100%
       );  
       overflow: hidden;
+      min-height: calc( 100vh - 80px);
+      
     }
-   
-    .avt {
-      background-color: #fff;
-      width: var(--height-avt);
-      height: var(--height-avt);
-      border-radius: calc(var(--height-avt) / 2);
-      text-align: center;
-      i {
-        font-size: calc(var(--height-avt) / 2);
-        line-height: var(--height-avt);
+   .header-module{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    &-avt {
+       background-color: #fff;
+       flex-shrink: 1;
+       width: var(--avt-size);
+       min-width: var(--avt-size);
+       height: var(--avt-size);
+       border-radius: calc(var(--avt-size) / 2);
+       text-align: center;
+       i {
+         font-size: calc(var(--avt-size) / 2);
+         line-height: var(--avt-size);
+       }
+     }
+     &-title{
+      flex-grow: 1;
+      height: inherit;
+      h6 {
+        display: flex;
+        justify-content: space-between;
+        min-width: 270px;
       }
-    }
+     }
+   }
     .profile {
       width: 100%;
       height: max-content;
-      min-height: 100px;
+      min-height: max-content;
       padding: 15px 8px;
       border-radius: 10px;
       background-color: #f0f8ff69;
@@ -71,6 +95,129 @@
         justify-content: space-between;
       }
     }
+    .control {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      min-width: max-content;
+      height: 40px;
+      display: flex;
+      .delete-user {
+        width: 40px;
+      }
+      .check-delete {
+        width: max-content;
+        display: flex;
+        padding: 5px;
+        animation: dis 0.2s ease-in;
+        span{
+          min-width: max-content;
+          padding-right:  8px;
+          font-size: 1.2rem;
+        }
+      }
+      .allow {
+        flex-grow: 1;
+        padding-top: 2px;
+        // animation: disout 0.3s ease-in-out;
+      }
+      .cancer {
+        padding-top: 2px;
+        flex-grow: 1;
+        // animation: disout 0.3s ease-in-out;
+      }
+      button {
+        height: 100%;
+      }
+    }
+    .history-order{
+      width: 100%;
+      margin-top: 5px;
+      overflow-y: auto;
+      position: relative;
+      :-webkit-scrollbar{
+        width: 0;
+        height: 0;
+        display: none;
+      }
+      background: #679ACF;
+      border-radius: 15px;
+      transition: all 0.3s ease-in-out ;
+      &>summary{
+        position: sticky;
+        top: 0;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 15px 15px 0 0;
+        padding-left: 10px;
+        flex-grow: 0;
+        font-weight: 500;
+      }
+      &[open]{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease-in-out ;
+
+        &::-webkit-scrollbar{
+          width: 0;
+          height: 0;
+        }
+        &>summary{
+          background-color: #fff;
+        border-radius: 15px 15px 0 0;
+
+        }
+        &>div{
+          text-align: justify;
+           flex-grow: 1;
+            padding: 5px 5px;
+            transition: all .3s ease-in-out;
+            .item-order {
+              display: flex;
+              margin-bottom: 10px;
+              border-bottom: 1px dashed black;
+            }
+            h6{
+              min-width: 85px;
+              flex-grow: 0;
+            }
+            section{
+              border-left: 1px solid rgb(0, 0, 0);
+              padding-left: 5px;
+              margin-bottom: 2px;
+              width: 100%;
+              
+              h6{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 2px solid black;
+
+                span{
+                  width: 70px;
+                }
+              }
+              details{
+                width: 100%;
+                
+                &[open]{
+                  width: 100%;
+                }
+
+              }
+            }
+
+          
+        }
+      }
+      &:not([open]){
+      background: #679ACF;
+
+      }
+   
+    }
+  
   }
   .top-users {
     @include moduleUserPage(){
@@ -85,7 +232,7 @@
     }
   }
   .empty {
-    width: var(--widthModule);
+    width: var(--width-info-Module);
     height: 1px;
   }
   .item-user-top {
@@ -138,12 +285,16 @@
 .listUser {
   flex-grow: 1;
   height: var(--hieght-listcontent);
+  max-height: var(--height-listcontent);
   margin-right: 2px;
-  background-color: #fff;
+  background-color: transparent;
   text-align: left;
+  // overflow-y: scroll;
+  
   border-radius: 10px 10px 0 0;
   .listUser-header {
     height: --height-header;
+    background-color: #fff;
     padding: 0 15px;
     h3 {
       line-height: var(--height-header);
@@ -152,9 +303,9 @@
   }
 
   .body-listUser {
-    height: calc(100vh - 100px);
-    overflow: auto;
-    width: 100%;
+    height: calc(100% - 33px);
+    overflow-y: auto;
+    width: var(--width-listUser);
     &::-webkit-scrollbar {
       width: 0 !important;
       display: none;
@@ -188,7 +339,7 @@
     height: 0;
   }
   100% {
-    @include animationtTo(10px,var(--widthModule));
+    @include animationtTo(10px,var(--width-info-Module));
     height: max-content;
   }
 }
@@ -198,7 +349,7 @@
     height: max-content;
     visibility: visible;
     padding: 10px;
-    width: var(--widthModule);
+    width: var(--width-info-Module);
   }
   to {
     padding: 0;

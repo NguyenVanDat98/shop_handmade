@@ -5,10 +5,12 @@
 .itemUser {
   width: 100%;
   height: 4rem;
+  border-radius: 10px;
   position: relative;
   margin-top: 3px;
   background: linear-gradient(57deg, rgba(7,3,91,1) 0%, rgba(135,145,214,1) 35%, rgba(109,130,189,1) 81%, rgba(5,35,106,1) 100%);
   display: flex;
+  justify-content: space-between;
 
   p {
     margin-bottom: 0;
@@ -55,6 +57,7 @@
     width: 11rem;
     margin-right: 10px;
     margin-top: 5px;
+    flex-grow: 1;
     p {
       margin-bottom: 3px;
     }
@@ -76,53 +79,25 @@
     width: 8rem;
     margin-right: 40px;
     margin-top: 5px;
-  }
-  .control {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: max-content;
-    height: 100%;
-    display: flex;
-    .delete-user {
-      width: 40px;
-    }
-    .check-delete {
-      width: 150px;
+    
+    h6{
       display: flex;
-      padding: 5px;
-      // transition: all 0.3s ease-in-out;
-      // animation: dis 0.3s ease-in-out;
-      animation: dis 0.2s ease-in;
-    }
-    .allow {
-      flex-grow: 1;
-      // animation: disout 0.3s ease-in-out;
-    }
-    .cancer {
-      flex-grow: 1;
-      // animation: disout 0.3s ease-in-out;
-    }
-    button {
-      height: 100%;
-    }
+    justify-content: space-between;
+  
   }
+  }
+ 
 }
 
 @keyframes dis {
   0% {
-    width: 0;
+    // width: 0;
+    @include animationFrom()
+
   }
   100% {
-    width: 150px;
-  }
-}
-@keyframes disout {
-  0% {
-    width: 150px;
-  }
-  100% {
-    width: 0;
+    // width: max-content;
+    @include animationtTo(0,max-content)
   }
 }
 @media (max-width:1024px) {
