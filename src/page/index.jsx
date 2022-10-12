@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { DetailProduct, SearchUser } from '../components';
+import { DetailProduct } from '../components';
 import ForgotPage from './user/forgotpage/ForgotPage';
 import LoginPage from './user/loginpage/LoginPage';
 import SignUpPage from './user/signuppage/SignUpPage';

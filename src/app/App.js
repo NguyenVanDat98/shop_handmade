@@ -1,10 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
 import { Toaster } from 'react-hot-toast';
-
 import {
-  adminRotes,
-  userRoute
+    adminRotes,
+    userRoute
 } from "../page/index.jsx";
 import Pageroot from "../page/user/pageroot/Pageroot.jsx";
 import { CommonComponent } from './../page/index';
