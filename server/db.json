@@ -254,6 +254,10 @@
         {
           "product_id": 3,
           "quantity": 1
+        },
+        {
+          "product_id": 8,
+          "quantity": 1
         }
       ]
     },

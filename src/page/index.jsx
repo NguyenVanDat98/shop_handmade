@@ -1,6 +1,9 @@
 import { lazy } from 'react';
-// import { DetailProduct, SearchUser } from '../components';
-// import Pageroot from './user/pageroot/Pageroot';
+import { DetailProduct, SearchUser } from '../components';
+import ForgotPage from './user/forgotpage/ForgotPage';
+import LoginPage from './user/loginpage/LoginPage';
+import SignUpPage from './user/signuppage/SignUpPage';
+
 
 
 
@@ -42,49 +45,51 @@ export const adminRotes = [
         isExact: true,
         path: "/admin/voucher",
         Component: lazy(() => import('./admin/VoucherPage'))
-    },
-    {
-        isExact: true,
-        path: "/:id",
-        Component: lazy(() => import('../components/user/DetailProduct'))
-    },
+    }
 ]
 
 export const userRoute = [
     {
         isExact: true,
         path: "/",
-        Component: lazy(() => import('./user/homepage/Homepage'))
+        Component: lazy(() => import('./user/homepage/Homepage')),
     },
     {
         isExact: true,
+        path: "/:cart",
+        Component: lazy(() => import('./user/cartpage/CartPage')),
+    },
+    {
+        isExact: true,
+        path: "/:payment",
+        Component: lazy(() => import('./user/paymentpage/PaymentPage')),
+    },
+    {
+        isExact: true,
+        path: "/:profileuser",
+        Component: lazy(() => import("./user/profilepage/ProfileUserPage")),
+    },
+    {
+        isExact: true,
+        path: "/:id",
+        Component: () => <DetailProduct />,
+    },
+]
+export const CommonComponent = [
+    {
+        isExact: true,
         path: "/login",
-        Component: lazy(() => import('./user/loginpage/LoginPage'))
+        Component: () => <LoginPage />
     },
     {
         isExact: true,
         path: "/signup",
-        Component: lazy(() => import('./user/signuppage/SignUpPage'))
-    },
-    {
-        isExact: true,
-        path: "/cart",
-        Component: lazy(() => import('./user/cartpage/CartPage'))
-    },
-    {
-        isExact: true,
-        path: "/payment",
-        Component: lazy(() => import('./user/paymentpage/PaymentPage'))
-    },
-    {
-        isExact: true,
-        path: "/profileuser",
-        Component: lazy(() => import("./user/profilepage/ProfileUserPage"))
+        Component: () => <SignUpPage />
     },
     {
         isExact: true,
         path: "/forgotpass",
-        Component: lazy(() => import("./user/forgotpage/ForgotPage"))
+        Component: () => <ForgotPage />
     },
 ]
 

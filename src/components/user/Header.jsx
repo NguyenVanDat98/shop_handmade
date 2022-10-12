@@ -2,12 +2,21 @@ import React, { memo, useState } from 'react';
 import logo from "../../img/logo.png"
 import { ICONCART } from '../../Icon';
 import { Link } from 'react-router-dom';
+import { useMemo } from 'react';
+// import { getCart } from './../../redux/thunk/actionThunk';
+import { getCartItem } from '../../api/apiMethod';
 Header.defaultProps = {
     cart: true
 }
 
 function Header({ search, children, cart }) {
+
     const [show, setShow] = useState(false);
+    const listCard = useMemo(() => {
+        const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
+        return getCartItem(locale.cart_id)
+    }, [])
+
     return (
         <div className="header">
             <Link to="/">

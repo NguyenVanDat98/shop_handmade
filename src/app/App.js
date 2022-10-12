@@ -6,19 +6,24 @@ import {
   adminRotes,
   userRoute
 } from "../page/index.jsx";
+import Pageroot from "../page/user/pageroot/Pageroot.jsx";
+import { SearchAd, SearchUser } from "../components/index.js";
+import { CommonComponent } from './../page/index';
 import "./App.css";
 import "../style/index.scss";
 import "../styleuser/index.scss";
-function App(e) {
+function App() {
   return (
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          {userRoute.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          {CommonComponent.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          <Route path="/" element={<Pageroot search={<SearchAd />} />} >
+            {userRoute.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          </Route>
           {adminRotes.map((e, a) => <Route key={a} path={e.path} element={<e.Component />} exact={e.isExact} />)}
         </Routes>
       </Suspense>
-
       <Toaster position='top-center' reverseOrder={false} />
     </div>
   );

@@ -1,18 +1,14 @@
 import React from 'react';
 import Pageroot from '../pageroot/Pageroot';
 import { AccountUser, CartUser, SearchUser } from '../../../components';
+import { useParams } from 'react-router-dom';
 
-CartPage.propTypes = {
 
-};
 
 function CartPage(props) {
+
     return (
-        <div>
-            <Pageroot search={<SearchUser />} cart={false} account={<AccountUser />}>
-                <CartUser />
-            </Pageroot>
-        </div>
+        <CartUser />
     );
 }
 

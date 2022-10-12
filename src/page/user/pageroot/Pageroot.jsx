@@ -4,14 +4,36 @@ import { getAccount } from '../../../api/apiMethod.js';
 import { useState } from 'react';
 import { useMemo } from 'react';
 import { Header, BodyUser, FooterUser, AccountUser, Text } from "../../../components/index.js"
+import { Outlet, useParams } from 'react-router-dom';
 
-const Pageroot = ({ search, children, account, cart }) => {
+const Pageroot = ({ search, cart }) => {
     const [data, setData] = useState([])
     const [check, setCheck] = useState(false)
     const infoUser = useMemo(() => {
         return JSON.parse(localStorage.getItem("infoAccount"))
     }, [])
+    const pram = useParams()
+    console.log(pram);
 
+    const checkCart = () => {
+        switch (pram.cart) {
+            case "cart":
+
+                return false;
+            case "profileuser":
+
+                return false;
+            case "payment":
+
+                return false;
+            case "cart":
+
+                return false;
+
+            default:
+                return true;
+        }
+    }
     const fetAccount = useCallback(() => {
         if (infoUser !== null) {
             getAccount(`?id=${infoUser.id}`)
@@ -31,11 +53,13 @@ const Pageroot = ({ search, children, account, cart }) => {
             }
         }
     }, [data])
+
+
     return (
         <div>
-            <Header search={search} cart={cart}>{check ? <AccountUser namee={infoUser.userName} /> : <Text />} </Header>
+            <Header search={search} cart={checkCart()}>{check ? <AccountUser namee={infoUser.userName} /> : <Text />} </Header>
             <BodyUser>
-                {children}
+                <Outlet />
             </BodyUser>
 
             <FooterUser />

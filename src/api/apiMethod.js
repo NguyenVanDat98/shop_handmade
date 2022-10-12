@@ -59,6 +59,6 @@ export const putItemInCart = (id, data) => {
   });
 };
 
-export const getCartItem = (data) => {
+export const getCartItem = (data = "") => {
   return fetch(API_URL + `/listCart/${data}`);
 };
