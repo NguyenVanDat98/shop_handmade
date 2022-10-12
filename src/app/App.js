@@ -1,54 +1,24 @@
 import { Route, Routes } from "react-router-dom";
+import { Suspense } from "react";
 import { Toaster } from 'react-hot-toast';
 
 import {
-  UserPage,
-  ProductPage,
-  Dashboard,
-  Homepage,
-  VoucherPage,
-  DiscountPage,
-  OrderPage,
-  LoginPage,
-  SignUpPage,
-  CartPage,
-  PaymentPage,
-  Pageroot,
-  ProfilePage,
-  ProfileUserPage,
-  ForgotPage
-} from "../page/index.js";
+  adminRotes,
+  userRoute
+} from "../page/index.jsx";
 import "./App.css";
 import "../style/index.scss";
 import "../styleuser/index.scss";
-import { DetailProduct, SearchUser } from "../components/index.js";
-
-
-
 function App(e) {
-
   return (
     <div className="App">
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/profileuser" element={<ProfileUserPage />} />
-        <Route path="/forgotpass" element={<ForgotPage />} />
-        <Route path="/admin/users" element={<UserPage />} />
-        <Route path="/admin/profile" element={<ProfilePage />} />
-        <Route path="/admin/Dashboard" element={<Dashboard />} />
-        <Route path="/admin/Product" element={<ProductPage />} />
-        <Route path="/admin/Order" element={<OrderPage />} />
-        <Route path="/admin/Voucher" element={<VoucherPage />} />
-        <Route path="/admin/Discount" element={<DiscountPage />} />
-        {<Route path="/:id" element={<Pageroot search={<SearchUser />} >
-          <DetailProduct />
-        </Pageroot>} />}
-        <Route path="/" element={<Homepage />} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          {userRoute.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          {adminRotes.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+        </Routes>
+      </Suspense>
 
-      </Routes>
       <Toaster position='top-center' reverseOrder={false} />
     </div>
   );

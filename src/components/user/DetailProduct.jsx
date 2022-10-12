@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ICONMINUS, ICONPLUS, ICONSTAR } from '../../Icon';
+import Pageroot from '../../page/user/pageroot/Pageroot';
 import { fetProducts } from './../../api/apiMethod';
+import SearchUser from './SearchUser';
 function DetailProduct(props) {
     const [itemData, setItemData] = useState(Object)
     const { name, img, price, discount, status, sold, rating, } = itemData;
@@ -10,9 +12,9 @@ function DetailProduct(props) {
         fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" }).then(res => {
             setItemData(res[0])
         })
-    }, [])
+    }, [param.id])
     return (
-        <>
+        <Pageroot search={<SearchUser />} >
             {itemData && <div className='detail viewFirst'>
                 <div className='detail__photos'>
                     <img src={img} alt="" className='' />
@@ -42,7 +44,7 @@ function DetailProduct(props) {
                     <div>
                         <p className='detail-stock'>
                             <span>Available:</span>
-                            {status ? "In stock" : "Out of stock"}
+                            {status}
                         </p>
                         <p className='detail-discount'>
                             <span>Discount:</span>
@@ -63,7 +65,7 @@ function DetailProduct(props) {
                     </div>
                 </div>
             </div>}
-        </>
+        </Pageroot>
     );
 }
 
