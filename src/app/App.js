@@ -15,7 +15,8 @@ import {
   PaymentPage,
   Pageroot,
   ProfilePage,
-  ProfileUserPage
+  ProfileUserPage,
+  ForgotPage
 } from "../page/index.js";
 import "./App.css";
 import "../style/index.scss";
@@ -34,6 +35,7 @@ function App(e) {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/profileuser" element={<ProfileUserPage />} />
+        <Route path="/forgotpass" element={<ForgotPage />} />
         <Route path="/admin/users" element={<UserPage />} />
         <Route path="/admin/profile" element={<ProfilePage />} />
         <Route path="/admin/Dashboard" element={<Dashboard />} />

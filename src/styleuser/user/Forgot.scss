@@ -1,0 +1,47 @@
+.rolemodal {
+    align-items: center;
+
+    .forgot,
+    .setpass {
+        width: 90%;
+        max-width: 490px;
+        height: max-content;
+        border: 1px solid #000;
+        border-radius: 6px;
+        padding: 30px;
+        box-shadow: 2px 2px 6px rgb(0, 0, 0);
+        z-index: 2;
+        background-color: #fff;
+
+        h4 {
+            text-align: center;
+        }
+
+        div:nth-child(2) {
+            input {
+                font-weight: 400;
+            }
+        }
+
+        div:last-child {
+            text-align: center;
+            padding-top: 10px;
+
+            button {
+                width: 200px;
+                height: 45px;
+                max-width: 60%;
+                border: none;
+                background-color: #d8bd9f;
+                font-size: 25px;
+                color: #000;
+                font-weight: 450;
+                border-radius: 6px;
+
+                &:hover {
+                    opacity: 0.85;
+                }
+            }
+        }
+    }
+}

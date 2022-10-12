@@ -13,10 +13,11 @@ import SignUpPage from './user/signuppage/SignUpPage';
 import CartPage from './user/cartpage/CartPage';
 import PaymentPage from './user/paymentpage/PaymentPage';
 import ProfileUserPage from "./user/profilepage/ProfileUserPage";
+import ForgotPage from './user/forgotpage/ForgotPage';
 
 
 
 
 
 export { Dashboard, DiscountPage, OrderPage, ProductPage, RootPage, UserPage, VoucherPage, ProfilePage }
-export { Homepage, Pageroot, LoginPage, SignUpPage, CartPage, PaymentPage, ProfileUserPage }
+export { Homepage, Pageroot, LoginPage, SignUpPage, CartPage, PaymentPage, ProfileUserPage, ForgotPage }

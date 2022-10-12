@@ -71,7 +71,9 @@ function Login(props) {
                 <div className='login__pass'>
                     <input ref={focusPass} type={typePass ? "password" : "text"} placeholder='Password' name="password" autoComplete='off' onChange={getValueInput} />
                     <i onClick={handleChangeType} className={ICONPASS}></i>
-                    <p>Forgot password?</p>
+                    <Link to="/forgotpass">
+                        <p>Forgot password?</p>
+                    </Link>
                 </div>
                 <div className='login__btn'>
                     <button onClick={CheckLogin}>Continue</button>
