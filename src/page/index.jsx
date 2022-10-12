@@ -1,11 +1,5 @@
 import  { lazy } from 'react';
-// import { DetailProduct, SearchUser } from '../components';
-// import Pageroot from './user/pageroot/Pageroot';
-
-
-
-
-
+import { DetailProduct } from '../components';
 
 export const adminRotes =[
     {
@@ -44,10 +38,10 @@ export const adminRotes =[
         Component: lazy(()=> import('./admin/VoucherPage') )
     },
     {
-        isExact : true,
-        path : "/:id",
-        Component:  lazy(()=> import('../components/user/DetailProduct'))
-    },
+        isExact : true ,
+        path: "/:id",
+        Component: ()=><DetailProduct/>
+    }
 ]
 
 export const userRoute =[

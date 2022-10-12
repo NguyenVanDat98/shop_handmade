@@ -1,9 +1,7 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ICONADD } from "../../Icon";
-import {
-  fetchDataProduct,
-} from "../../redux/adminReducer/actionThunkAd/actionThunk";
+import { fetchDataProduct } from "../../redux/adminReducer/actionThunkAd/actionThunk";
 import { ItemProductAd } from "./../index.js";
 import InfoProduct from "./InfoProduct";
 import ModuleCreateProduct from "./ModuleCreateProduct";
@@ -25,12 +23,8 @@ const ListProductAd = (props) => {
   const [dataOutput, setDataOutput] = useState([]);
   useEffect(() => {
     dispatch(fetchDataProduct());
-  }, [render,dispatch]);
+  }, [render, dispatch]);
 
-  const handleChangeFilter = (e) => {
-    const temp = dataDevide.filter((item) => item.name === e.target.value);
-    temp.length ? setDataOutput(temp) : setDataOutput(dataDevide);
-  };
   //Filter category
   let listCategory = useMemo(() => {
     let arr = [];
@@ -42,20 +36,45 @@ const ListProductAd = (props) => {
     return arr;
   }, [data]);
   // divide dat flow category
-  const dataDevide = useMemo(() =>
-    listCategory.map((e, i) => ({
-      name: e,
-      data: data.filter((el) => el.category.toLowerCase() === e),
-    })),
-    [data,listCategory]
+  const dataDevide = useMemo(
+    () =>
+      listCategory.map((e, i) => ({
+        name: e,
+        data: data.filter((el) => el.category.toLowerCase() === e),
+      })),
+    [data, listCategory]
   );
   //set data when data update
   useEffect(() => {
     setDataOutput(dataDevide);
   }, [dataDevide]);
+  const handleChangeFilter = (e) => {
+    const temp = dataDevide.filter((item) => item.name === e.target.value);
+    temp.length ? setDataOutput(temp) : setDataOutput(dataDevide);
+  };
+  const handleClick = (a, b) => {
+    if (disForm[a] === false) {
+      if (disForm[b] === true) {
+        setAnimation({ [a]: "animation-list-slider-on", [b]: "disFalse" });
+        setTimeout(() => {
+          setDisForm({ [a]: true, [b]: false });
+        }, 500);
+      } else {
+        setAnimation({ ...anima, [a]: "animation-list-slider-on" });
+        setDisForm({ ...disForm, [a]: true });
+      }
+    } else {
+      setAnimation({ ...anima, [a]: "animation-list-slider-off" });
+      setTimeout(() => {
+        setDisForm({ ...disForm, [a]: false });
+      }, 500);
+    }
+  };
 
   return (
     <div className="list-product-Ad viewFirst ">
+{/* {-----------------------module infomation product select------------------} */}
+
       {productSelect && (
         <InfoProduct
           handleClose={() => {
@@ -66,13 +85,15 @@ const ListProductAd = (props) => {
           data={productSelect}
         />
       )}
+{/* {-----------------------module Create new product------------------} */}
+
       <ModuleCreateProduct
         check={disForm.formCreate}
         listCategory={listCategory}
         onclickClose={() => {
-          setAnimation({ ...anima, formCreate: "disFalse" })
+          setAnimation({ ...anima, formCreate: "disFalse" });
           setTimeout(() => {
-            setDisForm({ ...disForm, formCreate: !disForm.formCreate })
+            setDisForm({ ...disForm, formCreate: !disForm.formCreate });
           }, 500);
         }}
         disForm={anima.formCreate}
@@ -80,52 +101,39 @@ const ListProductAd = (props) => {
           setRender(!render);
         }}
       />
-
+{/* {-----------------------module slider------------------} */}
       <ModuleListSlider
         check={disForm.moduleSlide}
         data={productSelect}
         onclickClose={() => {
-          setAnimation({ ...anima, moduleSlide: "animation-list-slider-off" })
+          setAnimation({ ...anima, moduleSlide: "animation-list-slider-off" });
           setTimeout(() => {
-            setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide })
+            setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide });
           }, 500);
         }}
         disForm={anima.moduleSlide}
       />
       <div className="main-list">
         <div className="list-product-Ad_header">
+{/* {---------------------------------BUTTON--------------------------} */}
+{/* {button add new product} */}
           <button
             onClick={() => {
-              if (!disForm.formCreate) {
-                setAnimation({ ...anima, formCreate: "disTrue" })
-                setDisForm({ ...disForm, formCreate: !disForm.formCreate });
-              } else {
-                setAnimation({ ...anima, formCreate: "disFalse" })
-                setTimeout(() => {
-                  setDisForm({ ...disForm, formCreate: !disForm.formCreate });
-                }, 500);
-              }
+              handleClick("formCreate", "moduleSlide");
             }}
           >
             <i className={ICONADD}> </i> ADD PRODUCT
           </button>
+{/* {---------------------------------BUTTON--------------------------} */}
+{/* {button view list silder} */}
           <button
             onClick={() => {
-              if (!disForm.moduleSlide) {
-                setAnimation({ ...anima, moduleSlide: "animation-list-slider-on" })
-                setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide });
-
-              } else {
-                setAnimation({ ...anima, moduleSlide: "animation-list-slider-off" })
-                setTimeout(() => {
-                  setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide });
-
-                }, 500);
-              }
+              handleClick("moduleSlide", "formCreate");
             }}
           >
             <i className={ICONADD}> </i> LIST SLIDER
           </button>
+          {/* {list category} */}
           <select
             onChange={(e) => handleChangeFilter(e)}
             className="form-select"
@@ -140,6 +148,7 @@ const ListProductAd = (props) => {
               ))}
           </select>
         </div>
+{/* {-----------------------list product render------------------} */}
         {dataOutput &&
           dataOutput.map((e, i) => {
             return (

@@ -9,12 +9,11 @@ import { ICONBACK, ICONCLOSE } from "../../Icon";
 
 
 const InputFormCreate = 
-  ({ refName, name, valueInput, handleInputValue, type }) => {
+  memo(({ refName, name, handleInputValue, type }) => {
     return (
       <input
         name={name}
         ref={refName}
-        value={valueInput}
         onChange={handleInputValue}
         className="form-control"
         autoComplete="off"
@@ -22,18 +21,16 @@ const InputFormCreate =
         id={name}
       />
     );
-  }
+  })
 ;
 InputFormCreate.propTypes  = {
   type: PropTypes.string,
-  valueInput: PropTypes.number | PropTypes.string,
   refName: PropTypes.object ,
   handleInputValue: PropTypes.func,
   name: PropTypes.string ,
 };
 InputFormCreate.defaultProps = {
   type: "text",
-  valueInput:""
 };
 
 
@@ -50,10 +47,10 @@ const ModuleCreateProduct = ({
   }`;
   const [formCreateValue, setForm] = useState({
     name: "",
-    price: Number,
+    price: 0,
     category: "",
     img: "",
-    discount: Number,
+    discount: 0,
     description: "",
   });
   const dispatch = useDispatch();
@@ -146,7 +143,6 @@ const ModuleCreateProduct = ({
             <div className="item-input">
               <InputFormCreate
                 name={"name"}
-                valueInput={formCreateValue.name}
                 handleInputValue={handleInputValue}
                 refName={refName}
               />
@@ -156,7 +152,6 @@ const ModuleCreateProduct = ({
             <div className="item-input">
               <InputFormCreate
                 name={"price"}
-                valueInput={formCreateValue.price}
                 handleInputValue={handleInputValue}
                 refName={refPrice}
                 type={"number"}
@@ -167,16 +162,13 @@ const ModuleCreateProduct = ({
             <div className="item-input">
               <InputFormCreate
                 name={"category"}
-                valueInput={formCreateValue.category}
                 handleInputValue={handleInputValue}
                 refName={refCategory}
               />
 
               <details>
                 <summary>
-                  <span>
                     <i className={ICONBACK}></i>
-                  </span>
                 </summary>
                 <ul>
                   {listCategory &&
@@ -203,7 +195,6 @@ const ModuleCreateProduct = ({
             <div className="item-input">
               <InputFormCreate
                 name={"img"}
-                valueInput={formCreateValue.img}
                 handleInputValue={handleInputValue}
                 refName={refImg}
               />
@@ -212,7 +203,6 @@ const ModuleCreateProduct = ({
             <div className="item-input">
               <InputFormCreate
                 name={"discount"}
-                valueInput={formCreateValue.discount}
                 handleInputValue={handleInputValue}
                 refName={refDiscount}
               />

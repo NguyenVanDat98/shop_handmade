@@ -1,41 +1,26 @@
-import React, { useState } from "react";
-import { ICONTRASH, ICONUSER } from "../../Icon";
+import React from "react";
+import {  ICONUSER } from "../../Icon";
 
-const ItemUser = ({ No,onClick }) => {
-  const [status, setStatus] = useState(true);
+const ItemUser = ({ No,onClick,data }) => {
+  
   const linkuser=""
+  const {acc , profile , payment }=data
   return (
-    <div onClick={onClick} className="itemUser">
+    <div onClick={()=>onClick(data)} className="itemUser">
       <p>{No}</p>
       <div className="user-avt">
         {linkuser!=="" ? <img src="" alt="avt" />:<i className={ICONUSER} ></i> }        
       </div>
       <div className="info">
-        <p>Name sadf asd asd asd</p>
-        <p>(+84)0905450804</p>
+        <p>{profile.first_name} ({acc.user_name})</p>
+        <p>{acc.telephone}</p>
       </div>
-
-      <p>Description</p>
       <div className="total-money">
-        <p>Total</p>
-      <p>member</p>
+        <h6>Total : <span>$ {payment.total}</span> </h6>
+      <h6>Member : <span>VIP</span> </h6>
       </div>
       
-      <div className="control">
-        {
-          status ? <button  className="delete-user btn btn-close-white" onClick={() => setStatus(false)}> <i className={ICONTRASH}></i></button>: <div className={`check-delete`}>
-           <button className="allow btn btn-primary" onClick={() => setStatus(true)}>
-            <i className="fa-solid fa-check"></i>
-          </button>
-          <button className="cancer btn btn-danger" onClick={() => setStatus(true)}>
-            <i className="fa-sharp fa-solid fa-ban"></i>
-          </button>
-          </div>
-        }
-        
       </div>
-      
-    </div>
   );
 };
 

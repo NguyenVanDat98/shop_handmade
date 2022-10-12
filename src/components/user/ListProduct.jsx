@@ -15,18 +15,15 @@ function ListProduct(props) {
     const [page, setPage] = useState(1);
     useEffect(() => {
         dispatch(fetListProduct({ limit: limit, sort: sort, filter: filter, page: page }));
-
     }, [sort, limit, filter, page]);
 
     return (
         <>
             <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
                 <Filter handleChangeValueFilter={(e) => {
-                    // setPage(1);
                     setFilter(e.target.value)
                 }} />
                 <Sort handleChangeValueSort={(e) => {
-                    // setPage(1);
                     setSort(e.target.value)
                 }} />
             </div>
