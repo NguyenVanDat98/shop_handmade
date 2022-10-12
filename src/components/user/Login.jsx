@@ -56,7 +56,7 @@ function Login(props) {
                         toast.dismiss();
                         toast.success("Login Success ", { duration: 2000, })
                     }, 2000);
-                    localStorage.setItem("infoAccount", JSON.stringify({ id: res[0].id, type: res[0].type, userName: res[0].user_name }))
+                    localStorage.setItem("infoAccount", JSON.stringify({ id: res[0].id, cart_id: res[0].cart_id, type: res[0].type, userName: res[0].user_name }))
                 }
             })
     }

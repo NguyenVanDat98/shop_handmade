@@ -16,7 +16,7 @@ export const fetProducts = async (path) => {
 
 
 export const createAccount = (data) => {
-  return fetch(API_URL + `/ listAccount`, {
+  return fetch(API_URL + `/listAccount`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -27,7 +27,7 @@ export const createAccount = (data) => {
   });
 };
 export const createProfileAccount = (data) => {
-  return fetch(API_URL + `/ listProfile`, {
+  return fetch(API_URL + `/listProfile`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -37,7 +37,7 @@ export const createProfileAccount = (data) => {
   });
 };
 export const createItemCart = (data) => {
-  return fetch(API_URL + `/ listCart`, {
+  return fetch(API_URL + `/listCart`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -46,4 +46,19 @@ export const createItemCart = (data) => {
 
     body: JSON.stringify(data),
   });
+};
+export const putItemInCart = (id, data) => {
+  return fetch(API_URL + `/listCart/${id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify(data),
+  });
+};
+
+export const getCartItem = (data) => {
+  return fetch(API_URL + `/listCart/${data}`);
 };

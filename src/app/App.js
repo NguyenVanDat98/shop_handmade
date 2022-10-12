@@ -15,7 +15,7 @@ function App(e) {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {userRoute.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
-          {adminRotes.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          {adminRotes.map((e, a) => <Route key={a} path={e.path} element={<e.Component />} exact={e.isExact} />)}
         </Routes>
       </Suspense>
 

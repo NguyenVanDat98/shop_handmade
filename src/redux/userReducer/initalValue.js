@@ -4,4 +4,5 @@ export const userInital = {
     listProduct: [],
     listProductAll: [],
     isLoadmore: true,
+    cart: []
 }

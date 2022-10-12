@@ -6,9 +6,9 @@
     grid-template-columns: 57% 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     grid-gap: 24px;
-    // padding: 20px;
 
     &__photos {
+
         img {
             width: 100%;
             height: fit-content;
@@ -25,10 +25,12 @@
             grid-template-columns: repeat(5, 1fr);
             grid-gap: 25px;
             padding-top: 25px;
+            height: 60px;
 
-            img {
+            &--img {
                 width: 100%;
-                height: fit-content;
+                height: 60px;
+                object-fit: cover;
                 box-shadow: 2px 2px 6px rgb(178, 168, 168);
                 border-radius: 4px;
             }
@@ -36,12 +38,11 @@
     }
 
     &__info {
+
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: 10px;
-
-
 
         &>p {
             font-weight: 450;
@@ -95,38 +96,10 @@
             }
         }
 
-        div:nth-child(5) {
-            display: flex;
-            font-size: 30px;
-            align-items: flex-start;
-            width: 120px;
-
-            span {
-                font-weight: 470;
-            }
-
-            button {
-                border: none;
-                border-radius: 10px;
-                background-color: transparent;
-                border-radius: 10px;
-                width: 40px;
-                height: 40px;
-            }
-
-            button:first-child {
-                padding-right: 10px;
-            }
-
-            button:last-child {
-                padding-left: 10px;
-            }
-        }
-
         .detail__btn {
             text-align: center;
 
-            button {
+            .button {
                 background-color: slateblue;
                 color: #fff;
                 border: none;
@@ -140,6 +113,14 @@
                 &:hover {
                     opacity: 0.9;
                 }
+            }
+
+            .btn {
+                width: 200px;
+                padding: 10px 5px;
+                color: #fff;
+                font-size: 18px;
+                box-shadow: 2px 2px 5px rgb(228, 225, 225);
             }
         }
     }

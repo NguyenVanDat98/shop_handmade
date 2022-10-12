@@ -41,3 +41,17 @@ export const isLoadmore = (data) => {
     }
 
 }
+export const addToCart = (data) => {
+    return {
+        type: actionTypes.ADD_TO_CART,
+        payload: data
+    }
+
+}
+export const SaveCart = (product) => {
+    return {
+        type: actionTypes.SAVE_TO_CART,
+        payload: product
+    }
+
+}

@@ -35,5 +35,6 @@ export { default as Text } from "./user/Text";
 export { default as CartUser } from "./user/CartUser";
 export { default as PaymentUser } from './user/PaymentUser';
 export { default as ProfileUser } from './user/ProfileUser';
+export { default as Forgot } from './user/Forgot';
 
 

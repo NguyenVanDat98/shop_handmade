@@ -5,7 +5,6 @@ import * as actionTypes from "./actionType";
 export const userReduce = (state = userInital, action) => {
     switch (action.type) {
         case actionTypes.FETCH_ACCOUNT:
-
             return {
                 ...state, accountLogin: action.payload
             };
@@ -28,6 +27,15 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, isLoadmore: action.payload
             }
+        case actionTypes.SAVE_TO_CART:
+
+            return {
+                ...state, cart: action.payload
+            }
+        // case actionTypes.ADD_TO_CART:
+        //     return {
+        //         ...state, cart: [...state.cart, action.payload]
+        //     }
         default:
             return { ...state }
     }

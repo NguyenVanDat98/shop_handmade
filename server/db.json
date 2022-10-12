@@ -215,7 +215,7 @@
       "password": "123",
       "type": "",
       "profile_id": "lcWws",
-      "paymament_id":1,
+      "paymament_id": 1,
       "cart_id": "u2bFT"
     },
     {
@@ -225,7 +225,7 @@
       "password": "123",
       "type": "",
       "profile_id": "UIcXH",
-      "paymament_id":2,
+      "paymament_id": 2,
       "cart_id": "e6j2S"
     },
     {
@@ -235,14 +235,27 @@
       "password": "admin",
       "type": "admin",
       "profile_id": "15Pz4",
-      "paymament_id":3,
+      "paymament_id": 3,
       "cart_id": "lZ6Yk"
     }
   ],
   "listCart": [
     {
       "id": "u2bFT",
-      "cart": [{"product_id":1,"quantity":1}]
+      "cart": [
+        {
+          "product_id": 1,
+          "quantity": 1
+        },
+        {
+          "product_id": 2,
+          "quantity": 1
+        },
+        {
+          "product_id": 3,
+          "quantity": 1
+        }
+      ]
     },
     {
       "id": "e6j2S",
@@ -288,7 +301,9 @@
     {
       "id": 1,
       "profile_id": "lcWws",
-      "cart_order": [1],
+      "cart_order": [
+        1
+      ],
       "total": 30
     },
     {
@@ -304,60 +319,58 @@
       "total": 0
     }
   ],
-  "listOrder":[
+  "listOrder": [
     {
-      "id":1,
-      "payment_id":1,  
-      "profile_id":"1ny68K",
-      "time_create":"",
-      "time_complete":"",
-      "list_product-order":
-      [
+      "id": 1,
+      "payment_id": 1,
+      "profile_id": "1ny68K",
+      "time_create": "",
+      "time_complete": "",
+      "list_product-order": [
         {
-          "product_id":1,
-          "name_product":"",
-          "price":0,
-          "quantity":2,
-          "discount":0
+          "product_id": 1,
+          "name_product": "",
+          "price": 0,
+          "quantity": 2,
+          "discount": 0
         },
         {
-          "product_id":2,
-          "name_product":"",
-          "price":0,
-          "quantity":2,
-          "discount":0
+          "product_id": 2,
+          "name_product": "",
+          "price": 0,
+          "quantity": 2,
+          "discount": 0
         }
       ],
       "voucher_id": "",
-      "total_order":0,
-      "status":true
+      "total_order": 0,
+      "status": true
     },
     {
-      "id":2,
-      "payment_id":2,  
-      "profile_id":"1ny68K",
-      "time_create":"",
-      "time_complete":"",
-      "list_product-order":
-      [
+      "id": 2,
+      "payment_id": 2,
+      "profile_id": "1ny68K",
+      "time_create": "",
+      "time_complete": "",
+      "list_product-order": [
         {
-          "product_id":2,
-          "name_product":"",
-          "price":0,
-          "quantity":2,
-          "discount":0
+          "product_id": 2,
+          "name_product": "",
+          "price": 0,
+          "quantity": 2,
+          "discount": 0
         },
         {
-          "product_id":4,
-          "name_product":"",
-          "price":0,
-          "quantity":2,
-          "discount":0
+          "product_id": 4,
+          "name_product": "",
+          "price": 0,
+          "quantity": 2,
+          "discount": 0
         }
       ],
       "voucher_id": "",
-      "total_order":0,
-      "status":true
+      "total_order": 0,
+      "status": true
     }
   ],
   "listEarning": [

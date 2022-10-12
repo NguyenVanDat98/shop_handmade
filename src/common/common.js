@@ -38,3 +38,8 @@ export const Sort = (data, value) =>
                 return false;
         }
     });
+const img1 = "https://s.alicdn.com/@sc04/kf/HTB1kpVHa0fvK1RjSszhq6AcGFXaC.jpg_280x280.jpg";
+const img2 = "https://s.alicdn.com/@sc04/kf/H6371a8b7bee746e684e9fbbe0c1893b0f.jpg_960x960.jpg";
+const img3 = "https://s.alicdn.com/@sc04/kf/H8c076c56ea7f4742a16209a79d8e8dbba.jpg_960x960.jpg";
+const img4 = "https://s.alicdn.com/@sc04/kf/H360a895459454ad2b6494640dd8f3595r.jpg_960x960.jpg";
+export const listImage = [img1, img2, img3, img4];
