@@ -1,0 +1,137 @@
+:root {
+  --heipage: calc(100vh - 90px);
+}
+@mixin flexAuto {
+  flex-grow: 1;
+  min-width: 420px;
+  margin-right: 5px;
+  max-height: var(--heipage);
+  min-height: var(--heipage);
+  background-color: white;
+}
+.orderPage {
+  --heightHeader: 36px;
+  width: 100%;
+  display: flex;
+
+  flex-wrap: wrap;
+  height: var(--heipage);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  div > header {
+    height: var(--heightHeader);
+    background-color: #333;
+    color: white;
+    width: 100%;
+    padding: 0 10px;
+    h5 {
+      line-height: var(--heightHeader);
+      margin-bottom: 0;
+    }
+  }
+  & > div:first-child {
+    @include flexAuto();
+  }
+  & > div:last-child {
+    @include flexAuto();
+  }
+  .content_page {
+    width: 100%;
+    height: calc(var(--heipage) - var(--heightHeader));
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+      width: 9px;
+      border-radius: 13px;
+      background-clip: padding-box;
+      border: 3px solid transparent;
+      border-bottom: none;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 0 10px;
+    }
+    details {
+      --hieghtDetail: 60px;
+      width: 100%;
+      animation: inItem 0.3s forwards ;
+      ul {
+
+        margin-bottom: 5px;
+        border-bottom: 1px solid black ;
+        transition: all 0.3s ease-in-out;
+        li {
+          display: flex;
+          justify-content: space-between;
+          width: 40%;
+          min-width: 200px;
+        }
+      }
+
+       
+      summary {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(178, 178, 178, 1) 100%
+        );
+        box-shadow: 0 3px 15px rgba(178, 178, 178, 1);
+        padding: 0 5px;
+        button {
+          max-width: 80px;
+          width: 80px;
+          margin: 0 5px;
+        }
+        & > section {
+          display: block;
+          flex-grow: 1;
+        }
+        h5 {
+          margin: 0 5px;
+          line-height: 1.5rem;
+          min-width: 138px;
+          span {
+            display: inline-block;
+            font-size: 0.9rem;
+            width: 70px;
+          }
+        }
+        & > div {
+          width: 150px;
+          padding-top: 3px;
+          h6 {
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+      
+    
+    }
+  }
+}
+@keyframes inItem {
+    0%{ 
+        transform: translateY(-20px);
+        opacity: 0;
+        visibility: hidden;
+        height: 1px;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+        visibility: visible
+    }
+}

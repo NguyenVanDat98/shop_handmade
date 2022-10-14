@@ -1,4 +1,4 @@
-import { GET_LIST_PRODUCT, RENDER, SAVE_LIST_SLIDER, SAVE_LIST_USER,SAVE_LIST_RATING, SAVE_LIST_HiSTORY_ORDER } from "./actionTypeAd"
+import { GET_LIST_PRODUCT, RENDER, SAVE_LIST_SLIDER, SAVE_LIST_USER,SAVE_LIST_RATING, SAVE_LIST_HiSTORY_ORDER,SAVE_LIST_ORDER, CHANGE_LIST_ORDER } from "./actionTypeAd"
 
 export const SetDataProduct =(data)=>{
     return {
@@ -32,6 +32,18 @@ export const listRating =(data)=>{
 export const historyOrder =(data)=>{
     return {
         type : SAVE_LIST_HiSTORY_ORDER,
+        payload: data
+    }
+}
+export const saveOrder =(data)=>{
+    return {
+        type : SAVE_LIST_ORDER,
+        payload: data
+    }
+}
+export const ChangeOrder =(data)=>{
+    return {
+        type : CHANGE_LIST_ORDER,
         payload: data
     }
 }

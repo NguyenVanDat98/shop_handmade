@@ -17,7 +17,7 @@ const ListUser = (props) => {
       setClose(false);
   }
   return (
-    <div className="content-listuser viewFirst ">
+    <div className="content-listuser  ">
       <div className="listUser">
         <div className="listUser-header">
           <h3>List User</h3>

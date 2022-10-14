@@ -4,5 +4,6 @@ export const adInitalValue ={
     slideShow:[],
     infomationUser :{},
     ratings:{},
-    historyOrder : []
+    historyOrder : [],
+    listOrder:[]
 }

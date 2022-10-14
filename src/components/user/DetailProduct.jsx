@@ -38,7 +38,7 @@ function DetailProduct(props) {
     }
     return (
         <>
-            {itemData && <div className='detail viewFirst'>
+            {itemData && <div className='detail '>
                 <div className='detail__photos'>
                     <img src={!index ? itemData.img : index} alt="" className='detail__photos--main' />
                     <div className='detail__photos--list'>

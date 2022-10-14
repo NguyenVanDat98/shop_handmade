@@ -18,7 +18,7 @@ const Pageroot = (props) => {
   const infoUser = JSON.parse(localStorage.getItem("infoAccount"));
   const param = useLocation();
   const pathCart = ["/cart", "/payment", "/profileuser"];
-  const pathSearch = ["/", "/cart", () => param.pathname.includes("/detail")];
+  const pathSearch = ["/", "/cart"];
   const fetAccount = useCallback(() => {
     if (infoUser !== null) {
       getAccount(`?id=${infoUser.id}`)

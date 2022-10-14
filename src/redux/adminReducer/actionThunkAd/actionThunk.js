@@ -1,9 +1,9 @@
 import toast from "react-hot-toast";
 import {
-  API_URL,
   GetDataProduct,
   GetDataSlideShow,
   PostDataProduct,
+  PutDataOrder,
   PutDataProduct,
   PutDataSlideShow,
 } from "../../../api/adminMethodAip";
@@ -14,10 +14,12 @@ import {
   GetOrder,
 } from "../../../api/adminMethodAip/apiMethodAccount";
 import {
+  ChangeOrder,
   historyOrder,
   listRating,
   reRender,
   saveListUser,
+  saveOrder,
   saveSlideShow,
   SetDataProduct,
 } from "../adminAction";
@@ -179,19 +181,30 @@ export const GetRatingsTotal = () => {
   };
 };
 
-export const GetListOrder = (param = [] || "") => {
+export const GetListOrder = (param = "", sendlist = true) => {
   return (dispatch) => {
     (async () => {
       try {
-        const txt = Array.isArray(param)
-          ? param.reduce((a, b) => a + `&id=${b}`, "?")
-          : "";
+        const txt = param.length !== 0 ? `?profile_id=${param}` : "?_order=asc";
         await GetOrder(txt)
           .then((res) => checkRespose(res, "Fet List Oder Fail!"))
           .then((res) => {
-            dispatch(historyOrder(res));
+            sendlist ? dispatch(historyOrder(res)) : dispatch(saveOrder(res));
           });
-        // console.log(rest);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+export const UpdateStatus = (param, txt) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        const newData = { ...param, time_complete: txt, status: !param.status };
+        await PutDataOrder(newData)
+          .then((res) => checkRespose(res, "Change status Fail!"))
+          .then((res) => dispatch(ChangeOrder(newData)));
       } catch (error) {
         console.log(error);
       }
