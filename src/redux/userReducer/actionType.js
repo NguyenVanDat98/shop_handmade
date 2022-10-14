@@ -5,3 +5,7 @@ export const FETCH_PRODUCT_ALL = "FETCH_PRODUCT_ALL";
 export const LOADMORE = "LOADMORE";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const SAVE_TO_CART = "SAVE_TO_CART";
+export const SAVE_TO_CART_REVIEW = "SAVE_TO_CART_REVIEW";
+export const SELECT_CART = "SELECT_CART";
+export const DELETE_ITEM = "DELETE_ITEM";
+export const CHANGE_QUANTITY_ITEM = "CHANGE_QUANTITY_ITEM";

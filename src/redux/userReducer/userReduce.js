@@ -32,10 +32,12 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, cart: action.payload
             }
-        // case actionTypes.ADD_TO_CART:
-        //     return {
-        //         ...state, cart: [...state.cart, action.payload]
-        //     }
+        case actionTypes.SELECT_CART:
+            return {
+                ...state, stepPayment: [...state.stepPayment, action.payload]
+            }
+
+
         default:
             return { ...state }
     }

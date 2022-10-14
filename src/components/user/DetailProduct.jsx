@@ -4,7 +4,7 @@ import { ICONSTAR } from '../../Icon';
 import { fetProducts } from './../../api/apiMethod';
 import { useDispatch } from 'react-redux';
 
-import {  putCart } from '../../redux/thunk/actionThunk';
+import { putCart } from '../../redux/thunk/actionThunk';
 import { useNavigate } from 'react-router-dom';
 import { listImage } from '../../common/common';
 import { useCallback } from 'react';
@@ -18,24 +18,34 @@ function DetailProduct(props) {
     const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
 
     const param = useParams()
-    const FetProduct  =useCallback(()=>{
-         fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
-        .then(res => 
-            setItemData(res[0])
-        )
-    },[param])
- 
+    const FetProduct = useCallback(() => {
+        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
+            .then(res =>
+                setItemData(res[0])
+            )
+    }, [param])
+
     useEffect(() => {
         FetProduct()
-    }, [param,FetProduct])
+    }, [param, FetProduct])
 
     const handleAddToCart = (item) => {
         if (locale.userName) {
-            dispatch(putCart({ data: { product_id: itemData.id, quantity: 1 }, id: locale.cart_id }))
+            dispatch(putCart({
+                data: {
+                    product_id: itemData.id,
+                    quantity: 1,
+                    product_img: itemData.img,
+                    product_price: itemData.price,
+                    product_name: itemData.name
+                },
+                id: locale.cart_id
+            }))
         } else {
             navigate("/login");
         }
     }
+    console.log(itemData.price);
     return (
         <>
             {itemData && <div className='detail viewFirst'>
@@ -86,5 +96,6 @@ function DetailProduct(props) {
         </>
     );
 }
+
 
 export default DetailProduct;

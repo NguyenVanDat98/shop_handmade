@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { GetDataProduct } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
 import { fetchAccount, getProduct, getSlider, SaveCart } from "../userReducer/action-reduce";
-import { isLoadmore, addToCart } from './../userReducer/action-reduce';
+import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
 import { getCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
 
@@ -64,7 +64,7 @@ export const createAccountAsyn = (data) => {
         })()
     }
 }
-const ResCheck = (res, mes = "") => res.status === 200 ? res.json() : toast.error(mes)
+const ResCheck = (res, mes = "", param = 200) => res.status === param ? res.json() : toast.error(mes)
 export const getCart = (data) => {
     return (dispatch) => {
         (async () => {
@@ -82,16 +82,60 @@ export const putCart = (data) => {
     return (dispatch) => {
         (async () => {
             try {
-                console.log(data);
                 const respose = await getCartItem(data.id).then(res => ResCheck(res))
                 const check = respose.cart.findIndex(e => e.product_id === data.data.product_id)
                 const temp = { ...respose, cart: check === -1 ? [...respose.cart, data.data] : [...respose.cart] }
-                await putItemInCart(data.id, temp).then(res => ResCheck(res))
-                dispatch(SaveCart(temp))
-
+                // console.log(temp);
+                await putItemInCart(data.id, temp).then(res => ResCheck(res, ""))
+                // console.log(data);
+                dispatch(SaveCartReview(temp))
             } catch (error) {
                 console.log(error);
             }
         })()
+    }
+}
+export const getDataItemReview = () => {
+    return (dispatch) => {
+        (async () => {
+            try {
+                const localitems = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {};
+                if (localitems.cart_id) {
+                    const data = await getCartItem(localitems.cart_id).then((res) => ResCheck(res, ""))
+                        .then((res) => {
+                            const datareview = res.cart.map(_ => _.product_id)
+                            // console.log(datareview);
+                            return datareview
+                        })
+                    const dataList = await fetProducts({ page: 1, filter: data });
+                    // console.log(dataList);
+                    dispatch(SaveCartReview(dataList))
+                }
+            } catch (error) {
+
+            }
+        })()
+    }
+}
+export const getDataCartItem = () => {
+    return (dispatch) => {
+        (
+            async () => {
+                try {
+                    const localitem = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {};
+                    if (localitem.cart_id) {
+                        const check = await getCartItem(localitem.cart_id).then((res) => ResCheck(res, ""))
+                            .then((res) => {
+                                const temp = res.cart.map(_ => _.product_id)
+                                return temp.reduce((_, __) => _ + `&id=${__}`, "?")
+                            })
+                        const dataItem = await fetProducts({ page: 1, filter: check })
+                        dispatch(SaveCart(dataItem))
+                    }
+                } catch (error) {
+
+                }
+            }
+        )()
     }
 }

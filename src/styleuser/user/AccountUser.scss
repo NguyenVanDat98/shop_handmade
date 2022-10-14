@@ -50,18 +50,18 @@
             z-index: 1;
         }
 
-        &>a {
-            &>li {
-                padding: 7px 5px 8px 15px;
-                font-weight: 400;
 
-                &:hover {
-                    background-color: rgba(0, 0, 0, 0.03);
-                    cursor: pointer;
-                    color: blue;
-                }
+        &>li {
+            padding: 7px 5px 8px 15px;
+            font-weight: 400;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.03);
+                cursor: pointer;
+                color: blue;
             }
         }
+
 
         &>li {
             padding: 7px 5px 8px 15px;

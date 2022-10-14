@@ -17,10 +17,10 @@ function AccountUser(props) {
             <span onClick={() => setAccount(!account)}>
                 <i className={ICONUSER}></i>
             </span>
-            {account && (<ul className="header__account">
-                <Link to="/profileuser" ><li>My Account</li></Link>
+            {account ? (<ul className="header__account">
+                <li onClick={() => { navi("/profileuser"); setAccount(!account) }} >My Account</li>
                 <li><span onClick={() => logOut()} >Log Out</span></li>
-            </ul>)}
+            </ul>) : ("")}
         </div>
     );
 }
