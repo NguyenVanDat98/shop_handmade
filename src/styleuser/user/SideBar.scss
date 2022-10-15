@@ -9,12 +9,12 @@
     }
 
     .itemSidebar {
-        margin: 10px 0;
-        padding: 5px 0 5px 17px;
-        height: max-content;
+        height: 89px;
+        // padding: 20px;
+        margin: 20px 0;
 
         i {
-            font-size: 2rem;
+            font-size: 29px;
 
         }
 
@@ -23,19 +23,14 @@
         }
 
         &:hover {
-            padding-left: 20px;
             background-color: rgb(142, 110, 110);
-
-            i {
-                margin-right: 12px;
-            }
         }
     }
 }
 
 @media (max-width:500px) {
     .sidebar-user {
-        width: 100%;
+        width: 100vw;
     }
 
     .footer {

@@ -1,13 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Account = props => {
+    const navi= useNavigate()
+    const logOut =()=>{
+       localStorage.removeItem("infoAccount")
+       navi("/login")
+    }
     return (
-        <Link to="/admin/profile" className='account'>
+        <div className='account'>
             <div className='avt'>
             </div>
-            <p>Admin</p>
-        </Link>
+            <div className='textAcc'>
+            <Link to="/admin/profile">Adminitrator </Link>
+            <span onClick={logOut} to="/login"> / Log out</span>
+
+            </div>
+        </div>
     );
 };
 

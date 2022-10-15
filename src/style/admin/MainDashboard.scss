@@ -109,46 +109,105 @@
         flex-grow: 0;
     }
     .sidebarAd {
-        margin: 0;
         position: fixed;
+        top: auto;
+        padding: 0 10px;
+        margin: 0;
         flex-direction: row;
-        padding: 5px;
         justify-content: space-between;
-        width: 100%;
-        top: unset;
-        left: 0;
-        right: 0;
+        width: 100vw;
+        height: 50px;
         bottom: 0;
-        & .itemSidebar:last-child{
+        .itemSidebar:last-child{
             display: flex;
         }
-        .itemSidebar {
-        padding-left: 0;
-        justify-content: center;
-
+        .itemSidebar{
+            transform: none;
+            margin: 0;
+            width: 40px;
+            max-width: 50px;
+            height: 50px;
+            i{
+                font-size: 29px;
+                transform: none;
+                max-width: none;
+                min-width: 26px;
+                transform: none;
+                transition: none;
+            }
             &:hover{
-                width: 100%;
-                transition: unset;
-                padding-left: 0;
-              
+                width: 40px;
+                max-width: 40px;
+                height:50px;
+                min-width: max-content;
+                i{
+                    transform: none;
+                    font-size: 29px !important; 
+                }
+                span{
+                    transform: none;
+                    font-size: 0;
+                    padding: 0;
+                }
             }
-            span{
-                display: none;
+
+        }
+
+        .active{            
+            transition: none;
+            transform: none;
+            i{
+                transform: none;
+                transition: none;
+
+            }
+            &:hover{
+                width: 50px;
+                height:50px;
+                transition: none;
+                transform: none;
+                i{
+                    transition: none;
+                    transform: none;
+                }
+                span{
+                    transform: none;
+                    padding: 0;
+                    font-size: 0;
+                    display: none;
+                }
             }
         }
-        .active{
-            // width: 150px;
-            flex-grow: 1;
-            border-radius: 5px;
-            transition: width 0.5s ease-in-out;
-            span{
-                display: block;
-                opacity: 1;
-                visibility: visible;
-                padding-right: 5px;
-                
+        
+    }
+    .sidebar-user {
+        padding: 0 20px;
+        height: 60px;
+        justify-content: space-between;
+        align-items: center;
+        .itemSidebar{
+        margin: 0!important;
+        width: 60px !important;
+        padding: 0!important;
+        height: 50px!important;
+        i{
+            font-size: 29px;
+        }
+        
+        &:hover{
+                width: 60px!important;
+                max-width: 60px;
+
+            padding: 0!important;
+            margin: 0!important;
+            i{
+                margin: 0 !important;
             }
         }
+        span{
+            font-size: 0!important
+        }
+    }
     }
     .item-view{
         flex-direction: column;

@@ -72,7 +72,7 @@ const ListProductAd = (props) => {
   };
 
   return (
-    <div className="list-product-Ad  ">
+    <div className="list-product-Ad">
 {/* {-----------------------module infomation product select------------------} */}
 
       {productSelect && (

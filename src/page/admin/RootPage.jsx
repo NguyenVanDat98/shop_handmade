@@ -12,6 +12,4 @@ const  RootPage = ({children,search}) => {
     </div>
   );
 };
-
-
 export default RootPage;

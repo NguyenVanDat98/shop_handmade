@@ -4,7 +4,7 @@ import { ICONSTAR } from "../../Icon";
 const ItemProductAd = ({ handleSelect, data }) => {
   const { name, price, status, category, sold, rating, discount, img } = data
   return (
-    <div onClick={() => handleSelect(data)} className="list-product-Ad_body_item  ">
+    <div onClick={() => handleSelect(data)} className="list-product-Ad_body_item  viewFirst">
       <div className="product-item-img">
         <img src={img} alt="" />
 
