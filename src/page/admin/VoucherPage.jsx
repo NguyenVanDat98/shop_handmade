@@ -1,59 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { ListVoucher, SearchAd } from "../../components";
-// import { ListVoucher, SearchAd } from "../../components/";
+import FormCreateVoucher from "../../components/admin/voucherPage/FormCreateVoucher";
 import { ICONBACK } from "../../Icon";
 import RootPage from "./RootPage";
-const FormCreateVoucher=()=>{
-  return(
-    <form>
-                <h4>CREATE VOUCHER</h4>
-                <div className="form-floating">
-                  <input
-                    className="form-control"
-                    autoComplete="off"
-                    type="text"
-                    id="name"
-                  />{" "}
-                  <label htmlFor="name">Name </label>{" "}
-                </div>
-                <div className="form-floating">
-                  {" "}
-                  <input
-                    className="form-control"
-                    autoComplete="off"
-                    type="text"
-                    id="expiry"
-                  />{" "}
-                  <label htmlFor="expiry">Expiry </label>
-                </div>
-                <div className="form-floating">
-                  {" "}
-                  <input
-                    className="form-control"
-                    autoComplete="off"
-                    type="text"
-                    id="code"
-                  />
-                  <label htmlFor="code">Code </label>{" "}
-                </div>
-                <div className="form-floating">
-                  <input
-                    className="form-control"
-                    autoComplete="off"
-                    type="text"
-                    id="discount"
-                  />{" "}
-                  <label htmlFor="discount">Discount </label>{" "}
-                </div>
-                <div className="form-floating">
-                  <textarea className="form-control" cols={24} id="detail" />{" "}
-                  <label htmlFor="detail">Detail </label>{" "}
-                </div>
-                <button className="btn btn-success">CREATE</button>
-              </form>
-  )
-}
 
 const VoucherPage = (props) => {
   const [check, setCheck] = useState(true);
