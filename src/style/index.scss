@@ -1,4 +1,5 @@
-@import "./admin/ButtonSidebar.scss";
+@import "./admin/Mixin.scss";
+
 @import "./admin/Sidebar.scss";
 @import "./admin/Account.scss";
 @import "./admin/HeaderAd.scss";
@@ -12,5 +13,7 @@
 @import "./admin/ItemVoucher.scss";
 @import "./admin/MainDashboard.scss";
 @import "./admin/ProfilePage.scss";
+@import "./admin/ModuleSlider.scss";
+@import "./admin/OrderPage.scss";
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
+// @import "../../node_modules/bootstrap/scss/bootstrap";

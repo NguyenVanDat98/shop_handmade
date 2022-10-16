@@ -1,78 +1,30 @@
 import { Route, Routes } from "react-router-dom";
+import { Suspense } from "react";
 import { Toaster } from 'react-hot-toast';
-
 import {
-  UserPage,
-  ProductPage,
-  Dashboard,
-  Homepage,
-  VoucherPage,
-  DiscountPage,
-  OrderPage,
-  LoginPage,
-  SignUpPage,
-  CartPage,
-  PaymentPage,
-  Pageroot,
-  ProfilePage,
-  ProfileUserPage
-} from "../page/index.js";
+    adminRotes,
+    userRoute
+} from "../page/index.jsx";
+import Pageroot from "../page/user/pageroot/Pageroot.jsx";
+import { CommonComponent } from './../page/index';
 import "./App.css";
 import "../style/index.scss";
 import "../styleuser/index.scss";
-import { useCallback, useEffect, useState } from "react";
-import { AccountUser, DetailProduct, SearchUser } from "../components/index.js";
-
-
-function App(e) {
-  const URL = "http://localhost:8000/listProduct";
-  const [listItem, setListItem] = useState([]);
-  const fetchData = useCallback(async () => {
-    await fetch(URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setListItem(data);
-      })
-      .catch(err => console.log(err))
-
-  }, [])
-
-  useEffect(() => {
-    fetchData()
-  }, [fetchData]);
-
+import RootPage from "../page/admin/RootPage.jsx";
+function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/payment" element={<PaymentPage />} />
-        <Route path="/profileuser" element={<ProfileUserPage />} />
-        <Route path="/admin/users" element={<UserPage />} />
-        <Route path="/admin/profile" element={<ProfilePage />} />
-        <Route path="/admin/Dashboard" element={<Dashboard />} />
-        <Route path="/admin/Product" element={<ProductPage />} />
-        <Route path="/admin/Order" element={<OrderPage />} />
-        <Route path="/admin/Voucher" element={<VoucherPage />} />
-        <Route path="/admin/Discount" element={<DiscountPage />} />
-        {
-          listItem && listItem.map((e, i) => <Route key={i} path={`/${e.id}`} element={<Pageroot search={<SearchUser />} account={<AccountUser />}>
-            <DetailProduct
-              item={e}
-              img={e.img}
-              name={e.name}
-              price={e.price}
-              sold={e.sold}
-              status={e.status}
-              id={e.id}
-              rating={e.rating}
-              discount={e.discount}
-            />
-          </Pageroot>} />)
-        }
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          {CommonComponent.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          <Route path="/" element={<Pageroot/>} >
+            {userRoute.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          </Route>
+          <Route path="/admin" element={<RootPage/>}>
+          {adminRotes.map((e, a) => <Route key={a} path={e.path} element={<e.Component />} exact={e.isExact} />)}
+          </Route>
+        </Routes>
+      </Suspense>
       <Toaster position='top-center' reverseOrder={false} />
     </div>
   );

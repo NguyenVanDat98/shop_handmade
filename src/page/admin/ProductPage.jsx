@@ -1,18 +1,8 @@
-import React from 'react';
-import {ListProductAd, SearchAd} from '../../components/';
+import React from "react";
+import { ListProductAd } from "../../components/";
 
-import RootPage from './RootPage';
-
-const ProductPage = props => {
-    return (
-        <div>
-            <RootPage search={<SearchAd/>}>
-                <ListProductAd/>
-            </RootPage>
-        </div>
-    );
+const ProductPage = (props) => {
+  return <ListProductAd />;
 };
-
-
 
 export default ProductPage;

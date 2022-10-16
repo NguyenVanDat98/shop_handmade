@@ -1,37 +1,25 @@
-import React from "react";
-import { useCallback } from "react";
-import { useMemo } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { ICONADD, ICONCLOSE } from "../../Icon";
+import React, { useEffect, useState, useMemo } from "react";
+import { useSelector } from "react-redux";
+import { ICONADD } from "../../Icon";
 import { ItemProductAd } from "./../index.js";
+import InfoProduct from "./InfoProduct";
+import ModuleCreateProduct from "./ModuleCreateProduct";
+import ModuleListSlider from "./ModuleListSlider";
 
 const ListProductAd = (props) => {
-  const [disForm, setDisForm] = useState("");
-  const [data, setData] = useState([]);
-  const [newData, setNewData] = useState([]);
-  const today = new Date(Date.now());
-  const dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${
-    today.getDay() + 1 < 10 ? "0" + (today.getDay() + 1) : today.getDay() + 1
-  }`;
+  const data = useSelector((state) => state.adminData.dataProducts);
+  const [productSelect, setProductSelect] = useState("");
+  const [disForm, setDisForm] = useState({
+    formCreate: false,
+    moduleSlide: false,
+  });
+  const [anima, setAnimation] = useState({
+    formCreate: "disTrue",
+    moduleSlide: "animation-list-slider-on",
+  });
+  const [dataOutput, setDataOutput] = useState([]);
 
-  const fetchData = useCallback(() => {
-    try {
-      fetch("http://localhost:8000/listProduct")
-        .then((res) => res.json())
-        .then((res) => setData(res));
-    } catch (error) {}
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  const handleChangeSort = (e) => {
-    const temp = rootData.filter((item) => item.name === e.target.value);
-    temp.length ? setNewData(temp) : setNewData(rootData);
-  };
-
+  //Filter category
   let listCategory = useMemo(() => {
     let arr = [];
     for (const key in data) {
@@ -41,94 +29,104 @@ const ListProductAd = (props) => {
     }
     return arr;
   }, [data]);
-  const rootData = useMemo(
+  // divide dat flow category
+  const dataDevide = useMemo(
     () =>
-      listCategory.map((e, i) => {
-        return {
-          name: e,
-          data: data.filter((el) => el.category.toLowerCase() === e),
-        };
-      }),
-    [data]
+      listCategory.map((e, i) => ({
+        name: e,
+        data: data.filter((el) => el.category.toLowerCase() === e),
+      })),
+    [data, listCategory]
   );
+  //set data when data update
   useEffect(() => {
-    setNewData(rootData);
-  }, [rootData]);
+    setDataOutput(dataDevide);
+  }, [dataDevide]);
+  const handleChangeFilter = (e) => {
+    const temp = dataDevide.filter((item) => item.name === e.target.value);
+    temp.length ? setDataOutput(temp) : setDataOutput(dataDevide);
+  };
+  const handleClick = (a, b) => {
+    if (disForm[a] === false) {
+      if (disForm[b] === true) {
+        setAnimation({ [a]: "animation-list-slider-on", [b]: "disFalse" });
+        setTimeout(() => {
+          setDisForm({ [a]: true, [b]: false });
+        }, 500);
+      } else {
+        setAnimation({ ...anima, [a]: "animation-list-slider-on" });
+        setDisForm({ ...disForm, [a]: true });
+      }
+    } else {
+      setAnimation({ ...anima, [a]: "animation-list-slider-off" });
+      setTimeout(() => {
+        setDisForm({ ...disForm, [a]: false });
+      }, 500);
+    }
+  };
 
   return (
-    <div className="list-product-Ad viewFirst ">
-      <div className={`module-create-product  ${disForm}`}>
-        <i onClick={() => setDisForm("disFalse")} className={ICONCLOSE}></i>{" "}
-        <span> Create product</span>
-        <form className="d-flex flex-column ">
-          <div className="item-input">
-            <input
-              className="form-control"
-              autoComplete="off"
-              type="text"
-              id="nameProduct"
-            />{" "}
-            <label htmlFor="nameProduct">Name product </label>{" "}
-          </div>
-          <div className="item-input">
-            <input
-              className="form-control"
-              autoComplete="off"
-              type="text"
-              id="price"
-            />{" "}
-            <label htmlFor="price">Price </label>{" "}
-          </div>
-          <div className="item-input">
-            <input
-              className="form-control"
-              autoComplete="off"
-              type="text"
-              id="category"
-            />{" "}
-            <label htmlFor="category">Category </label>{" "}
-          </div>
-          <div className="item-input">
-            <input
-              className="form-control"
-              autoComplete="off"
-              type="text"
-              id="image"
-            />{" "}
-            <label htmlFor="img">Img link </label>{" "}
-          </div>
-          <div className="item-input">
-            <input
-              className="form-control"
-              autoComplete="off"
-              type="text"
-              id="discount"
-            />{" "}
-            <label htmlFor="discount">Discount </label>{" "}
-          </div>
-          <div className="item-input">
-            <input
-              className="form-control"
-              autoComplete="off"
-              type="date"
-              readOnly
-              id="date"
-              value={dateNow}
-            />{" "}
-            <label htmlFor="date">Date making </label>{" "}
-          </div>
-          <button type="button" className="btn btn-primary">
-            ADD
-          </button>
-        </form>
-      </div>
+    <div className="list-product-Ad">
+{/* {-----------------------module infomation product select------------------} */}
+
+      {productSelect && (
+        <InfoProduct
+          handleClose={() => {
+            setTimeout(() => {
+              setProductSelect("");
+            }, 500);
+          }}
+          data={productSelect}
+        />
+      )}
+{/* {-----------------------module Create new product------------------} */}
+
+      <ModuleCreateProduct
+        check={disForm.formCreate}
+        listCategory={listCategory}
+        onclickClose={() => {
+          setAnimation({ ...anima, formCreate: "disFalse" });
+          setTimeout(() => {
+            setDisForm({ ...disForm, formCreate: !disForm.formCreate });
+          }, 500);
+        }}
+        disForm={anima.formCreate}
+      />
+{/* {-----------------------module slider------------------} */}
+      <ModuleListSlider
+        check={disForm.moduleSlide}
+        data={productSelect}
+        onclickClose={() => {
+          setAnimation({ ...anima, moduleSlide: "animation-list-slider-off" });
+          setTimeout(() => {
+            setDisForm({ ...disForm, moduleSlide: !disForm.moduleSlide });
+          }, 500);
+        }}
+        disForm={anima.moduleSlide}
+      />
       <div className="main-list">
         <div className="list-product-Ad_header">
-          <button onClick={() => setDisForm("disTrue")}>
+{/* {---------------------------------BUTTON--------------------------} */}
+{/* {button add new product} */}
+          <button
+            onClick={() => {
+              handleClick("formCreate", "moduleSlide");
+            }}
+          >
             <i className={ICONADD}> </i> ADD PRODUCT
           </button>
+{/* {---------------------------------BUTTON--------------------------} */}
+{/* {button view list silder} */}
+          <button
+            onClick={() => {
+              handleClick("moduleSlide", "formCreate");
+            }}
+          >
+            <i className={ICONADD}> </i> LIST SLIDER
+          </button>
+          {/* {list category} */}
           <select
-            onChange={(e) => handleChangeSort(e)}
+            onChange={(e) => handleChangeFilter(e)}
             className="form-select"
             name=""
           >
@@ -141,21 +139,22 @@ const ListProductAd = (props) => {
               ))}
           </select>
         </div>
-        {newData &&
-          newData.map((e, i) => {
+{/* {-----------------------list product render------------------} */}
+        {dataOutput &&
+          dataOutput.map((e, i) => {
             return (
               <div key={i} className="list-allProduct">
-                <span> {e.name} ({e.data.length})</span>
+                <div className=" d-flex justify-content-between line-title">
+                  <span>{e.name}</span>
+                  <span>({e.data.length})</span>
+                </div>
                 <div className="main-content-list-product ">
                   {e.data.map((item, i) => (
                     <ItemProductAd
-                      linkImg={item.img}
-                      sold={item.sold}
-                      price={item.price}
-                      category={item.category}
-                      nameProduct={item.name}
-                      rating={item.rating}
-                      discount={item.discount}
+                      handleSelect={() => {
+                        setProductSelect(item);
+                      }}
+                      data={item}
                       key={i}
                     />
                   ))}

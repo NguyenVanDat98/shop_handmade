@@ -1,18 +1,8 @@
 import React from 'react';
-import Pageroot from '../pageroot/Pageroot';
-import { AccountUser, CartUser, SearchUser } from '../../../components';
-
-CartPage.propTypes = {
-
-};
-
+import { CartUser } from '../../../components';
 function CartPage(props) {
     return (
-        <div>
-            <Pageroot search={<SearchUser />} cart={false} account={<AccountUser />}>
-                <CartUser />
-            </Pageroot>
-        </div>
+        <CartUser />
     );
 }
 

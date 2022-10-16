@@ -1,52 +1,63 @@
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Doughnut } from "react-chartjs-2";
+import { ResponsivePie } from "@nivo/pie";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
-
-const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'bottom',
-    },
-    title: {
-      display: true,
-      text: 'Top 4 Product Best Seller',
-    },
+const pieData = [
+  {
+    id: "Boot",
+    label: "java",
+    value: 195,
+    color: "hsl(90, 70%, 50%)"
   },
-};
-
-const data = {
-  labels: ["Red", "Blue", "Yellow", "Green"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [12, 19, 3, 5],
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.6)",
-        "rgba(54, 162, 235, 0.6)",
-        "rgba(255, 206, 86, 0.6)",
-        "rgba(75, 192, 192, 0.6)",
-
-  
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
+  {
+    id: "Kitchen",
+    label: "erlang",
+    value: 419,
+    color: "hsl(56, 70%, 50%)"
+  },
+  {
+    id: "LandHouse",
+    label: "ruby",
+    value: 407,
+    color: "hsl(103, 70%, 50%)"
+  },
+  {
+    id: "RainBow",
+    label: "haskell",
+    value: 474,
+    color: "hsl(186, 70%, 50%)"
+  },
+  {
+    id: "go",
+    label: "go",
+    value: 71,
+    color: "hsl(104, 70%, 50%)"
+  }
+];
 
 const PieChart = (props) => {
   return (
     <div className="pie-chart">
-      <Doughnut options={options} data={data} />
+      <ResponsivePie
+      data={pieData}
+      margin={{ top: 30, right: 20, bottom: 40, left: 20 }}
+      innerRadius={0.5}
+      padAngle={0.9}
+      cornerRadius={10}
+      activeOuterRadiusOffset={10}
+      borderWidth={1.5}
+      borderColor={{ from: "color", modifiers: [["darker", 0.5]] }}
+      arcLinkLabelsSkipAngle={10}
+      arcLinkLabelsTextColor="#fff"
+      arcLinkLabelsStraightLength={1}
+      arcLinkLabelsTextOffset={3}
+      arcLinkLabelsDiagonalLength={20}
+      arcLinkLabelsThickness={1}
+      arcLinkLabelsColor={{ from: "color" }}
+      arcLabelsSkipAngle={6}
+      arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
+    />
+    {/* {pie chart rangter user user} */}
+    
     </div>
   );
 };

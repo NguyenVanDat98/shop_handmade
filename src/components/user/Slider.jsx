@@ -2,15 +2,16 @@ import React from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getSlide } from '../../redux/thunk/actionThunk';
+import { Link } from 'react-router-dom';
 function SlideShow() {
     const dispatch = useDispatch();
     const dataSlider = useSelector((state) => state.users.slider);
     useEffect(() => {
         dispatch(getSlide());
-    }, [getSlide]);
+    }, [dispatch]);
     const settings = {
         dots: true,
         infinite: true,
@@ -53,15 +54,15 @@ function SlideShow() {
         <div className="slideshow">
             <h2> New Product</h2>
             <Slider {...settings}>
-                {dataSlider && dataSlider.map((item) => (
-                    <div className="card">
+                {dataSlider && dataSlider.map((item, i) => (
+                    <div className="card" key={i}>
                         <div className="card-top">
-                            <div>
+                            <Link to={`/detail/${item.id}`}>
                                 <img
                                     src={item.img}
                                     alt={item.name}
                                 />
-                            </div>
+                            </Link>
                             <h5>{item.name}</h5>
                         </div>
                         <div className="card-bottom">

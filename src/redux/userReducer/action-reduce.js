@@ -27,3 +27,31 @@ export const getProduct = (data) => {
     }
 
 }
+export const getProductAll = (data) => {
+    return {
+        type: actionTypes.FETCH_PRODUCT_ALL,
+        payload: data,
+    }
+
+}
+export const isLoadmore = (data) => {
+    return {
+        type: actionTypes.LOADMORE,
+        payload: data
+    }
+
+}
+export const addToCart = (data) => {
+    return {
+        type: actionTypes.ADD_TO_CART,
+        payload: data
+    }
+
+}
+export const SaveCart = (product) => {
+    return {
+        type: actionTypes.SAVE_TO_CART,
+        payload: product
+    }
+
+}

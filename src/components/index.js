@@ -1,76 +1,42 @@
 //admin import
-import BodyAd from "./admin/BodyAd";
-import ButtonSidebar from "./admin/ButtonSidebar";
-import HeaderAd from "./admin/HeaderAd";
-import ItemUser from "./admin/ItemUser";
-import ListUser from "./admin/ListUser";
-import SearchAd from "./admin/SearchAd";
-import SidebarAd from "./admin/SidebarAd";
-import Account from "./admin/Account";
-import ListProductAd from "./admin/ListProductAd";
-import ItemProductAd from "./admin/ItemProductAd";
-import ListVoucher from "./admin/ListVoucher";
-import ItemVoucher from "./admin/ItemVoucher";
-import MainDashboard from "./admin/MainDashboard";
-import ItemView from "./admin/ItemView";
-import ChartBar from "./admin/ChartBar";
-import PieChart from "./admin/PieChart";
+export { default as BodyAd } from "./admin/BodyAd";
+export { default as ButtonSidebar } from "./admin/ButtonSidebar";
+export { default as HeaderAd } from "./admin/HeaderAd";
+export { default as ItemUser } from "./admin/ItemUser";
+export { default as ListUser } from "./admin/ListUser";
+export { default as SearchAd } from "./admin/SearchAd";
+export { default as SidebarAd } from "./admin/SidebarAd";
+export { default as Account } from "./admin/Account";
+export { default as ListProductAd } from "./admin/ListProductAd";
+export { default as ItemProductAd } from "./admin/ItemProductAd";
+export { default as ListVoucher } from "./admin/ListVoucher";
+export { default as ItemVoucher } from "./admin/ItemVoucher";
+export { default as MainDashboard } from "./admin/MainDashboard";
+export { default as ModuleUserProfile } from "./admin/ModuleUserProfile";
+export { default as ItemView } from "./admin/ItemView";
+export { default as ChartFiveUser } from "./admin/ChartFiveUser";
+export { default as ChartBar } from "./admin/ChartBar";
+export { default as PieChart } from "./admin/PieChart";
 
 //user import
-import BodyUser from "./user/BodyUser";
-import FooterUser from "./user/FooterUser";
-import Header from "./user/Header";
-import ListProduct from "./user/ListProduct";
-import Product from "./user/Product";
-import SearchUser from "./user/SearchUser";
-import SideBar from "./user/SideBar";
-import SlideShow from "./user/Slider";
-import Filter from "./user/Filter";
-import Sort from "./user/Sort";
-import Login from "./user/Login";
-import SignUp from "./user/SignUp";
-import AccountUser from "./user/AccountUser";
-import DetailProduct from "./user/DetailProduct";
-import Text from "./user/Text";
-import CartUser from "./user/CartUser";
-import PaymentUser from './user/PaymentUser';
-import ProfileUser from './user/ProfileUser';
+export { default as BodyUser } from "./user/BodyUser";
+export { default as FooterUser } from "./user/FooterUser";
+export { default as Header } from "./user/Header";
+export { default as ListProduct } from "./user/ListProduct";
+export { default as Product } from "./user/Product";
+export { default as SearchUser } from "./user/SearchUser";
+export { default as SideBar } from "./user/SideBar";
+export { default as SlideShow } from "./user/Slider";
+export { default as Filter } from "./user/Filter";
+export { default as Sort } from "./user/Sort";
+export { default as Login } from "./user/Login";
+export { default as SignUp } from "./user/SignUp";
+export { default as AccountUser } from "./user/AccountUser";
+export { default as DetailProduct } from "./user/DetailProduct";
+export { default as Text } from "./user/Text";
+export { default as CartUser } from "./user/CartUser";
+export { default as PaymentUser } from './user/PaymentUser';
+export { default as ProfileUser } from './user/ProfileUser';
+export { default as Forgot } from './user/Forgot';
 
-export {
-  ListProductAd,
-  ItemProductAd,
-  BodyAd,
-  ButtonSidebar,
-  HeaderAd,
-  ItemUser,
-  ListUser,
-  SearchAd,
-  SidebarAd,
-  Account,
-  ListVoucher,
-  ItemVoucher,
-  MainDashboard,
-  ItemView,
-  ChartBar,
-  PieChart,
-};
-export {
-  BodyUser,
-  Text,
-  FooterUser,
-  Header,
-  ListProduct,
-  Product,
-  SearchUser,
-  SideBar,
-  SlideShow,
-  Filter,
-  Sort,
-  Login,
-  SignUp,
-  AccountUser,
-  DetailProduct,
-  CartUser,
-  PaymentUser,
-  ProfileUser
-};
+

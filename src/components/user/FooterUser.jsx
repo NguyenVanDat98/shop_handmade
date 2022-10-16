@@ -22,9 +22,9 @@ const FooterUser = props => {
             <div className="footer__social">
                 <div className='footer__social--email'>
                     <h5>Subscribe</h5>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Your Email" aria-label="Username" aria-describedby="input-group-button-right" />
-                        <button type="button" class="btn btn-success" id="input-group-button-right">SEND</button>
+                    <div className="input-group">
+                        <input type="text" className="form-control" placeholder="Your Email" aria-label="Username" aria-describedby="input-group-button-right" />
+                        <button type="button" className="btn btn-success" id="input-group-button-right">SEND</button>
                     </div>
                 </div>
                 <div className='footer__social--follow'>

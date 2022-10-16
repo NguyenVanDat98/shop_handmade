@@ -5,7 +5,7 @@ const ListVoucher = (props) => {
   return (
     <div className="list-voucher body-padding-15">
       {" "}
-      {[...new Array(20)].map((i) => (
+      {[...new Array(20)].map((_,i) => (
         <ItemVoucher key={i} />
       ))}
     </div>

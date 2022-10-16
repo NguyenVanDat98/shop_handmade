@@ -1,58 +1,89 @@
-import React from 'react';
-import { ICONMINUS, ICONPLUS, ICONSTAR } from '../../Icon';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { ICONSTAR } from '../../Icon';
+import { fetProducts } from './../../api/apiMethod';
+import { useDispatch } from 'react-redux';
+
+import {  putCart } from '../../redux/thunk/actionThunk';
+import { useNavigate } from 'react-router-dom';
+import { listImage } from '../../common/common';
+import { useCallback } from 'react';
+
 function DetailProduct(props) {
-    const { name, img, price, discount, status, sold, rating, } = props;
+    const [itemData, setItemData] = useState(Object);
+    const [index, setIndex] = useState(0);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
+
+    const param = useParams()
+    const FetProduct  =useCallback(()=>{
+         fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
+        .then(res => 
+            setItemData(res[0])
+        )
+    },[param])
+ 
+    useEffect(() => {
+        FetProduct()
+    }, [param,FetProduct])
+
+    const handleAddToCart = (item) => {
+        if (locale.userName) {
+            dispatch(putCart({ data: { product_id: itemData.id, quantity: 1 }, id: locale.cart_id }))
+        } else {
+            navigate("/login");
+        }
+    }
     return (
-        <div className='detail viewFirst'>
-            <div className='detail__photos'>
-                <img src={img} alt="" className='' />
-                <div className='detail__photos--list'>
-                    <img src="https://s.alicdn.com/@sc04/kf/H7127b8b74e404752a3926e05d84bc7bcB.jpg_960x960.jpg" alt="" />
-                    <img src="https://s.alicdn.com/@sc04/kf/HTB1kpVHa0fvK1RjSszhq6AcGFXaC.jpg_280x280.jpg" alt="" />
-                    <img src="https://s.alicdn.com/@sc04/kf/H6371a8b7bee746e684e9fbbe0c1893b0f.jpg_960x960.jpg" alt="" />
-                    <img src="https://s.alicdn.com/@sc04/kf/H8c076c56ea7f4742a16209a79d8e8dbba.jpg_960x960.jpg" alt="" />
-                    <img src="https://s.alicdn.com/@sc04/kf/H360a895459454ad2b6494640dd8f3595r.jpg_960x960.jpg" alt="" />
+        <>
+            {itemData && <div className='detail '>
+                <div className='detail__photos'>
+                    <img src={!index ? itemData.img : index} alt="" className='detail__photos--main' />
+                    <div className='detail__photos--list'>
+                        <img onClick={(e) => { setIndex(e.target.src) }} src={itemData.img} alt="" />
+                        {listImage.map((item, id) => (
+                            <img onClick={(e) => { setIndex(e.target.src) }} src={item} alt="" key={id} className="detail__photo--list--img" />
+                        ))}
+                    </div>
                 </div>
-            </div>
-            <div className='detail__info'>
-                <h2>{name}</h2>
-                <div className='d-flex justify-content-between'>
-                    <h4>{price}</h4>
-                    <p><i className={ICONSTAR}></i> {rating}/5</p>
-                </div>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Sed voluptas autem molestiae nisi quia laudantium,
-                    consequuntur ad vitae voluptatem officia alias.
-                    Qui quas, odio nam ad nihil aspernatur natus reiciendis!
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Sed voluptas autem molestiae nisi quia laudantium,
-                    consequuntur ad vitae voluptatem officia alias.
-                    Qui quas, odio nam ad nihil aspernatur natus reiciendis!
-                </p>
-                <div>
-                    <p className='detail-stock'>
-                        <span>Available:</span>
-                        {status}
+                <div className='detail__info'>
+                    <h2>{itemData.name}</h2>
+                    <div className='d-flex justify-content-between'>
+                        <h4>$ {itemData.price}</h4>
+                        <p><i className={ICONSTAR}></i> {itemData.rating}/5</p>
+                    </div>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Sed voluptas autem molestiae nisi quia laudantium,
+                        consequuntur ad vitae voluptatem officia alias.
+                        Qui quas, odio nam ad nihil aspernatur natus reiciendis!
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Sed voluptas autem molestiae nisi quia laudantium,
+                        consequuntur ad vitae voluptatem officia alias.
+                        Qui quas, odio nam ad nihil aspernatur natus reiciendis!
                     </p>
-                    <p className='detail-discount'>
-                        <span>Discount:</span>
-                        {discount}
-                    </p>
-                    <p className='detail-sold'>
-                        <span>Amount Sold:</span>
-                        {sold}
-                    </p>
+                    <div>
+                        <p className='detail-stock'>
+                            <span>Available:</span>
+                            {itemData.status ? "In stock" : "Out of stock"}
+                        </p>
+                        <p className='detail-discount'>
+                            <span>Discount:</span>
+                            {itemData.discount}
+                        </p>
+                        <p className='detail-sold'>
+                            <span>Amount Sold:</span>
+                            {itemData.sold}
+                        </p>
+                    </div>
+                    <div className='detail__btn'>
+                        {itemData.status ? (<button className='button' onClick={() => handleAddToCart(itemData)}>Add To Cart</button>)
+                            : (<button className='btn btn-danger'>Order</button>)}
+                    </div>
                 </div>
-                <div>
-                    <button><i className={ICONMINUS}></i></button>
-                    <span>1</span>
-                    <button><i className={ICONPLUS}></i></button>
-                </div>
-                <div className='detail__btn'>
-                    <button>Add to cart</button>
-                </div>
-            </div>
-        </div>
+            </div>}
+        </>
     );
 }
 

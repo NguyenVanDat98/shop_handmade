@@ -4,6 +4,7 @@ import SidebarAd from './SidebarAd';
 const BodyAd = ({children}) => {
     return (
         <div className='bodyAd'>
+            
             <SidebarAd/>
             {children}
         </div>

@@ -1,13 +1,11 @@
 import React from 'react';
-import { Header } from '../../../components';
-import Login from '../../../components/user/Login';
-
+import { Header, Login } from '../../../components';
 function LoginPage(props) {
     return (
-        <div>
+        <>
             <Header cart={false} />
             <Login />
-        </div>
+        </>
     );
 }
 

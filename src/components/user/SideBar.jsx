@@ -7,7 +7,9 @@ import {
 } from "../../Icon";
 import ButtonSidebar from "../admin/ButtonSidebar";
 
+
 const SideBar = (props) => {
+
     const url = window.location.href
     const page = {
         page1: url.includes("/Dashboard"),
@@ -30,13 +32,13 @@ const SideBar = (props) => {
                 iconName={ICONCART}
                 active={page.page2}
                 innerText="Cart"
-                pathName="/cart"
+                pathName={"/cart"}
             />
             <ButtonSidebar
                 iconName={ICONMAIL}
                 active={page.page3}
                 innerText="Mail"
-                pathName=""
+                pathName="#"
             />
             <ButtonSidebar
                 iconName={ICONUSER}
