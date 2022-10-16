@@ -13,30 +13,24 @@ function SelectItem({ item }) {
         dispatch(DeleteItem(e));
     }
     return (
-        <div className='list-goods'>
-            <div className='list-goods__item'>
-                <img src={item.img} alt="" />
+        <div className='list-goods__item'>
+            <img src={item.img} alt="" />
+            <div className='list-goods__item--info'>
                 <div>
-                    <div>
-                        <p>{item.name}</p>
-                        <p>{item.description}</p>
-                    </div>
-                    <div>
-                        <p>${item.price}</p>
-                    </div>
+                    <p>{item.name}</p>
+                    <p>{item.description}</p>
                 </div>
+                <p>${item.price}</p>
+            </div>
+            <div className='list-goods__item--btn'>
                 <div>
-
-                    <div style={{ marginLeft: "10px" }}>
-                        <i className={ICONMINUS} data-value="minus" onClick={handleQuantity}></i>
-                        <p>{item.quantity}</p>
-                        <i className={ICONPLUS} data-value="plus" onClick={handleQuantity}></i>
-                    </div>
-                    <button className='btn'><i className={ICONTRASH} onClick={() => DeleteSelectItem(item)} /></button>
+                    <i className={ICONMINUS} data-value="minus" onClick={handleQuantity}></i>
+                    <p>{item.quantity}</p>
+                    <i className={ICONPLUS} data-value="plus" onClick={handleQuantity}></i>
                 </div>
+                <button className='btn'><i className={ICONTRASH} onClick={() => DeleteSelectItem(item)} /></button>
             </div>
         </div>
-
     );
 }
 

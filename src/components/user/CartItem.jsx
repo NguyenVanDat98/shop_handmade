@@ -8,9 +8,7 @@ function CartItem({ goods }) {
     const [add, setAdd] = useState(true);
     const dispatch = useDispatch();
     const handleAddStep = (data) => {
-
         dispatch(SelectItem(data))
-
     }
     return (
         <li className="list-product__add">
@@ -23,12 +21,14 @@ function CartItem({ goods }) {
                     <p>{goods.description}</p>
                 </div>
             </div>
-            <div>
+            <div className='list-product__price'>
                 <p>${goods.price}</p>
             </div>
-            <div className='d-flex flex-column justify-content-between' style={{ height: "100%" }}>
+            <div className='list-product__button'>
                 <button className={`btn ${add === 2 ? "btn-success" : "btn-danger"}`} disabled={!add ? true : false} onClick={() => { handleAddStep(goods); setAdd(false) }}>Add</button>
-                <i className={ICONTRASH}></i>
+                <span>
+                    <i className={ICONTRASH}></i>
+                </span>
             </div>
         </li>
     );

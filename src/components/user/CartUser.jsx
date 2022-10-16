@@ -15,19 +15,22 @@ function CartUser(props) {
     }, [dispatch]);
     return (
         <div className='list'>
-            <ul className="list-product">
-                {listProduct.cart.length > 0 && listProduct.cart.map((goods, index) => (
-                    <CartItem goods={goods} key={index} />
-                ))}
-                <div className='list-product__btn'>
+            <div className='list-wrap'>
+                <ul className="list-product">
+                    {listProduct.cart.length > 0 && listProduct.cart.map((goods, index) => (
+                        <CartItem goods={goods} key={index} />
+                    ))}
+                </ul>
+                <div className='list-wrap--btn'>
                     <button type='button'>Clear All</button>
                 </div>
-            </ul>
+            </div>
             <div className='list-selection'>
-                {listProduct.stepPayment.length > 0 && listProduct.stepPayment.map((item, index) =>
-                    <SelectItem item={item} key={index} />
-                )}
-
+                <div className='list-goods'>
+                    {listProduct.stepPayment.length > 0 && listProduct.stepPayment.map((item, index) =>
+                        <SelectItem item={item} key={index} />
+                    )}
+                </div>
                 <div className='list-payment'>
                     <div>
                         <p>Amount product: </p>

@@ -47,7 +47,6 @@
             background-color: white;
             position: absolute;
             cursor: pointer;
-            z-index: 1;
         }
 
 
@@ -57,25 +56,16 @@
 
             &:hover {
                 background-color: rgba(0, 0, 0, 0.03);
-                cursor: pointer;
                 color: blue;
+                z-index: 9999;
+                cursor: pointer;
             }
-        }
-
-
-        &>li {
-            padding: 7px 5px 8px 15px;
 
             span {
                 font-weight: 400;
             }
-
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.03);
-                cursor: pointer;
-                color: blue;
-            }
         }
+
     }
 
     &>span {
