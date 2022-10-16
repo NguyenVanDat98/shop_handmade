@@ -28,17 +28,19 @@ export const adminReduce = (state = adInitalValue, action) => {
 
     case SAVE_LIST_HiSTORY_ORDER:
 
-      return { ...state, historyOrder: action.payload.sort((_,__)=>-1) };
+      return { ...state, historyOrder: action.payload.sort((_, __) => -1) };
 
     case SAVE_LIST_ORDER:
-        const sortarr= action.payload.sort((_,__)=>-1)
+      const sortarr = action.payload.sort((_, __) => -1)
       return { ...state, listOrder: action.payload };
     case CHANGE_LIST_ORDER:
-        let temp= state.listOrder.map(_=> {if(_.id===action.payload.id){
-            _.time_complete = action.payload.time_complete;
-            _.status = action.payload.status
-            return _
-        }return _})
+      let temp = state.listOrder.map(_ => {
+        if (_.id === action.payload.id) {
+          _.time_complete = action.payload.time_complete;
+          _.status = action.payload.status
+          return _
+        } return _
+      })
       return {
         ...state,
         listOrder: temp

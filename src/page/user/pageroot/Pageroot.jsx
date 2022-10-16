@@ -44,7 +44,7 @@ const Pageroot = (props) => {
       <Header
         search={
           (param.pathname.includes("/detail") && true) ||
-         ( pathSearch.includes(param.pathname)
+          (pathSearch.includes(param.pathname)
             ? true
             : false)
         }
