@@ -1,10 +1,15 @@
 .main-dashboard{
-    width: 100%;
-    min-height: calc(100% - 100px);
+    position: absolute;
+    top: -70px;
+    right: 15px;
+    width: calc(100vw - 110px );
+    min-height: calc(100vh - 20px);
     background-color: rgba($color: #171519, $alpha: 0.52);
     border-radius: 10px;
     margin-bottom: 25px;
     padding: 10px 20px; 
+    filter: drop-shadow(5px 0 8px black);
+    box-shadow: inset 5px 0 8px black;
 }
 .item-view{
     background-color: rgba($color: #373C48, $alpha: 0.77);
@@ -21,23 +26,39 @@
         text-decoration: underline;
     }
 }
-.pie-chart{
-    // flex-grow: 1 !important;
-    // height: 100% !important;
-    width: calc(25vw - 20px) !important;
-    &> canvas {
-        width: 100% !important;   
+.main-pie{
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.pie-ranger{
+    flex-grow: 1;
+    text{
+        fill: white !important;
+        font-size: 12px !important;
+    text-transform: capitalize !important;
+
     }
+}
+.pie-chart{
+height: 100%;
+text{
+    text-transform: capitalize !important;
+
+}
 
 }
 .chart-bar{
     
-   max-height: calc(100% - 80px);
-    padding-right: 20px;
-   &> canvas{
-        width: calc(100vw - 550px) !important;
-        
-    }
+   max-height: calc(100% - 10px);
+   text{
+    fill: #fff !important;
+    text-transform: capitalize !important;
+    font-size:  13px !important;
+    
+    
+
+   }
 }
 .chart-body{
     grid-template-columns: auto 1fr;
@@ -60,16 +81,17 @@
         grid-template-rows: max-content max-content;
     }
     .chart-bar{
-        max-height: 500px;
+        max-height: 50vh;
         &> canvas{
             width: calc(80vw - 50px) !important;
             
         }
+
     }
     .pie-chart{
         // flex-grow: 1 !important;
-        height: 50% !important;
-        width: 50% !important;
+        height: 100% !important;
+        width: 100% !important;
     
     }
 }
@@ -111,7 +133,7 @@
     .sidebarAd {
         position: fixed;
         top: auto;
-        padding: 0 10px;
+        padding: 0 30px 0 20px;
         margin: 0;
         flex-direction: row;
         justify-content: space-between;
@@ -142,6 +164,9 @@
                 min-width: max-content;
                 i{
                     transform: none;
+                    opacity: 1;
+                    visibility: visible;
+                    // font-size: 24px;
                     font-size: 29px !important; 
                 }
                 span{
@@ -217,24 +242,48 @@
         margin: 0 5px;
         padding-top: 10px; 
 }
+.main-dashboard{
+    width: 100vw;
+    right: 0;
+    padding-right: 0;
+    margin-right: 0;
+}
 
     .chart-body{
-        grid-template-columns:  100%;
-        grid-template-rows: max-content max-content;
+       height: 80vh;
     }
     .chart-bar{
-        max-height: 500px;
-        padding-right: 0;
-        &> canvas{
-            width: calc(100vw - 20px) !important;
-            
+        height: 30%;
+        max-height: 50vh;
         }
     }
+    .main-pie{
+        height: 50%;
+    }
+  
     .pie-chart{
         // flex-grow: 1 !important;
-        height: 70% !important;
-        width: 70% !important;
+        height: 100% !important;
+        width: 50% !important;
+        text{
+            font-size: 13px !important;
+        }
     
     
+    }
+
+@media (min-width:1000px) {
+    .main-dashboard{
+        display: flex;
+        .chart-bar{
+            flex-grow: 1;
+            height: 60%;
+            object-fit: cover;
+            max-width: calc(100vw - 380px);
+        }
+        .pie-ranger{
+            max-height: 90%;
+            max-width: 48%;
+        }
     }
 }

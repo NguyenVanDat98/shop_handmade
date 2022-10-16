@@ -1,6 +1,8 @@
 # Note 
 
 pleale install : "npm install --save chart.js react-chartjs-2 @faker-js/faker"
+
+, "npm i @nivo/core @nivo/bar @nivo/pie"
  
 
 

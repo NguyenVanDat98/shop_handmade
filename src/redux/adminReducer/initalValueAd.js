@@ -1,7 +1,5 @@
 export const adInitalValue ={
-    dataProducts: [],
-    reRender:true,
-    slideShow:[],
+    dataProducts: [],    slideShow:[],
     infomationUser :{},
     ratings:{},
     historyOrder : [],

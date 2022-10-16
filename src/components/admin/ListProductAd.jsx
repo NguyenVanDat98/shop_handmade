@@ -1,16 +1,13 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { ICONADD } from "../../Icon";
-import { fetchDataProduct } from "../../redux/adminReducer/actionThunkAd/actionThunk";
 import { ItemProductAd } from "./../index.js";
 import InfoProduct from "./InfoProduct";
 import ModuleCreateProduct from "./ModuleCreateProduct";
 import ModuleListSlider from "./ModuleListSlider";
 
 const ListProductAd = (props) => {
-  const dispatch = useDispatch();
-  const data = useSelector((state) => state.adminData.dataProduct);
-  const [render, setRender] = useState(true);
+  const data = useSelector((state) => state.adminData.dataProducts);
   const [productSelect, setProductSelect] = useState("");
   const [disForm, setDisForm] = useState({
     formCreate: false,
@@ -21,9 +18,6 @@ const ListProductAd = (props) => {
     moduleSlide: "animation-list-slider-on",
   });
   const [dataOutput, setDataOutput] = useState([]);
-  useEffect(() => {
-    dispatch(fetchDataProduct());
-  }, [render, dispatch]);
 
   //Filter category
   let listCategory = useMemo(() => {
@@ -97,9 +91,6 @@ const ListProductAd = (props) => {
           }, 500);
         }}
         disForm={anima.formCreate}
-        render={() => {
-          setRender(!render);
-        }}
       />
 {/* {-----------------------module slider------------------} */}
       <ModuleListSlider

@@ -1,17 +1,13 @@
-import React ,{useEffect,useState} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React ,{useState} from "react";
+import { useSelector } from "react-redux";
 import { ModuleUserProfile,ItemUser } from "./../index.js";
-import { GetInfomationUser } from "../../redux/adminReducer/actionThunkAd/actionThunk.js";
 import { ChartFiveUser } from ".."
 const ListUser = (props) => {
   const [close, setClose] = useState(true);
   const [displayModule, setDisplay] = useState("");
   const [accFocus , setAccFocus ]=useState({});
   const listUserData = useSelector((state) => state.adminData.infomationUser);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(GetInfomationUser());
-  }, [dispatch]);
+
   const handleClose =()=>{
       setDisplay("moduleIN");
       setClose(false);
