@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICONFACEBOOK, ICONINSTA, ICONLINKINED, ICONLOCATION, ICONMAIL, ICONPHONE, ICONPINTEREST, ICONTWITTER } from './../../Icon/index';
+import { ICONFACEBOOK, ICONLINKINED, ICONLOCATION, ICONMAIL, ICONPHONE, ICONPINTEREST, ICONTWITTER } from './../../Icon/index';
 import logo from "../../img/logo.png";
 
 const FooterUser = props => {

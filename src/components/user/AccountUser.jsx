@@ -1,15 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ICONUSER } from '../../Icon';
+import { fetchAccount } from '../../redux/userReducer/action-reduce';
 
 
 function AccountUser(props) {
     const [account, setAccount] = useState(false);
+const dispatch = useDispatch()
     const navi = useNavigate()
     const logOut = () => {
         window.localStorage.removeItem("infoAccount")
-        navi("/login", { replace: true })
+        dispatch(fetchAccount({}))
+        navi("/login")
     }
     return (
         <div className="header__login">

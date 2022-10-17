@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputFormVoucher = ({ type, name, register, required }) => {
+const InputFormVoucher = ({ type, name, register, require }) => {
   return (
     <div className="form-floating">
       <input
@@ -8,7 +8,7 @@ const InputFormVoucher = ({ type, name, register, required }) => {
         autoComplete="off"
         type={type}
         id={name}
-        {...register(name, { required })}
+        {...register(name, { require })}
         name={name}
       />{" "}
       <label htmlFor={name}>{name} </label>{" "}

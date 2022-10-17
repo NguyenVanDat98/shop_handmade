@@ -7,6 +7,7 @@ import {
   SAVE_LIST_ORDER,
   CHANGE_LIST_ORDER,
   ADD_PRODUCT,
+  ADD_LIST_SLIDER,
 } from "./actionTypeAd";
 import { adInitalValue } from "./initalValueAd";
 
@@ -21,6 +22,8 @@ export const adminReduce = (state = adInitalValue, action) => {
       };
     case SAVE_LIST_SLIDER:
       return { ...state, slideShow: action.payload };
+    case ADD_LIST_SLIDER:
+      return { ...state, slideShow: [...state.slideShow,action.payload] };
 
     case SAVE_LIST_USER:
       return { ...state, infomationUser: action.payload };

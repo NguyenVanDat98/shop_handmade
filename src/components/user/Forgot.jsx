@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { makeCode } from "../../common/common";
-import { useEffect } from "react";
 const codee = makeCode();
 
 function Forgot(props) {
@@ -36,7 +35,7 @@ function Forgot(props) {
     _.preventDefault()
     console.log(codee);
     console.log(valueForm.reCode);
-     if(valueForm.reCode==codee){
+     if(valueForm.reCode===codee){
         console.log(true);
      }else{
         refReCode.current.focus()

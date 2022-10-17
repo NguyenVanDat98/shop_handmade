@@ -24,7 +24,7 @@ function PaymentUser(props) {
                     <p>Cart</p>
                     <div className='user__info--cart--item'>
                         <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg" alt="image" />
+                            <img src="https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg" alt="imagee" />
                             <p className='fws-text'>Kitchen</p>
                         </div>
                         <div>
@@ -36,7 +36,7 @@ function PaymentUser(props) {
                     </div>
                     <div className='user__info--cart--item'>
                         <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="image" />
+                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
                             <p className='fws-text'>Boat</p>
                         </div>
                         <div>
@@ -48,7 +48,7 @@ function PaymentUser(props) {
                     </div>
                     <div className='user__info--cart--item'>
                         <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="image" />
+                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
                             <p className='fws-text'>Boat</p>
                         </div>
                         <div>
@@ -60,7 +60,7 @@ function PaymentUser(props) {
                     </div>
                     <div className='user__info--cart--item'>
                         <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="image" />
+                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
                             <p className='fws-text'>Boat</p>
                         </div>
                         <div>
@@ -72,7 +72,7 @@ function PaymentUser(props) {
                     </div>
                     <div className='user__info--cart--item'>
                         <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="image" />
+                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
                             <p className='fws-text'>Boat</p>
                         </div>
                         <div>
@@ -84,7 +84,7 @@ function PaymentUser(props) {
                     </div>
                     <div className='user__info--cart--item'>
                         <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="image" />
+                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
                             <p className='fws-text'>Boat</p>
                         </div>
                         <div>

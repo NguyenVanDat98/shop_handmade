@@ -125,7 +125,9 @@ export const PutSlideShow = (data) => {
         await PutDataSlideShow(temp)
           .then((res) => {
             res.status === 200 && toast.dismiss();
-            res.status === 200 && toast.success("Change Success!");
+            res.status === 200 && toast.success("Change Success!",{
+              position:"top-right"
+            });
           })
           .catch((error) => {
             toast.error("Put Data SlideShow Fail!");

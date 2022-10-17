@@ -4,7 +4,8 @@
 
 }
 .list-voucher{
-min-width: 60vw;
+width: calc(60vw - 80px);
+min-width: calc(60vw - 80px);
 padding-bottom: 20px;
 height: 82vh;
 background-color: rgba($color: #171519, $alpha: 0.52);
@@ -50,8 +51,7 @@ justify-items: center;
         }
     }
     section{
-        display: block;
-      
+        display: block;      
         background-color: white;
         width: 100%;
         height: max-content;
@@ -80,6 +80,7 @@ justify-items: center;
         padding-bottom: 15px;
         border-radius: 0 0 5px 5px;
         display: flex;
+        width: 100%;
         flex-direction: column;
         justify-content: center;
         padding: 0 10px;
