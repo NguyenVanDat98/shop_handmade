@@ -8,7 +8,7 @@ import { fetListProductSearch } from '../../redux/thunk/actionThunk';
 
 const PageSearch = props => {
     const dispatch = useDispatch();
-    const locale= useLocation()
+    const locale = useLocation()
     const listProduct = useSelector((state) => state.users.SearchProduct);
     const isLoad = useSelector((state) => state.users.isLoadmore);
     const [sort, setSort] = useState("");
@@ -17,9 +17,9 @@ const PageSearch = props => {
     const [page, setPage] = useState(1);
     // console.log(listProduct);
 
-useEffect(()=>{
-    dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: locale.search.slice(1), page: page }))
-},[dispatch,locale]);
+    useEffect(() => {
+        dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: locale.search.slice(1), page: page }))
+    }, [dispatch, locale, limit, sort, page]);
 
     return (
         <>
@@ -34,7 +34,7 @@ useEffect(()=>{
             <div className='body'>
                 <ul className='list-item'>
                     {listProduct && listProduct.map((e, i) => (
-                        <Link to={`detail/${e.id}`} key={i}>
+                        <Link to={`/detail/${e.id}`} key={i}>
                             <Product
                                 key={e}
                                 item={e}
