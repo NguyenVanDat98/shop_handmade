@@ -1,11 +1,11 @@
 import React from 'react';
-import { Account } from '..';
+import { Account,SearchAd } from '..';
 
 const HeaderAd = ({search}) => {
     return (
         <div className='headerAd'>
             <Account/>
-            {search}
+            {search && <SearchAd/>}
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { ICONCLOSE, ICONUSER } from '../../Icon';
 import { GetListOrder } from '../../redux/adminReducer/actionThunkAd/actionThunk';
@@ -7,13 +7,12 @@ import { GetListOrder } from '../../redux/adminReducer/actionThunkAd/actionThunk
 
 const ModuleUserProfile = memo(({ displayModule, onClick, data }) => {
     const [status , setStatus ]=useState(false);
-    console.log(data);
+    const listOrder = useSelector((state)=>state.adminData.historyOrder)
     const dispatch = useDispatch()
     const {acc,profile,payment}=data
     useEffect(()=>{
-        dispatch(GetListOrder(payment.cart_order))
-    },[]);
-
+        dispatch(GetListOrder(profile.id))
+    },[profile,dispatch]);
 
     return (
       <div className={`module-profile ${displayModule}`}  >
@@ -54,13 +53,13 @@ const ModuleUserProfile = memo(({ displayModule, onClick, data }) => {
         <details className="history-order">
           <summary> View more history Order</summary>
           <div> 
-            {[...new Array(3)].map((_,i)=>
+            {listOrder && listOrder.map((_,i)=>
              <div key={i} className="item-order">
-               <h6 className="time_making"> 12-12-2222 </h6>
+               <h6 className="time_making"> {_.time__create}</h6>
                <section>
-                {[...new Array(3)].map((_,i)=> <details key={i}>
+                {_.list_product_order && _.list_product_order.map((_,i)=> <details key={i}>
                   <summary>
-                    <h6> name <span> {`<price>`}</span></h6>
+                    <h6>{_.name_product} <span> {_.price}</span></h6>
                   </summary>
                   <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus aliquid quae explicabo quidem consequatur, quibusdam sed at quas? Non laboriosam deserunt nulla aut vel facilis itaque neque magnam corrupti? Hic?

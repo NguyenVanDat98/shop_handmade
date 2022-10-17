@@ -38,11 +38,6 @@ export const adminRotes = [
     },
     {
         isExact: true,
-        path: "/admin/profile",
-        Component: lazy(() => import('./admin/ProfilePage'))
-    },
-    {
-        isExact: true,
         path: "/admin/voucher",
         Component: lazy(() => import('./admin/VoucherPage'))
     }
@@ -90,6 +85,11 @@ export const CommonComponent = [
         isExact: true,
         path: "/forgotpass",
         Component: () => <ForgotPage />
+    },
+    {
+        isExact: true,
+        path: "/admin/profile",
+        Component: lazy(() => import('./admin/ProfilePage'))
     },
 ]
 

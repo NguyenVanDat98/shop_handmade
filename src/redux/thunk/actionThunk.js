@@ -6,8 +6,24 @@ import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-r
 import { getCartItem, updateCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
 
-export const fetDataAsyn = (path = "") => {
+export const checkLogin =()=>{
+    return (dispatch) => {
+        (async () => {
+            try {
+                const locale = localStorage.getItem("infoAccount") ?JSON.parse(localStorage.getItem("infoAccount")) : null
+                if(locale!==null){
+                    const data = await getAccount(`/${locale.id}`).then(res=>res.json())
+                    dispatch(fetchAccount(data))
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }
+}
 
+
+export const fetDataAsyn = (path = "") => {
     return (dispatch) => {
         (async () => {
             try {

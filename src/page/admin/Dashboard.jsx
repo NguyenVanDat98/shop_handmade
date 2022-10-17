@@ -1,16 +1,8 @@
-import React from 'react';
-import {MainDashboard} from '../../components/';
-import RootPage from './RootPage';
+import React from "react";
+import { MainDashboard } from "../../components/";
 
-const Dashboard = props => {
-    return (
-        <div>
-            <RootPage>
-                <MainDashboard/>
-            </RootPage>
-        </div>
-    );
+const Dashboard = (props) => {
+  return <MainDashboard />;
 };
-
 
 export default Dashboard;

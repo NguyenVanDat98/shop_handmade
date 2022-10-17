@@ -1,6 +1,7 @@
 .header__login {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     position: relative;
 
     &>p:first-child {
@@ -8,6 +9,9 @@
         font-size: 1.1rem;
         text-transform: capitalize;
         line-height: 40px;
+        flex-grow:1 ;
+        text-align: right;
+
         margin-bottom: 0;
     }
 
@@ -88,14 +92,13 @@
             line-height: 40px;
             color: #fff
         }
-
-
     }
 
 }
 
 @media (min-width: 740px) and (max-width: 1023px) {
     .header__login {
-        padding-left: 140px;
+        padding-left: 10px;
+        min-width: max-content
     }
 }

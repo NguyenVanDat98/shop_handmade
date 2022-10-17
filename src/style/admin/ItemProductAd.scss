@@ -1,8 +1,10 @@
 .list-product-Ad_body_item{
     border-radius: 5px;
+    position: relative;
     height: max-content;
     width: 100%;
     background-color: azure;
+    overflow: hidden;
     padding:  8px;
     .product-item-img{
         width: 100%;
