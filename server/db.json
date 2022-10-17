@@ -228,24 +228,7 @@
   "listCart": [
     {
       "id": "u2bFT",
-      "cart": [
-        {
-          "product_id": 1,
-          "quantity": 1
-        },
-        {
-          "product_id": 2,
-          "quantity": 1
-        },
-        {
-          "product_id": 3,
-          "quantity": 1
-        },
-        {
-          "product_id": 8,
-          "quantity": 1
-        }
-      ]
+      "cart": []
     },
     {
       "id": "e6j2S",

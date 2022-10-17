@@ -59,6 +59,28 @@ export const putItemInCart = (id, data) => {
   });
 };
 
+// export const getItemInCart = (id, data) => {
+//   return fetch(API_URL + `/listCart/${id}`, {
+//     method: "GET",
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json",
+//     },
+
+//     body: JSON.stringify(data),
+//   });
+// };
+
 export const getCartItem = (data = "") => {
   return fetch(API_URL + `/listCart/${data}`);
 };
+export const updateCartItem = (id, data) => {
+  return fetch(API_URL + `/listCart/${id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+}

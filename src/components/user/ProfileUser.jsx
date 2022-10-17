@@ -7,7 +7,7 @@ function ProfileUser(props) {
     const [form, setForm] = useState(false);
     const [order, setOrder] = useState(false);
     return (
-        <div className='profile d-flex'>
+        <div className='profile'>
             <div className="profile__image">
                 <div>
                     <span><i className={ICONUSER}></i></span>

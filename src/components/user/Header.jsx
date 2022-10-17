@@ -1,16 +1,25 @@
 import React, { memo, useState } from 'react';
 import logo from "../../img/logo.png"
 import { ICONCART } from '../../Icon';
-import { Link} from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import SearchUser from './SearchUser';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCart } from './../../redux/thunk/actionThunk';
 Header.defaultProps = {
     cart: true,
-    search:false
+    search: false
 }
-
 function Header({ search, children, cart }) {
     const [show, setShow] = useState(false);
+    const listItem = useSelector((state) => state.users.cart.cart);
+    const dispatch = useDispatch();
+    console.log(listItem);
+
+    useEffect(() => {
+        const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
+        dispatch(getCart(locale.cart_id));
+    }, [dispatch]);
     return (
         <div className="header">
             <Link to="/">
@@ -19,24 +28,26 @@ function Header({ search, children, cart }) {
                 </div>
             </Link>
             <div className='d-flex'>
-                {search &&<SearchUser/>}
+                {search && <SearchUser />}
                 {cart && <span className="header__cart" style={{ marginLeft: "8px" }}>
-                    <i className={ICONCART} total-product={0} onClick={() => setShow(!show)}></i>
+                    <i className={ICONCART} total-product={listItem && listItem.length} onClick={() => setShow(!show)}></i>
                     {show ? (<ul className='cart-list'>
                         <div className='cart-title'>
                             <p>Your Shopping Cart</p>
                             <p onClick={() => setShow(!show)}>x</p>
                         </div>
-                        <li className="cart-item">
-                            <div className='cart-item__info'>
-                                <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="" />
-                                <p>Boat</p>
-                            </div>
-                            <div className='cart-item__detail'>
-                                <p>$30</p>
-                            </div>
-                            <p>Qty: 2</p>
-                        </li>
+                        {listItem && listItem.map((item, i) => (
+                            <li className="cart-item" key={i}>
+                                <div className='cart-item__info'>
+                                    <img src={item.img} alt="" />
+                                    <p>{item.name}</p>
+                                </div>
+                                <div className='cart-item__detail'>
+                                    <p>${item.price}</p>
+                                </div>
+                                <p>Qty:{item.quantity}</p>
+                            </li>
+                        ))}
                     </ul>) : ("")}
                 </span>}
             </div>

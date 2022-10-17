@@ -1,18 +1,19 @@
 import toast from "react-hot-toast";
 import { GetDataProduct } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
-import { fetchAccount, getProduct, getSlider, SaveCart } from "../userReducer/action-reduce";
-import { isLoadmore, addToCart } from './../userReducer/action-reduce';
-import { getCartItem } from "../../api/apiMethod";
+import { ClearStepPayment, fetchAccount, getProduct, getSlider, SaveCart } from "../userReducer/action-reduce";
+import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
+import { getCartItem, updateCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
+import store from './../store';
 
-export const checkLogin =()=>{
+export const checkLogin = () => {
     return (dispatch) => {
         (async () => {
             try {
-                const locale = localStorage.getItem("infoAccount") ?JSON.parse(localStorage.getItem("infoAccount")) : null
-                if(locale!==null){
-                    const data = await getAccount(`/${locale.id}`).then(res=>res.json())
+                const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : null
+                if (locale !== null) {
+                    const data = await getAccount(`/${locale.id}`).then(res => res.json())
                     dispatch(fetchAccount(data))
                 }
             } catch (error) {
@@ -80,14 +81,19 @@ export const createAccountAsyn = (data) => {
         })()
     }
 }
-const ResCheck = (res, mes = "") => res.status === 200 ? res.json() : toast.error(mes)
+const ResCheck = (res, mesSuccess = "", mesError = "", param = 200) => {
+    if (res.status === param) {
+        toast.dismiss()
+        mesSuccess !== "" && toast.success(mesSuccess)
+        return res.json()
+    }
+}
 export const getCart = (data) => {
     return (dispatch) => {
         (async () => {
             try {
-                const rest = await getCartItem(data).then(res => ResCheck(res))
+                const rest = await getCartItem(data).then(res => res.status === 200 && res.json())
                 dispatch(addToCart(rest))
-
             } catch (error) {
                 console.log(error);
             }
@@ -98,13 +104,101 @@ export const putCart = (data) => {
     return (dispatch) => {
         (async () => {
             try {
-                console.log(data);
                 const respose = await getCartItem(data.id).then(res => ResCheck(res))
                 const check = respose.cart.findIndex(e => e.product_id === data.data.product_id)
                 const temp = { ...respose, cart: check === -1 ? [...respose.cart, data.data] : [...respose.cart] }
-                await putItemInCart(data.id, temp).then(res => ResCheck(res))
-                dispatch(SaveCart(temp))
+                await putItemInCart(data.id, temp).then(res => ResCheck(res, "Success"))
+                dispatch(addToCart(data.data))
 
+            } catch (error) {
+                console.log(error);
+            }
+        })()
+    }
+}
+export const getDataItemReview = () => {
+    return (dispatch) => {
+        (async () => {
+            try {
+                const localitems = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {};
+                if (localitems.cart_id) {
+                    const data = await getCartItem(localitems.cart_id).then(res => res.status === 200 && res.json())
+                        .then((res) => {
+                            const datareview = res.cart.map(_ => _.product_id)
+                            return datareview
+                        })
+                    const dataList = await fetProducts({ page: 1, filter: data });
+                    dispatch(SaveCartReview(dataList))
+                }
+            } catch (error) {
+
+            }
+        })()
+    }
+}
+export const getDataCartItem = () => {
+    return (dispatch) => {
+        (
+            async () => {
+                try {
+                    const localitem = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {};
+                    if (localitem.cart_id) {
+                        await getCartItem(localitem.cart_id).then((res) => res.status === 200 && res.json())
+                            .then((res) => {
+                                dispatch(SaveCart(res))
+                            })
+                    }
+                } catch (error) {
+
+                }
+            }
+        )()
+    }
+}
+
+export const deleteItemInCart = (id) => {
+    return (dispatch) => {
+        (async () => {
+            try {
+
+                const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : null
+                const temp = store.getState().users.cart.cart.filter(_ => id !== _.product_id)
+                const response = { id: locale.cart_id, cart: temp }
+
+                await updateCartItem(locale.cart_id, response).then(res => {
+                    if (res.status === 200) {
+                        toast.dismiss();
+                        toast.success("Clear Item cart success!");
+                        dispatch(SaveCart(response))
+                    }
+                }).catch(error => {
+                    toast.dismiss();
+                    toast.error(error.message);
+
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
+    }
+}
+
+/// ----clear all Cart --------
+export const clearCartUser = (item) => {
+    return (dispatch) => {
+        (async () => {
+            try {
+                await updateCartItem(item.id, item).then(res => {
+                    if (res.status === 200) {
+                        toast.dismiss();
+                        toast.success("Clear cart success!");
+                        dispatch(SaveCart(item))
+                    }
+                }).catch(error => {
+                    toast.dismiss();
+                    toast.error(error.message);
+
+                })
             } catch (error) {
                 console.log(error);
             }

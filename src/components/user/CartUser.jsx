@@ -1,90 +1,56 @@
 import React from 'react';
-import { useEffect, useCallback, useState } from 'react';
-import { ICONMINUS, ICONPLUS, ICONTRASH } from '../../Icon';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCartUser, deleteItemInCart, getDataCartItem } from './../../redux/thunk/actionThunk';
+import CartItem from './CartItem';
+import SelectItem from './SelectItem';
+import { ClearStepPayment, DeleteItem, SaveCart } from '../../redux/userReducer/action-reduce';
 
 function CartUser(props) {
-    const URL = "http://localhost:8000/listProduct";
-    const [listProduct, setListProduct] = useState([]);
-    const fetchData = useCallback(async () => {
-        await fetch(URL)
-            .then((res) => res.json())
-            .then((data) => {
-                setListProduct(data);
-            })
-            .catch(err => console.log(err))
-
-    }, [])
-
+    const listProduct = useSelector((state) => state.users);
+    const dispatch = useDispatch();
     useEffect(() => {
-        fetchData()
-    }, [fetchData]);
+        dispatch(getDataCartItem())
+        dispatch(ClearStepPayment())
+    }, [dispatch]);
+    const handleDeleteItem = (item) => {
+        dispatch(deleteItemInCart(item))
+        dispatch(DeleteItem(item));
+        // console.log(item);
+    }
+    const clearAllItem = () => {
+        const temp = { id: listProduct.cart.id, cart: [] }
+        dispatch(clearCartUser(temp))
+        dispatch(ClearStepPayment())
+    }
+    const totalAmount = listProduct.stepPayment.reduce((a, e) => a + e.quantity, 0);
+    const totalBill = listProduct.stepPayment.reduce((a, e) => a + e.product_discount * e.quantity, 0);
     return (
         <div className='list'>
-            <ul className="list-product">
-                {listProduct.length > 0 && listProduct.map((goods, index) => (
-                    <li key={index} className="list-product__add">
-                        <div className='list-product__detail'>
-                            <div>
-                                <input type="checkbox" />
-                                <img src={goods.img} alt={goods.name} />
-                            </div>
-                            <div>
-                                <p>{goods.name}</p>
-                                <p>{goods.description}</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p>${goods.price}</p>
-                            <i className={ICONTRASH}></i>
-                        </div>
-                        <div>
-                            <button><i className={ICONMINUS}></i></button>
-                            <span>1</span>
-                            <button><i className={ICONPLUS}></i></button>
-                        </div>
-                    </li>
-                ))}
-                <div className='list-product__btn'>
-                    <button type='button'>Clear All</button>
+            <div className='list-wrap'>
+                <ul className="list-product">
+                    {listProduct.cart.cart && listProduct.cart.cart.map((goods, index) => (
+                        <CartItem goods={goods} key={index} handleDeleteItem={handleDeleteItem} />
+                    ))}
+                </ul>
+                <div className='list-wrap--btn'>
+                    <button type='button' onClick={clearAllItem}>Clear All</button>
                 </div>
-            </ul>
+            </div>
             <div className='list-selection'>
                 <div className='list-goods'>
-                    <div className='list-goods__item'>
-                        <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="" />
-                        <div>
-                            <div>
-                                <p>Boat</p>
-                                <p>Decoration</p>
-                            </div>
-                            <div>
-                                <p>$20</p>
-                                <p>1</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='list-goods__item'>
-                        <img src="https://img.alicdn.com/imgextra/i1/201255257/TB2czvEj9B0XKJjSZFsXXaxfpXa_!!201255257.jpg" alt="" />
-                        <div>
-                            <div>
-                                <p>Rickshaw</p>
-                                <p>Decoration</p>
-                            </div>
-                            <div>
-                                <p>$40</p>
-                                <p>1</p>
-                            </div>
-                        </div>
-                    </div>
+                    {listProduct.stepPayment.length > 0 && listProduct.stepPayment.map((item, index) =>
+                        <SelectItem item={item} key={index} />
+                    )}
                 </div>
                 <div className='list-payment'>
                     <div>
                         <p>Amount product: </p>
-                        <p>2</p>
+                        <p>{totalAmount}</p>
                     </div>
                     <div>
                         <p>Total: </p>
-                        <p>$60</p>
+                        <p>${totalBill.toFixed(2)}</p>
                     </div>
                     <div>
                         <button>Payment</button>
