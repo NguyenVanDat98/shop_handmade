@@ -13,7 +13,6 @@ function CartItem({ goods, handleDeleteItem }) {
         dispatch(stepFasle({ product_id: goods.product_id, value: true }))
     }, [dispatch, stepFasle])
     const handleAddStep = (data) => {
-
         if (step === true) {
             dispatch(ChooseItem(data))
             dispatch(stepFasle({ product_id: goods.product_id, value: false }))

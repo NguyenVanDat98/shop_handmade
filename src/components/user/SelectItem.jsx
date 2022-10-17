@@ -12,7 +12,6 @@ function SelectItem({ item }) {
     const DeleteSelectItem = (e) => {
         dispatch(DeleteItem(e.product_id));
         dispatch(stepFasle({ product_id: item.product_id, value: true }))
-
     }
     return (
         <div className='list-goods__item'>

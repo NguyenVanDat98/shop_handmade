@@ -84,3 +84,7 @@ export const updateCartItem = (id, data) => {
     body: JSON.stringify(data)
   })
 }
+// export const searchCartItem = async (param) => {
+//   const data = await fetch(API_URL + `/listProduct?${param.name}_like=${param.input}`)
+//   return data;
+// }

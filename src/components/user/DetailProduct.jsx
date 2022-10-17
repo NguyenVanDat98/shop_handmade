@@ -17,7 +17,6 @@ function DetailProduct(props) {
     const navigate = useNavigate();
     const checkCart = useSelector((state) => state.users.cart);
     const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
-
     const param = useParams()
     const FetProduct = useCallback(() => {
         fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
@@ -51,7 +50,6 @@ function DetailProduct(props) {
                 toast.dismiss();
                 toast.error("Item already exist in cart!!")
             }
-
         } else {
             navigate("/login");
         }
