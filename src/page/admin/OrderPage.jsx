@@ -1,19 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from "react";
-import RootPage from "./RootPage";
-import { GetListOrder } from "../../redux/adminReducer/actionThunkAd/actionThunk";
+import {  useSelector } from 'react-redux';
 import ItemOrder from "../../components/admin/itemOrder/ItemOrder";
 
 const OrderPage = (props) => {
-    const dispatch = useDispatch()
     const dataList= useSelector(state=>state.adminData.listOrder)
-    useEffect(()=>{ 
-        dispatch(GetListOrder("",false))
-    },[dispatch]);
-
   return (
-    <RootPage>
       <div className="orderPage">
         {/* {list Order UI} */}
         <div>
@@ -34,7 +25,6 @@ const OrderPage = (props) => {
           </div>
         </div>
       </div>
-    </RootPage>
   );
 };
 

@@ -14,10 +14,11 @@ import {
   GetOrder,
 } from "../../../api/adminMethodAip/apiMethodAccount";
 import {
+  AddProduct,
   ChangeOrder,
   historyOrder,
   listRating,
-  reRender,
+ 
   saveListUser,
   saveOrder,
   saveSlideShow,
@@ -54,7 +55,9 @@ export const PostProduct = (data) => {
                   toast.dismiss();
                   toast.success("Create Product success");
                 }, 1000)
-          )
+          ).then(res=>
+            dispatch(AddProduct(data))
+            )
           .catch((error) => {
             toast.error("Create Product Fail");
           });
@@ -64,6 +67,7 @@ export const PostProduct = (data) => {
     })();
   };
 };
+
 export const PutProductThunk = (data) => {
   return (dispatch) => {
     (async () => {
@@ -73,7 +77,6 @@ export const PutProductThunk = (data) => {
             if (res.status !== 200) {
               console.error(res.message);
             } else {
-              dispatch(reRender());
               GetDataProduct()
                 .then((res) => res.status === 200 && res.json())
                 .then((res) => {
@@ -122,7 +125,9 @@ export const PutSlideShow = (data) => {
         await PutDataSlideShow(temp)
           .then((res) => {
             res.status === 200 && toast.dismiss();
-            res.status === 200 && toast.success("Change Success!");
+            res.status === 200 && toast.success("Change Success!",{
+              position:"top-right"
+            });
           })
           .catch((error) => {
             toast.error("Put Data SlideShow Fail!");

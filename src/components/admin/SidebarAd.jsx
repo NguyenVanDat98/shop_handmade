@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
     ICONBAG,
     ICONCHART,
@@ -9,8 +10,8 @@ import {
     ICONVOUCHER,
 } from "../../Icon";
 import ButtonSidebar from "./ButtonSidebar";
-
 const SidebarAd = (props) => {  
+    const navi = useNavigate()
     const url = window.location.href
     const page={
         page1: url.includes("/dashboard"),
@@ -21,7 +22,10 @@ const SidebarAd = (props) => {
         page6: url.includes("/discount"),
         page7: url.includes("/profile"),
     }
-    
+  const handleLogOut =()=>{
+        localStorage.removeItem("infoAccount")
+        navi("/login")
+  }
     return (
         <div className="sidebarAd">
             <ButtonSidebar
@@ -60,12 +64,15 @@ const SidebarAd = (props) => {
                 innerText="Discount"
                 pathName="/admin/discount"
             />
-            <ButtonSidebar
-                iconName={ICONSETTNG}
-                active={page.page7}
-                innerText="Profile"
-                pathName="/admin/profile"
-            />
+            <details className={`itemSidebar` }>
+              <summary><i className={ICONSETTNG}></i> </summary>  
+              <ul>
+                <li><Link to="/admin/profile">View Profile</Link></li>
+                <li onClick={handleLogOut}>Log out</li>
+              </ul>
+                
+                </details>
+
         </div>
     );
 };

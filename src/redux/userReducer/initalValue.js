@@ -1,5 +1,5 @@
 export const userInital = {
-    accountLogin: [],
+    accountLogin: {},
     slider: [],
     listProduct: [],
     listProductAll: [],

@@ -1,37 +1,27 @@
-import React, { memo } from "react";
-import PropTypes from 'prop-types';
-import { useRef } from "react";
-import { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { PostProduct } from "../../redux/adminReducer/actionThunkAd/actionThunk";
 import { ICONBACK, ICONCLOSE } from "../../Icon";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+const InputForm =({name,type,required,register,disabled,value,children,errors})=>{
+  return(
+    <div className="item-input">
+    <label htmlFor={name} >{name} {errors[name]?.type === 'required' && <span data-value={name + " is required"}  role="alert"> &#8505;</span>}</label>
+    <input className="form-control" type={type} {...register(name, {required})} autoComplete="off" disabled={disabled} value={value} />
+    {children}
+    </div>
+  )
+}
 
 
-const InputFormCreate = 
-  memo(({ refName, name, handleInputValue, type }) => {
-    return (
-      <input
-        name={name}
-        ref={refName}
-        onChange={handleInputValue}
-        className="form-control"
-        autoComplete="off"
-        type={type}
-        id={name}
-      />
-    );
-  })
-;
-InputFormCreate.propTypes  = {
-  type: PropTypes.string,
-  refName: PropTypes.object ,
-  handleInputValue: PropTypes.func,
-  name: PropTypes.string ,
-};
-InputFormCreate.defaultProps = {
-  type: "text",
-};
+InputForm.defaultValues={
+  type:"text",
+  disabled:false,
+  value:""
+}
+
 
 
 const ModuleCreateProduct = ({
@@ -39,149 +29,93 @@ const ModuleCreateProduct = ({
   disForm,
   listCategory,
   onclickClose,
-  render,
 }) => {
   const today = new Date(Date.now());
   const dateNow = `${today.getFullYear()}-${today.getMonth() + 1}-${
     today.getDate() < 10 ? "0" + today.getDate() : today.getDate()
   }`;
-  const [formCreateValue, setForm] = useState({
-    name: "",
-    price: 0,
-    category: "",
-    img: "",
-    discount: 0,
-    description: "",
-  });
+  const [clazz,setClazz]=useState("")
+  const {register ,handleSubmit, setValue,getValues ,formState :{ errors}} =useForm(
+    {
+      defaultValues:{
+        discount:0,
+        time_making:dateNow
+      }
+    }
+  )
   const dispatch = useDispatch();
-  const refName = useRef();
-  const refPrice = useRef();
-  const refCategory = useRef();
-  const refImg = useRef();
-  const refDiscount = useRef();
-  const handleInputValue = (e) => {
-    setForm({
-      ...formCreateValue,
-      [e.target.name]:
-        e.target.type !== "number"
-          ? e.target.value
-          : parseFloat(e.target.value),
-    });
-  };
+
   const setTime =(time=1000)=>{
     setTimeout(() => {
       toast.dismiss();
     }, time);
   }
-  const handleAddProduct = () => {
-    toast.loading("Creating....");
-    switch ("") {
-      case refName.current.value:
-        refName.current.focus();
-        toast.error( refName.current.innerHTML)
-        setTime()
-        break;
-      case refPrice.current.value:
-        refPrice.current.focus();
-        toast.error( refPrice.current.innerHTML)
-        setTime()
-        break;
-      case refCategory.current.value:
-        refCategory.current.focus();
-        toast.error( refCategory.current.innerHTML)
-        setTime()
-        break;
-      case refImg.current.value:
-        refImg.current.focus();
-        toast.error( refImg.current.innerHTML)
-        setTime()
-        break;
+  const blurBtn =(e)=>{
+   const check= getValues(["name","price","img","category"]).includes("");
+     console.log(check);
+     if(check){
+      if(clazz===""|| clazz==="moveleft"){
+        setClazz("moveRight")
 
-      default:
-        const itemProduct = {
-          ...formCreateValue,
-          price: parseInt(formCreateValue.price),
-          discount: parseInt(
-            Number.isInteger(formCreateValue.discount)
-              ? formCreateValue.discount
-              : 0
-          ),
-          time_making: dateNow,
-          status: true,
-          sold: 0,
-          rating: 0,
-        };
-        for (const key in formCreateValue) {
-          if (Object.hasOwnProperty.call(formCreateValue, key)) {
-            formCreateValue[key] = "";
-          }
-          setForm(formCreateValue);
-        }
-        dispatch(PostProduct(itemProduct));
-        refName.current.value = "";
-        refImg.current.value = "";
-        refCategory.current.value = "";
-        refPrice.current.value = 0;
-        refDiscount.current.value = 0;
-        render();
-        break;
-    }
-  };
+      }else{
+        setClazz("moveleft")
+      }
+     }else{
+      setClazz("")
+     }
+  }
 
+  const onSubmit =(data)=>{
+    toast.loading("Waiting....!")
+    const itemProduct = {
+      ...data,
+      price: parseInt(data.price),
+      discount: parseInt(
+        Number.isInteger(data.discount)
+          ? data.discount
+          : 0
+      ),
+      time_making: dateNow,
+      status: true,
+      sold: 0,
+      rating: 0,
+    };
+    setTime()
+    setValue("name","")
+    setValue("price","")
+    setValue("category","")
+    setValue("img","")
+    setValue("discount",0)
+    dispatch(PostProduct(itemProduct));
+  }
   return (
     <>
       {check && (
         <div className={`${disForm} module-create-product `}>
-          <i
+          <header>
+            <i
             onClick={() => {
               onclickClose();
             }}
             className={ICONCLOSE}
           ></i>
           <span> Create product</span>
-          <form className="d-flex flex-column ">
-            <div className="item-input">
-              <InputFormCreate
-                name={"name"}
-                handleInputValue={handleInputValue}
-                refName={refName}
-              />
-
-              <label htmlFor="name">Name product </label>
-            </div>
-            <div className="item-input">
-              <InputFormCreate
-                name={"price"}
-                handleInputValue={handleInputValue}
-                refName={refPrice}
-                type={"number"}
-              />
-
-              <label htmlFor="price">Price </label>
-            </div>
-            <div className="item-input">
-              <InputFormCreate
-                name={"category"}
-                handleInputValue={handleInputValue}
-                refName={refCategory}
-              />
-
-              <details>
-                <summary>
-                    <i className={ICONBACK}></i>
-                </summary>
+          </header>
+          
+          <form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column " >
+      
+            <InputForm errors={errors} name="name" register={register} required={require=true}/>
+            <InputForm errors={errors} name="price" type="number" register={register} required={require=true}/>
+            <InputForm errors={errors} name="category" register={register} required={require=true}>
+            <details >
+                <summary><i className={ICONBACK}></i></summary>
                 <ul>
                   {listCategory &&
                     listCategory.map((e, i) => (
-                      <li
-                        key={i}
-                        id={e}
+                      <li key={i}   id={e}
                         onClick={(el) => {
-                          el.target.parentNode.parentNode.open = false;
-                          setForm({
-                            ...formCreateValue,
-                            category: el.target.innerHTML,
-                          });
+                          setValue('category', e,{shouldDirty : true});
+                          el.target.parentNode.parentNode.open=false
                         }}
                         value={e}
                       >
@@ -190,44 +124,11 @@ const ModuleCreateProduct = ({
                     ))}
                 </ul>
               </details>
-              <label htmlFor="category">Category </label>
-            </div>
-            <div className="item-input">
-              <InputFormCreate
-                name={"img"}
-                handleInputValue={handleInputValue}
-                refName={refImg}
-              />
-              <label htmlFor="img">Img link </label>
-            </div>
-            <div className="item-input">
-              <InputFormCreate
-                name={"discount"}
-                handleInputValue={handleInputValue}
-                refName={refDiscount}
-              />
-
-              <label htmlFor="discount">Discount </label>
-            </div>
-            <div className="item-input">
-              <input
-                name="time_making"
-                className="form-control"
-                autoComplete="off"
-                type="date"
-                readOnly
-                id="time_making"
-                value={dateNow}
-              />
-              <label htmlFor="time_making">Date making </label>
-            </div>
-            <button
-              type="button"
-              onClick={handleAddProduct}
-              className="btn btn-primary"
-            >
-              ADD
-            </button>
+            </InputForm>
+            <InputForm errors={errors} name="img" register={register} required={require=true}/>
+            <InputForm errors={errors} name="discount" type="number" register={register}/>
+            <InputForm errors={errors} name="time_making" type="date" value={dateNow} register={register} disabled={true} />
+            <button onMouseOver={()=>blurBtn( )} className={`btn btn-primary ${clazz}`} type="submit">ADD</button>
           </form>
           
         </div>
