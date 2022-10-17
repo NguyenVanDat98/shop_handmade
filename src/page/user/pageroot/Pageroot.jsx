@@ -15,7 +15,7 @@ const Pageroot = (props) => {
   const accLogin = useSelector((state) => state.users.accountLogin);
   const param = useLocation();
   const pathCart = ["/cart", "/payment", "/profileuser"];
-  const pathSearch = ["/", "/cart"];
+  const pathSearch = ["/", "/cart" ,"/search"];
 
   useEffect(() => {
     dispatch(checkLogin());

@@ -2,13 +2,8 @@ import { lazy } from 'react';
 import { DetailProduct } from '../components';
 import ForgotPage from './user/forgotpage/ForgotPage';
 import LoginPage from './user/loginpage/LoginPage';
+import PageSearch from './user/PageSearch';
 import SignUpPage from './user/signuppage/SignUpPage';
-
-
-
-
-
-
 
 export const adminRotes = [
     {
@@ -68,6 +63,11 @@ export const userRoute = [
         isExact: true,
         path: "/detail/:id",
         Component: () => <DetailProduct />,
+    },
+    {
+        isExact: true,
+        path: "/search/",
+        Component: () => <PageSearch/>,
     }
 ]
 export const CommonComponent = [
