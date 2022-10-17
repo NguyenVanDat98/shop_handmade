@@ -21,6 +21,13 @@ export const getSlider = (data) => {
     }
 }
 
+export const getProductSearch = (data) => {
+    return {
+        type: actionTypes.FETCH_PRODUCT_SEARCH,
+        payload: data,
+    }
+
+}
 export const getProduct = (data) => {
     return {
         type: actionTypes.FETCH_PRODUCT,
