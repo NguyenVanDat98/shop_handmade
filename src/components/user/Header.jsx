@@ -5,19 +5,20 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import SearchUser from './SearchUser';
 import { useDispatch, useSelector } from 'react-redux';
-import { putCart } from '../../redux/thunk/actionThunk';
-import { getDataItemReview } from './../../redux/thunk/actionThunk';
+import { getCart } from './../../redux/thunk/actionThunk';
 Header.defaultProps = {
     cart: true,
     search: false
 }
 function Header({ search, children, cart }) {
     const [show, setShow] = useState(false);
-    const listItem = useSelector((state) => state.users.cart);
+    const listItem = useSelector((state) => state.users.cart.cart);
     const dispatch = useDispatch();
+    console.log(listItem);
 
     useEffect(() => {
-        dispatch(getDataItemReview());
+        const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
+        dispatch(getCart(locale.cart_id));
     }, [dispatch]);
     return (
         <div className="header">
@@ -29,13 +30,13 @@ function Header({ search, children, cart }) {
             <div className='d-flex'>
                 {search && <SearchUser />}
                 {cart && <span className="header__cart" style={{ marginLeft: "8px" }}>
-                    <i className={ICONCART} total-product={listItem.length} onClick={() => setShow(!show)}></i>
+                    <i className={ICONCART} total-product={listItem && listItem.length} onClick={() => setShow(!show)}></i>
                     {show ? (<ul className='cart-list'>
                         <div className='cart-title'>
                             <p>Your Shopping Cart</p>
                             <p onClick={() => setShow(!show)}>x</p>
                         </div>
-                        {listItem.length > 0 && listItem.map((item, i) => (
+                        {listItem && listItem.map((item, i) => (
                             <li className="cart-item" key={i}>
                                 <div className='cart-item__info'>
                                     <img src={item.img} alt="" />

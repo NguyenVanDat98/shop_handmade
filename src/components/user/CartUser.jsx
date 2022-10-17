@@ -1,33 +1,40 @@
 import React from 'react';
-import { useEffect, useCallback, useState } from 'react';
-import { ICONMINUS, ICONPLUS, ICONTRASH } from '../../Icon';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteItemInCart, getDataCartItem } from './../../redux/thunk/actionThunk';
+import { clearCartUser, deleteItemInCart, getDataCartItem } from './../../redux/thunk/actionThunk';
 import CartItem from './CartItem';
 import SelectItem from './SelectItem';
-import { updateCartItem } from '../../api/apiMethod';
+import { ClearStepPayment, DeleteItem, SaveCart } from '../../redux/userReducer/action-reduce';
 
 function CartUser(props) {
     const listProduct = useSelector((state) => state.users);
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getDataCartItem())
+        dispatch(ClearStepPayment())
     }, [dispatch]);
     const handleDeleteItem = (item) => {
-        const itemDelete = listProduct.cart.filter((_) => item !== _.id);
-        dispatch(deleteItemInCart(item, itemDelete))
+        dispatch(deleteItemInCart(item))
+        dispatch(DeleteItem(item));
+        // console.log(item);
     }
+    const clearAllItem = () => {
+        const temp = { id: listProduct.cart.id, cart: [] }
+        dispatch(clearCartUser(temp))
+        dispatch(ClearStepPayment())
+    }
+    const totalAmount = listProduct.stepPayment.reduce((a, e) => a + e.quantity, 0);
+    const totalBill = listProduct.stepPayment.reduce((a, e) => a + e.product_discount * e.quantity, 0);
     return (
         <div className='list'>
             <div className='list-wrap'>
                 <ul className="list-product">
-                    {listProduct.cart.length > 0 && listProduct.cart.map((goods, index) => (
+                    {listProduct.cart.cart && listProduct.cart.cart.map((goods, index) => (
                         <CartItem goods={goods} key={index} handleDeleteItem={handleDeleteItem} />
                     ))}
                 </ul>
                 <div className='list-wrap--btn'>
-                    <button type='button'>Clear All</button>
+                    <button type='button' onClick={clearAllItem}>Clear All</button>
                 </div>
             </div>
             <div className='list-selection'>
@@ -39,11 +46,11 @@ function CartUser(props) {
                 <div className='list-payment'>
                     <div>
                         <p>Amount product: </p>
-                        <p>2</p>
+                        <p>{totalAmount}</p>
                     </div>
                     <div>
                         <p>Total: </p>
-                        <p>$60</p>
+                        <p>${totalBill.toFixed(2)}</p>
                     </div>
                     <div>
                         <button>Payment</button>

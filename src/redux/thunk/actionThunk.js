@@ -1,18 +1,19 @@
 import toast from "react-hot-toast";
 import { GetDataProduct } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
-import { fetchAccount, getProduct, getSlider, SaveCart } from "../userReducer/action-reduce";
+import { ClearStepPayment, fetchAccount, getProduct, getSlider, SaveCart } from "../userReducer/action-reduce";
 import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
 import { getCartItem, updateCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
+import store from './../store';
 
-export const checkLogin =()=>{
+export const checkLogin = () => {
     return (dispatch) => {
         (async () => {
             try {
-                const locale = localStorage.getItem("infoAccount") ?JSON.parse(localStorage.getItem("infoAccount")) : null
-                if(locale!==null){
-                    const data = await getAccount(`/${locale.id}`).then(res=>res.json())
+                const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : null
+                if (locale !== null) {
+                    const data = await getAccount(`/${locale.id}`).then(res => res.json())
                     dispatch(fetchAccount(data))
                 }
             } catch (error) {
@@ -80,14 +81,19 @@ export const createAccountAsyn = (data) => {
         })()
     }
 }
-const ResCheck = (res, mes = "", param = 200) => res.status === param ? res.json() : toast.error(mes)
+const ResCheck = (res, mesSuccess = "", mesError = "", param = 200) => {
+    if (res.status === param) {
+        toast.dismiss()
+        mesSuccess !== "" && toast.success(mesSuccess)
+        return res.json()
+    }
+}
 export const getCart = (data) => {
     return (dispatch) => {
         (async () => {
             try {
-                const rest = await getCartItem(data).then(res => ResCheck(res))
+                const rest = await getCartItem(data).then(res => res.status === 200 && res.json())
                 dispatch(addToCart(rest))
-
             } catch (error) {
                 console.log(error);
             }
@@ -101,10 +107,9 @@ export const putCart = (data) => {
                 const respose = await getCartItem(data.id).then(res => ResCheck(res))
                 const check = respose.cart.findIndex(e => e.product_id === data.data.product_id)
                 const temp = { ...respose, cart: check === -1 ? [...respose.cart, data.data] : [...respose.cart] }
-                // console.log(temp);
-                await putItemInCart(data.id, temp).then(res => ResCheck(res, ""))
-                // console.log(data);
-                dispatch(SaveCartReview(temp))
+                await putItemInCart(data.id, temp).then(res => ResCheck(res, "Success"))
+                dispatch(addToCart(data.data))
+
             } catch (error) {
                 console.log(error);
             }
@@ -117,14 +122,12 @@ export const getDataItemReview = () => {
             try {
                 const localitems = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {};
                 if (localitems.cart_id) {
-                    const data = await getCartItem(localitems.cart_id).then((res) => ResCheck(res, ""))
+                    const data = await getCartItem(localitems.cart_id).then(res => res.status === 200 && res.json())
                         .then((res) => {
                             const datareview = res.cart.map(_ => _.product_id)
-                            // console.log(datareview);
                             return datareview
                         })
                     const dataList = await fetProducts({ page: 1, filter: data });
-                    // console.log(dataList);
                     dispatch(SaveCartReview(dataList))
                 }
             } catch (error) {
@@ -140,13 +143,10 @@ export const getDataCartItem = () => {
                 try {
                     const localitem = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {};
                     if (localitem.cart_id) {
-                        const check = await getCartItem(localitem.cart_id).then((res) => ResCheck(res, ""))
+                        await getCartItem(localitem.cart_id).then((res) => res.status === 200 && res.json())
                             .then((res) => {
-                                const temp = res.cart.map(_ => _.product_id)
-                                return temp.reduce((_, __) => _ + `&id=${__}`, "?")
+                                dispatch(SaveCart(res))
                             })
-                        const dataItem = await fetProducts({ page: 1, filter: check })
-                        dispatch(SaveCart(dataItem))
                     }
                 } catch (error) {
 
@@ -156,15 +156,43 @@ export const getDataCartItem = () => {
     }
 }
 
-export const deleteItemInCart = (id, data) => {
+export const deleteItemInCart = (id) => {
     return (dispatch) => {
         (async () => {
             try {
-                await updateCartItem(id, data).then(res => {
-                    if (res.status === 201) {
+
+                const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : null
+                const temp = store.getState().users.cart.cart.filter(_ => id !== _.product_id)
+                const response = { id: locale.cart_id, cart: temp }
+
+                await updateCartItem(locale.cart_id, response).then(res => {
+                    if (res.status === 200) {
                         toast.dismiss();
                         toast.success("Clear Item cart success!");
-                        dispatch(SaveCart(data))
+                        dispatch(SaveCart(response))
+                    }
+                }).catch(error => {
+                    toast.dismiss();
+                    toast.error(error.message);
+
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
+    }
+}
+
+/// ----clear all Cart --------
+export const clearCartUser = (item) => {
+    return (dispatch) => {
+        (async () => {
+            try {
+                await updateCartItem(item.id, item).then(res => {
+                    if (res.status === 200) {
+                        toast.dismiss();
+                        toast.success("Clear cart success!");
+                        dispatch(SaveCart(item))
                     }
                 }).catch(error => {
                     toast.dismiss();

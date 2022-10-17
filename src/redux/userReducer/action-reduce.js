@@ -1,4 +1,5 @@
 import * as actionTypes from './actionType';
+import { toast } from 'react-hot-toast';
 export const fetchAccount = (data) => {
     return {
         type: actionTypes.FETCH_ACCOUNT,
@@ -62,7 +63,9 @@ export const SaveCartReview = (product) => {
     }
 
 }
-export const SelectItem = (product) => {
+export const ChooseItem = (product) => {
+    toast.dismiss()
+    toast.success("Add Product Success 👏")
     product.quantity = 1
     return {
         type: actionTypes.SELECT_CART,
@@ -70,8 +73,16 @@ export const SelectItem = (product) => {
     }
 }
 export const DeleteItem = (product) => {
+    toast.dismiss()
+    toast.success("Delete success!!")
     return {
         type: actionTypes.DELETE_ITEM,
+        payload: product
+    }
+}
+export const ClearStepPayment = (product) => {
+    return {
+        type: actionTypes.CLEAR_PAYMENT,
         payload: product
     }
 }
@@ -91,5 +102,12 @@ export const ChangeQuantityItem = (product) => {
     return {
         type: actionTypes.CHANGE_QUANTITY_ITEM,
         payload: product.item
+    }
+}
+export const stepFasle = (action) => {
+    return {
+        type: actionTypes.STEP_PAY,
+        payload: action.product_id,
+        value: action.value
     }
 }

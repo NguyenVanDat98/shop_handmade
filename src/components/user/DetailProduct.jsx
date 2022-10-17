@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ICONSTAR } from '../../Icon';
 import { fetProducts } from './../../api/apiMethod';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { putCart } from '../../redux/thunk/actionThunk';
 import { useNavigate } from 'react-router-dom';
 import { listImage } from '../../common/common';
 import { useCallback } from 'react';
+import toast from 'react-hot-toast';
 
 function DetailProduct(props) {
     const [itemData, setItemData] = useState(Object);
     const [index, setIndex] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    const checkCart = useSelector((state) => state.users.cart);
     const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
 
     const param = useParams()
@@ -29,23 +30,32 @@ function DetailProduct(props) {
         FetProduct()
     }, [param, FetProduct])
 
-    const handleAddToCart = (item) => {
+    const handleAddToCart = () => {
         if (locale.userName) {
-            dispatch(putCart({
-                data: {
-                    product_id: itemData.id,
-                    quantity: 1,
-                    product_img: itemData.img,
-                    product_price: itemData.price,
-                    product_name: itemData.name
-                },
-                id: locale.cart_id
-            }))
+            const checkValid = checkCart.cart ? checkCart.cart.findIndex(_ => _.product_id === itemData.id) : -1
+            console.log(checkCart.cart);
+            if (checkValid === -1) {
+                dispatch(putCart({
+                    data: {
+                        product_id: itemData.id,
+                        quantity: 1,
+                        product_img: itemData.img,
+                        product_price: itemData.price,
+                        product_name: itemData.name,
+                        product_category: itemData.category,
+                        product_discount: (itemData.price - parseInt(itemData.discount) * itemData.price / 100)
+                    },
+                    id: locale.cart_id
+                }))
+            } else {
+                toast.dismiss();
+                toast.error("Item already exist in cart!!")
+            }
+
         } else {
             navigate("/login");
         }
     }
-    console.log(itemData.price);
     return (
         <>
             {itemData && <div className='detail '>

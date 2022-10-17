@@ -8,4 +8,6 @@ export const SAVE_TO_CART = "SAVE_TO_CART";
 export const SAVE_TO_CART_REVIEW = "SAVE_TO_CART_REVIEW";
 export const SELECT_CART = "SELECT_CART";
 export const DELETE_ITEM = "DELETE_ITEM";
+export const CLEAR_PAYMENT = "CLEAR_PAYMENT";
 export const CHANGE_QUANTITY_ITEM = "CHANGE_QUANTITY_ITEM";
+export const STEP_PAY = "STEP_PAY";

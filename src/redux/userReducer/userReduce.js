@@ -32,9 +32,28 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, cart: action.payload
             }
+        case actionTypes.ADD_TO_CART:
+
+            return {
+                ...state, cart: { ...state.cart, cart: [...state.cart.cart, action.payload] }
+            }
+        case actionTypes.DELETE_ITEM:
+            const newCart = state.stepPayment.filter(_ => _.product_id !== action.payload)
+
+            return {
+                ...state, stepPayment: newCart
+            }
         case actionTypes.SELECT_CART:
             return {
                 ...state, stepPayment: [...state.stepPayment, action.payload]
+            }
+        case actionTypes.CLEAR_PAYMENT:
+            return {
+                ...state, stepPayment: []
+            }
+        case actionTypes.STEP_PAY:
+            return {
+                ...state, [action.payload]: action.value
             }
         default:
             return { ...state }

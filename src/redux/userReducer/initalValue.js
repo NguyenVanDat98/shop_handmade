@@ -6,5 +6,6 @@ export const userInital = {
     isLoadmore: true,
     cart: [],
     cartReview: [],
-    stepPayment: []
+    stepPayment: [],
+
 }
