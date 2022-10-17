@@ -55,6 +55,10 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, [action.payload]: action.value
             }
+        case actionTypes.FETCH_PRODUCT_SEARCH:
+            return {
+                ...state, SearchProduct: action.payload
+            }
         default:
             return { ...state }
     }

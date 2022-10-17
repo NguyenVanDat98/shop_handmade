@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { GetDataProduct } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
-import { ClearStepPayment, fetchAccount, getProduct, getSlider, SaveCart } from "../userReducer/action-reduce";
+import { ClearStepPayment, fetchAccount, getProduct, getProductSearch, getSlider, SaveCart } from "../userReducer/action-reduce";
 import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
 import { getCartItem, updateCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
@@ -46,6 +46,20 @@ export const fetListProduct = (path) => {
                 const load = await fetProducts({ ...path, limit: 4, page: path.page + 1 })
                 dispatch(isLoadmore(load.length === 0 ? false : true));
                 dispatch(getProduct(data))
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+    }
+}
+export const fetListProductSearch = (path) => {
+    return (dispatch) => {
+        (async () => {
+            try {
+                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter })
+                const load = await fetProducts({ ...path, limit: 4, page: path.page + 1 })
+                dispatch(isLoadmore(load.length === 0 ? false : true));
+                dispatch(getProductSearch(data))
             } catch (error) {
                 console.log(error);
             }

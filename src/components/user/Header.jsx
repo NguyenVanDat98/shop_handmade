@@ -14,7 +14,6 @@ function Header({ search, children, cart }) {
     const [show, setShow] = useState(false);
     const listItem = useSelector((state) => state.users.cart.cart);
     const dispatch = useDispatch();
-    console.log(listItem);
 
     useEffect(() => {
         const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
