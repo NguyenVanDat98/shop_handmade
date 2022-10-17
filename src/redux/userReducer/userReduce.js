@@ -36,8 +36,6 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, stepPayment: [...state.stepPayment, action.payload]
             }
-
-
         default:
             return { ...state }
     }

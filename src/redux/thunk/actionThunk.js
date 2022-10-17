@@ -3,7 +3,7 @@ import { GetDataProduct } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
 import { fetchAccount, getProduct, getSlider, SaveCart } from "../userReducer/action-reduce";
 import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
-import { getCartItem } from "../../api/apiMethod";
+import { getCartItem, updateCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
 
 export const fetDataAsyn = (path = "") => {
@@ -137,5 +137,27 @@ export const getDataCartItem = () => {
                 }
             }
         )()
+    }
+}
+
+export const deleteItemInCart = (id, data) => {
+    return (dispatch) => {
+        (async () => {
+            try {
+                await updateCartItem(id, data).then(res => {
+                    if (res.status === 201) {
+                        toast.dismiss();
+                        toast.success("Clear Item cart success!");
+                        dispatch(SaveCart(data))
+                    }
+                }).catch(error => {
+                    toast.dismiss();
+                    toast.error(error.message);
+
+                })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
     }
 }

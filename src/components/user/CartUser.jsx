@@ -2,9 +2,10 @@ import React from 'react';
 import { useEffect, useCallback, useState } from 'react';
 import { ICONMINUS, ICONPLUS, ICONTRASH } from '../../Icon';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDataCartItem } from './../../redux/thunk/actionThunk';
+import { deleteItemInCart, getDataCartItem } from './../../redux/thunk/actionThunk';
 import CartItem from './CartItem';
 import SelectItem from './SelectItem';
+import { updateCartItem } from '../../api/apiMethod';
 
 function CartUser(props) {
     const listProduct = useSelector((state) => state.users);
@@ -13,12 +14,16 @@ function CartUser(props) {
     useEffect(() => {
         dispatch(getDataCartItem())
     }, [dispatch]);
+    const handleDeleteItem = (item) => {
+        const itemDelete = listProduct.cart.filter((_) => item !== _.id);
+        dispatch(deleteItemInCart(item, itemDelete))
+    }
     return (
         <div className='list'>
             <div className='list-wrap'>
                 <ul className="list-product">
                     {listProduct.cart.length > 0 && listProduct.cart.map((goods, index) => (
-                        <CartItem goods={goods} key={index} />
+                        <CartItem goods={goods} key={index} handleDeleteItem={handleDeleteItem} />
                     ))}
                 </ul>
                 <div className='list-wrap--btn'>
