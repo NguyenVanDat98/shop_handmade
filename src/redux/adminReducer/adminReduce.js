@@ -23,7 +23,7 @@ export const adminReduce = (state = adInitalValue, action) => {
     case SAVE_LIST_SLIDER:
       return { ...state, slideShow: action.payload };
     case ADD_LIST_SLIDER:
-      return { ...state, slideShow: [...state.slideShow,action.payload] };
+      return { ...state, slideShow: [...state.slideShow, action.payload] };
 
     case SAVE_LIST_USER:
       return { ...state, infomationUser: action.payload };

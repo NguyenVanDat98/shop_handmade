@@ -334,7 +334,7 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": false
+      "status": true
     },
     {
       "id": 2,
@@ -412,7 +412,7 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": true
+      "status": false
     },
     {
       "id": 5,
@@ -438,7 +438,7 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": true
+      "status": false
     }
   ],
   "listEarning": [
