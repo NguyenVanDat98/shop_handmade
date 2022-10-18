@@ -17,7 +17,7 @@ function Header({ search, children, cart }) {
 
     useEffect(() => {
         const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
-        dispatch(getCart(locale.cart_id));
+        // dispatch(getCart(locale.cart_id));
     }, [dispatch]);
     return (
         <div className="header">

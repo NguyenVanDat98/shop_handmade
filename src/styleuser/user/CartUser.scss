@@ -323,43 +323,42 @@
                 width: 100%;
                 margin-bottom: 0;
 
-                &__add {
-                    height: 110px;
+                .list-product__add {
+                    height: 100px;
 
                     .list-product__img {
-                        &>div:first-child {
-                            &>img {
-                                width: 70px;
-                                height: 70px;
-                                margin-left: 0;
-                            }
-                        }
+                        width: 80px;
+                        height: 80px;
 
-                        &>div:last-child {
-                            height: 70px;
-
-                            p {
-                                font-size: 1rem;
-                            }
+                        img {
+                            width: 80%;
+                            height: 80%;
+                            display: block;
                         }
                     }
 
                     .list-product__content {
-                        p {
+                        &>div {
                             height: 70px;
-                            font-size: 15px;
-                            margin: 25px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+
+                            &>p {
+                                margin: 0;
+                                font-size: 15px;
+                            }
                         }
-                    }
 
-                    .list-product__button {
-                        height: 70px;
+                        .list-product__button {
+                            height: 70px;
 
-                        button {
-                            width: 40px;
-                            font-size: 14px;
-                            height: 30px;
-                            padding: 5px;
+                            button {
+                                width: 40px;
+                                font-size: 14px;
+                                height: 30px;
+                                padding: 5px;
+                            }
                         }
                     }
                 }

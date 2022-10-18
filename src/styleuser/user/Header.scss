@@ -48,7 +48,7 @@
         position: absolute;
         width: 400px;
         background-color: #19a4a2;
-        left: 0;
+        right: 0;
         z-index: 1;
         overflow-y: auto;
         max-height: 70vh;
@@ -172,8 +172,6 @@
 
 @media (max-width: 500px) {
     .header {
-
-
         img {
             position: absolute;
             top: 3px;
