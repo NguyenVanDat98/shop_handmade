@@ -23,7 +23,7 @@ const PageSearch = props => {
 
     return (
         <>
-            <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
+            <div className='feature-filter d-flex justify-content-end mt-4' style={{ paddingRight: "30px" }}  >
                 <Filter handleChangeValueFilter={(e) => {
                     setFilter(e.target.value)
                 }} />

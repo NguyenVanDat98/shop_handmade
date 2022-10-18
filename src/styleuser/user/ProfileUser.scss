@@ -2,9 +2,10 @@
     width: 100%;
     padding: 30px;
     display: flex;
+    justify-content: space-between;
 
     &__image {
-        width: 35%;
+        width: 37%;
         height: 350px;
         display: flex;
         flex-direction: column;
@@ -99,8 +100,8 @@
     }
 
     &__form {
-        width: 50%;
-        margin-left: 40px;
+        width: 60%;
+        margin-left: 50px;
         background-color: #fff;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
         padding: 20px;
@@ -227,14 +228,16 @@
     }
 }
 
-@media (max-width: 414px) {
+@media (max-width:500px) {
     .profile {
 
         &__image {
             width: 100%;
         }
 
-        &__info {}
+        &__info {
+            width: 100%
+        }
 
         &__form {}
 

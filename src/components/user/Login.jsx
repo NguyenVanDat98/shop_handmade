@@ -1,12 +1,9 @@
 import React, { useRef, useState } from 'react';
-import { ICONPASS } from '../../Icon';
-import { Link, useNavigate } from 'react-router-dom';
-import icongoogle from "../../img/icongoogle.png";
-
-import { getAccount } from '../../api/apiMethod';
 import { toast } from 'react-hot-toast';
-
-
+import { Link, useNavigate } from 'react-router-dom';
+import { getAccount } from '../../api/apiMethod';
+import { ICONPASS } from '../../Icon';
+import icongoogle from "../../img/icongoogle.png";
 function Login(props) {
     const navi = useNavigate()
     const focusPass = useRef()
@@ -22,11 +19,11 @@ function Login(props) {
             [e.target.name]: e.target.value,
         })
     }
-
     const handleChangeType = () => {
         setTypePass(!typePass)
     }
-    const CheckLogin = async () => {
+    const CheckLogin = async (e) => {
+        e.preventDefault();
         toast.loading("Loading....")
         getAccount(`?user_name=${formInput.username}&password=${formInput.password}`)
             .then(res => res.json()
@@ -60,16 +57,34 @@ function Login(props) {
                 }
             })
     }
+    // const validationSchema = Yup.object({
+    //     username: Yup.string().required(),
+    //     password: Yup.string().min(8).required()
+    // });
+    // const renderError = (message) => <p className='help is-danger'>{message}</p>
+    // const innitialValue = {
+    //     username: "",
+    //     password: ""
+    // }
 
     return (
         <div className='rolemodal'>
+            {/* <Formik
+                validationSchema={validationSchema}
+                innitialValue={innitialValue}
+            </Formik>
+                <Form onSubmit={CheckLogin}>
+                </Form>
+            > */}
             <div className='login signInanimation'>
                 <h1>Log in</h1>
                 <div className='login__name'>
                     <input ref={focusUserName} type="text" placeholder='Username' autoComplete='off' name="username" onChange={getValueInput} />
+                    {/* {ErrorMessage ? <ErrorMessage name="username" render={renderError} /> : ""} */}
                 </div>
                 <div className='login__pass'>
                     <input ref={focusPass} type={typePass ? "password" : "text"} placeholder='Password' name="password" autoComplete='off' onChange={getValueInput} />
+                    {/* <ErrorMessage name="password" render={renderError} /> */}
                     <i onClick={handleChangeType} className={ICONPASS}></i>
                     <Link to="/forgotpass">
                         <p>Forgot password?</p>
@@ -88,7 +103,7 @@ function Login(props) {
                     </label>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

@@ -6,6 +6,7 @@ function ProfileUser(props) {
     const [info, setInfo] = useState(false);
     const [form, setForm] = useState(false);
     const [order, setOrder] = useState(false);
+
     return (
         <div className='profile'>
             <div className="profile__image">
@@ -60,8 +61,8 @@ function ProfileUser(props) {
                         <input type="text" className="form-control" />
                     </div>
                     <div>
-                        <button className='btn btn-danger' onClick={() => { setForm(false); setInfo(false) }}>Cancel</button>
                         <button className='btn btn-success'>Update</button>
+                        <button className='btn btn-danger' onClick={() => { setForm(false); setInfo(false) }}>Cancel</button>
                     </div>
                 </form>
             </div>) : ("")}

@@ -28,10 +28,10 @@ const ICONPINTEREST = "fa-brands fa-pinterest-p";
 const ICONCREDIT = "fa-regular fa-credit-card";
 const ICONWALLET = "fa-solid fa-wallet";
 const ICONVISA = "fa-brands fa-cc-visa";
-
+const ICONEMPTYCART = "fa-thin fa-cart-shopping";
 const ICONADD = "fa-solid fa-plus";
 const ICONEDIT = "fa-solid fa-pen-to-square";
-export const ICONSAVE ="fa-solid fa-floppy-disk"
+export const ICONSAVE = "fa-solid fa-floppy-disk"
 
 export {
   ICONCHART,
@@ -65,4 +65,5 @@ export {
   ICONLINKINED,
   ICONPINTEREST,
   ICONEDIT,
+  ICONEMPTYCART
 };
