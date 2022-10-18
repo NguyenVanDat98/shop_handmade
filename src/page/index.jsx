@@ -67,7 +67,7 @@ export const userRoute = [
     {
         isExact: true,
         path: "/search/",
-        Component: () => <PageSearch/>,
+        Component: () => <PageSearch />,
     }
 ]
 export const CommonComponent = [
