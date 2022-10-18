@@ -18,12 +18,12 @@ const PageSearch = props => {
     // console.log(listProduct);
 
     useEffect(() => {
-        dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: locale.search.slice(1), page: page }))
+        dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page,search:locale.search.slice(1)}))
     }, [dispatch, locale, limit, sort, page]);
 
     return (
         <>
-            <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
+            <div className='feature-filter d-flex justify-content-end' style={{ paddingRight: "30px" }}  >
                 <Filter handleChangeValueFilter={(e) => {
                     setFilter(e.target.value)
                 }} />

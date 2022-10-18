@@ -10,7 +10,7 @@ export const fetSlide = async () => {
   return slide;
 }
 export const fetProducts = async (path) => {
-  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.sort}${path.filter}`).then(res => res.json())
+  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.sort}${path.filter}${path.search}`).then(res => res.json())
   return slide;
 }
 

@@ -56,7 +56,7 @@ export const fetListProductSearch = (path) => {
     return (dispatch) => {
         (async () => {
             try {
-                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter })
+                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter ,search:path.search})
                 const load = await fetProducts({ ...path, limit: 4, page: path.page + 1 })
                 dispatch(isLoadmore(load.length === 0 ? false : true));
                 dispatch(getProductSearch(data))
