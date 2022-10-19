@@ -1,6 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
+    ICONBACK,
     ICONCART,
     ICONHOME,
     ICONMAIL,
@@ -10,18 +11,18 @@ import ButtonSidebar from "../admin/ButtonSidebar";
 
 
 const SideBar = (props) => {
-    const url = window.location.href
+    const navi = useNavigate()
+    const Url = useLocation().pathname
+
     const page = {
-        page1: url.includes("/Dashboard"),
-        page2: url.includes("/cart"),
-        page3: url.includes("/Product"),
-        page4: url.includes("/login"),
-        page5: url.includes("/Voucher"),
-        page6: url.includes("/Discount"),
+        page1: Url === "/",
+        page2: Url === "/cart",
+        page3: Url === "",
     }
 
     return (
         <div className="sidebarAd sidebar-user">
+            {!page.page1 && <button onClick={() => navi(-1)}><i className={ICONBACK} ></i></button>}
             <ButtonSidebar
                 iconName={ICONHOME}
                 active={page.page1}

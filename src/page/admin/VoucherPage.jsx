@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { ListVoucher } from "../../components";
 import FormCreateVoucher from "../../components/admin/voucherPage/FormCreateVoucher";
+import InfoVoucher from "../../components/admin/voucherPage/InfoVoucher";
 import { ICONBACK } from "../../Icon";
 
 
@@ -21,41 +22,7 @@ const VoucherPage = (props) => {
             <i onClick={() => setCheck(true)} className={ICONBACK}></i>
           )}
         </div>
-        {check && (
-          <section>
-            <h4>VIEW DETAIL </h4>
-            <div>
-              <strong>Name : </strong>
-              <span>2</span>{" "}
-            </div>
-            <div>
-              {" "}
-              <strong>Expiry : </strong>
-              <span>3</span>{" "}
-            </div>
-            <div>
-              {" "}
-              <strong>Code : </strong>
-              <span>4</span>
-            </div>
-            <div>
-              {" "}
-              <strong>Discount : </strong>
-              <span>5</span>
-            </div>
-
-            <p>
-              Detail : &nbsp;&nbsp;&nbsp;&nbsp; Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Officiis sunt porro esse omnis.
-              Provident minus maxime ducimus sequi deserunt tenetur tempore
-              veniam expedita exercitationem. Iure fugiat enim alias repellat
-              earum!{" "}
-            </p>
-            <p> </p>
-
-            <button className="btn btn-danger"> Delete voucher</button>
-          </section>
-        )}
+        {check && <InfoVoucher/>}
         {!check && <FormCreateVoucher />}
       </div>
     </div>

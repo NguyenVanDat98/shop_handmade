@@ -1,7 +1,7 @@
 import { API_URL } from ".";
 
-export const GetAccoutAll = ()=>{
-    const rest = fetch(API_URL+'/listAccount')
+export const GetAccoutAll = (param="")=>{
+    const rest = fetch(API_URL+'/listAccount'+param)
     return rest
 };
 export const GetAllProfileUser =(pram="")=>{
@@ -18,5 +18,9 @@ return rest
 };
 export const GetOrder=(pram="")=>{
     const rest = fetch(API_URL+'/listOrder'+pram)
+return rest
+};
+export const GetCategory=(pram="")=>{
+    const rest = fetch(API_URL+'/listCategory'+pram)
 return rest
 };

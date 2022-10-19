@@ -18,7 +18,7 @@ const PageSearch = props => {
     // console.log(listProduct);
 
     useEffect(() => {
-        dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: locale.search.slice(1), page: page }))
+        dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page, search: locale.search.slice(1) }))
     }, [dispatch, locale, limit, sort, page]);
 
     return (

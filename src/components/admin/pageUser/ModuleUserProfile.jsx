@@ -1,19 +1,18 @@
 import React, { memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { ICONCLOSE, ICONUSER } from '../../Icon';
-import { GetListOrder } from '../../redux/adminReducer/actionThunkAd/actionThunk';
+import { ICONCLOSE, ICONUSER } from '../../../Icon';
+import { GetListOrder } from '../../../redux/adminReducer/actionThunkAd/actionThunk';
 
-
-const ModuleUserProfile = memo(({ displayModule, onClick, data }) => {
+const ModuleUserProfile = memo(({ displayModule, onClick }) => {
     const [status , setStatus ]=useState(false);
     const listOrder = useSelector((state)=>state.adminData.historyOrder)
+    const ItemSelect = useSelector((state)=>state.adminData.ItemDataSelect)
     const dispatch = useDispatch()
-    const {acc,profile,payment}=data
+    const {acc,profile,payment}=ItemSelect
     useEffect(()=>{
         dispatch(GetListOrder(profile.id))
     },[profile,dispatch]);
-
     return (
       <div className={`module-profile ${displayModule}`}  >
         <div className="header-module">
@@ -21,14 +20,14 @@ const ModuleUserProfile = memo(({ displayModule, onClick, data }) => {
           <i className={ICONUSER}></i>
         </div>
       <div className="header-module-title">
-         <h6>{profile.first_name} </h6>
+         <h6>{profile.first_name?profile.first_name :"unknown name"}</h6>
           <h6>Email: <span>{profile.email}</span>  </h6>
           <h6>Telephone:  <span>{acc.telephone}</span></h6>
           <h6>Address:  <span> {profile.address}</span></h6>
       </div>
         </div>
         
-        <div className="profile">
+        <div className="profileItem">
           <i onClick={() => { onClick() }} className={ICONCLOSE}></i>
          
           <h6>Total : <span> $ {payment.total} <span style={{ background: "red", borderRadius: "20px", padding: "0 5px" }}> VIP</span></span></h6>

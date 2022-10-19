@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ICONSTAR } from '../../Icon';
+import { ICONBACK, ICONSTAR } from '../../Icon';
 import { fetProducts } from './../../api/apiMethod';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,7 +19,7 @@ function DetailProduct(props) {
     const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
     const param = useParams()
     const FetProduct = useCallback(() => {
-        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "" })
+        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "", search:"" })
             .then(res =>
                 setItemData(res[0])
             )

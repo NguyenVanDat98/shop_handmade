@@ -1,4 +1,3 @@
-
 import { useRef } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -19,7 +18,7 @@ function SignUp(props) {
   const focusInputName = useRef();
   const focusInputAddress = useRef();
   const focusInputTelephone = useRef();
-  const navi = useNavigate()
+  const navi = useNavigate();
   const [rePass, setRepass] = useState("");
   const [formValue, setFormValue] = useState({
     user_name: "",
@@ -104,6 +103,7 @@ function SignUp(props) {
       type: "",
       profile_id: makeId(5),
       cart_id: makeId(5),
+      payment_id: makeId(5),
     };
     const itemProfile = {
       id: itemAccount.profile_id,
@@ -114,14 +114,32 @@ function SignUp(props) {
     };
     const cartItem = {
       id: itemAccount.cart_id,
-      cart: []
+      cart: [],
     };
-    dispatch(createAccountAsyn({ account: itemAccount, profile: itemProfile, cartItem: cartItem }))
-    for (const key in formValue) { formValue[key] = "" }
+    const paymentItem = {
+      id: itemAccount.payment_id,
+      profile_id: itemAccount.profile_id,
+      cart_order: [],
+      total: 0,
+    };
+    dispatch(
+      createAccountAsyn({
+        account: itemAccount,
+        profile: itemProfile,
+        cartItem: cartItem,
+        paymentItem: paymentItem
+      })
+    );
+    for (const key in formValue) {
+      formValue[key] = "";
+    }
     setFormValue(formValue);
     setRepass("");
-    setTimeout(() => { toast.dismiss(); toast.success("Signup complete!"); navi("/login"); }, 2000)
-      ;
+    setTimeout(() => {
+      toast.dismiss();
+      toast.success("Signup complete!");
+      navi("/login");
+    }, 2000);
   };
   return (
     <div className="rolemodal">
@@ -129,7 +147,6 @@ function SignUp(props) {
         <div className="sign signInanimation">
           <h1>Sign Up (step 1)</h1>
           <div className="sign__name">
-
             <input
               onChange={handleChangeInput}
               value={formValue.user_name}
@@ -140,7 +157,6 @@ function SignUp(props) {
 
               placeholder="UserName"
             />
-
           </div>
           <div className="sign__phone">
             <input

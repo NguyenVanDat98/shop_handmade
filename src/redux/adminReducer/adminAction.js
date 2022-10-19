@@ -1,56 +1,86 @@
-import { GET_LIST_PRODUCT, SAVE_LIST_SLIDER,ADD_LIST_SLIDER, SAVE_LIST_USER,SAVE_LIST_RATING, SAVE_LIST_HiSTORY_ORDER,SAVE_LIST_ORDER, CHANGE_LIST_ORDER,ADD_PRODUCT } from "./actionTypeAd"
-
+import * as _ from "./actionTypeAd";
 export const SetDataProduct =(data)=>{
     return {
-        type : GET_LIST_PRODUCT,
+        type : _. GET_LIST_PRODUCT,
         payload :data
     }
 }
 export const AddProduct =(data)=>{
     return {
-        type : ADD_PRODUCT,
+        type : _.ADD_PRODUCT,
         payload :data
     }
 }
 export const saveSlideShow =(data)=>{
     return {
-        type : SAVE_LIST_SLIDER,
+        type : _.SAVE_LIST_SLIDER,
         payload: data
     }
 }
 export const addListSlider =(data)=>{
     return {
-        type : ADD_LIST_SLIDER,
+        type : _.ADD_LIST_SLIDER,
         payload: data
     }
 }
-export const saveListUser =(data)=>{
+export const saveInfoUser =(data)=>{
     return {
-        type : SAVE_LIST_USER,
+        type : _.SAVE_INFO_USER,
         payload: data
     }
 }
 export const listRating =(data)=>{
     return {
-        type : SAVE_LIST_RATING,
+        type : _.SAVE_LIST_RATING,
         payload: data
     }
 }
 export const historyOrder =(data)=>{
     return {
-        type : SAVE_LIST_HiSTORY_ORDER,
+        type : _.SAVE_LIST_HiSTORY_ORDER,
         payload: data
     }
 }
 export const saveOrder =(data)=>{
     return {
-        type : SAVE_LIST_ORDER,
+        type : _.SAVE_LIST_ORDER,
         payload: data
     }
 }
 export const ChangeOrder =(data)=>{
     return {
-        type : CHANGE_LIST_ORDER,
+        type : _.CHANGE_LIST_ORDER,
         payload: data
+    }
+}
+export const saveListVoucher =(data)=>{
+    return {
+        type : _.SAVE_LIST_VOUCHER,
+        payload: data
+    }
+}
+export const selectItemVoucher =(data)=>{
+    return {
+        type : _.SELECT_VOUCHER,
+        payload: data.data,
+        index:  data.index
+    }
+}
+export const deleteItemVoucher =(data)=>{
+    return {
+        type : _.DELETE_VOUCHER,
+        payload: data
+    }
+}
+export const addItemVoucher =(data)=>{
+    return {
+        type : _.ADD_VOUCHER,
+        payload: data
+    }
+}
+export const selectItemUser =(data)=>{
+    return {
+        type : _.SELECT_USER,
+        payload: data,
     }
 }

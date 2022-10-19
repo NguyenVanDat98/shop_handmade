@@ -1,8 +1,10 @@
+import { text } from "@fortawesome/fontawesome-svg-core";
 import toast from "react-hot-toast";
 import {
   GetDataProduct,
   GetDataSlideShow,
   PostDataProduct,
+  PutDataCategory,
   PutDataOrder,
   PutDataProduct,
   PutDataSlideShow,
@@ -19,11 +21,20 @@ import {
   historyOrder,
   listRating,
  
-  saveListUser,
+  saveInfoUser,
   saveOrder,
   saveSlideShow,
   SetDataProduct,
 } from "../adminAction";
+
+export const checkRespose = (param, message ,callback) => {
+   if(param.status === 200 ){ 
+    if(callback){
+      callback()
+    }
+    return param.json() 
+  }else{toast.error(message); } 
+};
 
 export const fetchDataProduct = () => {
   return (dispatch) => {
@@ -139,9 +150,7 @@ export const PutSlideShow = (data) => {
   };
 };
 
-const checkRespose = (param, message) => {
-  return param.status === 200 ? param.json() : toast.error(message);
-};
+
 
 export const GetInfomationUser = (param) => {
   return (dispatch) => {
@@ -157,7 +166,7 @@ export const GetInfomationUser = (param) => {
           checkRespose(res, "Call List Profile Fail!")
         );
         dispatch(
-          saveListUser({ acc: rest, payment: respose, profile: profile })
+          saveInfoUser({ acc: rest, payment: respose, profile: profile })
         );
       } catch (error) {
         console.log(error);
@@ -178,7 +187,9 @@ export const GetRatingsTotal = () => {
         const profile = await GetAllProfileUser(txt).then((res) =>
           checkRespose(res, "Profile Ratings Fail!")
         );
-        dispatch(listRating({ profile: profile, payment: payment }));
+        const txtacc= payment.reduce((a,b)=>a+`&profile_id=${b.profile_id}`,"?")
+        const acc = await GetAccoutAll(txtacc).then(res=>checkRespose(res,"Get Fail Acc!"))
+        dispatch(listRating({ profile: profile, payment: payment ,acc:acc}));
       } catch (error) {
         console.log(error);
       }
@@ -210,6 +221,17 @@ export const UpdateStatus = (param, txt) => {
         await PutDataOrder(newData)
           .then((res) => checkRespose(res, "Change status Fail!"))
           .then((res) => dispatch(ChangeOrder(newData)));
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+export const updateCategory = (param) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+          await PutDataCategory(param).then(res=>checkRespose(res,"Put succsess"))
       } catch (error) {
         console.log(error);
       }

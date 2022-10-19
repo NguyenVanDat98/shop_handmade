@@ -11,15 +11,17 @@ function SearchUser(props) {
         }
     }
     const funcs = () => {
-        value.length > 0 ? navi({
-            pathname: '/search',
-            search: `&name_like=${value}`,
-        }) :
-            navi("/")
+        if(value.length > 0){
+            navi({
+                pathname: '/search',
+                search: `&name_like=${value}`,
+            });
+            setValue("") 
+    }
     }
     return (
         <div className='search-header'>
-            <input type="text" className="form-control" onKeyDown={func} onChange={(e) => { setValue(e.target.value) }} placeholder="Search..."></input>
+            <input type="text" className="form-control" onKeyDown={func} value={value} onChange={(e) => {setValue(e.target.value) }} placeholder="Search..."></input>
             <span onClick={funcs} className="ICONSEARCH">
                 <i className={ICONSEARCH} ></i>
             </span>

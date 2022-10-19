@@ -11,7 +11,7 @@ export const fetSlide = async () => {
   return slide;
 }
 export const fetProducts = async (path) => {
-  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.sort}${path.filter}`).then(res => res.json())
+  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.sort}${path.filter}${path.search}`).then(res => res.json())
   return slide;
 }
 
@@ -48,6 +48,17 @@ export const createItemCart = (data) => {
     body: JSON.stringify(data),
   });
 };
+export const createItemPayment = (data) => {
+  return fetch(API_URL + `/listPayment`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify(data),
+  });
+};
 export const putItemInCart = (id, data) => {
   return fetch(API_URL + `/listCart/${id}`, {
     method: "PUT",
@@ -59,18 +70,6 @@ export const putItemInCart = (id, data) => {
     body: JSON.stringify(data),
   });
 };
-
-// export const getItemInCart = (id, data) => {
-//   return fetch(API_URL + `/listCart/${id}`, {
-//     method: "GET",
-//     headers: {
-//       Accept: "application/json",
-//       "Content-Type": "application/json",
-//     },
-
-//     body: JSON.stringify(data),
-//   });
-// };
 
 export const getCartItem = (data = "") => {
   return fetch(API_URL + `/listCart/${data}`);

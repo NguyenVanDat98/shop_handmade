@@ -1,12 +1,19 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
-import { ICONUSER } from "../../Icon";
+import { ICONUSER } from "../../../Icon";
+import { selectItemUser } from "../../../redux/adminReducer/adminAction";
 
 const ItemTopUser = ({ No, seClose, data }) => {
-  const { profile, payment } = data;
+  const dispatch = useDispatch()
+
+  const { profile, payment, acc } = data;
   return (
     <div
-      onClick={() => seClose()}
+      onClick={() =>{
+        dispatch(selectItemUser(data))
+         seClose()
+        }}
       className="item-user-top"
       style={{ "--disdelay": `0.${No}5s` }}
     >
@@ -25,7 +32,6 @@ const ItemTopUser = ({ No, seClose, data }) => {
 const ChartFiveUser = ({ handleClose, close }) => {
   const dataRatings = useSelector((state) => state.adminData.ratings);
   const isName = (param)=> dataRatings.profile.find((el) => el.id === param)
-
   return (
     <>
       {close && (
@@ -37,6 +43,7 @@ const ChartFiveUser = ({ handleClose, close }) => {
                 data={{
                   payment: dataRatings.payment[i],
                   profile: isName(e.profile_id),
+                  acc: dataRatings.acc[i]
                 }}
                 key={i}
                 seClose={handleClose}

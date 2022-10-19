@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { pathNameAd } from "../../common/pathName";
 import {
     ICONBAG,
     ICONCHART,
@@ -12,15 +13,15 @@ import {
 import ButtonSidebar from "./ButtonSidebar";
 const SidebarAd = (props) => {  
     const navi = useNavigate()
-    const url = window.location.href
+    const locale = useLocation().pathname
     const page={
-        page1: url.includes("/dashboard"),
-        page2: url.includes("/users"),
-        page3: url.includes("/product"),
-        page4: url.includes("/order"),
-        page5: url.includes("/voucher"),
-        page6: url.includes("/discount"),
-        page7: url.includes("/profile"),
+        page1:locale===pathNameAd.dashboard,
+        page2: locale===pathNameAd.users,
+        page3: locale===pathNameAd.product,
+        page4: locale===pathNameAd.order,
+        page5: locale===pathNameAd.voucher,
+        page6: "",
+        page7: locale===pathNameAd.profile,
     }
   const handleLogOut =()=>{
         localStorage.removeItem("infoAccount")
@@ -32,37 +33,37 @@ const SidebarAd = (props) => {
                 iconName={ICONCHART}
                 active={page.page1}
                 innerText="Dashboard"
-                pathName="/admin/dashboard"
+                pathName={pathNameAd.dashboard}
             />
             <ButtonSidebar
                 iconName={ICONUSER}
                 active={page.page2}
                 innerText="User"
-                pathName="/admin/users"
+                pathName={pathNameAd.users}
             />
             <ButtonSidebar
                 iconName={ICONBAG}
                 active={page.page3}
                 innerText="Product"
-                pathName="/admin/product"
+                pathName={pathNameAd.product}
             />
             <ButtonSidebar
                 iconName={ICONORDER}
                 active={page.page4}
                 innerText="Order"
-                pathName="/admin/order"
+                pathName={pathNameAd.order}
             />
             <ButtonSidebar
                 iconName={ICONVOUCHER}
                 active={page.page5}
                 innerText="Voucher"
-                pathName="/admin/voucher"
+                pathName={pathNameAd.voucher}
             />
             <ButtonSidebar
                 iconName={ICONDISCOUNT}
                 active={page.page6}
                 innerText="Discount"
-                pathName="/admin/discount"
+                pathName={pathNameAd.discount}
             />
             <details className={`itemSidebar` }>
               <summary><i className={ICONSETTNG}></i> </summary>  

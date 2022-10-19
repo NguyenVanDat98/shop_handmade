@@ -3,7 +3,7 @@ import { GetDataProduct } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
 import { ClearStepPayment, fetchAccount, getProduct, getProductSearch, getSlider, SaveCart } from "../userReducer/action-reduce";
 import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
-import { getCartItem, updateCartItem } from "../../api/apiMethod";
+import { createItemPayment, getCartItem, updateCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
 import store from './../store';
 
@@ -56,7 +56,7 @@ export const fetListProductSearch = (path) => {
     return (dispatch) => {
         (async () => {
             try {
-                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter })
+                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter ,search:path.search})
                 const load = await fetProducts({ ...path, limit: 4, page: path.page + 1 })
                 dispatch(isLoadmore(load.length === 0 ? false : true));
                 dispatch(getProductSearch(data))
@@ -88,6 +88,7 @@ export const createAccountAsyn = (data) => {
                 await createAccount(data.account)
                 await createProfileAccount(data.profile)
                 await createItemCart(data.cartItem)
+                await createItemPayment(data.paymentItem)
                 toast.loading("Wating...")
             } catch (error) {
                 console.log(error);

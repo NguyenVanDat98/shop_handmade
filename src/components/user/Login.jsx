@@ -15,6 +15,8 @@ const schema = yup.object().shape({
 //     firstName: yup.string().required(),
 //     age: yup.number().positive().integer().required(),
 // }).required();
+import { pathNameAd } from '../../common/pathName';
+
 
 function Login(props) {
     const navi = useNavigate()
@@ -52,7 +54,7 @@ function Login(props) {
                     }
                 } else {
                     setTimeout(() => {
-                        res[0].type === "admin" ? navi("/admin/Dashboard") : navi("/");
+                        res[0].type === "admin" ? navi(pathNameAd.dashboard) : navi("/");
                         toast.dismiss();
                         toast.success("Login Success ", { duration: 2000, })
                     }, 2000);
