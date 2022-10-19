@@ -2,8 +2,9 @@ import React, { memo, useEffect } from "react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { ICONCLOSE } from "../../Icon";
-import { PutProductThunk } from "../../redux/adminReducer/actionThunkAd/actionThunk";
+import { ICONCLOSE } from "../../../Icon";
+import { PutProductThunk } from "../../../redux/adminReducer/actionThunkAd/actionThunk";
+
 
 const InputText = memo(({ value, name, handleOnchange, type, edit }) => {
   return (

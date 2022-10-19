@@ -1,6 +1,5 @@
 import React from 'react';
-import PieChartRanger from '../Chart/PieChartRanger';
-import {ItemView,ChartBar,PieChart} from './../../components/';
+import {ItemView , ChartBar , PieChart , PieChartRanger } from "../../../components/index";
 
 const  MainDashboard = props => {
     const itemView= ["Order","User","Earning"]

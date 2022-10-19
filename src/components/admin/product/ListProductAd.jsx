@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useSelector } from "react-redux";
-import { ICONADD } from "../../Icon";
-import { ItemProductAd } from "./../index.js";
-import InfoProduct from "./InfoProduct";
-import ModuleCreateProduct from "./ModuleCreateProduct";
-import ModuleListSlider from "./ModuleListSlider";
+import { useDispatch, useSelector } from "react-redux";
+import { PutDataCategory } from "../../../api/adminMethodAip";
+import { SortProduct } from "../../../common/common";
+import { ICONADD } from "../../../Icon";
+import {InfoProduct, ItemProductAd, ModuleCreateProduct,ModuleListSlider} from "./../../index";
+import ItemCategory from "./ItemCategory";
 
 const ListProductAd = (props) => {
   const data = useSelector((state) => state.adminData.dataProducts);
   const [productSelect, setProductSelect] = useState("");
+  const dispatch= useDispatch()
   const [disForm, setDisForm] = useState({
     formCreate: false,
     moduleSlide: false,
@@ -19,6 +20,12 @@ const ListProductAd = (props) => {
   });
   const [dataOutput, setDataOutput] = useState([]);
 
+//handle sort
+
+// const handleSort =(item)=>{
+//    item.sort((a,b)=>b.price - a.price)
+//    console.log(item);
+// }
   //Filter category
   let listCategory = useMemo(() => {
     let arr = [];
@@ -29,7 +36,7 @@ const ListProductAd = (props) => {
     }
     return arr;
   }, [data]);
-  // divide dat flow category
+  // divide data flow category
   const dataDevide = useMemo(
     () =>
       listCategory.map((e, i) => ({
@@ -38,6 +45,9 @@ const ListProductAd = (props) => {
       })),
     [data, listCategory]
   );
+  const updataCategory =()=>{
+      dispatch(PutDataCategory(listCategory))
+  }
   //set data when data update
   useEffect(() => {
     setDataOutput(dataDevide);
@@ -142,24 +152,30 @@ const ListProductAd = (props) => {
 {/* {-----------------------list product render------------------} */}
         {dataOutput &&
           dataOutput.map((e, i) => {
+            // const [data ,setData]=useState(e.data)
+            // const handleSort =(item)=>{
+            //    setData(SortProduct(e.data,item))
+            // }
             return (
-              <div key={i} className="list-allProduct">
-                <div className=" d-flex justify-content-between line-title">
-                  <span>{e.name}</span>
-                  <span>({e.data.length})</span>
-                </div>
-                <div className="main-content-list-product ">
-                  {e.data.map((item, i) => (
-                    <ItemProductAd
-                      handleSelect={() => {
-                        setProductSelect(item);
-                      }}
-                      data={item}
-                      key={i}
-                    />
-                  ))}
-                </div>
-              </div>
+              <ItemCategory key={i} setProductSelect={(av)=>setProductSelect(av)} e={e}/>
+              // <div key={i} className="list-allProduct">
+              //   <div className=" d-flex justify-content-between line-title">
+              //     <span>{e.name}</span>
+                  
+              //     <span>({e.data.length})</span>
+              //   </div>
+              //   <div className="main-content-list-product ">
+              //     {e.data.map((item, i) => (
+              //       <ItemProductAd
+              //         handleSelect={() => {
+              //           setProductSelect(item);
+              //         }}
+              //         data={item}
+              //         key={i}
+              //       />
+              //     ))}
+              //   </div>
+              // </div>
             );
           })}
       </div>

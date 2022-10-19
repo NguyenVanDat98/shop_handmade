@@ -1,12 +1,12 @@
 import React from "react";
-import {  ICONUSER } from "../../Icon";
+import {  ICONUSER } from "../../../Icon";
 
-const ItemUser = ({ No,onClick,data }) => {
-  
+const ItemUser = ({ No,onClick,data }) => {  
   const linkuser=""
   const {acc , profile , payment }=data
   return (
-    <div onClick={()=>onClick(data)} className="itemUser">
+    <>
+    {data.payment &&<div onClick={()=>onClick(data)} className="itemUser">
       <p>{No}</p>
       <div className="user-avt">
         {linkuser!=="" ? <img src="" alt="avt" />:<i className={ICONUSER} ></i> }        
@@ -19,8 +19,8 @@ const ItemUser = ({ No,onClick,data }) => {
         <h6>Total : <span>$ {payment.total}</span> </h6>
       <h6>Member : <span>VIP</span> </h6>
       </div>
-      
-      </div>
+      </div>}
+    </>
   );
 };
 

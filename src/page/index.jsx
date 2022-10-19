@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { pathNameAd } from '../common/pathName';
 import { DetailProduct } from '../components';
 import ForgotPage from './user/forgotpage/ForgotPage';
 import LoginPage from './user/loginpage/LoginPage';
@@ -8,32 +9,32 @@ import SignUpPage from './user/signuppage/SignUpPage';
 export const adminRotes = [
     {
         isExact: true,
-        path: "/admin/dashboard",
+        path: pathNameAd.dashboard,
         Component: lazy(() => import('./admin/Dashboard'))
     },
     {
         isExact: true,
-        path: "/admin/product",
+        path: pathNameAd.product,
         Component: lazy(() => import('./admin/ProductPage'))
     },
     {
         isExact: true,
-        path: "/admin/users",
+        path: pathNameAd.users,
         Component: lazy(() => import('./admin/UserPage'))
     },
     {
         isExact: true,
-        path: "/admin/order",
+        path: pathNameAd.order,
         Component: lazy(() => import('./admin/OrderPage'))
     },
     {
         isExact: true,
-        path: "/admin/discount",
+        path: pathNameAd.discount,
         Component: lazy(() => import('./admin/DiscountPage'))
     },
     {
         isExact: true,
-        path: "/admin/voucher",
+        path: pathNameAd.voucher,
         Component: lazy(() => import('./admin/VoucherPage'))
     }
 ]

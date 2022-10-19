@@ -6,7 +6,7 @@ const ProfilePage = (props) => {
   return (
     <div className="page-profile">
       <div className="bg-profile">
-        <Link to="/admin/Dashboard">
+        <Link to={-1}>
           <i className={ICONHOME}></i>
         </Link>
         <div className="avt-admin">

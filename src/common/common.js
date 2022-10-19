@@ -20,7 +20,7 @@ export function makeCode() {
     return result;
 }
 
-export const Sort = (data, value) =>
+export const SortProduct = (data, value) =>
     [...data].sort((a, b) => {
         switch (value) {
             case "nameUp":
@@ -33,6 +33,16 @@ export const Sort = (data, value) =>
 
             case "priceDown":
                 return b.price - a.price;
+            case "ratingUp":
+                return a.rating - b.rating;
+
+            case "ratingDown":
+                return b.rating - a.rating;
+            case "soldUp":
+                return a.rating - b.sold;
+
+            case "soldDown":
+                return b.sold - a.sold;
 
             default:
                 return false;

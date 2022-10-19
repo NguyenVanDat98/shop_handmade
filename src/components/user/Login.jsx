@@ -5,6 +5,7 @@ import icongoogle from "../../img/icongoogle.png";
 
 import { getAccount } from '../../api/apiMethod';
 import { toast } from 'react-hot-toast';
+import { pathNameAd } from '../../common/pathName';
 
 
 function Login(props) {
@@ -52,7 +53,7 @@ function Login(props) {
                     }
                 } else {
                     setTimeout(() => {
-                        res[0].type === "admin" ? navi("/admin/Dashboard") : navi("/");
+                        res[0].type === "admin" ? navi(pathNameAd.dashboard) : navi("/");
                         toast.dismiss();
                         toast.success("Login Success ", { duration: 2000, })
                     }, 2000);

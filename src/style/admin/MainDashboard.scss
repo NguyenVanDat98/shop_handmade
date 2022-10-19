@@ -136,6 +136,7 @@ text{
     }
     .listUser {
         align-self: center;
+        flex-grow: 0;
     }
     .body-padding-15{
         padding: 0 15px;
@@ -145,9 +146,7 @@ text{
         margin-left: 0;
     }
 
-    .listUser {
-        flex-grow: 0;
-    }
+    
     .sidebarAd {
         position: fixed;
         top: auto;
@@ -228,6 +227,7 @@ text{
         height: 60px;
         justify-content: space-between;
         align-items: center;
+        
         .itemSidebar{
         margin: 0!important;
         width: 60px !important;

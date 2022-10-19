@@ -61,7 +61,7 @@
       }
      }
    }
-    .profile {
+    .profileItem {
       width: 100%;
       height: max-content;
       min-height: max-content;
@@ -285,7 +285,7 @@
 .listUser {
   flex-grow: 1;
   height: var(--hieght-listcontent);
-  max-height: var(--height-listcontent);
+  min-height: var(--height-listcontent);
   margin-right: 2px;
   background-color: transparent;
   text-align: left;
@@ -362,7 +362,7 @@
 @media (max-width: 800px) {
   .content-listuser {
     flex-direction: column;
-    height: max-content;
+    height: var(--height-listcontent);
     margin-bottom: 20px;
     align-items: center;
   }

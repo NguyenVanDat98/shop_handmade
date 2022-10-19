@@ -3,6 +3,7 @@
     padding: 30px;
     display: flex;
 
+
     &__image {
         width: 35%;
         height: 350px;
@@ -234,10 +235,13 @@
             width: 100%;
         }
 
-        &__info {}
+        &__info {
 
-        &__form {}
+        }
 
-        table {}
+        &__form {
+
+        }
+
     }
 }

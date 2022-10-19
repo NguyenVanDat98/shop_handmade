@@ -21,7 +21,7 @@
       "description": "Decoration",
       "discount": "6%",
       "time_making": "",
-      "category": "5 table decor 5",
+      "category": "5 table decor",
       "status": true,
       "sold": 70,
       "rating": 4.2
@@ -112,7 +112,7 @@
       "description": "Decoration",
       "discount": "5%",
       "time_making": "",
-      "category": "5  decor 5",
+      "category": "5 decor 4",
       "status": true,
       "sold": 120,
       "rating": 4.8
@@ -191,6 +191,18 @@
       "sold": 0,
       "rating": 0,
       "id": 15
+    },
+    {
+      "discount": 0,
+      "time_making": "2022-10-18",
+      "name": "qqq",
+      "price": 111,
+      "category": "7 decor 5",
+      "img": "https://i.etsystatic.com/22255674/c/1919/1526/0/648/il/3cfd25/3015609291/il_340x270.3015609291_42zo.jpg",
+      "status": true,
+      "sold": 0,
+      "rating": 0,
+      "id": 16
     }
   ],
   "listAccount": [
@@ -223,12 +235,32 @@
       "profile_id": "15Pz4",
       "paymament_id": 3,
       "cart_id": "lZ6Yk"
+    },
+    {
+      "id": "PDd2gf",
+      "user_name": "test",
+      "telephone": "654654",
+      "password": "123",
+      "type": "",
+      "profile_id": "MfozK",
+      "cart_id": "odvRq",
+      "payment_id": "m2Guz"
     }
   ],
   "listCart": [
     {
       "id": "u2bFT",
-      "cart": []
+      "cart": [
+        {
+          "product_id": 2,
+          "quantity": 1,
+          "product_img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
+          "product_price": 30,
+          "product_name": "Kitchen",
+          "product_category": "5 table decor",
+          "product_discount": 28.2
+        }
+      ]
     },
     {
       "id": "e6j2S",
@@ -236,6 +268,10 @@
     },
     {
       "id": "lZ6Yk",
+      "cart": []
+    },
+    {
+      "id": "odvRq",
       "cart": []
     }
   ],
@@ -260,14 +296,33 @@
       "first_name": "FFFFF",
       "last_name": "",
       "email": ""
+    },
+    {
+      "id": "MfozK",
+      "address": "123123",
+      "first_name": "a",
+      "last_name": "",
+      "email": ""
     }
   ],
   "listVoucher": [
     {
-      "id": "",
-      "expiry": "",
-      "code": "",
-      "description": ""
+      "name": "WD-20-FS",
+      "code": "s7lY6zUKz",
+      "discount": "2",
+      "detail": "LOREM",
+      "day_start": "19-10-2022",
+      "day_final": "20-10-2022",
+      "id": 1
+    },
+    {
+      "name": "WD-40-FS",
+      "code": "YCkcTAIvT",
+      "discount": "40",
+      "detail": "WOMEN DAY",
+      "day_start": "19-10-2022",
+      "day_final": "20-10-2022",
+      "id": 2
     }
   ],
   "listPayment": [
@@ -288,6 +343,12 @@
     {
       "id": 3,
       "profile_id": "15Pz4",
+      "cart_order": [],
+      "total": 0
+    },
+    {
+      "id": "m2Guz",
+      "profile_id": "MfozK",
       "cart_order": [],
       "total": 0
     }
@@ -439,5 +500,8 @@
       6,
       8
     ]
+  },
+  "listCategory": {
+    "data": []
   }
 }

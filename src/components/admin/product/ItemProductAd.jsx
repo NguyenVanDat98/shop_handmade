@@ -1,5 +1,5 @@
 import React from "react";
-import { ICONSTAR } from "../../Icon";
+import { ICONSTAR } from "../../../Icon";
 
 const ItemProductAd = ({ handleSelect, data }) => {
   const { name, price, status, sold, rating, discount, img } = data

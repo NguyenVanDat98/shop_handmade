@@ -1,19 +1,20 @@
 import React ,{useState} from "react";
+import { useDispatch } from 'react-redux';
 import { useSelector } from "react-redux";
-import { ModuleUserProfile,ItemUser } from "./../index.js";
-import { ChartFiveUser } from ".."
+import { selectItemUser } from "../../../redux/adminReducer/adminAction";
+import { ModuleUserProfile,ItemUser,ChartFiveUser } from "../../index";
+
 const ListUser = (props) => {
   const [close, setClose] = useState(true);
   const [displayModule, setDisplay] = useState("");
-  const [accFocus , setAccFocus ]=useState({});
   const listUserData = useSelector((state) => state.adminData.infomationUser);
-
+const dispatch = useDispatch()
   const handleClose =()=>{
       setDisplay("moduleIN");
       setClose(false);
   }
   return (
-    <div className="content-listuser  ">
+    <div className="content-listuser">
       <div className="listUser">
         <div className="listUser-header">
           <h3>List User</h3>
@@ -24,7 +25,7 @@ const ListUser = (props) => {
               <ItemUser
                 key={i}
                 onClick={(item) => {
-                  setAccFocus(item)
+                  dispatch(selectItemUser(item))
                   setDisplay("moduleIN");
                   setClose(false);
                 }}
@@ -46,7 +47,6 @@ const ListUser = (props) => {
       {!close && (
         <ModuleUserProfile
           displayModule={displayModule}
-          data={accFocus}
           onClick={() => {
             setDisplay("moduleOUT");
             setTimeout(() => {

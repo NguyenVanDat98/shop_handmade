@@ -35,6 +35,14 @@
     })
     return rest
 }
+ export const PutDataCategory = async(data)=>{
+    const rest= await fetch(API_URL+"/listCategory",{
+       method:"PUT",
+       headers:{'Content-Type': 'application/json'},
+       body : JSON.stringify({data:data})
+    })
+    return rest
+}
  export const PutDataOrder = async(data)=>{
     const rest= await fetch(API_URL+"/listOrder/" + data.id,{
        method:"PUT",
@@ -43,4 +51,5 @@
     })
     return rest
 }
+
 

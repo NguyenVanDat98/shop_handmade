@@ -1,12 +1,12 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useEffect } from "react";
 
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { ICONCLOSE } from "../../Icon";
-import {  PutSlideShow } from "../../redux/adminReducer/actionThunkAd/actionThunk";
-import { addListSlider } from "../../redux/adminReducer/adminAction";
+import { ICONCLOSE } from "../../../Icon";
+import {  PutSlideShow } from "../../../redux/adminReducer/actionThunkAd/actionThunk";
+import { addListSlider } from "../../../redux/adminReducer/adminAction";
 
 
 const ModuleListSlider = ({ data, check, onclickClose, disForm, }) => {
