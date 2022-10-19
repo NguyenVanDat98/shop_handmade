@@ -7,6 +7,7 @@ import { ICONPASS } from '../../Icon';
 import icongoogle from "../../img/icongoogle.png";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { pathNameAd } from '../../common/pathName';
 const schema = yup.object().shape({
     username: yup.string().required('Please enter your username').min(3),
     password: yup.string().required('Please enter your password').min(3)
@@ -15,7 +16,6 @@ const schema = yup.object().shape({
 //     firstName: yup.string().required(),
 //     age: yup.number().positive().integer().required(),
 // }).required();
-import { pathNameAd } from '../../common/pathName';
 
 
 function Login(props) {
