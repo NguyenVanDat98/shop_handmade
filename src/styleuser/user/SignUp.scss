@@ -5,7 +5,8 @@
     background-image: url(../../img/bglogin.jpg);
     // object-fit: cover;
     min-height: 88.8vh;
-    .signInanimation{
+
+    .signInanimation {
         animation: signIN 0.3s forwards;
     }
 
@@ -22,21 +23,24 @@
         z-index: 2;
         background-color: #fff;
         margin: 0 auto;
+
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
-       input{
-        position: relative;
 
-       }
-        input:placeholder-shown{
-            border-bottom: 5px solid red; 
+        input {
+            position: relative;
+
         }
-        input:not(:placeholder-shown){
-            border-left: 5px solid green;
-        }
+
+        // input:placeholder-shown{
+        //     border-bottom: 5px solid red; 
+        // }
+        // input:not(:placeholder-shown){
+        //     border-left: 5px solid green;
+        // }
         h1 {
             color: #493a59;
         }
@@ -77,18 +81,21 @@
 
         &::placeholder {
             font-size: 20px;
+            font-weight: 400;
         }
     }
 }
+
 @keyframes signIN {
-    0%{
-      opacity: 0;
-      transform: translateX(-20px);  
-      visibility: hidden;
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+        visibility: hidden;
     }
-    100%{
-        opacity: 1;  
+
+    100% {
+        opacity: 1;
         visibility: visible;
-        transform: translateX(0);  
+        transform: translateX(0);
     }
 }

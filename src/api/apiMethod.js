@@ -5,6 +5,7 @@ export const getAccount = async (path = "") => {
   return data;
 }
 
+
 export const fetSlide = async () => {
   const slide = await fetch(API_URL + "/slideShow").then(res => res.json())
   return slide;
@@ -88,3 +89,14 @@ export const updateCartItem = (id, data) => {
 //   const data = await fetch(API_URL + `/listProduct?${param.name}_like=${param.input}`)
 //   return data;
 // }
+
+export const fetAccount = (id, data) => {
+  return fetch(API_URL + `/listAccount/${id}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+}

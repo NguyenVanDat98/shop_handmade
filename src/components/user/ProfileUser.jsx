@@ -1,11 +1,13 @@
 import React from 'react';
 import { ICONUSER } from '../../Icon';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function ProfileUser(props) {
     const [info, setInfo] = useState(false);
     const [form, setForm] = useState(false);
     const [order, setOrder] = useState(false);
+    const listProfile = useSelector((state) => state.users.accountLogin);
 
     return (
         <div className='profile'>
@@ -14,7 +16,7 @@ function ProfileUser(props) {
                     <span><i className={ICONUSER}></i></span>
                 </div>
                 <div>
-                    <p>Nguyễn Văn Đạt</p>
+                    <p>{listProfile.user_name}</p>
                     <p>Vân Đồn Street, Nại Hiên Đông Ward,Sơn Trà District, Đà Nẵng city</p>
                 </div>
                 <div>
@@ -27,15 +29,15 @@ function ProfileUser(props) {
                     <button className='btn btn-warning' onClick={() => { setInfo(true); setForm(true); }}>Edit</button>
                 </div>
                 <div>
-                    <label>User Name</label>
+                    <label>UserName</label>
                     <label>Phone Number</label>
                     <label>Shipping Address</label>
                     <label>Email Address</label>
                     <label>Total Orders</label>
                 </div>
                 <div>
-                    <p>Nguyễn Văn Đạt</p>
-                    <p>0965782356</p>
+                    <p>{listProfile.user_name}</p>
+                    <p>{listProfile.telephone}</p>
                     <p>Vân Đồn Street, Nại Hiên Đông Ward, Sơn Trà District, Đà Nẵng City</p>
                     <p>nguyenvandatdn97@gmail.com</p>
                     <p>20</p>

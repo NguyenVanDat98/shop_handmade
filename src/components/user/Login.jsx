@@ -1,31 +1,35 @@
 import React, { useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAccount } from '../../api/apiMethod';
 import { ICONPASS } from '../../Icon';
 import icongoogle from "../../img/icongoogle.png";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+const schema = yup.object().shape({
+    username: yup.string().required('Please enter your username').min(3),
+    password: yup.string().required('Please enter your password').min(3)
+})
+// const schema = yup.object({
+//     firstName: yup.string().required(),
+//     age: yup.number().positive().integer().required(),
+// }).required();
+
 function Login(props) {
     const navi = useNavigate()
-    const focusPass = useRef()
-    const focusUserName = useRef()
+
     const [typePass, setTypePass] = useState(true)
-    const [formInput, setFormInput] = useState({
-        username: "",
-        password: ""
-    })
-    const getValueInput = (e) => {
-        setFormInput({
-            ...formInput,
-            [e.target.name]: e.target.value,
-        })
-    }
-    const handleChangeType = () => {
-        setTypePass(!typePass)
-    }
-    const CheckLogin = async (e) => {
-        e.preventDefault();
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
+
+
+
+    //////////////CHECK LOGIN
+    const CheckLogin = () => {
         toast.loading("Loading....")
-        getAccount(`?user_name=${formInput.username}&password=${formInput.password}`)
+        getAccount(`?user_name=${getValues("username")}&password=${getValues("password")}`)
             .then(res => res.json()
             ).catch(err => {
                 toast.dismiss();
@@ -34,17 +38,16 @@ function Login(props) {
                 if (res.length === 0) {
                     toast.dismiss();
                     switch ("") {
-                        case formInput.username:
-                            focusUserName.current.focus()
-                            toast.error(`Enter ${focusUserName.current.name} again!`)
+                        case getValues("username"):
+
+                            toast.error(`Enter Username again!`)
                             break;
-                        case formInput.password:
-                            focusPass.current.focus()
-                            toast.error(`Enter ${focusPass.current.name} again!`)
+                        case getValues("password"):
+
+                            toast.error(`Enter password again!`)
                             break;
                         default:
-                            toast.error(`Enter ${focusUserName.current.name}/ ${focusPass.current.name} again!`)
-                            focusPass.current.focus()
+                            toast.error(`Enter Username/password again!`)
                             break;
                     }
                 } else {
@@ -57,52 +60,46 @@ function Login(props) {
                 }
             })
     }
-    // const validationSchema = Yup.object({
-    //     username: Yup.string().required(),
-    //     password: Yup.string().min(8).required()
-    // });
-    // const renderError = (message) => <p className='help is-danger'>{message}</p>
-    // const innitialValue = {
-    //     username: "",
-    //     password: ""
-    // }
+    /////////////////////////////SUBMIT
+    const onSubmit = data => {
+        CheckLogin()
+    }
+    ///////////CHANGE TYPE PASSWROD
+    const handleChangeType = () => {
+        setTypePass(!typePass)
+    }
+
 
     return (
         <div className='rolemodal'>
-            {/* <Formik
-                validationSchema={validationSchema}
-                innitialValue={innitialValue}
-            </Formik>
-                <Form onSubmit={CheckLogin}>
-                </Form>
-            > */}
-            <div className='login signInanimation'>
-                <h1>Log in</h1>
-                <div className='login__name'>
-                    <input ref={focusUserName} type="text" placeholder='Username' autoComplete='off' name="username" onChange={getValueInput} />
-                    {/* {ErrorMessage ? <ErrorMessage name="username" render={renderError} /> : ""} */}
-                </div>
-                <div className='login__pass'>
-                    <input ref={focusPass} type={typePass ? "password" : "text"} placeholder='Password' name="password" autoComplete='off' onChange={getValueInput} />
-                    {/* <ErrorMessage name="password" render={renderError} /> */}
-                    <i onClick={handleChangeType} className={ICONPASS}></i>
-                    <Link to="/forgotpass">
-                        <p>Forgot password?</p>
-                    </Link>
-                </div>
-                <div className='login__btn'>
-                    <button onClick={CheckLogin}>Continue</button>
-                    <p><img src={icongoogle} alt="" />Google</p>
-
-                    <label className='d-flex flex-wrap justify-content-center'>
-                        <p>First time you come to Handmade Shop?
-
-                        </p><Link to="/signup">
-                            <strong>  Sign up</strong>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                {/* <form onSubmit={CheckLogin}> */}
+                <div className='login signInanimation'>
+                    <h1>Log in</h1>
+                    <div className='login__name'>
+                        <input type="text" placeholder='Username' autoComplete='off' name="username" {...register("username")} />
+                        {errors.username && <p className="error">{errors.username.message}</p>}
+                    </div>
+                    <div className='login__pass'>
+                        <input type={typePass ? "password" : "text"} placeholder='Password' name="password" autoComplete='off' {...register("password")} />
+                        {errors.password && <p className="error">{errors.password.message}</p>}
+                        <i onClick={handleChangeType} className={ICONPASS}></i>
+                        <Link to="/forgotpass">
+                            <p>Forgot password?</p>
                         </Link>
-                    </label>
+                    </div>
+                    <div className='login__btn'>
+                        <button type="submit">Continue</button>
+                        <p><img src={icongoogle} alt="" />Google</p>
+                        <label className='d-flex flex-wrap justify-content-center'>
+                            <p>First time you come to Handmade Shop?</p>
+                            <Link to="/signup">
+                                <strong>  Sign up</strong>
+                            </Link>
+                        </label>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div >
     );
 }

@@ -32,7 +32,7 @@ function CartUser(props) {
         <div className='list'>
             <div className='list-wrap'>
                 <h4 >Shopping Cart</h4>
-                {listProduct.cart.cart.length !== 0 ? (<ul className="list-product">
+                {listProduct.cart.length !== 0 ? (<ul className="list-product">
                     {listProduct.cart.cart && listProduct.cart.cart.map((goods, index) => (
                         <CartItem goods={goods} key={index} handleDeleteItem={handleDeleteItem} />
                     ))}
@@ -44,7 +44,7 @@ function CartUser(props) {
                         <button className='btn btn-success btn-lg' onClick={() => navigate("/")}><i className={ICONCART} style={{ marginRight: "5px" }}></i> RETURN TO SHOP</button>
                     </div>
                 </div>)}
-                {listProduct.cart.cart.length !== 0 ? (<div className='list-wrap--btn'>
+                {listProduct.cart.length !== 0 ? (<div className='list-wrap--btn'>
                     <button type='button' onClick={clearAllItem}>Clear All</button>
                 </div>) : ("")}
             </div>

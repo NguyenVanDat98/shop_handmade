@@ -29,7 +29,7 @@ function Header({ search, children, cart }) {
             <div className='d-flex'>
                 {search && <SearchUser />}
                 {cart && <span className="header__cart" style={{ marginLeft: "8px" }}>
-                    <i className={ICONCART} total-product={listItem && listItem.length} onClick={() => setShow(!show)}></i>
+                    <i className={ICONCART} onClick={() => setShow(!show)}></i>
                     {show ? (<ul className='cart-list'>
                         <div className='cart-title'>
                             <p>Your Shopping Cart</p>

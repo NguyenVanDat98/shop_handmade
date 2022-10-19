@@ -7,127 +7,134 @@
     min-height: calc(100vh - 80px);
     background-image: url(../../img/bglogin.jpg);
 
-    .login {
-        width: 90%;
-        max-width: 490px;
-        height: max-content;
-        border: 1px solid #000;
-        border-radius: 6px;
-        padding: 30px;
-        box-shadow: 2px 2px 6px rgb(0, 0, 0);
-        z-index: 2;
-        background-color: #fff;
+    &>form {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
 
-        h1 {
-            color: #493a59;
-        }
-
-        // text-align: center;  
-        input {
-            width: 100%;
-            height: 50px;
+        .login {
+            width: 90%;
+            max-width: 490px;
+            height: max-content;
+            border: 1px solid #000;
             border-radius: 6px;
-            padding: 0 10px;
-            outline: none;
-            border: 1px solid #493a59;
-            font-weight: 400;
+            padding: 30px;
+            box-shadow: 2px 2px 6px rgb(0, 0, 0);
+            z-index: 2;
+            background-color: #fff;
 
-            &::placeholder {
-                font-size: 20px;
+            h1 {
+                color: #493a59;
             }
-        }
 
-        &__name {
-            padding: 30px 0 30px;
-        }
-
-        &__pass {
-            position: relative;
-
-            p {
-                padding-top: 10px;
+            // text-align: center;  
+            input {
+                width: 100%;
+                height: 50px;
+                border-radius: 6px;
+                padding: 0 10px;
+                outline: none;
+                border: 1px solid #493a59;
                 font-weight: 400;
 
-                &:hover {
-                    cursor: pointer;
+                &::placeholder {
+                    font-size: 20px;
                 }
             }
 
-            i {
-                position: absolute;
-                font-size: 2rem;
-                right: 25px;
-                top: calc(50% - 2rem);
-                color: rgb(35, 34, 34);
-                cursor: pointer;
+            &__name {
+                padding: 30px 0 30px;
             }
-        }
 
-        &__btn {
-            text-align: center;
-            padding-top: 30px;
+            &__pass {
+                position: relative;
 
-            label {
                 p {
-                    margin-bottom: 5px;
+                    padding-top: 10px;
+                    font-weight: 400;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
                 }
 
-                strong {
-                    font-weight: 600;
-                    margin-left: 3px;
-                }
-            }
-
-            p {
-                img {
-                    width: 35px;
-                    height: 35px;
-                }
-            }
-
-            button {
-                width: 280px;
-                height: 56px;
-                max-width: 60%;
-                border: none;
-                background-color: #d8bd9f;
-                font-size: 25px;
-                color: #000;
-                font-weight: 450;
-                border-radius: 6px;
-
-                &:hover {
-                    opacity: 0.85;
-                }
-            }
-
-            p:nth-child(2) {
-                padding-top: 5px;
-                height: 45px;
-                width: 95px;
-                border-radius: 2px;
-                border: 1px solid green;
-                margin: 30px auto;
-
-                &:hover {
+                i {
+                    position: absolute;
+                    font-size: 2rem;
+                    right: 25px;
+                    top: calc(50% - 2rem);
+                    color: rgb(35, 34, 34);
                     cursor: pointer;
-                    background-color: rgba(0, 0, 0, 0.1)
                 }
             }
 
-            p:last-child {
-                padding-top: 5px;
+            &__btn {
+                text-align: center;
+                padding-top: 30px;
 
-                a {
-                    text-decoration: none;
+                label {
+                    p {
+                        margin-bottom: 5px;
+                    }
+
+                    strong {
+                        font-weight: 600;
+                        margin-left: 3px;
+                    }
+                }
+
+                p {
+                    img {
+                        width: 35px;
+                        height: 35px;
+                    }
+                }
+
+                button {
+                    width: 280px;
+                    height: 56px;
+                    max-width: 60%;
+                    border: none;
+                    background-color: #d8bd9f;
+                    font-size: 25px;
                     color: #000;
-                    padding-left: 10px;
+                    font-weight: 450;
+                    border-radius: 6px;
 
-                    span {
-                        font-weight: 500;
+                    &:hover {
+                        opacity: 0.85;
+                    }
+                }
 
-                        &:hover {
-                            cursor: pointer;
+                p:nth-child(2) {
+                    padding-top: 5px;
+                    height: 45px;
+                    width: 95px;
+                    border-radius: 2px;
+                    border: 1px solid green;
+                    margin: 30px auto;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: rgba(0, 0, 0, 0.1)
+                    }
+                }
+
+                p:last-child {
+                    padding-top: 5px;
+
+                    a {
+                        text-decoration: none;
+                        color: #000;
+                        padding-left: 10px;
+
+                        span {
+                            font-weight: 500;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
                         }
                     }
                 }

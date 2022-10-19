@@ -8,7 +8,7 @@ import { getAccount } from "../../api/apiMethod";
 import { makeId } from "../../common/common";
 import { ICONBACK } from "../../Icon";
 
-import { createAccountAsyn} from "../../redux/thunk/actionThunk";
+import { createAccountAsyn } from "../../redux/thunk/actionThunk";
 
 function SignUp(props) {
   const [step, setStep] = useState(true);
@@ -138,7 +138,7 @@ function SignUp(props) {
               name="user_name"
               type="text"
 
-              placeholder="Name (required)"
+              placeholder="UserName"
             />
 
           </div>
@@ -150,7 +150,7 @@ function SignUp(props) {
               autoComplete="off"
               name="telephone"
               type="number"
-              placeholder="Phone (required)"
+              placeholder="Phone"
             />
           </div>
           <div className="sign__address">
@@ -161,7 +161,7 @@ function SignUp(props) {
               autoComplete="off"
               name="address"
               type="text"
-              placeholder="Shipping Address (required)"
+              placeholder="Shipping Address"
             />
           </div>
           <div className="sign__password">

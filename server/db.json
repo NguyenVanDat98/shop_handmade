@@ -232,7 +232,17 @@
     },
     {
       "id": "e6j2S",
-      "cart": []
+      "cart": [
+        {
+          "product_id": 2,
+          "quantity": 1,
+          "product_img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
+          "product_price": 30,
+          "product_name": "Kitchen",
+          "product_category": "5 table decor 5",
+          "product_discount": 28.2
+        }
+      ]
     },
     {
       "id": "lZ6Yk",
