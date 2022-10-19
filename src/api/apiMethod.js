@@ -11,7 +11,11 @@ export const fetSlide = async () => {
   return slide;
 }
 export const fetProducts = async (path) => {
-  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.sort}${path.filter}${path.search}`).then(res => res.json())
+  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.filter}${path.sort}`).then(res => res.json())
+  return slide;
+}
+export const fetProductSearch = async (path) => {
+  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.filter}${path.sort}${path.search}`).then(res => res.json())
   return slide;
 }
 
@@ -89,13 +93,3 @@ export const updateCartItem = (id, data) => {
 //   return data;
 // }
 
-export const fetAccount = (id, data) => {
-  return fetch(API_URL + `/listAccount/${id}`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data)
-  })
-}

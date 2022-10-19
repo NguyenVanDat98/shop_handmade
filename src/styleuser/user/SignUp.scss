@@ -5,6 +5,7 @@
     background-image: url(../../img/bglogin.jpg);
     // object-fit: cover;
     min-height: 88.8vh;
+    align-self: center;
 
     .signInanimation {
         animation: signIN 0.3s forwards;
@@ -13,8 +14,8 @@
     .sign {
 
         width: 90%;
-        max-width: 490px;
-        min-height: 590px;
+        min-width: 700px;
+        min-height: 460px;
         height: max-content;
         border: 1px solid #000;
         border-radius: 6px;
@@ -71,18 +72,24 @@
     }
 
     input {
-        width: 100%;
+        width: 300px;
         height: 3rem;
         border-radius: 6px;
         padding: 0 10px;
         margin: 10px 0;
         outline: none;
         border: 1px solid #493a59;
+        font-weight: 400;
 
         &::placeholder {
             font-size: 20px;
             font-weight: 400;
         }
+    }
+
+    .error {
+        color: red;
+        font-weight: 400;
     }
 }
 

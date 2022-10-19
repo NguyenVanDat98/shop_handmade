@@ -31,19 +31,19 @@ function Forgot(props) {
       }
     );
   };
-  const handleRePass =(_)=>{
+  const handleRePass = (_) => {
     _.preventDefault()
     console.log(codee);
     console.log(valueForm.reCode);
-     if(valueForm.reCode===codee){
-        console.log(true);
-     }else{
-        refReCode.current.focus()
-        refReCode.current.value = ""
-     }
+    if (valueForm.reCode === codee) {
+      console.log(true);
+    } else {
+      refReCode.current.focus()
+      refReCode.current.value = ""
+    }
   }
   return (
-    <div className="rolemodal">
+    <div className="modal-forgot">
       {forgot ? (
         ""
       ) : (

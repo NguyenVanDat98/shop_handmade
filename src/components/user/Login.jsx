@@ -64,6 +64,7 @@ function Login(props) {
     }
     /////////////////////////////SUBMIT
     const onSubmit = data => {
+        console.log(getValues());
         CheckLogin()
     }
     ///////////CHANGE TYPE PASSWROD
@@ -75,7 +76,6 @@ function Login(props) {
     return (
         <div className='rolemodal'>
             <form onSubmit={handleSubmit(onSubmit)}>
-                {/* <form onSubmit={CheckLogin}> */}
                 <div className='login signInanimation'>
                     <h1>Log in</h1>
                     <div className='login__name'>

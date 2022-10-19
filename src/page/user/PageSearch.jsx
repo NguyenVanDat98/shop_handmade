@@ -15,11 +15,10 @@ const PageSearch = props => {
     const [limit, setLimit] = useState(6);
     const [filter, setFilter] = useState("");
     const [page, setPage] = useState(1);
-    // console.log(listProduct);
 
     useEffect(() => {
         dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page, search: locale.search.slice(1) }))
-    }, [dispatch, locale, limit, sort, page]);
+    }, [dispatch, locale, limit, filter, sort, page]);
 
     return (
         <>

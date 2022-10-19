@@ -22,7 +22,7 @@ function SignUp(props) {
   const [rePass, setRepass] = useState("");
   const [formValue, setFormValue] = useState({
     user_name: "",
-    telephone: Number,
+    telephone: 0,
     address: "",
     password: "",
     first_name: "",

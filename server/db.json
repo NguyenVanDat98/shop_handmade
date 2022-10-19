@@ -207,112 +207,48 @@
   ],
   "listAccount": [
     {
-      "id": "1ny68K",
+      "id": "5HDda6",
       "user_name": "dat",
-      "telephone": "0905450804",
-      "password": "123",
+      "telephone": "0934528538",
+      "password": "11223355",
       "type": "",
-      "profile_id": "lcWws",
-      "paymament_id": 1,
-      "cart_id": "u2bFT"
+      "profile_id": "6TB9l",
+      "cart_id": "QdTNE",
+      "payment_id": "-bEzx"
     },
     {
-      "id": "IVyxTS",
-      "user_name": "cong",
-      "telephone": "0950505050",
-      "password": "123",
-      "type": "",
-      "profile_id": "UIcXH",
-      "paymament_id": 2,
-      "cart_id": "e6j2S"
-    },
-    {
-      "id": "oMLr3x",
+      "id": "DhjWlw",
       "user_name": "admin",
-      "telephone": "0202020202",
-      "password": "admin",
+      "telephone": "0925842819",
+      "password": "admin1234",
       "type": "admin",
-      "profile_id": "15Pz4",
-      "paymament_id": 3,
-      "cart_id": "lZ6Yk"
-    },
-    {
-      "id": "PDd2gf",
-      "user_name": "test",
-      "telephone": "654654",
-      "password": "123",
-      "type": "",
-      "profile_id": "MfozK",
-      "cart_id": "odvRq",
-      "payment_id": "m2Guz"
+      "profile_id": "QhFAG",
+      "cart_id": "tBWFM",
+      "payment_id": "jPXK6"
     }
   ],
   "listCart": [
     {
-      "id": "u2bFT",
-      "cart": [
-        {
-          "product_id": 2,
-          "quantity": 1,
-          "product_img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-          "product_price": 30,
-          "product_name": "Kitchen",
-          "product_category": "5 table decor",
-          "product_discount": 28.2
-        }
-      ]
-    },
-    {
-      "id": "e6j2S",
-      "cart": [
-        {
-          "product_id": 2,
-          "quantity": 1,
-          "product_img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-          "product_price": 30,
-          "product_name": "Kitchen",
-          "product_category": "5 table decor 5",
-          "product_discount": 28.2
-        }
-      ]
-    },
-    {
-      "id": "lZ6Yk",
+      "id": "QdTNE",
       "cart": []
     },
     {
-      "id": "odvRq",
+      "id": "tBWFM",
       "cart": []
     }
   ],
   "listProfile": [
     {
-      "id": "lcWws",
-      "address": "van don",
-      "first_name": "CCCCC",
-      "last_name": "",
-      "email": ""
+      "id": "6TB9l",
+      "address": "23 To Huu, da nang",
+      "fullname": "nguyenvandat",
+      "email": "datshyn@gmail.com"
     },
     {
-      "id": "UIcXH",
-      "address": "abd",
-      "first_name": "AAAAA",
-      "last_name": "",
-      "email": ""
-    },
-    {
-      "id": "15Pz4",
-      "address": "1231231",
-      "first_name": "FFFFF",
-      "last_name": "",
-      "email": ""
-    },
-    {
-      "id": "MfozK",
-      "address": "123123",
-      "first_name": "a",
-      "last_name": "",
-      "email": ""
+      "id": "QhFAG",
+      "address": "23 Da nang",
+      "fullname": "admin",
+      "email": "admin@gmail.com"
     }
   ],
   "listVoucher": [
@@ -337,28 +273,14 @@
   ],
   "listPayment": [
     {
-      "id": 1,
-      "profile_id": "lcWws",
-      "cart_order": [
-        1
-      ],
-      "total": 30
-    },
-    {
-      "id": 2,
-      "profile_id": "UIcXH",
-      "cart_order": [],
-      "total": 40
-    },
-    {
-      "id": 3,
-      "profile_id": "15Pz4",
+      "id": "-bEzx",
+      "profile_id": "6TB9l",
       "cart_order": [],
       "total": 0
     },
     {
-      "id": "m2Guz",
-      "profile_id": "MfozK",
+      "id": "jPXK6",
+      "profile_id": "QhFAG",
       "cart_order": [],
       "total": 0
     }

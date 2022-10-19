@@ -10,10 +10,10 @@ const ItemTopUser = ({ No, seClose, data }) => {
   const { profile, payment, acc } = data;
   return (
     <div
-      onClick={() =>{
+      onClick={() => {
         dispatch(selectItemUser(data))
-         seClose()
-        }}
+        seClose()
+      }}
       className="item-user-top"
       style={{ "--disdelay": `0.${No}5s` }}
     >
@@ -22,7 +22,7 @@ const ItemTopUser = ({ No, seClose, data }) => {
         <span className={ICONUSER}></span>
       </div>
       <strong>
-        {No + 1}. {profile.first_name + " " + profile.last_name}
+        {No + 1}. {profile.fullname ? profile.fullname : acc.user_name}
       </strong>
       <strong>$ {payment.total}</strong>
     </div>
@@ -31,7 +31,7 @@ const ItemTopUser = ({ No, seClose, data }) => {
 
 const ChartFiveUser = ({ handleClose, close }) => {
   const dataRatings = useSelector((state) => state.adminData.ratings);
-  const isName = (param)=> dataRatings.profile.find((el) => el.id === param)
+  const isName = (param) => dataRatings.profile.find((el) => el.id === param)
   return (
     <>
       {close && (

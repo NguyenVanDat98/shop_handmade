@@ -3,7 +3,7 @@ import { GetDataProduct } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
 import { ClearStepPayment, fetchAccount, getProduct, getProductSearch, getSlider, SaveCart } from "../userReducer/action-reduce";
 import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
-import { createItemPayment, getCartItem, updateCartItem } from "../../api/apiMethod";
+import { createItemPayment, fetProductSearch, getCartItem, updateCartItem } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
 import store from './../store';
 
@@ -42,6 +42,7 @@ export const fetListProduct = (path) => {
     return (dispatch) => {
         (async () => {
             try {
+                console.log(path);
                 const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter })
                 const load = await fetProducts({ ...path, limit: 4, page: path.page + 1 })
                 dispatch(isLoadmore(load.length === 0 ? false : true));
@@ -56,8 +57,8 @@ export const fetListProductSearch = (path) => {
     return (dispatch) => {
         (async () => {
             try {
-                const data = await fetProducts({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter ,search:path.search})
-                const load = await fetProducts({ ...path, limit: 4, page: path.page + 1 })
+                const data = await fetProductSearch({ page: 1, limit: path.limit, sort: path.sort, filter: path.filter, search: path.search })
+                const load = await fetProductSearch({ ...path, limit: 6, page: path.page + 1 })
                 dispatch(isLoadmore(load.length === 0 ? false : true));
                 dispatch(getProductSearch(data))
             } catch (error) {
