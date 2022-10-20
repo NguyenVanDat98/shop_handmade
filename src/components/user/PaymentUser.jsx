@@ -4,15 +4,27 @@ import { ICONCREDIT, ICONVISA, ICONWALLET } from '../../Icon';
 import { useState } from "react";
 import { useSelector } from 'react-redux';
 import { getProfileUser } from '../../redux/thunk/actionThunk';
+import { useMemo } from 'react';
+import { tempInfoUser } from '../../redux/userReducer/action-reduce';
 
 const SHIPPING_FEE = 4
 const VOUCHER = 0
 function PaymentUser(props) {
     const [display, setDisplay] = useState(false);
+    const [addChoose, setAdd] = useState(null);
+    const [arr, setArr] = useState([]);
     const dispatch = useDispatch()
     const listProduct = useSelector((state) => state.users);
+    const [valueF , setValueF ]=  useState({
+         telephone: 0,
+            fullname: "",
+            email:"",
+            address : ""
+    })
     const { stepPayment,listProfile } = listProduct
     const { acc, profile } = listProfile;   
+  
+
     const totalBill =()=>{
        if( stepPayment){
             const _ = stepPayment.reduce((a, e) => a + parseInt(e.quantity), 0);
@@ -22,34 +34,56 @@ function PaymentUser(props) {
             return{ total : 0 , amount: 0 }}
     } 
     const TOTAL_BILL =()=>{
-        return(parseFloat(totalBill().total).toFixed(2) +( totalBill().total===0?0: parseFloat(SHIPPING_FEE))-parseFloat(VOUCHER))
+        return(parseFloat(totalBill().total) +( totalBill().total===0?0: parseFloat(SHIPPING_FEE))-parseFloat(VOUCHER))
     }
-    console.log(listProduct);
     const InfoListPayment = useSelector((state) => state.users.stepPayment);
+const hangdleChangeForm =(e)=>{
+    setValueF({...valueF,[e.target.name]: e.target.value})
+}
+
+const handleSave =(e)=>{
+   e.preventDefault();
+   setArr((s)=>[...s,valueF])
+   
+}
 
     useEffect(() => {
         dispatch(getProfileUser())
     }, [dispatch])
+
     return (
         <div className='user'>
             <div className='user__info'>
                 <div className='user__info--address'>
-                    <div className='d-flex justify-content-between align-items-start'>
+{/* {-----------------------------------Shipping Address---------------------------------------------------} */}
+                    <div className='d-flex justify-content-between align-items-start address-title'>
                         <p>Shipping Address</p>
                         <button onClick={() => setDisplay(true)}>Edit</button>
                     </div>
-                    <div>
-                        <div className='d-flex'>
-                            {acc && <>
-                                <p className='fws-text'>{profile.fullname}</p>
-                                <p className='fws-text'>{acc.telephone}</p>
-                            </>}
+                    { acc && <div className='info-user'>  
+                            <button onClick={()=>setAdd({
+                                emai : profile.emai,
+                                fullname:profile.fullname,
+                                telephone:acc.telephone,
+                                address: profile.address
+                            })}>Choose</button>                          
+                            <h5>{profile.fullname}<span>{acc.telephone} </span> </h5>                                                  
+                            <p className='fws-text'> {profile.address}</p>                        
+                    </div>}
+                    { arr &&
+                    arr.map((_,i)=>
+                    <div className='info-user' key={i}>                    
+                            <button onClick={()=>{setAdd(_) }}>Choose</button>                          
+                            <h5>{_.fullname}   <span>{_.telephone} </span> </h5>                                            
+                            <p className='fws-text'> {_.address}</p>                        
                         </div>
-                        {profile &&
-                            <p className='fws-text'> {profile.address}</p>
-                        }
-                    </div>
+                    )
+                    
+                    }
+                    
+
                 </div>
+{/* {-----------------------------------List product---------------------------------------------------} */}
                 <div className='user__info--cart'>
                     <p >Cart <span>Amount list payment: {totalBill().amount}</span></p>
                     {InfoListPayment && InfoListPayment.map((item, i) => (
@@ -68,8 +102,10 @@ function PaymentUser(props) {
                     ))}
                 </div>
             </div>
+{/* {-----------------------------------info method payment---------------------------------------------------} */}
+
             {display ? ("") : (<div className='user__order'>
-                <form>
+                <form  >
                     <div className='user__order--payment'>
                         <h5>Payment Method</h5>
                         <div className='d-flex justify-content-between mb-4'>
@@ -129,29 +165,29 @@ function PaymentUser(props) {
             </div>)}
 
             {display ? (<div className='user__form'>
-                <form action="" >
+                <form onSubmit={(e)=>handleSave(e)}>
                     <h4>SHIPPING ADDRESS</h4>
                     <div className='user__form--name'>
                         <label htmlFor="formControlInput" className="form-label">Full Name</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" value={valueF.fullname} required name={"fullname"} onChange={hangdleChangeForm} className="form-control" />
                     </div>
                     <div className='user__form--contact'>
                         <div>
                             <label htmlFor="formControlInput" className="form-label">Phone</label>
-                            <input type="number" className="form-control" />
+                            <input type="number" minLength="9" name={"telephone"} value={valueF.telephone} onChange={hangdleChangeForm}  maxLength="11" required className="form-control" />
                         </div>
                         <div>
                             <label htmlFor="formControlInput" className="form-label">Email</label>
-                            <input type="email" className="form-control" />
+                            <input type="email" value={valueF.email} name={"email"} onChange={hangdleChangeForm} className="form-control" />
                         </div>
                     </div>
                     <div className='user__form--address'>
                         <label htmlFor="formControlInput" className="form-label">Address</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" value={valueF.address} required name={"address"} onChange={hangdleChangeForm} className="form-control" />
                     </div>
                     <div className='user__form--btn'>
                         <button type="button" onClick={() => setDisplay(false)}>Cancel</button>
-                        <button type="button">Save</button>
+                        <button type='submit' >Save</button>
                     </div>
                 </form>
             </div>) : ("")}
