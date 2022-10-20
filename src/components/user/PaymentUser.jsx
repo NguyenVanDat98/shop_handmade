@@ -3,15 +3,18 @@ import { useDispatch } from "react-redux";
 import { ICONCHECK, ICONCREDIT, ICONVISA, ICONWALLET } from "../../Icon";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { getProfileUser } from "../../redux/thunk/actionThunk";
+import { FetchListVoucher, getProfileUser } from "../../redux/thunk/actionThunk";
 import { ICONTRUCK } from "./../../Icon/index";
+import toast from "react-hot-toast";
 
 const SHIPPING_FEE = 4;
 const VOUCHER = 0;
 function PaymentUser(props) {
   const [display, setDisplay] = useState(false);
   const [addChoose, setAdd] = useState(null);
+  const [VoucherChoose, setVoucherChoose] = useState(null);
   const [show, setShow] = useState(false);
+  const [valueVoucher, setVoucher] = useState("");
   const [arr, setArr] = useState([]);
   const dispatch = useDispatch();
   const listProduct = useSelector((state) => state.users);
@@ -21,7 +24,7 @@ function PaymentUser(props) {
     email: "",
     address: "",
   });
-  const { stepPayment, listProfile } = listProduct;
+  const { stepPayment, listProfile ,listVoucher } = listProduct;
   const { acc, profile } = listProfile;
 
   const totalBill = () => {
@@ -51,10 +54,33 @@ function PaymentUser(props) {
     e.preventDefault();
     setArr((s) => [...s, valueF]);
   };
+  const focusVoucher =(e)=>{
+   e.target.previousSibling.style.display = "block" 
+  }
+  const blurVoucher =(e)=>{
+    setTimeout(() => {
+      e.target.previousSibling.style.display = "none"      
+    }, 300);
+
+  }
 
   useEffect(() => {
     dispatch(getProfileUser());
+    dispatch(FetchListVoucher());
   }, [dispatch]);
+
+ const validVoucher =()=>{
+    const check = listVoucher.find((_)=>_.code===valueVoucher) || null
+
+  if(totalBill().total>10){  if (check) {
+      setVoucherChoose(check)
+      toast.success("this Code unvalid!",{position:"top-right"})
+    }else{
+      toast.error("this Code unvalid!",{position:"top-right"})
+    }}else{
+      toast.error("Total not enough condition!",{position:"top-right"})
+    }
+  }
 
   return (
     <>
@@ -163,11 +189,27 @@ function PaymentUser(props) {
                 <div className="user__order--info--voucher">
                   <h5>Voucher</h5>
                   <div className="d-flex justify-content-between mt-3">
+                    {/* {list voucher } */}
+
+                  { <ul>
+                      {
+                        listVoucher.map((_,i)=> 
+                        <li onClick={(e)=>{setVoucher(_.code)}}> 
+                          <h6> {_.name}</h6>
+                          <small> Expiry:{_.day_final} </small>  
+                        </li>)
+                      }
+
+                    </ul>}
                     <input
                       type="text"
+                      onFocus={(e)=>focusVoucher(e)}
+                      onBlur={(e)=>blurVoucher(e)}
+                      value={valueVoucher}
+                      onChange={(e)=>setVoucher(e.target.value)}
                       placeholder="Enter voucher(apply only once)"
                     />
-                    <button type="button">Apply</button>
+                    <button onClick={validVoucher} type="button">Apply</button>
                   </div>
                 </div>
                 <div className="user__order--info--total mt-4">
@@ -182,7 +224,8 @@ function PaymentUser(props) {
                   </div>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Voucher</p>
-                    <p>$ {VOUCHER}</p>
+                    
+                    <p>$ {totalBill().total > 14 ? (VoucherChoose ? parseInt(VoucherChoose.discount): 0 ):0}</p>
                   </div>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Total:</p>

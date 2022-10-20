@@ -1,9 +1,9 @@
 import toast from "react-hot-toast";
 import { GetDataProduct, GetDataProfile } from "../../api/adminMethodAip";
 import { fetProducts, fetSlide, createAccount, createProfileAccount, getAccount, createItemCart } from "../../api/"
-import { ClearStepPayment, fetchAccount, getProduct, getProductSearch, getProfile, getSlider, SaveCart } from "../userReducer/action-reduce";
+import { ClearStepPayment, fetchAccount, getProduct, getProductSearch, getProfile, getSlider, SaveCart, savelistVoucher } from "../userReducer/action-reduce";
 import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-reduce';
-import { createItemPayment, fetPayment, fetProductSearch, fetProfile, getCartItem, updateAccountUser, updateCartItem, updateProfileUser } from "../../api/apiMethod";
+import { createItemPayment, fetPayment, fetProductSearch, fetProfile, getCartItem, getListVoucher, updateAccountUser, updateCartItem, updateProfileUser } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
 import store from './../store';
 
@@ -271,6 +271,22 @@ export const clearCartUser = (item) => {
                     toast.error(error.message);
 
                 })
+            } catch (error) {
+                console.log(error);
+            }
+        })()
+    }
+}
+/// ------------------ get list voucher ------------////
+export const FetchListVoucher = () => {
+    return (dispatch) => {
+        (async () => {
+            try {
+               await getListVoucher().then(res=>
+                res.json()
+               ).then(res=>{dispatch(savelistVoucher(res)) })
+                
+          
             } catch (error) {
                 console.log(error);
             }

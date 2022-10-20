@@ -9,4 +9,5 @@ export const userInital = {
     stepPayment: [],
     listProfile: [],
     listAddress: [],
+    listVoucher: [],
 }

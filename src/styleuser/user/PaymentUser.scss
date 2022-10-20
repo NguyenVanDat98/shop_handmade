@@ -245,6 +245,34 @@
                 width: 100%;
 
                 &>div:nth-child(2) {
+                    position: relative;
+                    ul{
+                        display: none;
+                        position: absolute;
+                        top: 45px;
+                        left: -3px;
+                        background-color: White;
+                        margin-left: 5px;
+                        padding: 0;
+                        border: 3px solid black;
+                        border-radius: 10px;
+                        width: 60%;
+                        li{
+                            padding: 3px 5px;
+                            border-radius: 10px;
+                            transition: all 0.2s ease-in-out;
+                            margin-bottom: 3px;
+                            margin-top: 3px;
+                            h6{
+                                margin-bottom: 2px;
+                            }
+                            &:hover{
+                                cursor: pointer;
+                                background-color: rgb(211, 208, 208);
+                            }
+                        }
+                        
+                    }
                     input {
                         width: 65%;
                         border: 1px solid brown;
