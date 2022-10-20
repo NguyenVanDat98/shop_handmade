@@ -6,15 +6,17 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { getAccount } from "../../api/apiMethod";
 import { makeId } from "../../common/common";
+import { ICONLEFT } from '../../Icon';
 import { createAccountAsyn } from "../../redux/thunk/actionThunk";
 const schema = yup.object().shape({
-  user_name: yup.string().min(3),
-  address: yup.string(),
-  password: yup.string().min(8).max(16),
-  re_password: yup.string().min(8).max(16),
-  telephone: yup.string().min(9).max(11).required('Please enter your telephone'),
+  user_name: yup.string().required('Please enter your username').min(3),
+  address: yup.string().required('Please enter your shipping address'),
+  password: yup.string().required('Please enter your password').min(8).max(16),
+  re_password: yup.string().required('Please confirm your password').min(8).max(16),
+  telephone: yup.string().required('Please enter your telephone').min(9).max(11),
   fullname: yup.string(),
   email: yup.string().email(),
+
 })
 function SignUpFix(props) {
   const navi = useNavigate();
@@ -112,7 +114,10 @@ function SignUpFix(props) {
     <div className="rolemodal">
       <div>
         <form onSubmit={handleSubmit(onSubmit)} className="sign signInanimation" style={{ width: "560px" }}>
-          <h1>Sign Up</h1>
+          <div className='sign__title'>
+            <p onClick={() => navi(-1)}><i className={ICONLEFT}></i></p>
+            <h1>Sign Up</h1>
+          </div>
           <div className="d-flex justify-content-between">
             <div className="sign__name">
               <input

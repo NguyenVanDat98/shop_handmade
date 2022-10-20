@@ -4,7 +4,14 @@ export const getAccount = async (path = "") => {
   const data = await fetch(API_URL + `/listAccount${path}`)
   return data;
 }
-
+export const fetProfile = async (param) => {
+  const data = await fetch(API_URL + `/listProfile/` + param).then(res => res.json())
+  return data;
+}
+export const fetPayment = async (param) => {
+  const data = await fetch(API_URL + `/listPayment/` + param).then(res => res.json())
+  return data;
+}
 
 export const fetSlide = async () => {
   const slide = await fetch(API_URL + "/slideShow").then(res => res.json())
@@ -80,6 +87,26 @@ export const getCartItem = (data = "") => {
 };
 export const updateCartItem = (id, data) => {
   return fetch(API_URL + `/listCart/${id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+}
+export const updateProfileUser = (data) => {
+  return fetch(API_URL + `/listProfile/${data.id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+}
+export const updateAccountUser = (data) => {
+  return fetch(API_URL + `/listAccount/${data.id}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",

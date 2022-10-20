@@ -2,9 +2,12 @@ import React, { useRef } from "react";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { makeCode } from "../../common/common";
+import { ICONLEFT } from './../../Icon/index';
+import { useNavigate } from 'react-router-dom';
 const codee = makeCode();
 
 function Forgot(props) {
+  const navi = useNavigate();
   const [forgot, setForgot] = useState(false);
   const refForm = useRef();
   const refReCode = useRef();
@@ -48,7 +51,12 @@ function Forgot(props) {
         ""
       ) : (
         <form ref={refForm} className="forgot" onSubmit={(e) => checkForgot(e)}>
-          <h4>Please enter your email</h4>
+          <div className="forgot__title">
+            <p onClick={() => navi(-1)}>
+              <i className={ICONLEFT}></i>
+            </p>
+            <h4>Please enter your email</h4>
+          </div>
           <div>
             <input
               type="text"
@@ -66,57 +74,65 @@ function Forgot(props) {
             <button value={"send"}>Send</button>
           </div>
         </form>
-      )}
-      {forgot ? (
-        <form className="setpass">
-          <h4>Please enter information below here</h4>
-          <div>
-            <input
-              type="text"
-              name="reCode"
-              ref={refReCode}
-              placeholder="Your code in email"
-              onChange={(e) =>
-                setValueForm({
-                  ...valueForm,
-                  [e.target.name]: e.target.value,
-                })
-              }
-              className="form-input"
-            />
-            <input
-              type="password"
-              name="newPass"
-              placeholder="Set new password "
-              onChange={(e) =>
-                setValueForm({
-                  ...valueForm,
-                  [e.target.name]: e.target.value,
-                })
-              }
-              className="form-input"
-            />
-            <input
-              type="password"
-              name="reNewPass"
-              placeholder="Re-enter new password"
-              onChange={(e) =>
-                setValueForm({
-                  ...valueForm,
-                  [e.target.name]: e.target.value,
-                })
-              }
-              className="form-input"
-            />
-          </div>
-          <div>
-            <button onClick={handleRePass}>Save</button>
-          </div>
-        </form>
-      ) : (
-        ""
-      )}
-    </div>
+      )
+      }
+      {
+        forgot ? (
+          <form className="setpass">
+            <div className="setpass__title">
+              <p onClick={() => setForgot(false)}>
+                <i className={ICONLEFT}></i>
+              </p>
+              <h4>Please enter your new infomation</h4>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="reCode"
+                ref={refReCode}
+                placeholder="Your code in email"
+                onChange={(e) =>
+                  setValueForm({
+                    ...valueForm,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                className="form-input"
+              />
+              <input
+                type="password"
+                name="newPass"
+                placeholder="Set new password "
+                onChange={(e) =>
+                  setValueForm({
+                    ...valueForm,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                className="form-input"
+              />
+              <input
+                type="password"
+                name="reNewPass"
+                placeholder="Re-enter new password"
+                onChange={(e) =>
+                  setValueForm({
+                    ...valueForm,
+                    [e.target.name]: e.target.value,
+                  })
+                }
+                className="form-input"
+              />
+            </div>
+            <div>
+              <button onClick={handleRePass}>Save</button>
+            </div>
+          </form>
+        ) : (
+          ""
+        )
+      }
+    </div >
   );
 }
 

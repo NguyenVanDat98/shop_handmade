@@ -24,8 +24,30 @@
             z-index: 2;
             background-color: #fff;
 
-            h1 {
-                color: #493a59;
+            &__title {
+                display: flex;
+                align-items: center;
+
+                &>h1 {
+                    color: #493a59;
+                }
+
+                &>p {
+                    margin-bottom: 0;
+                    padding: 5px;
+                    width: 42px;
+                    margin-right: 5px;
+
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 0.85;
+                    }
+
+                    &>i {
+                        font-size: 2rem;
+                        color: #493a59;
+                    }
+                }
             }
 
             // text-align: center;  

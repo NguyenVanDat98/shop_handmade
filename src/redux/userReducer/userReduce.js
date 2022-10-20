@@ -13,6 +13,11 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, slider: action.payload
             }
+        case actionTypes.FETCH_PROFILE:
+
+            return {
+                ...state, listProfile: action.payload
+            }
 
         case actionTypes.FETCH_PRODUCT:
             return {

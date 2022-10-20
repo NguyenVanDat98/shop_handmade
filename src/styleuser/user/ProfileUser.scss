@@ -68,20 +68,17 @@
             order: 1;
         }
 
-        &>div:nth-child(2) {
+        &--detail {
             display: flex;
             flex-direction: column;
-            // justify-content: space-between;
+            justify-content: space-between;
+            width: 85%;
 
-            label {
-                font-weight: 500;
-                font-size: 1.1rem;
-                line-height: 26px;
-                padding: 18px 0;
-                width: 150px;
+            &>h5 {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
             }
-
-
         }
 
         &>div:last-child {

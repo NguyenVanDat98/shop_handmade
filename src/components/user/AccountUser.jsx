@@ -6,7 +6,6 @@ import { ICONUSER } from '../../Icon';
 import { fetchAccount } from '../../redux/userReducer/action-reduce';
 import { SaveCart } from './../../redux/userReducer/action-reduce';
 
-
 function AccountUser(props) {
     const [account, setAccount] = useState(false);
     const dispatch = useDispatch()

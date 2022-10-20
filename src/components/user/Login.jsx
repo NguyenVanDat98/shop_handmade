@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAccount } from '../../api/apiMethod';
-import { ICONPASS } from '../../Icon';
+import { ICONBACK, ICONLEFT, ICONPASS } from '../../Icon';
 import icongoogle from "../../img/icongoogle.png";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -77,7 +77,10 @@ function Login(props) {
         <div className='rolemodal'>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='login signInanimation'>
-                    <h1>Log in</h1>
+                    <div className="login__title">
+                        <p onClick={() => navi(-1)}><i className={ICONLEFT}></i></p>
+                        <h1>Log in</h1>
+                    </div>
                     <div className='login__name'>
                         <input type="text" placeholder='Username' autoComplete='off' name="username" {...register("username")} />
                         {errors.username && <p className="error">{errors.username.message}</p>}

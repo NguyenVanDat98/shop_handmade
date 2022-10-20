@@ -20,8 +20,31 @@
         z-index: 2;
         background-color: #fff;
 
-        h4 {
-            text-align: center;
+        &__title {
+            display: flex;
+            align-items: center;
+
+            &>p {
+                margin-bottom: 0;
+                padding: 5px;
+                width: 42px;
+                margin-right: 5px;
+
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.85;
+                }
+
+                &>i {
+                    font-size: 2rem;
+                    color: #493a59;
+                }
+            }
+
+            h4 {
+                color: #493a59;
+            }
+
         }
 
         div:nth-child(2) {
