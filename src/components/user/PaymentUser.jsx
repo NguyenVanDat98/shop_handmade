@@ -43,7 +43,6 @@ function PaymentUser(props) {
       parseFloat(VOUCHER)
     );
   };
-  const InfoListPayment = useSelector((state) => state.users.stepPayment);
   const hangdleChangeForm = (e) => {
     setValueF({ ...valueF, [e.target.name]: e.target.value });
   };
@@ -72,7 +71,7 @@ function PaymentUser(props) {
                 <button
                   onClick={() =>
                     setAdd({
-                      emai: profile.emai,
+                      email: profile.email,
                       fullname: profile.fullname,
                       telephone: acc.telephone,
                       address: profile.address,
@@ -110,8 +109,8 @@ function PaymentUser(props) {
             <p>
               Cart <span>Amount list payment: {totalBill().amount}</span>
             </p>
-            {InfoListPayment &&
-              InfoListPayment.map((item, i) => (
+            {stepPayment &&
+              stepPayment.map((item, i) => (
                 <div className="user__info--cart--item" key={i} item={item}>
                   <div className="d-flex">
                     <img src={item.product_img} alt="imagee" />
@@ -246,7 +245,13 @@ function PaymentUser(props) {
                   <label htmlFor="formControlInput" className="form-label">
                     Address
                   </label>
-                  <input type="text" className="form-control" />
+                  <input
+                    type="text"
+                    value={valueF.address}
+                    name={"address"}
+                    onChange={hangdleChangeForm}
+                    className="form-control"
+                  />
                 </div>
                 <div className="user__form--btn">
                   <button type="button" onClick={() => setDisplay(false)}>
@@ -273,25 +278,6 @@ function PaymentUser(props) {
                 Your order will be shipped within 2 days from the date of order.
               </h5>
               <h4>THANKS FOR SHOPPING IN OUR SHOP!! </h4>
-            </div>
-            <div className="user__form--address">
-              <label htmlFor="formControlInput" className="form-label">
-                Address
-              </label>
-              <input
-                type="text"
-                value={valueF.address}
-                required
-                name={"address"}
-                onChange={hangdleChangeForm}
-                className="form-control"
-              />
-            </div>
-            <div className="user__form--btn">
-              <button type="button" onClick={() => setDisplay(false)}>
-                Cancel
-              </button>
-              <button type="submit">Save</button>
             </div>
           </div>
         </div>
