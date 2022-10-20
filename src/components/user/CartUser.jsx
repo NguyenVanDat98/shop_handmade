@@ -7,6 +7,7 @@ import { ClearStepPayment, DeleteItem } from '../../redux/userReducer/action-red
 import { clearCartUser, deleteItemInCart, getDataCartItem } from './../../redux/thunk/actionThunk';
 import CartItem from './CartItem';
 import SelectItem from './SelectItem';
+import { toast } from 'react-hot-toast';
 function CartUser(props) {
     const listProduct = useSelector((state) => state.users);
     const dispatch = useDispatch();
@@ -32,7 +33,13 @@ function CartUser(props) {
     const totalAmount = listProduct.stepPayment.reduce((a, e) => a + e.quantity, 0);
     const totalBill = listProduct.stepPayment.reduce((a, e) => a + e.product_discount * e.quantity, 0).toFixed(2);
     const handleSendBill = () => {
-        navigate("/payment")
+        const amountProduct = listProduct.stepPayment.length;
+        if (amountProduct === 0) {
+            toast.dismiss();
+            toast.error("Your list payment is empty!!");
+        } else {
+            navigate("/payment")
+        }
     }
     return (
         <div className='list'>

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ICONCREDIT, ICONVISA, ICONWALLET } from '../../Icon';
 
 import { useState } from "react";
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getProfileUser } from '../../redux/thunk/actionThunk';
 function PaymentUser(props) {
     const [display, setDisplay] = useState(false);
+    const dispatch = useDispatch()
     const listProduct = useSelector((state) => state.users);
     console.log(listProduct);
+    const InfoListPayment = useSelector((state) => state.users.stepPayment);
+    const { listProfile } = listProduct;
+    const { acc, profile } = listProfile;
+    useEffect(() => {
+        dispatch(getProfileUser())
+    }, [dispatch])
     return (
         <div className='user'>
             <div className='user__info'>
@@ -17,86 +26,32 @@ function PaymentUser(props) {
                     </div>
                     <div>
                         <div className='d-flex'>
-                            <p className='fws-text'>Nguyễn Văn Đạt</p>
-                            <p className='fws-text'>0965782356</p>
+                            {acc && <>
+                                <p className='fws-text'>{profile.fullname}</p>
+                                <p className='fws-text'>{acc.telephone}</p>
+                            </>}
                         </div>
-                        <p className='fws-text'> Vân Đồn Street, Nại Hiên Đông Ward, Sơn Trà District, Đà Nẵng City</p>
+                        {profile &&
+                            <p className='fws-text'> {profile.address}</p>
+                        }
                     </div>
                 </div>
                 <div className='user__info--cart'>
                     <p>Cart</p>
-                    <div className='user__info--cart--item'>
-                        <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg" alt="imagee" />
-                            <p className='fws-text'>Kitchen</p>
+                    {InfoListPayment && InfoListPayment.map((item, i) => (
+                        <div className='user__info--cart--item' key={i} item={item}>
+                            <div className='d-flex'>
+                                <img src="https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg" alt="imagee" />
+                                <p className='fws-text'>{item.product_name}</p>
+                            </div>
+                            <div>
+                                <p className='fws-text'>$ {item.product_discount * item.quantity}</p>
+                                <p>$ {item.product_price * item.quantity}</p>
+                                <p>-{item.product_percent}</p>
+                            </div>
+                            <p className='fws-text'>Quantity: <span className='fws-text'>{item.quantity}</span></p>
                         </div>
-                        <div>
-                            <p className='fws-text'>$ 56.4</p>
-                            <p>$ 60</p>
-                            <p>-6%</p>
-                        </div>
-                        <p className='fws-text'>Quantity: <span className='fws-text'>2</span></p>
-                    </div>
-                    <div className='user__info--cart--item'>
-                        <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
-                            <p className='fws-text'>Boat</p>
-                        </div>
-                        <div>
-                            <p className='fws-text'>$ 57</p>
-                            <p>$ 60</p>
-                            <p>-5%</p>
-                        </div>
-                        <p className='fws-text'>Quantity: <span className='fws-text'>3</span></p>
-                    </div>
-                    <div className='user__info--cart--item'>
-                        <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
-                            <p className='fws-text'>Boat</p>
-                        </div>
-                        <div>
-                            <p className='fws-text'>$ 57</p>
-                            <p>$ 60</p>
-                            <p>-5%</p>
-                        </div>
-                        <p className='fws-text'>Quantity: <span className='fws-text'>3</span></p>
-                    </div>
-                    <div className='user__info--cart--item'>
-                        <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
-                            <p className='fws-text'>Boat</p>
-                        </div>
-                        <div>
-                            <p className='fws-text'>$ 57</p>
-                            <p>$ 60</p>
-                            <p>-5%</p>
-                        </div>
-                        <p className='fws-text'>Quantity: <span className='fws-text'>3</span></p>
-                    </div>
-                    <div className='user__info--cart--item'>
-                        <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
-                            <p className='fws-text'>Boat</p>
-                        </div>
-                        <div>
-                            <p className='fws-text'>$ 57</p>
-                            <p>$ 60</p>
-                            <p>-5%</p>
-                        </div>
-                        <p className='fws-text'>Quantity: <span className='fws-text'>3</span></p>
-                    </div>
-                    <div className='user__info--cart--item'>
-                        <div className='d-flex'>
-                            <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="imagee" />
-                            <p className='fws-text'>Boat</p>
-                        </div>
-                        <div>
-                            <p className='fws-text'>$ 57</p>
-                            <p>$ 60</p>
-                            <p>-5%</p>
-                        </div>
-                        <p className='fws-text'>Quantity: <span className='fws-text'>3</span></p>
-                    </div>
+                    ))}
                 </div>
             </div>
             {display ? ("") : (<div className='user__order'>

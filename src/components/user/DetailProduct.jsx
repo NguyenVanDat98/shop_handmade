@@ -19,7 +19,7 @@ function DetailProduct(props) {
     const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
     const param = useParams()
     const FetProduct = useCallback(() => {
-        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "", search:"" })
+        fetProducts({ page: 1, limit: "", filter: `&id=${param.id}`, sort: "", search: "" })
             .then(res =>
                 setItemData(res[0])
             )
@@ -37,6 +37,7 @@ function DetailProduct(props) {
                 dispatch(putCart({
                     data: {
                         product_id: itemData.id,
+                        product_percent: itemData.discount,
                         quantity: 1,
                         product_img: itemData.img,
                         product_price: itemData.price,
