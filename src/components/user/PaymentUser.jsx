@@ -2,8 +2,11 @@ import React from 'react';
 import { ICONCREDIT, ICONVISA, ICONWALLET } from '../../Icon';
 
 import { useState } from "react";
+import { useSelector } from 'react-redux';
 function PaymentUser(props) {
     const [display, setDisplay] = useState(false);
+    const listProduct = useSelector((state) => state.users);
+    console.log(listProduct);
     return (
         <div className='user'>
             <div className='user__info'>

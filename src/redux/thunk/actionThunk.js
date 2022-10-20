@@ -6,7 +6,7 @@ import { isLoadmore, addToCart, SaveCartReview } from './../userReducer/action-r
 import { createItemPayment, fetPayment, fetProductSearch, fetProfile, getCartItem, updateAccountUser, updateCartItem, updateProfileUser } from "../../api/apiMethod";
 import { putItemInCart } from './../../api/apiMethod';
 import store from './../store';
-import { call } from "redux-saga/effects";
+
 
 export const checkLogin = () => {
     return (dispatch) => {
