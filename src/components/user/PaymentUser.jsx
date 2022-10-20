@@ -1,12 +1,30 @@
 import React from 'react';
 import { ICONCREDIT, ICONVISA, ICONWALLET } from '../../Icon';
-
 import { useState } from "react";
 import { useSelector } from 'react-redux';
+
+const SHIPPING_FEE = 4
+const VOUCHER = 0
 function PaymentUser(props) {
     const [display, setDisplay] = useState(false);
     const listProduct = useSelector((state) => state.users);
-    console.log(listProduct);
+    const { stepPayment } = listProduct
+    console.log(stepPayment);
+   
+    const totalBill =()=>{
+       if( stepPayment){
+            const _ = stepPayment.reduce((a, e) => a + parseInt(e.quantity), 0);
+            const __ = stepPayment.reduce((a, e) => a + parseFloat(e.product_discount) * parseInt(e.quantity), 0)
+            return { total : parseFloat(__) , amount: parseFloat(_)}
+        }else{
+            return{ total : 0 , amount: 0 }}
+    } 
+    const TOTAL_BILL =()=>{
+            console.log(totalBill().total)
+            console.log(SHIPPING_FEE)
+            console.log(VOUCHER)
+        return(parseFloat(totalBill().total).toFixed(2) +( totalBill().total===0?0: parseFloat(SHIPPING_FEE))-parseFloat(VOUCHER))
+    }
     return (
         <div className='user'>
             <div className='user__info'>
@@ -24,7 +42,7 @@ function PaymentUser(props) {
                     </div>
                 </div>
                 <div className='user__info--cart'>
-                    <p>Cart</p>
+                    <p >Cart <span>Amount list payment: {totalBill().amount}</span></p>
                     <div className='user__info--cart--item'>
                         <div className='d-flex'>
                             <img src="https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg" alt="imagee" />
@@ -137,19 +155,19 @@ function PaymentUser(props) {
                             <h5>Information Order</h5>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Provisional Price</p>
-                                <p>$ 30</p>
+                                <p>$ {totalBill().total}</p>
                             </div>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Shipping Fee</p>
-                                <p>$ 4</p>
+                                <p>$ {totalBill().total===0 ? 0 : SHIPPING_FEE}</p>
                             </div>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Voucher</p>
-                                <p>$ 0</p>
+                                <p>$ {VOUCHER}</p>
                             </div>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Total:</p>
-                                <p>$ 34</p>
+                                <p>$ {TOTAL_BILL()}</p>
                             </div>
                             <div>
                                 <button type='submit'>ORDER</button>
