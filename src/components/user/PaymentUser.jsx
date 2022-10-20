@@ -9,7 +9,6 @@ function PaymentUser(props) {
     const [display, setDisplay] = useState(false);
     const listProduct = useSelector((state) => state.users);
     const { stepPayment } = listProduct
-    console.log(stepPayment);
    
     const totalBill =()=>{
        if( stepPayment){
