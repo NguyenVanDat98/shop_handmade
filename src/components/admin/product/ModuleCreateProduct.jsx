@@ -74,11 +74,10 @@ const snipCategory =(e)=>{
       ...data, 
       category: data.category.replace(/\s+/g, ' ').trim(),
       price: parseInt(data.price),
-      discount: parseInt(
-        Number.isInteger(data.discount)
+      discount: parseInt(data.discount)
           ? data.discount
           : 0
-      ),
+      ,
       time_making: dateNow,
       status: true,
       sold: 0,

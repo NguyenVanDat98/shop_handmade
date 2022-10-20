@@ -14,7 +14,7 @@ const ModuleUserProfile = memo(({ displayModule, onClick }) => {
         dispatch(GetListOrder(profile.id))
     },[profile,dispatch]);
     return (
-      <div className={`module-profile ${displayModule}`}  >
+      <div className={`${displayModule} module-profile `}  >
         <div className="header-module">
         <div className="header-module-avt m-3">
           <i className={ICONUSER}></i>
@@ -37,7 +37,7 @@ const ModuleUserProfile = memo(({ displayModule, onClick }) => {
   
         </div>
         <div className="control">
-          {
+          {/* {
            !status ? <button onClick={() => setStatus(true)} className="btn btn-danger"> Remove user</button> :<div className={`check-delete`}>
             <span>You sure ?</span>
              <button className=" btn btn-primary allow" onClick={() => setStatus(false)}>
@@ -47,7 +47,7 @@ const ModuleUserProfile = memo(({ displayModule, onClick }) => {
               <i className="fa-sharp fa-solid fa-ban"></i>
             </button>
             </div>
-          }
+          } */}
         </div>
         <details className="history-order">
           <summary> View more history Order</summary>

@@ -21,7 +21,7 @@ const InfoVoucher = props => {
         <div>
           {" "}
           <strong>Expiry : </strong>
-          <span>{ItemVoucher.day_start}    /---/ {ItemVoucher.day_final} </span>{""}
+          <strong className='day-expiry'><span>{ItemVoucher.day_start} </span> /---/ <span>{ItemVoucher.day_final}</span> </strong>{""}
     
         </div>
         <div>

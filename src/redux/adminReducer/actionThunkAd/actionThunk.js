@@ -1,6 +1,7 @@
 import { text } from "@fortawesome/fontawesome-svg-core";
 import toast from "react-hot-toast";
 import {
+  DeleteDataOrder,
   GetDataProduct,
   GetDataSlideShow,
   PostDataProduct,
@@ -15,6 +16,7 @@ import {
   GetListPayment,
   GetOrder,
 } from "../../../api/adminMethodAip/apiMethodAccount";
+import store from "../../store";
 import {
   AddProduct,
   ChangeOrder,
@@ -227,6 +229,25 @@ export const UpdateStatus = (param, txt) => {
     })();
   };
 };
+export const handleDeleteOrder = (param) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        await DeleteDataOrder(param).then(res=>checkRespose(res,"Delete Fail!",()=>{
+          toast.dismiss()
+          toast.success("Delete Success!")
+          let temp = store.getState().adminData.listOrder.filter(_=>_.id!==param)
+          dispatch(saveOrder(temp))
+        }))
+        
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+
+
 export const updateCategory = (param) => {
   return (dispatch) => {
     (async () => {

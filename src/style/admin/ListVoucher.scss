@@ -1,10 +1,19 @@
+:root{
+  --width-body : calc(100vw - 100px)
+}
+
+
 .body-voucher {
   display: flex;
-  flex-grow: 1;
+  // flex-grow: 1;
+  max-width: var(--width-body);
+  min-width: var(--width-body);
+  
 }
 .list-voucher {
-  width: calc(60vw - 80px);
-  min-width: calc(60vw - 80px);
+  // width: calc(60vw - 80px);
+  // min-width: calc(60vw - 80px);
+  flex-grow: 1;
   padding-bottom: 20px;
   height: 82vh;
   background-color: rgba($color: #171519, $alpha: 0.52);
@@ -27,9 +36,8 @@
   }
 }
 .controler-voucherpage {
-  margin-left: 15px;
-
-  flex-grow: 1;
+  min-width: 350px;
+  margin-left: 8px;
   .header-controler {
     display: flex;
     justify-self: center;
@@ -50,11 +58,12 @@
     }
   }
   section {
-    display: block;
+  //   display: block;
     background-color: white;
     width: 100%;
     height: max-content;
-    min-height: 100px;
+    max-height: 80vh;
+  //   min-height: ;
     padding: 0 10px;
     padding-bottom: 15px;
     h4 {
@@ -63,7 +72,13 @@
     & > div {
       display: flex;
       justify-content: space-between;
-
+      .day-expiry{
+        white-space: wrap;
+        span{
+          width: max-content;
+          white-space: nowrap;
+        }
+      }
       & > p {
         width: 76px;
         text-align: justify;
