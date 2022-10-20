@@ -55,21 +55,23 @@ function SlideShow() {
             <h2> New Product</h2>
             <Slider {...settings}>
                 {dataSlider && dataSlider.map((item, i) => (
-                    <div className="card" key={i}>
-                        <div className="card-top">
-                            <Link to={`/detail/${item.id}`}>
-                                <img
-                                    src={item.img}
-                                    alt={item.name}
-                                />
-                            </Link>
-                            <h5>{item.name}</h5>
+                    <Link to={`/detail/${item.id}`} key={i}>
+                        <div className="card" >
+                            <div className="card-top">
+                                <div>
+                                    <img
+                                        src={item.img}
+                                        alt={item.name}
+                                    />
+                                </div>
+                                <h5>{item.name}</h5>
+                            </div>
+                            <div className="card-bottom">
+                                <h3>${item.price}</h3>
+                                <span className="category">{item.category}</span>
+                            </div>
                         </div>
-                        <div className="card-bottom">
-                            <h3>${item.price}</h3>
-                            <span className="category">{item.category}</span>
-                        </div>
-                    </div>
+                    </Link>
                 ))}
             </Slider>
         </div>

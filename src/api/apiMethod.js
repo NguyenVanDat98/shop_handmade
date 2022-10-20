@@ -4,13 +4,25 @@ export const getAccount = async (path = "") => {
   const data = await fetch(API_URL + `/listAccount${path}`)
   return data;
 }
+export const fetProfile = async (param) => {
+  const data = await fetch(API_URL + `/listProfile/` + param).then(res => res.json())
+  return data;
+}
+export const fetPayment = async (param) => {
+  const data = await fetch(API_URL + `/listPayment/` + param).then(res => res.json())
+  return data;
+}
 
 export const fetSlide = async () => {
   const slide = await fetch(API_URL + "/slideShow").then(res => res.json())
   return slide;
 }
 export const fetProducts = async (path) => {
-  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.sort}${path.filter}${path.search}`).then(res => res.json())
+  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.filter}${path.sort}`).then(res => res.json())
+  return slide;
+}
+export const fetProductSearch = async (path) => {
+  const slide = await fetch(API_URL + `/listProduct?_page=${path.page}&_limit=${path.limit}${path.filter}${path.sort}${path.search}`).then(res => res.json())
   return slide;
 }
 
@@ -83,7 +95,28 @@ export const updateCartItem = (id, data) => {
     body: JSON.stringify(data)
   })
 }
+export const updateProfileUser = (data) => {
+  return fetch(API_URL + `/listProfile/${data.id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+}
+export const updateAccountUser = (data) => {
+  return fetch(API_URL + `/listAccount/${data.id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+}
 // export const searchCartItem = async (param) => {
 //   const data = await fetch(API_URL + `/listProduct?${param.name}_like=${param.input}`)
 //   return data;
 // }
+

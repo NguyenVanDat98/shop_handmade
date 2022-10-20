@@ -22,7 +22,7 @@ function SignUp(props) {
   const [rePass, setRepass] = useState("");
   const [formValue, setFormValue] = useState({
     user_name: "",
-    telephone: Number,
+    telephone: 0,
     address: "",
     password: "",
     first_name: "",
@@ -154,7 +154,8 @@ function SignUp(props) {
               ref={focusInputName}
               name="user_name"
               type="text"
-              placeholder="Name (required)"
+
+              placeholder="UserName"
             />
           </div>
           <div className="sign__phone">
@@ -165,7 +166,7 @@ function SignUp(props) {
               autoComplete="off"
               name="telephone"
               type="number"
-              placeholder="Phone (required)"
+              placeholder="Phone"
             />
           </div>
           <div className="sign__address">
@@ -176,7 +177,7 @@ function SignUp(props) {
               autoComplete="off"
               name="address"
               type="text"
-              placeholder="Shipping Address (required)"
+              placeholder="Shipping Address"
             />
           </div>
           <div className="sign__password">

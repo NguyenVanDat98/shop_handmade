@@ -11,18 +11,18 @@ import ButtonSidebar from "../admin/ButtonSidebar";
 
 
 const SideBar = (props) => {
-    const navi=useNavigate()
-     const Url = useLocation().pathname
+    const navi = useNavigate()
+    const Url = useLocation().pathname
 
     const page = {
-        page1: Url ==="/",
-        page2: Url==="/cart",
-        page3: Url==="",
+        page1: Url === "/",
+        page2: Url === "/cart",
+        page3: Url === "",
     }
 
     return (
         <div className="sidebarAd sidebar-user">
-             {! page.page1 && <button onClick={()=>navi(-1)}><i className={ICONBACK} ></i></button>} 
+            {!page.page1 && <button onClick={() => navi(-1)}><i className={ICONBACK} ></i></button>}
             <ButtonSidebar
                 iconName={ICONHOME}
                 active={page.page1}

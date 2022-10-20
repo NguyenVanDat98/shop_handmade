@@ -20,6 +20,12 @@ export const getSlider = (data) => {
         payload: data,
     }
 }
+export const getProfile = (data) => {
+    return {
+        type: actionTypes.FETCH_PROFILE,
+        payload: data,
+    }
+}
 
 export const getProductSearch = (data) => {
     return {

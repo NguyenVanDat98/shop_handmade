@@ -14,32 +14,48 @@
     &__cart {
         text-align: center;
         // background-color: #fff;
-        width: 60px;
-        height: 50px;
+        // width: 60px;
+        // height: 50px;
         // border-radius: 6px;
-
         position: relative;
+        display: flex;
 
-        &>i {
-            font-size: 30px;
-            padding-right: 5px;
-            padding-top: 15px;
-            position: relative;
-            cursor: pointer;
+        &--icon {
+            margin-bottom: 0;
 
-            &::after {
-                content: attr(total-product);
-                display: block;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                background-color: red;
+            &>i {
+                font-size: 30px;
+                padding-right: 5px;
+                padding-top: 15px;
+                position: relative;
+                cursor: pointer;
+
+                // &::after {
+                //     content: attr(total-product);
+                //     display: block;
+                //     width: 20px;
+                //     height: 20px;
+                //     border-radius: 50%;
+                //     background-color: red;
+                //     position: absolute;
+                //     top: 8px;
+                //     right: -3px;
+                //     font-size: 14px;
+                //     color: #000;
+                //     padding-top: 3px;
+                // }
+            }
+
+            &>input {
                 position: absolute;
-                top: 8px;
-                right: -3px;
-                font-size: 14px;
-                color: #000;
-                padding-top: 3px;
+                right: 0;
+                opacity: 0;
+                top: -2px;
+                z-index: 1000;
+                width: 42px;
+                // border-radius: 50%;
+                line-height: 50px;
+                cursor: pointer;
             }
         }
     }

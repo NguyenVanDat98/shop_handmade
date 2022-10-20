@@ -25,13 +25,15 @@ export const ICONLOCATION = "fa-sharp fa-solid fa-location-dot";
 export const ICONPHONE = "fa-solid fa-phone";
 export const ICONPINTEREST = "fa-brands fa-pinterest-p";
 export const ICONREPEAT = "fa-solid fa-repeat";
- 
+
 export const ICONCREDIT = "fa-regular fa-credit-card";
 export const ICONWALLET = "fa-solid fa-wallet";
 export const ICONVISA = "fa-brands fa-cc-visa";
 
+export const ICONEMPTYCART = "fa-thin fa-cart-shopping";
 export const ICONADD = "fa-solid fa-plus";
 export const ICONEDIT = "fa-solid fa-pen-to-square";
-export const ICONSAVE ="fa-solid fa-floppy-disk"
+export const ICONSAVE = "fa-solid fa-floppy-disk";
+export const ICONLEFT = "fa-solid fa-arrow-left-long";
 
 

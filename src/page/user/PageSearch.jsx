@@ -15,15 +15,14 @@ const PageSearch = props => {
     const [limit, setLimit] = useState(6);
     const [filter, setFilter] = useState("");
     const [page, setPage] = useState(1);
-    // console.log(listProduct);
 
     useEffect(() => {
-        dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page,search:locale.search.slice(1)}))
-    }, [dispatch, locale, limit, sort, page]);
+        dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page, search: locale.search.slice(1) }))
+    }, [dispatch, locale, limit, filter, sort, page]);
 
     return (
         <>
-            <div className='feature-filter d-flex justify-content-end' style={{ paddingRight: "30px" }}  >
+            <div className='feature-filter d-flex justify-content-end mt-4' style={{ paddingRight: "30px" }}  >
                 <Filter handleChangeValueFilter={(e) => {
                     setFilter(e.target.value)
                 }} />

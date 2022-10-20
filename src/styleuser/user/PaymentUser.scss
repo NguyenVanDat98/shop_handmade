@@ -15,11 +15,13 @@
         border-radius: 6px;
         z-index: 10;
         background-color: #ccc;
-        height: 40%;
+        height: 575px;
         margin-left: 30px;
 
         input {
             width: 100%;
+            margin: 8px 0;
+            padding: 10px;
         }
 
         &--contact {

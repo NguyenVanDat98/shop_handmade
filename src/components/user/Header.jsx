@@ -26,29 +26,34 @@ function Header({ search, children, cart }) {
                     <img src={logo} alt="" className="header__image" />
                 </div>
             </Link>
-            <div className='d-flex'>
+            <div className='header__cart' >
                 {search && <SearchUser />}
-                {cart && <span className="header__cart" style={{ marginLeft: "8px" }}>
-                    <i className={ICONCART} total-product={listItem && listItem.length} onClick={() => setShow(!show)}></i>
-                    {show ? (<ul className='cart-list'>
-                        <div className='cart-title'>
-                            <p>Your Shopping Cart</p>
-                            <p onClick={() => setShow(!show)}>x</p>
-                        </div>
-                        {listItem && listItem.map((item, i) => (
-                            <li className="cart-item" key={i}>
-                                <div className='cart-item__info'>
-                                    <img src={item.img} alt="" />
-                                    <p>{item.name}</p>
-                                </div>
-                                <div className='cart-item__detail'>
-                                    <p>${item.price}</p>
-                                </div>
-                                <p>Qty:{item.quantity}</p>
-                            </li>
-                        ))}
-                    </ul>) : ("")}
-                </span>}
+                {cart && <p className="header__cart--icon" style={{ marginLeft: "8px" }}>
+                    <input type="text" onBlur={() => {
+                        setTimeout(() => {
+                            setShow(false)
+                        }, 300);
+                    }} onFocus={() => setShow(true)} />
+                    <i className={ICONCART} ></i>
+                </p>}
+                {show ? (<ul className='cart-list'>
+                    <div className='cart-title'>
+                        <p>Your Shopping Cart</p>
+                        <p onClick={() => setShow(!show)}>x</p>
+                    </div>
+                    {listItem && listItem.map((item, i) => (
+                        <li className="cart-item" key={i}>
+                            <div className='cart-item__info'>
+                                <img src={item.img} alt="" />
+                                <p>{item.name}</p>
+                            </div>
+                            <div className='cart-item__detail'>
+                                <p>${item.price}</p>
+                            </div>
+                            <p>Qty:{item.quantity}</p>
+                        </li>
+                    ))}
+                </ul>) : ("")}
             </div>
             {children}
         </div >

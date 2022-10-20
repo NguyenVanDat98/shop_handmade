@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, Forgot } from '../../../components';
+import { Header, Forgot, FooterUser } from '../../../components';
 
 
 function ForgotPage(props) {
@@ -8,6 +8,7 @@ function ForgotPage(props) {
         <>
             <Header cart={false} />
             <Forgot />
+            <FooterUser />
         </>
     );
 }

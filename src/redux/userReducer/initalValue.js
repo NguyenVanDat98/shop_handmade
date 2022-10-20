@@ -7,5 +7,5 @@ export const userInital = {
     cart: [],
     cartReview: [],
     stepPayment: [],
-
+    listProfile: [],
 }
