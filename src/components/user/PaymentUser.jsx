@@ -1,18 +1,32 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { ICONCREDIT, ICONVISA, ICONWALLET } from '../../Icon';
-
 import { useState } from "react";
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import { getProfileUser } from '../../redux/thunk/actionThunk';
+
+const SHIPPING_FEE = 4
+const VOUCHER = 0
 function PaymentUser(props) {
     const [display, setDisplay] = useState(false);
     const dispatch = useDispatch()
     const listProduct = useSelector((state) => state.users);
+    const { stepPayment,listProfile } = listProduct
+    const { acc, profile } = listProfile;   
+    const totalBill =()=>{
+       if( stepPayment){
+            const _ = stepPayment.reduce((a, e) => a + parseInt(e.quantity), 0);
+            const __ = stepPayment.reduce((a, e) => a + parseFloat(e.product_discount) * parseInt(e.quantity), 0)
+            return { total : parseFloat(__) , amount: parseFloat(_)}
+        }else{
+            return{ total : 0 , amount: 0 }}
+    } 
+    const TOTAL_BILL =()=>{
+        return(parseFloat(totalBill().total).toFixed(2) +( totalBill().total===0?0: parseFloat(SHIPPING_FEE))-parseFloat(VOUCHER))
+    }
     console.log(listProduct);
     const InfoListPayment = useSelector((state) => state.users.stepPayment);
-    const { listProfile } = listProduct;
-    const { acc, profile } = listProfile;
+
     useEffect(() => {
         dispatch(getProfileUser())
     }, [dispatch])
@@ -37,7 +51,7 @@ function PaymentUser(props) {
                     </div>
                 </div>
                 <div className='user__info--cart'>
-                    <p>Cart</p>
+                    <p >Cart <span>Amount list payment: {totalBill().amount}</span></p>
                     {InfoListPayment && InfoListPayment.map((item, i) => (
                         <div className='user__info--cart--item' key={i} item={item}>
                             <div className='d-flex'>
@@ -92,19 +106,19 @@ function PaymentUser(props) {
                             <h5>Information Order</h5>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Provisional Price</p>
-                                <p>$ 30</p>
+                                <p>$ {totalBill().total}</p>
                             </div>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Shipping Fee</p>
-                                <p>$ 4</p>
+                                <p>$ {totalBill().total===0 ? 0 : SHIPPING_FEE}</p>
                             </div>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Voucher</p>
-                                <p>$ 0</p>
+                                <p>$ {VOUCHER}</p>
                             </div>
                             <div className='d-flex justify-content-between mb-3'>
                                 <p>Total:</p>
-                                <p>$ 34</p>
+                                <p>$ {TOTAL_BILL()}</p>
                             </div>
                             <div>
                                 <button type='submit'>ORDER</button>
