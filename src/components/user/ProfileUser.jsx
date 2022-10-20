@@ -1,20 +1,88 @@
 import React from 'react';
 import { ICONUSER } from '../../Icon';
 import { useState } from 'react';
+import { getProfile } from '../../api/apiMethod';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getProfileUser, updateInfoUser } from '../../redux/thunk/actionThunk';
 
 function ProfileUser(props) {
     const [info, setInfo] = useState(false);
     const [form, setForm] = useState(false);
     const [order, setOrder] = useState(false);
+    const [step, setStep] = useState(false);
+
+    const dispatch = useDispatch()
+    const profileUsernow = useSelector((state) => state.users.listProfile);
+    const { acc, profile, payment } = profileUsernow;
+
+    const [valueform, setValueform] = useState({
+        fullname: "",
+        telephone: "",
+        email: "",
+        address: ""
+    });
+    const handleChangevalue = (e) => {
+        setValueform({
+            ...valueform,
+            [e.target.name]: e.target.value
+        })
+    }
+    useEffect(() => {
+        if (profile) {
+
+            if (
+                valueform.fullname === profile.fullname &&
+                valueform.telephone === acc.telephone &&
+                valueform.email === profile.email &&
+                valueform.address === profile.address
+            ) {
+                setStep(true)
+            } else {
+                setStep(false)
+            }
+        }
+    }, [valueform])
+    useEffect(() => {
+        profile && setValueform({
+            fullname: profile.fullname,
+            telephone: acc.telephone,
+            email: profile.email,
+            address: profile.address
+        })
+    }, [profileUsernow])
+    const handleCancel = () => {
+        setForm(false);
+        setInfo(false);
+        setValueform({
+            fullname: profile.fullname,
+            telephone: acc.telephone,
+            email: profile.email,
+            address: profile.address
+        })
+    }
+    const handleUpdateProfile = (e) => {
+        e.preventDefault()
+        dispatch(updateInfoUser({ ...profileUsernow, valueform }, () => {
+            setForm(false)
+            setInfo(false)
+            setStep(true)
+        }))
+    }
+    useEffect(() => {
+        dispatch(getProfileUser());
+    }, [dispatch])
     return (
-        <div className='profile d-flex'>
+        <div className='profile'>
             <div className="profile__image">
                 <div>
                     <span><i className={ICONUSER}></i></span>
                 </div>
                 <div>
-                    <p>Nguyễn Văn Đạt</p>
-                    <p>Vân Đồn Street, Nại Hiên Đông Ward,Sơn Trà District, Đà Nẵng city</p>
+                    {profile && <>
+                        <p>{profile.fullname}</p>
+                        <p>{profile.address}</p>
+                    </>}
                 </div>
                 <div>
                     <button className='btn btn-primary' onClick={() => { setOrder(false); setInfo(false); setForm(false) }}>Infomation</button>
@@ -25,43 +93,36 @@ function ProfileUser(props) {
                 <div>
                     <button className='btn btn-warning' onClick={() => { setInfo(true); setForm(true); }}>Edit</button>
                 </div>
-                <div>
-                    <label>User Name</label>
-                    <label>Phone Number</label>
-                    <label>Shipping Address</label>
-                    <label>Email Address</label>
-                    <label>Total Orders</label>
-                </div>
-                <div>
-                    <p>Nguyễn Văn Đạt</p>
-                    <p>0965782356</p>
-                    <p>Vân Đồn Street, Nại Hiên Đông Ward, Sơn Trà District, Đà Nẵng City</p>
-                    <p>nguyenvandatdn97@gmail.com</p>
-                    <p>20</p>
-                </div>
+                {acc && <div className='profile__info--detail'>
+                    <h5> Full Name:         <span>{profile.fullname} </span></h5>
+                    <h5> Phone Number:      <span> {acc.telephone}</span></h5>
+                    <h5> Shipping Address:  <span> {profile.address}</span></h5>
+                    <h5> Email Address:     <span> {profile.email}</span></h5>
+                    <h5> Total Orders:      <span> {payment.total}</span></h5>
+                </div>}
             </div>)}
             {form ? (<div className='profile__form'>
                 <form action="" >
                     <h4>UPDATE INFORMATION</h4>
                     <div>
                         <label htmlFor="formControlInput" className="form-label">Full Name</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" className="form-control" name="fullname" onChange={handleChangevalue} value={valueform.fullname} />
                     </div>
                     <div>
                         <label htmlFor="formControlInput" className="form-label">Phone</label>
-                        <input type="number" className="form-control" />
+                        <input type="number" className="form-control" name="telephone" onChange={handleChangevalue} value={valueform.telephone} />
                     </div>
                     <div>
                         <label htmlFor="formControlInput" className="form-label">Email</label>
-                        <input type="email" className="form-control" />
+                        <input type="email" className="form-control" name="email" onChange={handleChangevalue} value={valueform.email} />
                     </div>
                     <div>
                         <label htmlFor="formControlInput" className="form-label">Address</label>
-                        <input type="text" className="form-control" />
+                        <input type="text" className="form-control" name="address" onChange={handleChangevalue} value={valueform.address} />
                     </div>
                     <div>
-                        <button className='btn btn-danger' onClick={() => { setForm(false); setInfo(false) }}>Cancel</button>
-                        <button className='btn btn-success'>Update</button>
+                        <button disabled={step} onClick={handleUpdateProfile} className='btn btn-success'>Update</button>
+                        <button className='btn btn-danger' onClick={handleCancel}>Cancel</button>
                     </div>
                 </form>
             </div>) : ("")}

@@ -12,7 +12,7 @@ const Account = props => {
             <div className='avt'>
             </div>
             <div className='textAcc'>
-            <Link to="/admin/profile">Adminitrator  </Link>
+            <Link to="#">Adminitrator  </Link>
             <span onClick={logOut} to="/login"> / Log out</span>
 
             </div>

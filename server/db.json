@@ -21,7 +21,7 @@
       "description": "Decoration",
       "discount": "6%",
       "time_making": "",
-      "category": "5 table decor 5",
+      "category": "5 table decor",
       "status": true,
       "sold": 70,
       "rating": 4.2
@@ -112,7 +112,7 @@
       "description": "Decoration",
       "discount": "5%",
       "time_making": "",
-      "category": "5  decor 5",
+      "category": "5 decor 4",
       "status": true,
       "sold": 120,
       "rating": 4.8
@@ -191,183 +191,157 @@
       "sold": 0,
       "rating": 0,
       "id": 15
+    },
+    {
+      "discount": 0,
+      "time_making": "2022-10-18",
+      "name": "qqq",
+      "price": 111,
+      "category": "7 decor 5",
+      "img": "https://i.etsystatic.com/22255674/c/1919/1526/0/648/il/3cfd25/3015609291/il_340x270.3015609291_42zo.jpg",
+      "status": true,
+      "sold": 0,
+      "rating": 0,
+      "id": 16
+    },
+    {
+      "discount": 0,
+      "time_making": "2022-10-19",
+      "name": "name",
+      "price": 12,
+      "category": "table decor 1",
+      "img": "https://i.etsystatic.com/25107966/c/2716/2158/0/533/il/99d73d/3955124854/il_340x270.3955124854_kowq.jpg",
+      "status": true,
+      "sold": 0,
+      "rating": 0,
+      "id": 17
+    },
+    {
+      "discount": "12",
+      "time_making": "2022-10-19",
+      "name": "name",
+      "price": 12,
+      "category": "5 table decor",
+      "img": "https://i.etsystatic.com/25107966/c/2716/2158/0/533/il/99d73d/3955124854/il_340x270.3955124854_kowq.jpg",
+      "status": true,
+      "sold": 0,
+      "rating": 0,
+      "id": 18
     }
   ],
   "listAccount": [
     {
-      "id": "1ny68K",
+      "id": "5HDda6",
       "user_name": "dat",
-      "telephone": "0905450804",
-      "password": "123",
+      "telephone": "0934523456",
+      "password": "11223355",
       "type": "",
-      "profile_id": "lcWws",
-      "paymament_id": 1,
-      "cart_id": "u2bFT"
+      "profile_id": "6TB9l",
+      "cart_id": "QdTNE",
+      "payment_id": "-bEzx"
     },
     {
-      "id": "IVyxTS",
-      "user_name": "cong",
-      "telephone": "0950505050",
-      "password": "123",
-      "type": "",
-      "profile_id": "UIcXH",
-      "paymament_id": 2,
-      "cart_id": "e6j2S"
-    },
-    {
-      "id": "oMLr3x",
+      "id": "DhjWlw",
       "user_name": "admin",
-      "telephone": "0202020202",
-      "password": "admin",
+      "telephone": "0925842819",
+      "password": "admin1234",
       "type": "admin",
-      "profile_id": "15Pz4",
-      "paymament_id": 3,
-      "cart_id": "lZ6Yk"
+      "profile_id": "QhFAG",
+      "cart_id": "tBWFM",
+      "payment_id": "jPXK6"
     }
   ],
   "listCart": [
     {
-      "id": "u2bFT",
+      "id": "QdTNE",
       "cart": [
         {
-          "product_id": 1,
-          "quantity": 1
-        },
-        {
           "product_id": 2,
-          "quantity": 1
-        },
-        {
-          "product_id": 3,
-          "quantity": 1
-        },
-        {
-          "product_id": 8,
-          "quantity": 1
+          "quantity": 1,
+          "product_img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
+          "product_price": 30,
+          "product_name": "Kitchen",
+          "product_category": "5 table decor",
+          "product_discount": 28.2
         }
       ]
     },
     {
-      "id": "e6j2S",
+      "id": "tBWFM",
       "cart": []
     },
     {
-      "id": "lZ6Yk",
+      "id": "9eSe1",
       "cart": []
     }
   ],
   "listProfile": [
     {
-      "id": "lcWws",
-      "address": "van don",
-      "first_name": "CCCCC",
-      "last_name": "",
-      "email": ""
+      "id": "6TB9l",
+      "address": "23 To Huu, da nan",
+      "fullname": "nguyenvandat",
+      "email": "datshyn@gmail.com"
     },
     {
-      "id": "UIcXH",
-      "address": "abd",
-      "first_name": "AAAAA",
-      "last_name": "",
-      "email": ""
+      "id": "QhFAG",
+      "address": "23 Da nang",
+      "fullname": "admin",
+      "email": "admin@gmail.com"
     },
     {
-      "id": "15Pz4",
-      "address": "1231231",
-      "first_name": "FFFFF",
-      "last_name": "",
-      "email": ""
+      "id": "N8nJn",
+      "address": "asdasd",
+      "fullname": "asd",
+      "email": "234asd@asdasd.com"
     }
   ],
   "listVoucher": [
     {
-      "id": "",
-      "expiry": "",
-      "code": "",
-      "description": ""
+      "name": "WD-20-FS",
+      "code": "s7lY6zUKz",
+      "discount": "2",
+      "detail": "LOREM",
+      "day_start": "19-10-2022",
+      "day_final": "20-10-2022",
+      "id": 1
+    },
+    {
+      "name": "WD-40-FS",
+      "code": "YCkcTAIvT",
+      "discount": "40",
+      "detail": "WOMEN DAY",
+      "day_start": "19-10-2022",
+      "day_final": "20-10-2022",
+      "id": 2
     }
   ],
   "listPayment": [
     {
-      "id": 1,
-      "profile_id": "lcWws",
-      "cart_order": [
-        1
-      ],
-      "total": 30
-    },
-    {
-      "id": 2,
-      "profile_id": "UIcXH",
+      "id": "-bEzx",
+      "profile_id": "6TB9l",
       "cart_order": [],
-      "total": 40
+      "total": 0
     },
     {
-      "id": 3,
-      "profile_id": "15Pz4",
+      "id": "jPXK6",
+      "profile_id": "QhFAG",
+      "cart_order": [],
+      "total": 0
+    },
+    {
+      "id": "dmBK6",
+      "profile_id": "N8nJn",
       "cart_order": [],
       "total": 0
     }
   ],
   "listOrder": [
     {
-      "id": 1,
-      "payment_id": 1,
-      "profile_id": "UIcXH",
-      "time__create": "22-12-2022",
-      "time_complete": "14-10-2022",
-      "list_product_order": [
-        {
-          "product_id": 1,
-          "name_product": "b",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        },
-        {
-          "product_id": 2,
-          "name_product": "a",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        }
-      ],
-      "voucher_id": "",
-      "total_order": 0,
-      "status": false
-    },
-    {
-      "id": 2,
-      "payment_id": 2,
-      "profile_id": "lcWws",
-      "time__create": "23-12-2022",
-      "time_complete": "14-10-2022",
-      "list_product_order": [
-        {
-          "product_id": 2,
-          "name_product": "a",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        },
-        {
-          "product_id": 4,
-          "name_product": "b",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        }
-      ],
-      "voucher_id": "",
-      "total_order": 0,
-      "status": false
-    },
-    {
       "id": 3,
       "payment_id": 2,
       "profile_id": "UIcXH",
       "time__create": "24-12-2022",
-      "time_complete": "15-10-2022",
+      "time_complete": "19-10-2022",
       "list_product_order": [
         {
           "product_id": 2,
@@ -386,7 +360,7 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": false
+      "status": true
     },
     {
       "id": 4,
@@ -412,7 +386,7 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": true
+      "status": false
     },
     {
       "id": 5,
@@ -438,7 +412,7 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": true
+      "status": false
     }
   ],
   "listEarning": [
@@ -451,13 +425,23 @@
     "data": [
       2,
       3,
-      8,
-      10,
-      12,
-      13,
+      4,
       5,
       6,
-      4
+      8
+    ]
+  },
+  "listCategory": {
+    "data": [
+      "table decor 1",
+      "5 table decor",
+      "5 table decor 3",
+      "5 table decor 1",
+      "7 decor 5",
+      "5 decor 4",
+      "5 table decor 5",
+      "5 table decor 4",
+      "table decor"
     ]
   }
 }

@@ -1,96 +1,81 @@
-import React from 'react';
-import { useEffect, useCallback, useState } from 'react';
-import { ICONMINUS, ICONPLUS, ICONTRASH } from '../../Icon';
-
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { ICONCART } from '../../Icon';
+import emptyCart from "../../img/shopping-cart.png";
+import { ClearStepPayment, DeleteItem } from '../../redux/userReducer/action-reduce';
+import { clearCartUser, deleteItemInCart, getDataCartItem } from './../../redux/thunk/actionThunk';
+import CartItem from './CartItem';
+import SelectItem from './SelectItem';
 function CartUser(props) {
-    const URL = "http://localhost:8000/listProduct";
-    const [listProduct, setListProduct] = useState([]);
-    const fetchData = useCallback(async () => {
-        await fetch(URL)
-            .then((res) => res.json())
-            .then((data) => {
-                setListProduct(data);
-            })
-            .catch(err => console.log(err))
-
-    }, [])
-
+    const listProduct = useSelector((state) => state.users);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     useEffect(() => {
-        fetchData()
-    }, [fetchData]);
+        dispatch(getDataCartItem())
+        dispatch(ClearStepPayment())
+    }, [dispatch]);
+    const handleDeleteItem = (item) => {
+        dispatch(deleteItemInCart(item))
+        dispatch(DeleteItem(item));
+    }
+    const checkCart = () => {
+        let cart = listProduct.cart.cart || null
+        return (cart !== null && cart.length);
+
+    }
+    console.log(checkCart())
+    const clearAllItem = () => {
+        const temp = { id: listProduct.cart.id, cart: [] }
+        dispatch(clearCartUser(temp))
+        dispatch(ClearStepPayment())
+    }
+    const totalAmount = listProduct.stepPayment.reduce((a, e) => a + e.quantity, 0);
+    const totalBill = listProduct.stepPayment.reduce((a, e) => a + e.product_discount * e.quantity, 0);
     return (
         <div className='list'>
-            <ul className="list-product">
-                {listProduct.length > 0 && listProduct.map((goods, index) => (
-                    <li key={index} className="list-product__add">
-                        <div className='list-product__detail'>
-                            <div>
-                                <input type="checkbox" />
-                                <img src={goods.img} alt={goods.name} />
-                            </div>
-                            <div>
-                                <p>{goods.name}</p>
-                                <p>{goods.description}</p>
-                            </div>
-                        </div>
-                        <div>
-                            <p>${goods.price}</p>
-                            <i className={ICONTRASH}></i>
-                        </div>
-                        <div>
-                            <button><i className={ICONMINUS}></i></button>
-                            <span>1</span>
-                            <button><i className={ICONPLUS}></i></button>
-                        </div>
-                    </li>
-                ))}
-                <div className='list-product__btn'>
-                    <button type='button'>Clear All</button>
-                </div>
-            </ul>
+            <div className='list-wrap'>
+                <h4 >Shopping Cart</h4>
+                {checkCart() === false || checkCart() === 0 ? (<div className='list-empty d-flex flex-column align-items-center justify-content-between' style={{ minHeight: "500px", margin: "15px 0" }} >
+                    <img src={emptyCart} alt="" style={{ width: "220px", height: "220px" }} />
+                    <h2 style={{ fontWeight: 400, fontSize: "40px" }}>Your cart is currently empty </h2>
+                    <p style={{ fontWeight: 400, fontSize: "1.2rem", textAlign: "center" }}>Before proceed to checkout, you must add some products to your cart. You will find alot of interesting products on our "Shop" page.</p>
+                    <div>
+                        <button className='btn btn-success btn-lg' onClick={() => navigate("/")}><i className={ICONCART} style={{ marginRight: "5px" }}></i> RETURN TO SHOP</button>
+                    </div>
+                </div>) : (
+                    <ul className='list-product'>
+                        {listProduct.cart.cart && listProduct.cart.cart.map((goods, i) => (
+                            <CartItem key={i} goods={goods} handleDeleteItem={handleDeleteItem} />
+                        ))}
+                    </ul>
+                )}
+                {(checkCart() !== 0 && checkCart() !== false) && (<div className='list-wrap--btn'>
+                    <button type='button' onClick={clearAllItem}>Clear All</button>
+                </div>)}
+            </div>
             <div className='list-selection'>
+                <h4 >List Payment</h4>
                 <div className='list-goods'>
-                    <div className='list-goods__item'>
-                        <img src="https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg" alt="" />
-                        <div>
-                            <div>
-                                <p>Boat</p>
-                                <p>Decoration</p>
-                            </div>
-                            <div>
-                                <p>$20</p>
-                                <p>1</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='list-goods__item'>
-                        <img src="https://img.alicdn.com/imgextra/i1/201255257/TB2czvEj9B0XKJjSZFsXXaxfpXa_!!201255257.jpg" alt="" />
-                        <div>
-                            <div>
-                                <p>Rickshaw</p>
-                                <p>Decoration</p>
-                            </div>
-                            <div>
-                                <p>$40</p>
-                                <p>1</p>
-                            </div>
-                        </div>
-                    </div>
+                    {listProduct.stepPayment.length > 0 && listProduct.stepPayment.map((item, index) =>
+                        <SelectItem item={item} key={index} />
+                    )}
                 </div>
                 <div className='list-payment'>
                     <div>
                         <p>Amount product: </p>
-                        <p>2</p>
+                        <p>{totalAmount}</p>
                     </div>
                     <div>
                         <p>Total: </p>
-                        <p>$60</p>
+                        <p>${totalBill.toFixed(2)}</p>
                     </div>
                     <div>
                         <button>Payment</button>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

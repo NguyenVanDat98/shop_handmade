@@ -9,10 +9,44 @@
         font-size: 1.1rem;
         text-transform: capitalize;
         line-height: 40px;
-        flex-grow:1 ;
+        flex-grow: 1;
         text-align: right;
 
         margin-bottom: 0;
+    }
+
+    .toggle {
+        position: relative;
+        height: max-content;
+        width: max-content;
+
+        &>input {
+            position: absolute;
+            right: 0;
+            opacity: 0;
+            top: -5px;
+            z-index: 1000;
+            width: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        &>p {
+            height: 50px;
+            width: 50px;
+            line-height: 45px;
+            background-color: white;
+            margin-left: 10px;
+            border-radius: 50%;
+            text-align: center;
+            margin-bottom: 0;
+
+            &>i {
+                line-height: 45px;
+                font-size: 30px;
+            }
+        }
     }
 
     .header__account {
@@ -30,7 +64,7 @@
     &>ul {
         position: absolute;
         list-style: none;
-        right: 0;
+        right: 5px;
         width: 160px;
         height: max-content;
         background-color: #fff;
@@ -51,57 +85,25 @@
             background-color: white;
             position: absolute;
             cursor: pointer;
-            z-index: 1;
         }
 
-        &>a {
-            &>li {
-                padding: 7px 5px 8px 15px;
-                font-weight: 400;
-
-                &:hover {
-                    background-color: rgba(0, 0, 0, 0.03);
-                    cursor: pointer;
-                    color: blue;
-                }
-            }
-        }
 
         &>li {
             padding: 7px 5px 8px 15px;
+            font-weight: 400;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.03);
+                color: blue;
+                z-index: 9999;
+                cursor: pointer;
+            }
 
             span {
                 font-weight: 400;
             }
-
-            &:hover {
-                background-color: rgba(0, 0, 0, 0.03);
-                cursor: pointer;
-                color: blue;
-            }
-        }
-    }
-
-    &>span {
-        margin-left: 10px;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: steelblue;
-        overflow: hidden;
-
-        &:hover {
-            cursor: pointer;
         }
 
-        &>i {
-            display: block;
-
-            font-size: 20px;
-            text-align: center;
-            line-height: 40px;
-            color: #fff
-        }
     }
 
 }

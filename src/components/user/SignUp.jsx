@@ -1,100 +1,45 @@
-
-import { useRef } from "react";
-import { useState } from "react";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import * as yup from "yup";
 import { getAccount } from "../../api/apiMethod";
 import { makeId } from "../../common/common";
-import { ICONBACK } from "../../Icon";
-import { createAccountAsyn, toastId } from "../../redux/thunk/actionThunk";
+import { ICONLEFT } from '../../Icon';
+import { createAccountAsyn } from "../../redux/thunk/actionThunk";
+const schema = yup.object().shape({
+  user_name: yup.string().required('Please enter your username').min(3),
+  address: yup.string().required('Please enter your shipping address'),
+  password: yup.string().required('Please enter your password').min(8).max(16),
+  re_password: yup.string().required('Please confirm your password').min(8).max(16),
+  telephone: yup.string().required('Please enter your telephone').min(9).max(11),
+  fullname: yup.string(),
+  email: yup.string().email(),
 
-function SignUp(props) {
-  const [step, setStep] = useState(true);
-
+})
+function SignUpFix(props) {
+  const navi = useNavigate();
   const dispatch = useDispatch();
-  const focusInputPass = useRef();
-  const focusInputRePass = useRef();
-  const focusInputName = useRef();
-  const focusInputAddress = useRef();
-  const focusInputTelephone = useRef();
-  const navi = useNavigate()
-  const [rePass, setRepass] = useState("");
-  const [formValue, setFormValue] = useState({
-    user_name: "",
-    telephone: Number,
-    address: "",
-    password: "",
-    first_name: "",
-    last_name: "",
-    email: "",
+  const { register, handleSubmit, setValue, getValues, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
   });
-  const handleChangeInput = (e) => {
-    setFormValue({ ...formValue, [e.target.name]: e.target.value });
-  };
-  const handleContinue = () => {
-    if (
-      formValue.user_name.length === 0 ||
-      formValue.telephone.length === 0 ||
-      formValue.address.length === 0 ||
-      formValue.password.length === 0
-    ) {
-      switch ("") {
-        case formValue.user_name:
-          focusInputName.current.focus();
-          toast.dismiss();
-          toast.error(`Please enter the ${focusInputName.current.name}!`);
-          break;
-        case formValue.telephone:
-          focusInputTelephone.current.focus();
-          toast.error(`Please enter the ${focusInputTelephone.current.name}!`);
-          break;
-        case formValue.address:
-          focusInputAddress.current.focus();
-          toast.dismiss();
-          toast.error(`Please enter the ${focusInputAddress.current.name}!`);
-          break;
-
-        case formValue.password:
-          focusInputPass.current.focus();
-          toast.dismiss();
-          toast.error(`Please enter the ${focusInputPass.current.name}!`);
-          break;
-
-        default:
-          break;
-      }
-    } else
-      getAccount(`?user_name=${formValue.user_name}`)
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.length !== 0) {
-            toast.dismiss();
-            toast.error("Please enter user name diffrent again!");
-            focusInputName.current.focus();
-          } else if (
-            formValue.password !== rePass ||
-            formValue.password.length === 0
-          ) {
-            toast.error("Please enter password again!");
-            focusInputPass.current.focus();
-            setFormValue({ ...formValue, password: "" });
-            setRepass("");
-          } else {
-            setStep(false);
-          }
-        });
-  };
-  const handleCreateAccount = () => {
+  const onSubmit = (data) => {
+    checkUsername(() => {
+      checkPassword(() => {
+        handleCreateAccount(data);
+      })
+    });
+  }
+  const handleCreateAccount = (data) => {
     const {
       user_name,
       telephone,
       address,
-      first_name,
-      last_name,
+      fullname,
       password,
       email,
-    } = formValue;
+    } = data;
     const itemAccount = {
       id: makeId(6),
       user_name: user_name,
@@ -103,137 +48,160 @@ function SignUp(props) {
       type: "",
       profile_id: makeId(5),
       cart_id: makeId(5),
+      payment_id: makeId(5),
     };
     const itemProfile = {
       id: itemAccount.profile_id,
       address: address,
-      first_name: first_name,
-      last_name: last_name,
+      fullname: fullname,
       email: email,
     };
     const cartItem = {
       id: itemAccount.cart_id,
-      cart: []
+      cart: [],
     };
-    dispatch(createAccountAsyn({ account: itemAccount, profile: itemProfile, cartItem: cartItem }))
-    for (const key in formValue) { formValue[key] = "" }
-    setFormValue(formValue);
-    setRepass("");
-    setTimeout(() => { toast.dismiss(); toast.success("Signup complete!"); navi("/login"); }, 2000)
-      ;
+    const paymentItem = {
+      id: itemAccount.payment_id,
+      profile_id: itemAccount.profile_id,
+      cart_order: [],
+      total: 0,
+    };
+    dispatch(
+      createAccountAsyn({
+        account: itemAccount,
+        profile: itemProfile,
+        cartItem: cartItem,
+        paymentItem: paymentItem
+      })
+    );
+    setTimeout(() => {
+      toast.dismiss();
+      toast.success("Signup complete!");
+      navi("/login");
+    }, 2000);
   };
+
+  const checkUsername = (checkPassword) => {
+    getAccount(`?user_name=${getValues("user_name")}`)
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.length !== 0) {
+          toast.dismiss();
+          toast.error("Please enter user name diffrent again!");
+        } else {
+          if (checkPassword) {
+            checkPassword();
+          }
+        }
+      })
+  }
+  const checkPassword = (callback) => {
+    const pass = getValues("password");
+    const re_pass = getValues("re_password");
+    if (pass !== re_pass) {
+      toast.error("Your password isn't correct!!");
+      setValue("password", "", { shouldDirty: true });
+      setValue("re_password", "", { shouldDirty: true });
+    } else {
+      if (callback) {
+        callback()
+      }
+    }
+  }
   return (
     <div className="rolemodal">
-      {step && (
-        <div className="sign signInanimation">
-          <h1>Sign Up (step 1)</h1>
-          <div className="sign__name">
-
-            <input
-              onChange={handleChangeInput}
-              value={formValue.user_name}
-              autoComplete="off"
-              ref={focusInputName}
-              name="user_name"
-              type="text"
-
-              placeholder="Name (required)"
-            />
-
+      <div>
+        <form onSubmit={handleSubmit(onSubmit)} className="sign signInanimation" style={{ width: "560px" }}>
+          <div className='sign__title'>
+            <p onClick={() => navi(-1)}><i className={ICONLEFT}></i></p>
+            <h1>Sign Up</h1>
           </div>
-          <div className="sign__phone">
-            <input
-              onChange={handleChangeInput}
-              value={formValue.telephone}
-              ref={focusInputTelephone}
-              autoComplete="off"
-              name="telephone"
-              type="number"
-              placeholder="Phone (required)"
-            />
+          <div className="d-flex justify-content-between">
+            <div className="sign__name">
+              <input
+                {...register("user_name")}
+                autoComplete="off"
+                name="user_name"
+                type="text"
+
+                placeholder="UserName"
+              />
+              {errors.user_name && <p className="error">{errors.user_name.message}</p>}
+            </div>
+            <div className="sign__name">
+              <input
+                {...register("fullname")}
+                autoComplete="off"
+                name="fullname"
+                type="text"
+                placeholder="FullName"
+              />
+              {errors.fullname && <p className="error">{errors.fullname.message}</p>}
+            </div>
+          </div>
+          <div className="d-flex justify-content-between">
+            <div className="sign__phone">
+              <input
+                {...register("telephone")}
+                autoComplete="off"
+                name="telephone"
+                type="number"
+                placeholder="Phone"
+              />
+              {errors.telephone && <p className="error">{errors.telephone.message}</p>}
+            </div>
+            <div className="sign__address">
+              <input
+                {...register("email")}
+                autoComplete="off"
+                name="email"
+                type="text"
+                placeholder="Email"
+              />
+              {errors.email && <p className="error">{errors.email.message}</p>}
+            </div>
           </div>
           <div className="sign__address">
             <input
-              onChange={handleChangeInput}
-              value={formValue.address}
-              ref={focusInputAddress}
+              {...register("address")}
               autoComplete="off"
               name="address"
               type="text"
-              placeholder="Shipping Address (required)"
+              placeholder="Shipping Address"
+              style={{ width: "638px" }}
             />
+            {errors.address && <p className="error">{errors.address.message}</p>}
           </div>
-          <div className="sign__password">
-            <input
-              onChange={handleChangeInput}
-              value={formValue.password}
-              autoComplete="off"
-              ref={focusInputPass}
-              name="password"
-              type="password"
-              placeholder="Password"
-            />
-          </div>
-          <div className="sign__repassword">
-            <input
-              onChange={(e) => setRepass(e.target.value)}
-              value={rePass}
-              autoComplete="off"
-              ref={focusInputRePass}
-              name="re_password"
-              type="password"
-              placeholder="Re-enter password"
-            />
+          <div className="d-flex justify-content-between">
+            <div className="sign__password">
+              <input
+                {...register("password")}
+                autoComplete="off"
+                name="password"
+                type="password"
+                placeholder="Password"
+              />
+              {errors.password && <p className="error">{errors.password.message}</p>}
+            </div>
+            <div className="sign__repassword">
+              <input
+                {...register("re_password")}
+                autoComplete="off"
+                name="re_password"
+                type="password"
+                placeholder="Confirm password"
+              />
+              {errors.re_password && <p className="error">{errors.re_password.message}</p>}
+            </div>
           </div>
           <div className="sign__btn">
-            <button onClick={handleContinue}>Continue</button>
+            <button type="submit" >Create Account</button>
           </div>
-        </div>
-      )}
-      {!step && (
-        <div className="sign module_info">
-          <h1>Sign Up (step 2)</h1>
-          <div className="sign__name">
-            <input
-              onChange={handleChangeInput}
-              autoComplete="off"
-              name="first_name"
-              value={formValue.first_name}
-              type="text"
-              placeholder="First Name"
-            />
-          </div>
-          <div className="sign__phone">
-            <input
-              onChange={handleChangeInput}
-              autoComplete="off"
-              name="last_name"
-              value={formValue.last_name}
-              type="text"
-              placeholder="Last name"
-            />
-          </div>
-          <div className="sign__address">
-            <input
-              onChange={handleChangeInput}
-              autoComplete="off"
-              name="email"
-              value={formValue.email}
-              type="text"
-              placeholder="Email"
-            />
-          </div>
-          <div className="sign__btn btn-group">
-            <button onClick={() => setStep(true)}>
-              {" "}
-              <i className={ICONBACK}></i> Back{" "}
-            </button>
-            <button onClick={handleCreateAccount}>Create Account</button>
-          </div>
-        </div>
-      )}
+        </form>
+      </div>
     </div>
+
   );
 }
 
-export default SignUp;
+export default SignUpFix;

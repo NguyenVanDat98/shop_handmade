@@ -1,16 +1,19 @@
-import React from "react";
+import React, { Children } from "react";
+import { useState } from "react";
 
-const InputFormVoucher = ({ type, name, register, required }) => {
+const InputFormVoucher = ({ type, name, register, required,children,min}) => {
   return (
     <div className="form-floating">
       <input
         className="form-control"
         autoComplete="off"
         type={type}
+        min={min}
         id={name}
         {...register(name, { required })}
-        name={name}
+        name={name} 
       />{" "}
+      {children}
       <label htmlFor={name}>{name} </label>{" "}
     </div>
   );

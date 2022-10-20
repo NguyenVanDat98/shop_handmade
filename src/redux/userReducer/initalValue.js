@@ -1,8 +1,11 @@
 export const userInital = {
-    accountLogin: [],
+    accountLogin: {},
     slider: [],
     listProduct: [],
     listProductAll: [],
     isLoadmore: true,
-    cart: []
+    cart: [],
+    cartReview: [],
+    stepPayment: [],
+    listProfile: [],
 }

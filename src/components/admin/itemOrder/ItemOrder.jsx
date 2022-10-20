@@ -1,23 +1,24 @@
 import { useDispatch } from 'react-redux';
-import { UpdateStatus } from '../../../redux/adminReducer/actionThunkAd/actionThunk';
-const ItemOrder = ({ data, status,delay }) => {
+import { ICONCLOSE } from '../../../Icon';
+import { handleDeleteOrder, UpdateStatus } from '../../../redux/adminReducer/actionThunkAd/actionThunk';
+const ItemOrder = ({ data, status,delay ,edit}) => {
     const dispatch = useDispatch()
 const dayNow = new Date(Date.now())
-
-
 const changeStatus =()=>{
     const txt = `${dayNow.getDate()}-${dayNow.getMonth()+1}-${dayNow.getFullYear()}`
     dispatch(UpdateStatus(data,txt))
   }
+  const deleteOrder = (item)=>{
+   dispatch(handleDeleteOrder(item))
+  }
   return (
     <>
       {data && (
-        <details style={{"--delay": `${delay/10}s`}}>
+        <details className='item-order' style={{"--delay": `${delay/10}s`}}>
           <summary>
             {status?
             <button className={`btn btn-primary`} onClick={changeStatus} >{"Done"}</button>    :        
-            <button className={`btn btn-success`} onClick={changeStatus} >{"Change"}</button>            
-            
+            <button className={`btn btn-success`} onClick={changeStatus} >{"Change"}</button>    
         }
             <section>
               <h5>
@@ -40,6 +41,8 @@ const changeStatus =()=>{
                 <span>{data.total_order}</span>
               </h6>
             </div>
+           {edit && <button  onClick={()=>deleteOrder(data.id)}><i className={ICONCLOSE}></i> </button>}
+            
           </summary>
           {data.list_product_order &&
             data.list_product_order.map((_, i) => (

@@ -4,35 +4,27 @@ import HeaderAd from "../../components/admin/HeaderAd";
 import BodyAd from "../../components/admin/BodyAd";
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { fetchDataProduct, GetInfomationUser, GetListOrder } from "../../redux/adminReducer/actionThunkAd/actionThunk";
-import { useState } from "react";
+import { fetchDataProduct, GetInfomationUser, GetListOrder, GetRatingsTotal, GetSlideShow } from "../../redux/adminReducer/actionThunkAd/actionThunk";
+import { pathNameAd } from "../../common/pathName";
 
 const  RootPage = (props) => {
-      const dispatch = useDispatch()
-      const locale = useLocation()
-      const [search , setSearch ]=useState(true);
-      const pageSearch=["/admin/dashboard"]
-      useEffect(()=>{
-        if(pageSearch.includes(locale.pathname)){
-          setSearch(false)
-        }else{
-          setSearch(true)
-        }
-          
-      },[locale.pathname]);
-      // console.log();
+  const pageSearch= [pathNameAd.dashboard]
+  const dispatch = useDispatch()
+  const locale = useLocation()
   useEffect(()=>{
     dispatch(fetchDataProduct());
     dispatch(GetInfomationUser());
     dispatch(GetListOrder("",false))
+    dispatch(GetSlideShow())
+    dispatch(GetRatingsTotal());
   },[dispatch]);
   return (
-    <div>
-      <HeaderAd search={search}/>
-     <BodyAd>
+    <>
+      <HeaderAd search={!pageSearch.includes(locale.pathname) }/>
+      <BodyAd>
       <Outlet/>
      </BodyAd>
-    </div>
+    </>
   );
 };
 export default RootPage;
