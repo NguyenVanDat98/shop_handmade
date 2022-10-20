@@ -41,7 +41,7 @@ function PaymentUser(props) {
                     {InfoListPayment && InfoListPayment.map((item, i) => (
                         <div className='user__info--cart--item' key={i} item={item}>
                             <div className='d-flex'>
-                                <img src="https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg" alt="imagee" />
+                                <img src={item.product_img} alt="imagee" />
                                 <p className='fws-text'>{item.product_name}</p>
                             </div>
                             <div>
