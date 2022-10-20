@@ -2,7 +2,7 @@
   --height-header: 2rem;
   --height-listcontent: 100vh - 100px;
   --avt-size: 5rem;
-  --width-info-Module:400px;
+  --width-info-Module:370px;
   --width-listUser :100vw - 120px - var(--width-info-Module)
 }
 
@@ -27,7 +27,7 @@
         rgba(0, 212, 255, 1) 100%
       );  
       overflow: hidden;
-      min-height: calc( 100vh - 80px);
+      // min-height: calc( 100vh - 80px);
       
     }
    .header-module{
@@ -57,7 +57,8 @@
       h6 {
         display: flex;
         justify-content: space-between;
-        min-width: 270px;
+        // min-width: 270px;
+        max-width: calc(var(--width-info-Module) - var(--avt-size));
       }
      }
    }
@@ -341,6 +342,7 @@
   100% {
     @include animationtTo(10px,var(--width-info-Module));
     height: max-content;
+    max-width: 100vw;
   }
 }
 @keyframes moduleOUT {
@@ -372,6 +374,7 @@
   }
 
   .top-users {
+    display: none;
     order: 1;
     margin-bottom: 10px;
   }
@@ -381,14 +384,19 @@
     width: 100vw;
     margin-bottom: 60px;
     padding: 10px;
+    height: calc(100vh - 140px);
     .empty {
       width: 0;
     }
     .module-profile {
+      width: 100vw;
       position: absolute;
     }
   }
   .listUser {
     margin-right: 0;
+  }
+  .top-users{
+    display: none !important;
   }
 }

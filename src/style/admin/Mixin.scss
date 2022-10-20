@@ -7,7 +7,7 @@
 }
 @mixin animationtTo($padd,$width) {
     padding: $padd;
-    width: $width;
+    // max-width: $width;
     min-width: $width;
     opacity: 1;
     visibility: visible;

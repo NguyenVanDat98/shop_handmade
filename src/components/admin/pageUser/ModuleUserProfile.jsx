@@ -5,17 +5,17 @@ import { ICONCLOSE, ICONUSER } from '../../../Icon';
 import { GetListOrder } from '../../../redux/adminReducer/actionThunkAd/actionThunk';
 
 const ModuleUserProfile = memo(({ displayModule, onClick }) => {
-  const [status, setStatus] = useState(false);
-  const listOrder = useSelector((state) => state.adminData.historyOrder)
-  const ItemSelect = useSelector((state) => state.adminData.ItemDataSelect)
-  const dispatch = useDispatch()
-  const { acc, profile, payment } = ItemSelect
-  useEffect(() => {
-    dispatch(GetListOrder(profile.id))
-  }, [profile, dispatch]);
-  return (
-    <div className={`module-profile ${displayModule}`}  >
-      <div className="header-module">
+    const [status , setStatus ]=useState(false);
+    const listOrder = useSelector((state)=>state.adminData.historyOrder)
+    const ItemSelect = useSelector((state)=>state.adminData.ItemDataSelect)
+    const dispatch = useDispatch()
+    const {acc,profile,payment}=ItemSelect
+    useEffect(()=>{
+        dispatch(GetListOrder(profile.id))
+    },[profile,dispatch]);
+    return (
+      <div className={`${displayModule} module-profile `}  >
+        <div className="header-module">
         <div className="header-module-avt m-3">
           <i className={ICONUSER}></i>
         </div>

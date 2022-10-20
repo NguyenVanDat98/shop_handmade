@@ -26,12 +26,25 @@
   div > header {
     height: var(--heightHeader);
     background-color: #333;
+    display: flex;
+    justify-content: space-between;
     color: white;
     width: 100%;
     padding: 0 10px;
     h5 {
       line-height: var(--heightHeader);
       margin-bottom: 0;
+    }
+    button{
+      width: 50px;
+      text-align: center;
+        transition: all 0.2s ease-in-out;
+        border-radius: 5px;
+      &:hover{
+        background-color: rgb(127, 146, 255);
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+      }
     }
   }
   & > div:first-child {
@@ -43,9 +56,7 @@
   .content_page {
     width: 100%;
     height: calc(var(--heipage) - var(--heightHeader));
-
     overflow-y: auto;
-
     display: flex;
     flex-direction: column;
     &::-webkit-scrollbar,
@@ -59,6 +70,32 @@
     
     &::-webkit-scrollbar-thumb {
       box-shadow: inset 0 0 0 10px;
+    }
+    .item-order{
+      summary{
+          button:last-child{
+            
+            box-shadow: 3px 0 3px black;
+            border-radius: 5px;
+            border: 0.5px solid black;
+            transition: box-shadow 0.3s ease-in-out;
+            background-color: chocolate;
+            animation: turnOnBtn 0.3s forwards;
+            &:hover{
+            box-shadow: -3px 3px 3px black;
+            transition: all 0.2s ease-in-out;
+            background-color: red;
+
+            }
+            text-align: center;
+            i{
+              padding: 0;
+              margin: 0;
+              font-size: 32px;
+              transition: font-size .2s ease-in-out;
+            }
+          }
+      }
     }
     details {
       --hieghtDetail: 60px;
@@ -76,8 +113,6 @@
           min-width: 200px;
         }
       }
-
-       
       summary {
         display: flex;
         align-items: center;
@@ -134,4 +169,17 @@
         opacity: 1;
         visibility: visible
     }
+}
+@keyframes turnOnBtn {
+  0%{
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  
+  100%{
+    width: 33px;
+    height: 33px;
+    opacity: 1;
+  }
 }

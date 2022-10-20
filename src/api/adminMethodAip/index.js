@@ -55,5 +55,11 @@ export const PutDataOrder = async (data) => {
    })
    return rest
 }
+ export const DeleteDataOrder = async(id)=>{
+    const rest= await fetch(API_URL+"/listOrder/" + id,{
+       method:"DELETE"
+    })
+    return rest
+}
 
 

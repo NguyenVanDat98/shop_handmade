@@ -15,7 +15,7 @@ function ListProduct(props) {
     const [page, setPage] = useState(1);
     useEffect(() => {
         dispatch(fetListProduct({ limit: limit, sort: sort, filter: filter, page: page }));
-    }, [sort, limit, filter, page,dispatch]);
+    }, [sort, limit, filter, page, dispatch]);
 
     return (
         <>

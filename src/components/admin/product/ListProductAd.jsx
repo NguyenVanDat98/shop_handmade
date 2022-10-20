@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PutDataCategory } from "../../../api/adminMethodAip";
-import { SortProduct } from "../../../common/common";
-import { ICONADD } from "../../../Icon";
-import {InfoProduct, ItemProductAd, ModuleCreateProduct,ModuleListSlider} from "./../../index";
+import { ICONADD, ICONBAG, ICONCLOSE } from "../../../Icon";
+import {InfoProduct, ModuleCreateProduct,ModuleListSlider} from "./../../index";
 import ItemCategory from "./ItemCategory";
 
 const ListProductAd = (props) => {
@@ -19,13 +18,12 @@ const ListProductAd = (props) => {
     moduleSlide: "animation-list-slider-on",
   });
   const [dataOutput, setDataOutput] = useState([]);
+  const [muti, setMuti] = useState(false);
 
-//handle sort
+const multipleOn =()=>{
+   setMuti(!muti)
+}
 
-// const handleSort =(item)=>{
-//    item.sort((a,b)=>b.price - a.price)
-//    console.log(item);
-// }
   //Filter category
   let listCategory = useMemo(() => {
     let arr = [];
@@ -39,23 +37,32 @@ const ListProductAd = (props) => {
   // divide data flow category
   const dataDevide = useMemo(
     () =>
-      listCategory.map((e, i) => ({
+    {    
+     return listCategory.map((e, i) => ({
         name: e,
         data: data.filter((el) => el.category.toLowerCase() === e),
-      })),
+      }))
+    
+    },
     [data, listCategory]
+    
   );
-  const updataCategory =()=>{
-      dispatch(PutDataCategory(listCategory))
-  }
+ 
   //set data when data update
   useEffect(() => {
     setDataOutput(dataDevide);
+    PutDataCategory(listCategory)
   }, [dataDevide]);
   const handleChangeFilter = (e) => {
-    const temp = dataDevide.filter((item) => item.name === e.target.value);
+    let temp = dataDevide.filter((item) => e.includes(item.name) ); 
+
+
     temp.length ? setDataOutput(temp) : setDataOutput(dataDevide);
   };
+  const handleChange = (e) => {
+    let value = Array.from(e.target.previousSibling.selectedOptions, option => option.value);
+    return value
+  }  
   const handleClick = (a, b) => {
     if (disForm[a] === false) {
       if (disForm[b] === true) {
@@ -117,13 +124,14 @@ const ListProductAd = (props) => {
       <div className="main-list">
         <div className="list-product-Ad_header">
 {/* {---------------------------------BUTTON--------------------------} */}
+<div className="btn-group">
 {/* {button add new product} */}
-          <button
+<button
             onClick={() => {
               handleClick("formCreate", "moduleSlide");
             }}
           >
-            <i className={ICONADD}> </i> ADD PRODUCT
+            <i className={ICONADD}> </i> <i className={ICONBAG}></i>
           </button>
 {/* {---------------------------------BUTTON--------------------------} */}
 {/* {button view list silder} */}
@@ -131,13 +139,17 @@ const ListProductAd = (props) => {
             onClick={() => {
               handleClick("moduleSlide", "formCreate");
             }}
-          >
-            <i className={ICONADD}> </i> LIST SLIDER
+          >LIST SLIDER
           </button>
           {/* {list category} */}
-          <select
-            onChange={(e) => handleChangeFilter(e)}
-            className="form-select"
+</div>
+
+          <div className="list-product-select" >
+             
+          <select 
+             multiple={muti}
+            onChange={(e) =>{!muti && handleChangeFilter([e.target.value])}}
+            // className="form-select"
             name=""
           >
             <option defaultValue>ALL CATEGORY</option>
@@ -148,34 +160,18 @@ const ListProductAd = (props) => {
                 </option>
               ))}
           </select>
+         {muti&& <button onClick={(e)=> 
+          handleChangeFilter(handleChange(e))
+          }>Find</button>}
+          <button onClick={multipleOn}>{muti ? <i className={ICONCLOSE}></i> :"Multiple"}</button>
+          </div>
+         
         </div>
 {/* {-----------------------list product render------------------} */}
         {dataOutput &&
           dataOutput.map((e, i) => {
-            // const [data ,setData]=useState(e.data)
-            // const handleSort =(item)=>{
-            //    setData(SortProduct(e.data,item))
-            // }
             return (
               <ItemCategory key={i} setProductSelect={(av)=>setProductSelect(av)} e={e}/>
-              // <div key={i} className="list-allProduct">
-              //   <div className=" d-flex justify-content-between line-title">
-              //     <span>{e.name}</span>
-                  
-              //     <span>({e.data.length})</span>
-              //   </div>
-              //   <div className="main-content-list-product ">
-              //     {e.data.map((item, i) => (
-              //       <ItemProductAd
-              //         handleSelect={() => {
-              //           setProductSelect(item);
-              //         }}
-              //         data={item}
-              //         key={i}
-              //       />
-              //     ))}
-              //   </div>
-              // </div>
             );
           })}
       </div>

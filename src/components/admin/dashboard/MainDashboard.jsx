@@ -5,7 +5,7 @@ const  MainDashboard = props => {
     const itemView= ["Order","User","Earning"]
     return (
         <div className='main-dashboard'>
-            <div className='d-flex flex-lg-column flex-md-row justify-content-around flex mt-3 mb-3 '>
+            <div className='d-flex flex-lg-column flex-md-row justify-content-around flex mt-4 mb-3 '>
                  {[...new Array(3)].map((a,i)=><ItemView total={i} key={i}>{itemView[i]} </ItemView>)}
 
             </div>

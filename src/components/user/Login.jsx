@@ -1,9 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAccount } from '../../api/apiMethod';
-import { ICONBACK, ICONLEFT, ICONPASS } from '../../Icon';
+import { ICONLEFT, ICONPASS } from '../../Icon';
 import icongoogle from "../../img/icongoogle.png";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -12,11 +12,6 @@ const schema = yup.object().shape({
     username: yup.string().required('Please enter your username').min(3),
     password: yup.string().required('Please enter your password').min(3)
 })
-// const schema = yup.object({
-//     firstName: yup.string().required(),
-//     age: yup.number().positive().integer().required(),
-// }).required();
-
 
 function Login(props) {
     const navi = useNavigate()
@@ -25,8 +20,6 @@ function Login(props) {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
-
-
 
     //////////////CHECK LOGIN
     const CheckLogin = () => {

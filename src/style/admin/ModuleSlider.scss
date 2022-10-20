@@ -145,6 +145,7 @@
     }
     100%{
         @include animationtTo(6px,var(--widthModule));
+        max-width: var(--widthModule)
     }
 }
 @keyframes moduleOff {
