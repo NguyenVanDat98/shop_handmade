@@ -15,7 +15,6 @@ function ProfileUser(props) {
     const dispatch = useDispatch()
     const profileUsernow = useSelector((state) => state.users.listProfile);
     const { acc, profile, payment } = profileUsernow;
-
     const [valueform, setValueform] = useState({
         fullname: "",
         telephone: "",

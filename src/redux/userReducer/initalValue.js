@@ -8,4 +8,5 @@ export const userInital = {
     cartReview: [],
     stepPayment: [],
     listProfile: [],
+    listAddress: [],
 }
