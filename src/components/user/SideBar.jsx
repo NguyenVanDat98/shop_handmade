@@ -36,12 +36,6 @@ const SideBar = (props) => {
                 pathName={"/cart"}
             />
             <ButtonSidebar
-                iconName={ICONMAIL}
-                active={page.page3}
-                innerText="Mail"
-                pathName="#"
-            />
-            <ButtonSidebar
                 iconName={ICONUSER}
                 active={page.page4}
                 innerText="Profile"

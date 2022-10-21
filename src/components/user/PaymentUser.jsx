@@ -9,6 +9,7 @@ import {
 } from "../../redux/thunk/actionThunk";
 import { ICONTRUCK } from "./../../Icon/index";
 import toast from "react-hot-toast";
+import { useMemo } from "react";
 
 const SHIPPING_FEE = 4;
 const VOUCHER = 0;
@@ -42,13 +43,13 @@ function PaymentUser(props) {
       return { total: 0, amount: 0 };
     }
   };
-  const TOTAL_BILL = () => {
-    return (
-      parseFloat(totalBill().total) +
-      (totalBill().total === 0 ? 0 : parseFloat(SHIPPING_FEE)) -
-      parseFloat(VOUCHER)
-    );
-  };
+  const TOTAL_BILL = useMemo(() =>  {
+    console.log(VoucherChoose.discount);
+    return(
+      parseFloat(totalBill().total) + (totalBill().total === 0 ? 0 : parseFloat(SHIPPING_FEE)) - (VoucherChoose.discount ? parseInt(VoucherChoose.discount) : 0 )      
+    )}
+    
+    ,[VoucherChoose.discount,totalBill().total])
   const hangdleChangeForm = (e) => {
     setValueF({ ...valueF, [e.target.name]: e.target.value });
   };
@@ -87,6 +88,7 @@ function PaymentUser(props) {
   useEffect(() => {
     dispatch(getProfileUser());
     dispatch(FetchListVoucher());
+    window.scroll(0,0)
   }, [dispatch]);
 
   const validVoucher = () => {
@@ -94,6 +96,7 @@ function PaymentUser(props) {
 
     if (totalBill().total > 10) {
       if (check) {
+        console.log(check);
         setVoucherChoose(check);
         toast.success("this Code unvalid!", { position: "top-right" });
       } else {
@@ -265,7 +268,7 @@ function PaymentUser(props) {
                   </div>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Total:</p>
-                    <p>$ {TOTAL_BILL()}</p>
+                    <p>$ {(TOTAL_BILL).toFixed(2)}</p>
                   </div>
                   <div>
                     <button type="button" onClick={() => setShow(true)}>
