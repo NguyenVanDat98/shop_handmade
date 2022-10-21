@@ -20,7 +20,7 @@ function CartUser(props) {
         dispatch(deleteItemInCart(item))
         dispatch(DeleteItem(item));
     }
-    console.log(listProduct.stepPayment);
+    // console.log(listProduct.stepPayment);
     const checkCart = () => {
         let cart = listProduct.cart.cart || null
         return (cart !== null && cart.length);
