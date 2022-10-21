@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import SearchUser from './SearchUser';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCart } from './../../redux/thunk/actionThunk';
+import CartNum from './CartNum';
 Header.defaultProps = {
     cart: true,
     search: false
@@ -14,10 +15,9 @@ function Header({ search, children, cart }) {
     const [show, setShow] = useState(false);
     const listItem = useSelector((state) => state.users.cart.cart);
     const dispatch = useDispatch();
-
     useEffect(() => {
-        const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {}
-        // dispatch(getCart(locale.cart_id));
+        const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : {};
+        dispatch(getCart(locale.cart_id));
     }, [dispatch]);
     return (
         <div className="header">
@@ -34,7 +34,12 @@ function Header({ search, children, cart }) {
                             setShow(false)
                         }, 300);
                     }} onFocus={() => setShow(true)} />
-                    <i className={ICONCART} ></i>
+                    <i className={ICONCART} data ></i>
+
+                    <CartNum cartCount={listItem ? (
+                        listItem.reduce((a, b) => a + parseInt(b.quantity), 0) !== 0
+                        && listItem.reduce((a, b) => a + parseInt(b.quantity), 0)
+                    ) : ""} />
                 </p>}
                 {show ? (<ul className='cart-list'>
                     <div className='cart-title'>
@@ -44,11 +49,11 @@ function Header({ search, children, cart }) {
                     {listItem && listItem.map((item, i) => (
                         <li className="cart-item" key={i}>
                             <div className='cart-item__info'>
-                                <img src={item.img} alt="" />
-                                <p>{item.name}</p>
+                                <img src={item.product_img} alt="" />
+                                <p>{item.product_name}</p>
                             </div>
                             <div className='cart-item__detail'>
-                                <p>${item.price}</p>
+                                <p>${item.product_price}</p>
                             </div>
                             <p>Qty:{item.quantity}</p>
                         </li>

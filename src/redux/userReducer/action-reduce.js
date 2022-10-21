@@ -124,3 +124,9 @@ export const stepFasle = (action) => {
         value: action.value
     }
 }
+export const savelistVoucher = (data) => {
+    return {
+        type: actionTypes.SAVE_LIST_VOUCHER,
+        payload: data
+    }
+}

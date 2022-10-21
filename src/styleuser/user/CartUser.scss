@@ -1,8 +1,9 @@
 .list {
     width: 100%;
     display: flex;
-    min-height: calc(100vh - 80px);
+    min-height: calc(100vh - 100px);
     margin: 20px 0;
+    padding-bottom: 30px;
 
     .list-wrap {
         width: 50%;

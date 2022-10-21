@@ -7,6 +7,7 @@ import { ClearStepPayment, DeleteItem } from '../../redux/userReducer/action-red
 import { clearCartUser, deleteItemInCart, getDataCartItem } from './../../redux/thunk/actionThunk';
 import CartItem from './CartItem';
 import SelectItem from './SelectItem';
+import { toast } from 'react-hot-toast';
 function CartUser(props) {
     const listProduct = useSelector((state) => state.users);
     const dispatch = useDispatch();
@@ -19,19 +20,27 @@ function CartUser(props) {
         dispatch(deleteItemInCart(item))
         dispatch(DeleteItem(item));
     }
+    // console.log(listProduct.stepPayment);
     const checkCart = () => {
         let cart = listProduct.cart.cart || null
         return (cart !== null && cart.length);
-
     }
-    console.log(checkCart())
     const clearAllItem = () => {
         const temp = { id: listProduct.cart.id, cart: [] }
         dispatch(clearCartUser(temp))
         dispatch(ClearStepPayment())
     }
     const totalAmount = listProduct.stepPayment.reduce((a, e) => a + e.quantity, 0);
-    const totalBill = listProduct.stepPayment.reduce((a, e) => a + e.product_discount * e.quantity, 0);
+    const totalBill = listProduct.stepPayment.reduce((a, e) => a + e.product_discount * e.quantity, 0).toFixed(2);
+    const handleSendBill = () => {
+        const amountProduct = listProduct.stepPayment.length;
+        if (amountProduct === 0) {
+            toast.dismiss();
+            toast.error("Your list payment is empty!!");
+        } else {
+            navigate("/payment")
+        }
+    }
     return (
         <div className='list'>
             <div className='list-wrap'>
@@ -68,10 +77,10 @@ function CartUser(props) {
                     </div>
                     <div>
                         <p>Total: </p>
-                        <p>${totalBill.toFixed(2)}</p>
+                        <p>${totalBill}</p>
                     </div>
                     <div>
-                        <button>Payment</button>
+                        <button onClick={handleSendBill}>Payment</button>
                     </div>
                 </div>
             </div>
