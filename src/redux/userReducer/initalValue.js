@@ -5,9 +5,9 @@ export const userInital = {
     listProductAll: [],
     isLoadmore: true,
     cart: [],
-    cartReview: [],
     stepPayment: [],
     listProfile: [],
     listAddress: [],
     listVoucher: [],
+    SearchProduct: []
 }

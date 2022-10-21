@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Filter, Product, Sort } from '../../components';
+import ItemNotFound from '../../components/user/ItemNotFound';
 import { fetListProductSearch } from '../../redux/thunk/actionThunk';
-
-
 const PageSearch = props => {
     const dispatch = useDispatch();
     const locale = useLocation()
@@ -16,6 +15,10 @@ const PageSearch = props => {
     const [filter, setFilter] = useState("");
     const [page, setPage] = useState(1);
 
+    const checkProduct = () => {
+        let products = listProduct || null
+        return (products !== null && products.length);
+    }
     useEffect(() => {
         dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page, search: locale.search.slice(1) }))
     }, [dispatch, locale, limit, filter, sort, page]);
@@ -54,6 +57,7 @@ const PageSearch = props => {
                         setLimit((limit) => limit + 4)
                     }} className="loading__btn">Load More</button>
                 </div>)}
+                {checkProduct() === false || checkProduct() === 0 ? <ItemNotFound /> : ("")}
             </div>
         </>
     );
