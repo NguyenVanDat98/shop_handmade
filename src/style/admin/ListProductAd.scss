@@ -456,6 +456,10 @@
         text-transform: capitalize;
         border-radius: 5px;
         padding-left: 10px;
+        &.muti{
+          height: 100px;
+          align-self: flex-start;
+        }
         option {
           padding: 0 10px;
           text-transform: capitalize;

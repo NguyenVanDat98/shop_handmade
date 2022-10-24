@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Account = props => {
     const navi= useNavigate()
     const logOut =()=>{
-       window.localStorage.removeItem("infoAccount")
+       localStorage.removeItem("infoAccount")
        navi("/login")
     }
     return (

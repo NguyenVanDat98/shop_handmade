@@ -53,7 +53,6 @@ const ListProductAd = (props) => {
   }, [dataDevide]);
   const handleChangeFilter = (e) => {
     let temp = dataDevide.filter((item) => e.includes(item.name));
-
     temp.length ? setDataOutput(temp) : setDataOutput(dataDevide);
   };
   const handleChange = (e) => {
@@ -146,15 +145,14 @@ const ListProductAd = (props) => {
           </div>
 
           <div className="list-product-select">
-            <select
+            <select className={muti? "muti":""}
               multiple={muti}
               onChange={(e) => {
                 !muti && handleChangeFilter([e.target.value]);
               }}
-              // className="form-select"
-              name=""
+          
             >
-              <option defaultValue>ALL CATEGORY</option>
+             {muti===false&& <option >ALL CATEGORY</option>}
               {listCategory &&
                 listCategory.map((e, i) => (
                   <option key={i} value={e}>
@@ -163,7 +161,9 @@ const ListProductAd = (props) => {
                 ))}
             </select>
             {muti && (
-              <button onClick={(e) => handleChangeFilter(handleChange(e))}>
+              <button onClick={(e) =>{ 
+                setMuti(!muti);
+                handleChangeFilter(handleChange(e))}}>
                 Find
               </button>
             )}
