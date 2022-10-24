@@ -1,17 +1,76 @@
 {
-  "listProduct": [],
+  "listProduct": [
+    {
+      "discount": 0,
+      "time_making": "2022-10-24",
+      "name": "name",
+      "price": 123,
+      "category": "123",
+      "img": "123",
+      "status": true,
+      "sold": 0,
+      "rating": 0,
+      "id": 1
+    }
+  ],
   "listAccount": [
-
+    {
+      "id": "Vt-x-r",
+      "user_name": "dat",
+      "telephone": "1231231231",
+      "password": "123456789",
+      "type": "",
+      "profile_id": "MmbKX",
+      "cart_id": "Pff9m",
+      "payment_id": "wAGit"
+    },
+    {
+      "id": "aFevmF",
+      "user_name": "admin",
+      "telephone": "123456789",
+      "password": "admin",
+      "type": "admin",
+      "profile_id": "7Wc-M",
+      "cart_id": "wyoP-",
+      "payment_id": "HP7GG"
+    }
   ],
   "listCart": [
- 
+    {
+      "id": "Pff9m",
+      "cart": [
+        {
+          "product_id": 1,
+          "product_percent": 0,
+          "quantity": 1,
+          "product_img": "123",
+          "product_price": 123,
+          "product_name": "name",
+          "product_category": "123",
+          "product_discount": 123
+        }
+      ]
+    },
+    {
+      "id": "wyoP-",
+      "cart": []
+    }
   ],
   "listProfile": [
-    
+    {
+      "id": "MmbKX",
+      "address": "12312312",
+      "fullname": "nguyenvandat",
+      "email": ""
+    },
+    {
+      "id": "7Wc-M",
+      "address": "123",
+      "fullname": "",
+      "email": ""
+    }
   ],
-  "listVoucher": [
-
-  ],
+  "listVoucher": [],
   "listPayment": [
     {
       "id": "-bEzx",
@@ -36,10 +95,47 @@
       "profile_id": "TBCKH",
       "cart_order": [],
       "total": 0
+    },
+    {
+      "id": "wAGit",
+      "profile_id": "MmbKX",
+      "cart_order": [],
+      "total": 0
+    },
+    {
+      "id": "HP7GG",
+      "profile_id": "7Wc-M",
+      "cart_order": [],
+      "total": 0
     }
   ],
   "listOrder": [
-    
+    {
+      "payment_id": "wAGit",
+      "profile_id": "MmbKX",
+      "list_product_order": [
+        {
+          "category": "123",
+          "discountAfter": 123,
+          "img": "123",
+          "name": "name",
+          "percent": 0,
+          "quantity": 1,
+          "total": 123
+        }
+      ],
+      "time__create": "24-10-2022",
+      "fee": 4,
+      "total_order": 127,
+      "status": false,
+      "email": "",
+      "telephone": "1231231231",
+      "fullname": "nguyenvandat",
+      "address": "12312312",
+      "voucher": 0,
+      "payment_method": "COD",
+      "id": 1
+    }
   ],
   "listEarning": [
     {
@@ -48,13 +144,11 @@
     }
   ],
   "slideShow": {
-    "data": [
-
-    ]
+    "data": []
   },
   "listCategory": {
     "data": [
-
+      "123"
     ]
   }
 }
