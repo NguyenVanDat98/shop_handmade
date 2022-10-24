@@ -120,3 +120,13 @@ export const getListVoucher = (param="") => {
   return data;
 }
 
+export const FetchListOrder = (data) => {
+  return fetch(API_URL + `/listOrder/`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+}

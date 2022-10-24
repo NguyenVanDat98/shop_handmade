@@ -49,7 +49,7 @@ function Login(props) {
                     }
                 } else {
                     setTimeout(() => {
-                        res[0].type === "admin" ? navi(pathNameAd.dashboard) : navi("/");
+                        res[0].type === "admin" ? navi(pathNameAd.dashboard) : navi(-1);
                         toast.dismiss();
                         toast.success("Login Success ", { duration: 2000, })
                     }, 2000);

@@ -24,6 +24,7 @@ import {
 } from "./../userReducer/action-reduce";
 import {
   createItemPayment,
+  FetchListOrder,
   fetPayment,
   fetProductSearch,
   fetProfile,
@@ -364,3 +365,22 @@ export const FetchListVoucher = () => {
     })();
   };
 };
+export const createOrder = (data ,call) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        await FetchListOrder(data).then(res=>{
+          console.log(res.status);
+          if(res.status==201){
+            if(call){
+              call()
+            }
+          }
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+

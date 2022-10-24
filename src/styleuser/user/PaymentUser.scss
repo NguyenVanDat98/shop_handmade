@@ -110,11 +110,14 @@
                     button{
                         position: absolute;
                         right: 10px;
-                        background-color: rgb(80, 235, 235);
+                        background-color: rgb(48, 72, 159);
                         padding: 5px 8px  ;
                         border-radius: 10px;
                         box-shadow: -2px 0px 3px #333;
                         transition: all 0.3s ease-in-out;
+                        i{
+                            font-size: 22px;
+                        }
 
                         &:hover{
                             background-color:rgb(59, 165, 165); 
