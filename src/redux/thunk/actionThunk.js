@@ -369,12 +369,18 @@ export const createOrder = (data ,call) => {
   return (dispatch) => {
     (async () => {
       try {
+        const {list_product_order }=data
         await FetchListOrder(data).then(res=>{
           console.log(res.status);
           if(res.status==201){
-            if(call){
-              call()
-            }
+            list_product_order.forEach(
+              async _=>{
+               await  dispatch(deleteItemInCart(_.product_id))
+              }
+            )
+           call&& call()
+            
+
           }
         })
       } catch (error) {

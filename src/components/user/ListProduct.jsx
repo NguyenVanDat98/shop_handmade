@@ -21,7 +21,6 @@ function ListProduct() {
         let products = listProduct || null;
         return (products !== null && products.length)
     }
-    console.log(listProduct);
     return (
         <>
             <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
