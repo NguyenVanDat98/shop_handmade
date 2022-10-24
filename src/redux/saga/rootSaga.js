@@ -1,10 +1,18 @@
-import {takeEvery} from 'redux-saga/effects'
-import { FETCH_ACCOUNT } from './../userReducer/actionType';
+import {delay, takeLatest} from 'redux-saga/effects'
+import { TYPING } from '../adminReducer/actionTypeAd';
+
 export function* fetchProductAsyn() {
 }
-export function* fetchAccountAsyn() { }
 
+export function* sagaTyping(action) {
+    yield delay(800);
+     action.payload();
+ }
 
 export function* mySaga() {
-    yield takeEvery(FETCH_ACCOUNT, fetchProductAsyn)
+    yield takeLatest(TYPING , sagaTyping) 
+
+
+ 
+
 }

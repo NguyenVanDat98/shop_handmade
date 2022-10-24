@@ -27,7 +27,7 @@ function DetailProduct(props) {
 
     useEffect(() => {
         FetProduct()
-        window.scroll(0,70)
+        window.scroll(0,0)
     }, [param, FetProduct])
 
     const handleAddToCart = () => {

@@ -54,27 +54,84 @@
     }
   ],
   "listAccount": [
-  
+    {
+      "id": "b5wqIK",
+      "user_name": "dat",
+      "telephone": "0022020002",
+      "password": "123456789",
+      "type": "",
+      "profile_id": "g2W1q",
+      "cart_id": "XX8y4",
+      "payment_id": "9wz2j"
+    },
+    {
+      "id": "GYVLj0",
+      "user_name": "admin",
+      "telephone": "123456789",
+      "password": "admin",
+      "type": "admin",
+      "profile_id": "JPPJk",
+      "cart_id": "jzeWX",
+      "payment_id": "9RSVu"
+    }
   ],
   "listCart": [
- 
+    {
+      "id": "XX8y4",
+      "cart": [
+        {
+          "product_id": 3,
+          "product_percent": 5,
+          "quantity": 1,
+          "product_img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
+          "product_price": 20,
+          "product_name": "Boat",
+          "product_category": "5 table decor 3",
+          "product_discount": 19
+        }
+      ]
+    },
+    {
+      "id": "jzeWX",
+      "cart": []
+    }
   ],
   "listProfile": [
-   
+    {
+      "id": "g2W1q",
+      "address": "123",
+      "fullname": "nguyen van dat",
+      "email": ""
+    },
+    {
+      "id": "JPPJk",
+      "address": "123",
+      "fullname": "admin",
+      "email": ""
+    }
   ],
-  "listVoucher": [
-   
-  ],
+  "listVoucher": [],
   "listPayment": [
-   
+    {
+      "id": "9wz2j",
+      "profile_id": "g2W1q",
+      "cart_order": [],
+      "total": 0
+    },
+    {
+      "id": "9RSVu",
+      "profile_id": "JPPJk",
+      "cart_order": [],
+      "total": 0
+    }
   ],
   "listOrder": [
     {
       "id": 3,
-      "payment_id": 2,
-      "profile_id": "UIcXH",
+      "payment_id": "9wz2j",
+      "profile_id": "g2W1q",
       "time__create": "24-12-2022",
-      "time_complete": "22-10-2022",
+      "time_complete": "24-10-2022",
       "list_product_order": [
         {
           "product_id": 2,
@@ -93,72 +150,19 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": true
-    },
-    {
-      "id": 4,
-      "payment_id": 2,
-      "profile_id": "UIcXH",
-      "time__create": "24-12-2022",
-      "time_complete": "22-10-2022",
-      "list_product_order": [
-        {
-          "product_id": 2,
-          "name_product": "a",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        },
-        {
-          "product_id": 4,
-          "name_product": "b",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        }
-      ],
-      "voucher_id": "",
-      "total_order": 0,
-      "status": true
-    },
-    {
-      "id": 5,
-      "payment_id": 2,
-      "profile_id": "UIcXH",
-      "time__create": "24-12-2022",
-      "time_complete": "22-10-2022",
-      "list_product_order": [
-        {
-          "product_id": 2,
-          "name_product": "a",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        },
-        {
-          "product_id": 4,
-          "name_product": "b",
-          "price": 0,
-          "quantity": 2,
-          "discount": 0
-        }
-      ],
-      "voucher_id": "",
-      "total_order": 0,
-      "status": true
+      "status": false
     }
   ],
-  "listEarning": [
-
-  ],
+  "listEarning": [],
   "slideShow": {
-    "data": [
-    
-    ]
+    "data": []
   },
   "listCategory": {
     "data": [
-      
+      "table decor 1",
+      "5 table decor",
+      "5 table decor 3",
+      "5 table decor 1"
     ]
   }
 }
