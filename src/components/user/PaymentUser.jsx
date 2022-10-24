@@ -111,7 +111,6 @@ function PaymentUser(props) {
 
     if (stepPayment.length) {
       if (Object.hasOwnProperty.call(addChoose, "address")) {
-        console.log(stepPayment);
         const temp = stepPayment.map(_ => {
           return { category: _.product_category,
              discountAfter: _.product_discount,

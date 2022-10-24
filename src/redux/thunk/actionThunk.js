@@ -304,7 +304,20 @@ export const deleteItemInCart = (id) => {
           : null;
         const temp = store
           .getState()
-          .users.cart.cart.filter((_) => id !== _.product_id);
+          .users.cart.cart.filter((_) =>{
+            if((Array.isArray(id))){
+              if(id.includes(_.product_id)){
+                return false
+              }else{
+                return _
+              }
+            }else{
+              if(id!==_.product_id){
+                return _
+              }
+            }
+
+          })
         const response = { id: locale.cart_id, cart: temp };
 
         await updateCartItem(locale.cart_id, response)
@@ -369,20 +382,13 @@ export const createOrder = (data ,call) => {
   return (dispatch) => {
     (async () => {
       try {
+        await FetchListOrder(data).then(()=>call&&call())
         const {list_product_order }=data
-        await FetchListOrder(data).then(res=>{
-          console.log(res.status);
-          if(res.status==201){
-            list_product_order.forEach(
-              async _=>{
-               await  dispatch(deleteItemInCart(_.product_id))
-              }
-            )
-           call&& call()
-            
+          const temp =  list_product_order.map(_=>{return _.product_id
+          } )         
 
-          }
-        })
+          dispatch(deleteItemInCart(temp))
+
       } catch (error) {
         console.log(error);
       }

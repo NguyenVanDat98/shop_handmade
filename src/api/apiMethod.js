@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:8000"
+const API_URL = "https://handmader.herokuapp.com/api"
+// const API_URL = "http://localhost:8000"
 
 export const getAccount = async (path = "") => {
   const data = await fetch(API_URL + `/listAccount${path}`)
