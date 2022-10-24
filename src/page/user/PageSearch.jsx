@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Filter, Product, Sort } from '../../components';
 import ItemNotFound from '../../components/user/ItemNotFound';
 import { fetListProductSearch } from '../../redux/thunk/actionThunk';

@@ -1,49 +1,54 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { ICONUSER } from "../../../Icon";
 import { selectItemUser } from "../../../redux/adminReducer/adminAction";
 
 const ItemTopUser = ({ No, seClose, data }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { profile, payment, acc } = data;
   return (
-    <div
-      onClick={() => {
-        dispatch(selectItemUser(data))
-        seClose()
-      }}
-      className="item-user-top"
-      style={{ "--disdelay": `0.${No}5s` }}
-    >
-      <div className="avatar">
-        <div className="aaa"></div>
-        <span className={ICONUSER}></span>
-      </div>
-      <strong>
-        {No + 1}. {profile.fullname ? profile.fullname : acc.user_name}
-      </strong>
-      <strong>$ {payment.total}</strong>
-    </div>
+    <>
+      {(payment||acc) && (
+        <div
+          onClick={() => {
+            dispatch(selectItemUser(data));
+            seClose();
+          }}
+          className="item-user-top"
+          style={{ "--disdelay": `0.${No}5s` }}
+        >
+          <div className="avatar">
+            <div className="aaa"></div>
+            <span className={ICONUSER}></span>
+          </div>
+          <strong>
+            {No + 1}. {profile.fullname ? profile.fullname : acc.user_name}
+          </strong>
+          <strong>$ {payment.total}</strong>
+        </div>
+      )}
+    </>
   );
 };
 
 const ChartFiveUser = ({ handleClose, close }) => {
   const dataRatings = useSelector((state) => state.adminData.ratings);
-  const isName = (param) => dataRatings.profile.find((el) => el.id === param)
+  const { acc, payment, profile } = dataRatings;
+  const isName = (param) => profile.find((el) => el.id === param);
   return (
     <>
-      {close && (
-        <div className={`top-users ${close ? "moduleIN" : ""}`}>
-          <h3>TOP MEMBER</h3>
-          {dataRatings.payment &&
-            dataRatings.payment.map((e, i) => (
+      {(close)  && (
+        acc && <div className={`top-users ${close ? "moduleIN" : ""}`}>
+          <h3>VIP MEMBERS</h3>
+          {acc &&
+            acc.map((e, i) => ((e.type!=="admin") && 
               <ItemTopUser
                 data={{
-                  payment: dataRatings.payment[i],
+                  payment: payment[i],
                   profile: isName(e.profile_id),
-                  acc: dataRatings.acc[i]
+                  acc: e,
                 }}
                 key={i}
                 seClose={handleClose}

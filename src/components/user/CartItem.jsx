@@ -11,7 +11,7 @@ function CartItem({ goods, handleDeleteItem }) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(stepFasle({ product_id: goods.product_id, value: true }))
-    }, [dispatch, stepFasle])
+    }, [dispatch, goods.product_id])
     const handleAddStep = (data) => {
         if (step === true) {
             dispatch(ChooseItem(data))

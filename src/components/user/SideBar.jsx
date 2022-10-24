@@ -4,7 +4,6 @@ import {
     ICONBACK,
     ICONCART,
     ICONHOME,
-    ICONMAIL,
     ICONUSER,
 } from "../../Icon";
 import ButtonSidebar from "../admin/ButtonSidebar";

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ICONBACK, ICONSTAR } from '../../Icon';
+import { ICONSTAR } from '../../Icon';
 import { fetProducts } from './../../api/apiMethod';
 import { useDispatch, useSelector } from 'react-redux';
 

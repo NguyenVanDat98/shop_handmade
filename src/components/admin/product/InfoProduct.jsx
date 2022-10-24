@@ -33,6 +33,7 @@ const InfoProduct = ({ data, handleClose }) => {
   const dispatch = useDispatch()
   const [check, setCheck] = useState(true);
   const [edit, setEdit] = useState(false);
+  const [roews, setRow] = useState(1);
   const [hidden, setHidden] = useState("moduleShow");
   const [itemdata, setItemData] = useState({ ...data });
   useEffect(() => {
@@ -42,8 +43,14 @@ const InfoProduct = ({ data, handleClose }) => {
   }, [data]);
 
   const handleInput = (e) => {
+    if(e.target.type==="textarea"){
+      e.target.setAttribute('style', 'height:' + (e.target.scrollHeight) + 'px;')
+      e.target.style.height = 'auto';
+      e.target.style.height = (e.target.scrollHeight) + 'px';
+    }
+
     setCheck(false);
-    setItemData({ ...itemdata, [e.target.name]: e.target.type === "text" ? e.target.value : parseFloat(e.target.value) });
+    setItemData({ ...itemdata, [e.target.name]: e.target.type === "text"||"textarea" ? e.target.value : parseFloat(e.target.value) });
   };
   const checkDiffrent = () => {
     let valid = true
@@ -84,12 +91,11 @@ const InfoProduct = ({ data, handleClose }) => {
           <img src={itemdata.img} alt="" />
         </section>
         <section className="info-product-title">
-          <InputText
-            value={itemdata.name}
-            name={"name"}
-            handleOnchange={handleInput}
-            edit={edit}
-          />
+          <div className="h6 fisrt-h6">
+              <label htmlFor="name">Name:</label>
+              
+              <textarea name="name" value={itemdata.name} disabled={!edit} onChange={handleInput}  id="name"></textarea>
+          </div>              
           <InputText
             value={itemdata.price}
             name={"price"}

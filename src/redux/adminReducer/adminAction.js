@@ -1,7 +1,7 @@
 import * as _ from "./actionTypeAd";
 export const SetDataProduct =(data)=>{
     return {
-        type : _. GET_LIST_PRODUCT,
+        type : _.GET_LIST_PRODUCT,
         payload :data
     }
 }

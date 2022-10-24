@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ICONUSER } from '../../Icon';
 import { fetchAccount } from '../../redux/userReducer/action-reduce';
 import { SaveCart } from './../../redux/userReducer/action-reduce';
