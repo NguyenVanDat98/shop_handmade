@@ -56,8 +56,8 @@ function Header({ search, children, cart }) {
                             </div>
                             <div className='cart-item__detail'>
                                 <p>${item.product_price}</p>
+                                <p>Qty:{item.quantity}</p>
                             </div>
-                            <p>Qty:{item.quantity}</p>
                         </li>
                     ))}
                     <button className='btn btn-success mb-3' onClick={() => navigate("/cart")}>Go To Cart</button>

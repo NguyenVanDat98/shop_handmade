@@ -56,6 +56,10 @@ function DetailProduct(props) {
             navigate("/login");
         }
     }
+    const continueBuy = () => {
+        window.scrollTo(0, 500);
+        navigate("/");
+    }
     return (
         <>
             {itemData && <div className='detail '>
@@ -69,29 +73,34 @@ function DetailProduct(props) {
                     </div>
                 </div>
                 <div className='detail__info'>
-                    <h2>{itemData.name}</h2>
-                    <div className='d-flex justify-content-between'>
-                        <h4>$ {itemData.price}</h4>
-                        <p><i className={ICONSTAR}></i> {itemData.rating}/5</p>
+                    <div className='detail__info--main'>
+                        <h2>{itemData.name}</h2>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <h4>$ {itemData.price}</h4>
+                            <p><i className={ICONSTAR}></i> {itemData.rating}/5</p>
+                        </div>
+                        <p>{itemData.description}</p>
                     </div>
-                    <p>{itemData.description}</p>
-                    <div>
-                        <p className='detail-stock'>
-                            <span>Available:</span>
-                            {itemData.status ? "In stock" : "Out of stock"}
-                        </p>
-                        <p className='detail-discount'>
-                            <span>Discount:</span>
-                            {itemData.discount}
-                        </p>
-                        <p className='detail-sold'>
-                            <span>Amount Sold:</span>
-                            {itemData.sold}
-                        </p>
-                    </div>
-                    <div className='detail__btn'>
-                        {itemData.status ? (<button className='button' onClick={() => handleAddToCart(itemData)}>Add To Cart</button>)
-                            : (<button className='btn btn-danger'>Order</button>)}
+                    <div className='detail__info--status'>
+                        <div className='detail__info--status--now'>
+                            <p className='detail-stock'>
+                                <span>Available:</span>
+                                {itemData.status ? "In stock" : "Out of stock"}
+                            </p>
+                            <p className='detail-discount'>
+                                <span>Discount:</span>
+                                {itemData.discount}
+                            </p>
+                            <p className='detail-sold'>
+                                <span>Amount Sold:</span>
+                                {itemData.sold}
+                            </p>
+                        </div>
+                        <div className='detail__info--status--btn'>
+                            {itemData.status ? (<button className='button' onClick={() => handleAddToCart(itemData)}>Add To Cart</button>)
+                                : (<button className='btn btn-danger'>Order</button>)}
+                            <button className='btn btn-success btn-lg ms-3' onClick={continueBuy}>Continue Shopping</button>
+                        </div>
                     </div>
                 </div>
             </div>}
