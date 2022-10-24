@@ -21,7 +21,7 @@ const PageSearch = props => {
     }
     useEffect(() => {
         dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page, search: locale.search.slice(1) }))
-        window.scroll(0,0)
+        window.scroll(0, 0)
     }, [dispatch, locale, limit, filter, sort, page]);
 
     return (

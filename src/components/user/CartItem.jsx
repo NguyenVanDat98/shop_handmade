@@ -36,7 +36,7 @@ function CartItem({ goods, handleDeleteItem }) {
                 </div>
                 <div>
                     <p> $ {goods.product_price}</p>
-                    <p>${goods.product_discount}</p>
+                    <p>$ {goods.product_discount}</p>
                 </div>
                 <div className='list-product__button'>
                     <input type="checkbox" style={{ width: "20px", height: "20px" }} checked={!step} onChange={() => handleAddStep(goods)} />

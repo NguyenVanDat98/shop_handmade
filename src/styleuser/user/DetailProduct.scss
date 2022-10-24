@@ -46,86 +46,96 @@
 
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         padding: 10px;
+        height: 100%;
+        justify-content: space-between;
 
-        &>p {
-            font-weight: 450;
-            font-size: 1rem;
-        }
+        &--main {
+            flex-grow: 1;
 
-        &>p:nth-child(3) {
-            &::-webkit-scrollbar {
-                display: none;
+            &>h2 {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                // height: 15%;
             }
-        }
 
-        &>p:nth-of-type(1) {
-            width: 100%;
-            height: 300px;
-            overflow-y: scroll;
-            text-overflow: ellipsis;
-            text-align: justify;
+            &>div:nth-child(2) {
+                &>p {
+                    font-weight: 500;
+                    font-size: 20px;
 
-        }
+                    i {
+                        color: orange;
+                    }
+                }
+            }
 
-        &>div:nth-of-type(3) {
-            align-self: center;
-        }
+            &>p:nth-child(3) {
+                width: 100%;
+                height: 200px;
+                overflow-y: scroll;
+                text-overflow: ellipsis;
+                text-align: justify;
+                font-weight: 450;
+                font-size: 1rem;
 
-        &>div:nth-child(2) {
-
-
-            p {
-                font-weight: 500;
-                font-size: 20px;
-
-                i {
-                    color: orange;
+                &::-webkit-scrollbar {
+                    display: none;
                 }
             }
         }
 
-        div:nth-child(4) {
-            font-size: 18px;
+        &--status {
+            height: 200px;
+            flex-shrink: 0;
 
-            .detail-stock,
-            .detail-discount,
-            .detail-sold {
-                font-weight: 400;
-
-                span {
-                    padding-right: 15px;
-                    font-weight: 600;
-                }
-            }
-        }
-
-        .detail__btn {
-            text-align: center;
-
-            .button {
-                background-color: slateblue;
-                color: #fff;
-                border: none;
-                font-weight: 500;
+            &--now {
                 font-size: 18px;
-                width: 200px;
-                padding: 10px 5px;
-                border-radius: 8px;
-                box-shadow: 2px 2px 5px rgb(228, 225, 225);
 
-                &:hover {
-                    opacity: 0.9;
+                .detail-stock,
+                .detail-discount,
+                .detail-sold {
+                    font-weight: 400;
+
+                    span {
+                        padding-right: 15px;
+                        font-weight: 600;
+                    }
                 }
             }
 
-            .btn {
-                width: 200px;
-                padding: 10px 5px;
-                color: #fff;
-                font-size: 18px;
-                box-shadow: 2px 2px 5px rgb(228, 225, 225);
+            &--btn {
+                // text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .button {
+                    background-color: slateblue;
+                    color: #fff;
+                    border: none;
+                    font-weight: 500;
+                    font-size: 18px;
+                    width: 200px;
+                    padding: 10px 5px;
+                    border-radius: 8px;
+                    box-shadow: 2px 2px 5px rgb(228, 225, 225);
+
+                    &:hover {
+                        opacity: 0.9;
+                    }
+                }
+
+                // .btn {
+                //     width: 200px;
+                //     padding: 10px 5px;
+                //     color: #fff;
+                //     font-size: 18px;
+                //     box-shadow: 2px 2px 5px rgb(228, 225, 225);
+                // }
             }
         }
     }
