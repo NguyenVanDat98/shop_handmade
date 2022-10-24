@@ -4,25 +4,25 @@ import { ResponsivePie } from "@nivo/pie";
 const pieData = [
   {
     id: "Boot",
-    label: "java",
+    label: "Boot",
     value: 195,
     color: "hsl(90, 70%, 50%)"
   },
   {
     id: "Kitchen",
-    label: "erlang",
+    label: "Kitchen",
     value: 419,
     color: "hsl(56, 70%, 50%)"
   },
   {
     id: "LandHouse",
-    label: "ruby",
+    label: "LandHouse",
     value: 407,
     color: "hsl(103, 70%, 50%)"
   },
   {
     id: "RainBow",
-    label: "haskell",
+    label: "RainBow",
     value: 474,
     color: "hsl(186, 70%, 50%)"
   },

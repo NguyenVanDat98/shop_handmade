@@ -4,7 +4,6 @@ import {
     ICONBACK,
     ICONCART,
     ICONHOME,
-    ICONMAIL,
     ICONUSER,
 } from "../../Icon";
 import ButtonSidebar from "../admin/ButtonSidebar";
@@ -19,7 +18,14 @@ const SideBar = (props) => {
         page2: Url === "/cart",
         page3: Url === "",
     }
-
+    const checkAccount = () => {
+        const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : null;
+        if (locale !== null) {
+            return ("/profileuser");
+        } else {
+            return ("/login");
+        }
+    }
     return (
         <div className="sidebarAd sidebar-user">
             {!page.page1 && <button onClick={() => navi(-1)}><i className={ICONBACK} ></i></button>}
@@ -36,16 +42,10 @@ const SideBar = (props) => {
                 pathName={"/cart"}
             />
             <ButtonSidebar
-                iconName={ICONMAIL}
-                active={page.page3}
-                innerText="Mail"
-                pathName="#"
-            />
-            <ButtonSidebar
                 iconName={ICONUSER}
-                active={page.page4}
+                active={page.page3}
                 innerText="Profile"
-                pathName="/login"
+                pathName={checkAccount()}
             />
         </div>
     );

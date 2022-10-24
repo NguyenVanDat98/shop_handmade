@@ -11,7 +11,6 @@ const selectItem =()=>{
     return (
      <>
        {data && <div onClick={selectItem} className='item-voucher'>
-            <h5></h5>
             <h5>{index} . {data.name}</h5>
             <h5>Expiry : <span> 
                 {`${data.day_start.slice(0,5)} / ${data.day_final.slice(0,5)}`}

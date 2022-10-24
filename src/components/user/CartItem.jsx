@@ -1,7 +1,7 @@
 import React from 'react';
 import { ICONTRASH } from '../../Icon';
 import { useDispatch } from 'react-redux';
-import { ChooseItem, stepFasle } from '../../redux/userReducer/action-reduce';
+import { ChooseItem, DeleteItem, stepFasle } from '../../redux/userReducer/action-reduce';
 import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -11,7 +11,7 @@ function CartItem({ goods, handleDeleteItem }) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(stepFasle({ product_id: goods.product_id, value: true }))
-    }, [dispatch, stepFasle])
+    }, [dispatch, goods.product_id])
     const handleAddStep = (data) => {
         if (step === true) {
             dispatch(ChooseItem(data))
@@ -19,7 +19,9 @@ function CartItem({ goods, handleDeleteItem }) {
         }
         else {
             toast.dismiss()
-            toast("! Already Exist", { style: { background: "orange", color: "#fff", fontWeight: "bolder" } })
+            dispatch(stepFasle({ product_id: goods.product_id, value: true }))
+            dispatch(DeleteItem(data.product_id));
+            // toast("! Already Exist", { style: { background: "orange", color: "#fff", fontWeight: "bolder" } })
         }
     }
     return (
@@ -37,7 +39,8 @@ function CartItem({ goods, handleDeleteItem }) {
                     <p>${goods.product_discount}</p>
                 </div>
                 <div className='list-product__button'>
-                    <button className={`btn ${step === true ? "btn-success" : "btn-danger"}`} onClick={() => { handleAddStep(goods) }}>Add</button>
+                    <input type="checkbox" style={{ width: "20px", height: "20px" }} checked={!step} onChange={() => handleAddStep(goods)} />
+                    {/* <button className={`btn ${step === true ? "btn-success" : "btn-danger"}`} onClick={() => { handleAddStep(goods) }}>Add</button> */}
                     <button>
                         <i className={ICONTRASH} onClick={() => handleDeleteItem(goods.product_id)}></i>
                     </button>

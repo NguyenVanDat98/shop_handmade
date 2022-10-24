@@ -8,6 +8,7 @@ import icongoogle from "../../img/icongoogle.png";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { pathNameAd } from '../../common/pathName';
+import { useEffect } from 'react';
 const schema = yup.object().shape({
     username: yup.string().required('Please enter your username').min(3),
     password: yup.string().required('Please enter your password').min(3)
@@ -20,11 +21,13 @@ function Login(props) {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
-
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, []);
     //////////////CHECK LOGIN
     const CheckLogin = () => {
         toast.loading("Loading....")
-        getAccount(`?user_name=${getValues("username")}&password=${getValues("password")}`)
+        getAccount(`?user_name=${getValues("username").trim()}&password=${getValues("password").trim()}`)
             .then(res => res.json()
             ).catch(err => {
                 toast.dismiss();
@@ -33,11 +36,10 @@ function Login(props) {
                 if (res.length === 0) {
                     toast.dismiss();
                     switch ("") {
-                        case getValues("username"):
-
+                        case getValues("username").trim():
                             toast.error(`Enter Username again!`)
                             break;
-                        case getValues("password"):
+                        case getValues("password").trim():
 
                             toast.error(`Enter password again!`)
                             break;
@@ -57,22 +59,22 @@ function Login(props) {
     }
     /////////////////////////////SUBMIT
     const onSubmit = data => {
-        console.log(getValues());
+        toast.dismiss();
         CheckLogin()
+
     }
     ///////////CHANGE TYPE PASSWROD
     const handleChangeType = () => {
         setTypePass(!typePass)
     }
 
-
     return (
         <div className='rolemodal'>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} >
                 <div className='login signInanimation'>
                     <div className="login__title">
                         <p onClick={() => navi(-1)}><i className={ICONLEFT}></i></p>
-                        <h1>Log in</h1>
+                        <h1 >Log in</h1>
                     </div>
                     <div className='login__name'>
                         <input type="text" placeholder='Username' autoComplete='off' name="username" {...register("username")} />
@@ -88,8 +90,8 @@ function Login(props) {
                     </div>
                     <div className='login__btn'>
                         <button type="submit">Continue</button>
-                        <p><img src={icongoogle} alt="" />Google</p>
-                        <label className='d-flex flex-wrap justify-content-center'>
+                        {/* <p><img src={icongoogle} alt="" />Google</p> */}
+                        <label className='d-flex flex-wrap justify-content-center mt-3'>
                             <p>First time you come to Handmade Shop?</p>
                             <Link to="/signup">
                                 <strong>  Sign up</strong>

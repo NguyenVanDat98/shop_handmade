@@ -6,6 +6,9 @@
     background-color: #d8bd9f;
     padding: 0 25px;
     height: 80px;
+    position: fixed;
+    z-index: 5;
+    width: 100%;
 
     img:hover {
         cursor: pointer;

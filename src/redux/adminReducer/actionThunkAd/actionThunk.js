@@ -21,7 +21,6 @@ import {
   ChangeOrder,
   historyOrder,
   listRating,
- 
   saveInfoUser,
   saveOrder,
   saveSlideShow,

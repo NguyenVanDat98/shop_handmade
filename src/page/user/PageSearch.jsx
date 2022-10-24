@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Filter, Product, Sort } from '../../components';
 import ItemNotFound from '../../components/user/ItemNotFound';
 import { fetListProductSearch } from '../../redux/thunk/actionThunk';
@@ -21,6 +21,7 @@ const PageSearch = props => {
     }
     useEffect(() => {
         dispatch(fetListProductSearch({ limit: limit, sort: sort, filter: filter, page: page, search: locale.search.slice(1) }))
+        window.scroll(0,0)
     }, [dispatch, locale, limit, filter, sort, page]);
 
     return (

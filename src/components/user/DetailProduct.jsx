@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ICONBACK, ICONSTAR } from '../../Icon';
+import { ICONSTAR } from '../../Icon';
 import { fetProducts } from './../../api/apiMethod';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -27,6 +27,7 @@ function DetailProduct(props) {
 
     useEffect(() => {
         FetProduct()
+        window.scroll(0, 0)
     }, [param, FetProduct])
 
     const handleAddToCart = () => {
@@ -73,15 +74,7 @@ function DetailProduct(props) {
                         <h4>$ {itemData.price}</h4>
                         <p><i className={ICONSTAR}></i> {itemData.rating}/5</p>
                     </div>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Sed voluptas autem molestiae nisi quia laudantium,
-                        consequuntur ad vitae voluptatem officia alias.
-                        Qui quas, odio nam ad nihil aspernatur natus reiciendis!
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                        Sed voluptas autem molestiae nisi quia laudantium,
-                        consequuntur ad vitae voluptatem officia alias.
-                        Qui quas, odio nam ad nihil aspernatur natus reiciendis!
-                    </p>
+                    <p>{itemData.description}</p>
                     <div>
                         <p className='detail-stock'>
                             <span>Available:</span>

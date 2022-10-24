@@ -13,3 +13,4 @@ export const SELECT_VOUCHER = " SELECT_VOUCHER";
 export const SELECT_USER = " SELECT_USER";
 export const DELETE_VOUCHER = " DELETE_VOUCHER";
 export const ADD_VOUCHER = " ADD_VOUCHER";
+export const TYPING = " TYPING";

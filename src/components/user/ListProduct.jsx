@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetListProduct } from '../../redux/thunk/actionThunk.js';
 import { Product, Sort, Filter } from '../index.js';
+import ItemNotFound from './ItemNotFound.jsx';
 
-function ListProduct(props) {
+function ListProduct() {
     const dispatch = useDispatch();
     const listProduct = useSelector((state) => state.users.listProduct);
     const isLoad = useSelector((state) => state.users.isLoadmore);
@@ -16,7 +17,11 @@ function ListProduct(props) {
     useEffect(() => {
         dispatch(fetListProduct({ limit: limit, sort: sort, filter: filter, page: page }));
     }, [sort, limit, filter, page, dispatch]);
-
+    const checkListproducts = () => {
+        let products = listProduct || null;
+        return (products !== null && products.length)
+    }
+    console.log(listProduct);
     return (
         <>
             <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
@@ -26,6 +31,7 @@ function ListProduct(props) {
                 <Sort handleChangeValueSort={(e) => {
                     setSort(e.target.value)
                 }} />
+                {checkListproducts === false || checkListproducts === 0 ? <ItemNotFound /> : ""}
             </div>
             <div className='body'>
                 <ul className='list-item'>
@@ -51,7 +57,6 @@ function ListProduct(props) {
                         setLimit((limit) => limit + 4)
                     }} className="loading__btn">Load More</button>
                 </div>)}
-
             </div>
         </>
     );

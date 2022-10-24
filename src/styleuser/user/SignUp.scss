@@ -4,8 +4,10 @@
     padding-top: 20px;
     background-image: url(../../img/bglogin.jpg);
     // object-fit: cover;
-    min-height: 88.8vh;
+    min-height: 100vh;
     align-self: center;
+    margin-bottom: -60px;
+    background-size: cover;
 
     .signInanimation {
         animation: signIN 0.3s forwards;
@@ -13,6 +15,7 @@
 
     .sign {
 
+        margin-top: 80px;
         width: 90%;
         min-width: 700px;
         min-height: 460px;
@@ -23,7 +26,6 @@
         box-shadow: 2px 2px 6px rgb(0, 0, 0);
         z-index: 2;
         background-color: #fff;
-        margin: 0 auto;
 
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {

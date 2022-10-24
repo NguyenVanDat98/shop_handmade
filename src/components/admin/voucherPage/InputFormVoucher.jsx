@@ -1,5 +1,5 @@
-import React, { Children } from "react";
-import { useState } from "react";
+import React from "react";
+
 
 const InputFormVoucher = ({ type, name, register, required,children,min}) => {
   return (
