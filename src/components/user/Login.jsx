@@ -21,13 +21,13 @@ function Login(props) {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
-    useEffect(()=>{
-        window.scroll(0,0)
-    },[]);
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, []);
     //////////////CHECK LOGIN
     const CheckLogin = () => {
         toast.loading("Loading....")
-        getAccount(`?user_name=${getValues("username")}&password=${getValues("password")}`)
+        getAccount(`?user_name=${getValues("username").trim()}&password=${getValues("password").trim()}`)
             .then(res => res.json()
             ).catch(err => {
                 toast.dismiss();
@@ -36,10 +36,10 @@ function Login(props) {
                 if (res.length === 0) {
                     toast.dismiss();
                     switch ("") {
-                        case getValues("username"):
+                        case getValues("username").trim():
                             toast.error(`Enter Username again!`)
                             break;
-                        case getValues("password"):
+                        case getValues("password").trim():
 
                             toast.error(`Enter password again!`)
                             break;
@@ -59,22 +59,22 @@ function Login(props) {
     }
     /////////////////////////////SUBMIT
     const onSubmit = data => {
-        console.log(getValues());
+        toast.dismiss();
         CheckLogin()
+
     }
     ///////////CHANGE TYPE PASSWROD
     const handleChangeType = () => {
         setTypePass(!typePass)
     }
 
-
     return (
         <div className='rolemodal'>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} >
                 <div className='login signInanimation'>
                     <div className="login__title">
                         <p onClick={() => navi(-1)}><i className={ICONLEFT}></i></p>
-                        <h1>Log in</h1>
+                        <h1 >Log in</h1>
                     </div>
                     <div className='login__name'>
                         <input type="text" placeholder='Username' autoComplete='off' name="username" {...register("username")} />

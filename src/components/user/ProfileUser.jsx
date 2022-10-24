@@ -4,8 +4,17 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getProfileUser, updateInfoUser } from '../../redux/thunk/actionThunk';
+import { useNavigate } from 'react-router-dom';
+import { fetchAccount, SaveCart } from './../../redux/userReducer/action-reduce';
 
 function ProfileUser(props) {
+    const navi = useNavigate()
+    const logOut = () => {
+        window.localStorage.removeItem("infoAccount")
+        dispatch(fetchAccount({}))
+        navi("/login")
+        dispatch(SaveCart([]))
+    }
     const [info, setInfo] = useState(false);
     const [form, setForm] = useState(false);
     const [order, setOrder] = useState(false);
@@ -20,6 +29,7 @@ function ProfileUser(props) {
         email: "",
         address: ""
     });
+
     const handleChangevalue = (e) => {
         setValueform({
             ...valueform,
@@ -40,7 +50,7 @@ function ProfileUser(props) {
                 setStep(false)
             }
         }
-    }, [valueform,acc,profile])
+    }, [valueform, acc, profile])
     useEffect(() => {
         profile && setValueform({
             fullname: profile.fullname,
@@ -48,7 +58,7 @@ function ProfileUser(props) {
             email: profile.email,
             address: profile.address
         })
-    }, [profile,acc])
+    }, [profile, acc])
     const handleCancel = () => {
         setForm(false);
         setInfo(false);
@@ -73,6 +83,9 @@ function ProfileUser(props) {
     return (
         <div className='profile'>
             <div className="profile__image">
+                <div>
+                    <button className="btn btn-success logout" onClick={logOut}>Logout</button>
+                </div>
                 <div>
                     <span><i className={ICONUSER}></i></span>
                 </div>

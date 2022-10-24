@@ -21,9 +21,9 @@ const SideBar = (props) => {
     const checkAccount = () => {
         const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : null;
         if (locale !== null) {
-            navi("/profileuser");
+            return ("/profileuser");
         } else {
-            navi("/login");
+            return ("/login");
         }
     }
     return (
@@ -43,9 +43,9 @@ const SideBar = (props) => {
             />
             <ButtonSidebar
                 iconName={ICONUSER}
-                active={page.page4}
+                active={page.page3}
                 innerText="Profile"
-                pathName="/login"
+                pathName={checkAccount()}
             />
         </div>
     );

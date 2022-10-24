@@ -54,19 +54,50 @@
     }
   ],
   "listAccount": [
-  
+    {
+      "id": "Xt9HIz",
+      "user_name": "cong",
+      "telephone": "0923567423",
+      "password": "11223366",
+      "type": "",
+      "profile_id": "rLYRN",
+      "cart_id": "62fHj",
+      "payment_id": "AP1hO"
+    }
   ],
   "listCart": [
- 
+    {
+      "id": "62fHj",
+      "cart": [
+        {
+          "product_id": 3,
+          "product_percent": 5,
+          "quantity": 1,
+          "product_img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
+          "product_price": 20,
+          "product_name": "Boat",
+          "product_category": "5 table decor 3",
+          "product_discount": 19
+        }
+      ]
+    }
   ],
   "listProfile": [
-   
+    {
+      "id": "rLYRN",
+      "address": "45 Nguyen Quy Anh, Da Nang",
+      "fullname": "nguyen quoc cong",
+      "email": "congnguyen@gmail.com"
+    }
   ],
-  "listVoucher": [
-   
-  ],
+  "listVoucher": [],
   "listPayment": [
-   
+    {
+      "id": "AP1hO",
+      "profile_id": "rLYRN",
+      "cart_order": [],
+      "total": 0
+    }
   ],
   "listOrder": [
     {
@@ -148,17 +179,11 @@
       "status": true
     }
   ],
-  "listEarning": [
-
-  ],
+  "listEarning": [],
   "slideShow": {
-    "data": [
-    
-    ]
+    "data": []
   },
   "listCategory": {
-    "data": [
-      
-    ]
+    "data": []
   }
 }
