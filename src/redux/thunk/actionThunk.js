@@ -139,7 +139,7 @@ export const getProfileUser = () => {
           ? JSON.parse(localStorage.getItem("infoAccount"))
           : null;
         if (locale !== null) {
-           await getAccount(`/${locale.id}`)
+          await getAccount(`/${locale.id}`)
             .then((res) => ResCheck(res, "", "Error Data", 200))
             .then(async (res) => {
               const data = await fetProfile(res.profile_id);
@@ -271,7 +271,7 @@ export const getDataItemReview = () => {
           const dataList = await fetProducts({ page: 1, filter: data });
           dispatch(SaveCartReview(dataList));
         }
-      } catch (error) {}
+      } catch (error) { }
     })();
   };
 };
@@ -289,7 +289,7 @@ export const getDataCartItem = () => {
               dispatch(SaveCart(res));
             });
         }
-      } catch (error) {}
+      } catch (error) { }
     })();
   };
 };

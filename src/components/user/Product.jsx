@@ -13,7 +13,7 @@ function Product(props) {
                         <h5 className="product-info__title">{name}</h5>
                         <h6 className="product-info__title">{category}</h6>
                     </div>
-                    {discount ? <section className='product-info__discount-price'>
+                    {discount ? <section className='product-info__discount-price d-flex flex-column'>
                         <p className="product-info__price">$ {(price - price * parseInt(discount) / 100).toFixed(1)}</p> <p className='product-info__sale'>$ {price}</p>
                     </section> : <p className="product-info__price">$ {price}</p>}
                 </div>
