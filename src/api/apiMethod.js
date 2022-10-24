@@ -115,8 +115,8 @@ export const updateAccountUser = (data) => {
     body: JSON.stringify(data)
   })
 }
-// export const searchCartItem = async (param) => {
-//   const data = await fetch(API_URL + `/listProduct?${param.name}_like=${param.input}`)
-//   return data;
-// }
+export const getListVoucher = (param="") => {
+  const data =fetch(API_URL + `/listVoucher/`)
+  return data;
+}
 

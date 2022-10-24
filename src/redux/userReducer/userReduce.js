@@ -64,6 +64,10 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, SearchProduct: action.payload
             }
+        case actionTypes.SAVE_LIST_VOUCHER:
+            return {
+                ...state, listVoucher: action.payload
+            }
         default:
             return { ...state }
     }
