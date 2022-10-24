@@ -50,7 +50,7 @@ const InfoProduct = ({ data, handleClose }) => {
     }
 
     setCheck(false);
-    setItemData({ ...itemdata, [e.target.name]: e.target.type === "text"||"textarea" ? e.target.value : parseFloat(e.target.value) });
+    setItemData({ ...itemdata, [e.target.name]: e.target.type === "text"||"textarea" ? (e.target.value) : parseFloat(e.target.value) });
   };
   const checkDiffrent = () => {
     let valid = true
@@ -62,6 +62,8 @@ const InfoProduct = ({ data, handleClose }) => {
     return valid
   }
   const handleEditInfoProduct = (pram) => {
+    pram.category=pram.category.trim()
+
     toast.loading("Creating....");
     dispatch(PutProductThunk(pram))
     setEdit(!edit)

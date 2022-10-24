@@ -21,7 +21,7 @@
       "description": "Decoration",
       "discount": 6,
       "time_making": "",
-      "category": "5 table decor",
+      "category": "5 decor",
       "status": true,
       "sold": 70,
       "rating": 4.2
@@ -34,7 +34,7 @@
       "description": "Decoration",
       "discount": 5,
       "time_making": "",
-      "category": "5 table decor 3",
+      "category": "table decor 1",
       "status": true,
       "sold": 120,
       "rating": 4.8
@@ -160,8 +160,7 @@
   "listCategory": {
     "data": [
       "table decor 1",
-      "5 table decor",
-      "5 table decor 3",
+      "5 decor",
       "5 table decor 1"
     ]
   }
