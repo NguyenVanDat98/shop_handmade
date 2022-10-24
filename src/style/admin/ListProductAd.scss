@@ -243,6 +243,12 @@
       .item-input {
         position: relative;
         margin-top: 1.6rem;
+        textarea{
+          width: 100%;
+          padding: 5px;
+          outline: none;
+        }
+  
         input:not(:placeholder-shown){
           border-bottom: 5px solid rgb(38, 180, 3);
         }

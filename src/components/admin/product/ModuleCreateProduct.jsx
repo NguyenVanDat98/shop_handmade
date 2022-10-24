@@ -136,6 +136,11 @@ const snipCategory =(e)=>{
             <InputForm errors={errors} name="img" register={register} required={require=true}/>
             <InputForm errors={errors} name="discount" type="number" register={register}/>
             <InputForm errors={errors} name="time_making" type="date" value={dateNow} register={register} disabled={true} />
+            <div className="item-input"> 
+            <label htmlFor={"description"} >{"description"} {errors["description"]?.type === 'required' && <span data-value={"description" + " is required"}  role="alert"> &#8505;</span>}</label>
+            
+            <textarea name="description" id="description" {...register("description")} ></textarea>
+            </div>
             <button onMouseOver={()=>blurBtn( )} className={`btn btn-primary ${clazz}`} type="submit">ADD</button>
           </form>
           

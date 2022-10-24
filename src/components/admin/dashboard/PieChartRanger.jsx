@@ -2,32 +2,32 @@ import React from 'react';
 import { ResponsivePie } from "@nivo/pie";
 const data= [
     {
-      "id": "make",
-      "label": "make",
+      "id": "Alex",
+      "label": "Alex",
       "value": 360,
       "color": "hsl(23, 70%, 50%)"
     },
     {
-      "id": "c",
-      "label": "c",
+      "id": "Johnny",
+      "label": "Johnny",
       "value": 301,
       "color": "hsl(8, 70%, 50%)"
     },
     {
-      "id": "sass",
-      "label": "sass",
+      "id": "Hander",
+      "label": "Hander",
       "value": 553,
       "color": "hsl(98, 70%, 50%)"
     },
     {
-      "id": "stylus",
-      "label": "stylus",
+      "id": "Stylis",
+      "label": "Stylis",
       "value": 212,
       "color": "hsl(197, 70%, 50%)"
     },
     {
-      "id": "javascript",
-      "label": "javascript",
+      "id": "Danny",
+      "label": "Danny",
       "value": 178,
       "color": "hsl(165, 70%, 50%)"
     }

@@ -1,57 +1,6 @@
 {
   "listProduct": [
-    {
-      "id": 1,
-      "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-      "name": "Boattada\nasd \n",
-      "price": 20,
-      "description": "Decoration",
-      "discount": 5,
-      "time_making": "",
-      "category": "table decor 1",
-      "status": true,
-      "sold": 120,
-      "rating": 4.8
-    },
-    {
-      "id": 2,
-      "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-      "name": "Kitchen",
-      "price": 30,
-      "description": "Decoration",
-      "discount": 6,
-      "time_making": "",
-      "category": "5 decor",
-      "status": true,
-      "sold": 70,
-      "rating": 4.2
-    },
-    {
-      "id": 3,
-      "img": "https://img.alicdn.com/imgextra/i1/201255257/TB29H7DAUdnpuFjSZPhXXbChpXa_!!201255257.jpg",
-      "name": "Boat",
-      "price": 20,
-      "description": "Decoration",
-      "discount": 5,
-      "time_making": "",
-      "category": "table decor 1",
-      "status": true,
-      "sold": 120,
-      "rating": 4.8
-    },
-    {
-      "id": 4,
-      "img": "https://img.alicdn.com/imgextra/i4/201255257/TB2PK2ZnHsrBKNjSZFpXXcXhFXa_!!201255257.jpg",
-      "name": "Kitchen",
-      "price": 30,
-      "description": "Decoration",
-      "discount": 6,
-      "time_making": "",
-      "category": "5 table decor 1",
-      "status": true,
-      "sold": 56,
-      "rating": 4.95
-    }
+   
   ],
   "listAccount": [
     {
