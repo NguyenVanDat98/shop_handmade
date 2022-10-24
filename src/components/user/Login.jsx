@@ -8,6 +8,7 @@ import icongoogle from "../../img/icongoogle.png";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { pathNameAd } from '../../common/pathName';
+import { useEffect } from 'react';
 const schema = yup.object().shape({
     username: yup.string().required('Please enter your username').min(3),
     password: yup.string().required('Please enter your password').min(3)
@@ -20,7 +21,9 @@ function Login(props) {
     const { register, handleSubmit, getValues, formState: { errors } } = useForm({
         resolver: yupResolver(schema)
     });
-
+    useEffect(()=>{
+        window.scroll(0,0)
+    },[]);
     //////////////CHECK LOGIN
     const CheckLogin = () => {
         toast.loading("Loading....")
@@ -87,8 +90,8 @@ function Login(props) {
                     </div>
                     <div className='login__btn'>
                         <button type="submit">Continue</button>
-                        <p><img src={icongoogle} alt="" />Google</p>
-                        <label className='d-flex flex-wrap justify-content-center'>
+                        {/* <p><img src={icongoogle} alt="" />Google</p> */}
+                        <label className='d-flex flex-wrap justify-content-center mt-3'>
                             <p>First time you come to Handmade Shop?</p>
                             <Link to="/signup">
                                 <strong>  Sign up</strong>

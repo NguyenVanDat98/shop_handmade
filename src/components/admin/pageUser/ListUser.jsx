@@ -20,8 +20,8 @@ const dispatch = useDispatch()
           <h3>List User</h3>
         </div>
         <div className="body-listUser">
-          {listUserData.profile &&
-            listUserData.acc.map((e, i) => (
+          {listUserData.acc &&
+            listUserData.acc.map((e, i) => ( e.type!=="admin" &&
               <ItemUser
                 key={i}
                 onClick={(item) => {

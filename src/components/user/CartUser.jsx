@@ -15,6 +15,7 @@ function CartUser(props) {
     useEffect(() => {
         dispatch(getDataCartItem())
         dispatch(ClearStepPayment())
+        window.scroll(0,82)
     }, [dispatch]);
     const handleDeleteItem = (item) => {
         dispatch(deleteItemInCart(item))

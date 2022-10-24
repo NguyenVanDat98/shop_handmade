@@ -2,13 +2,17 @@ import React, { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PutDataCategory } from "../../../api/adminMethodAip";
 import { ICONADD, ICONBAG, ICONCLOSE } from "../../../Icon";
-import {InfoProduct, ModuleCreateProduct,ModuleListSlider} from "./../../index";
+import {
+  InfoProduct,
+  ModuleCreateProduct,
+  ModuleListSlider,
+} from "./../../index";
 import ItemCategory from "./ItemCategory";
 
 const ListProductAd = (props) => {
   const data = useSelector((state) => state.adminData.dataProducts);
   const [productSelect, setProductSelect] = useState("");
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
   const [disForm, setDisForm] = useState({
     formCreate: false,
     moduleSlide: false,
@@ -20,9 +24,9 @@ const ListProductAd = (props) => {
   const [dataOutput, setDataOutput] = useState([]);
   const [muti, setMuti] = useState(false);
 
-const multipleOn =()=>{
-   setMuti(!muti)
-}
+  const multipleOn = () => {
+    setMuti(!muti);
+  };
 
   //Filter category
   let listCategory = useMemo(() => {
@@ -35,34 +39,30 @@ const multipleOn =()=>{
     return arr;
   }, [data]);
   // divide data flow category
-  const dataDevide = useMemo(
-    () =>
-    {    
-     return listCategory.map((e, i) => ({
-        name: e,
-        data: data.filter((el) => el.category.toLowerCase() === e),
-      }))
-    
-    },
-    [data, listCategory]
-    
-  );
- 
+  const dataDevide = useMemo(() => {
+    return listCategory.map((e, i) => ({
+      name: e,
+      data: data.filter((el) => el.category.toLowerCase() === e),
+    }));
+  }, [data, listCategory]);
+
   //set data when data update
   useEffect(() => {
     setDataOutput(dataDevide);
-    PutDataCategory(listCategory)
+    PutDataCategory(listCategory);
   }, [dataDevide]);
   const handleChangeFilter = (e) => {
-    let temp = dataDevide.filter((item) => e.includes(item.name) ); 
-
+    let temp = dataDevide.filter((item) => e.includes(item.name));
 
     temp.length ? setDataOutput(temp) : setDataOutput(dataDevide);
   };
   const handleChange = (e) => {
-    let value = Array.from(e.target.previousSibling.selectedOptions, option => option.value);
-    return value
-  }  
+    let value = Array.from(
+      e.target.previousSibling.selectedOptions,
+      (option) => option.value
+    );
+    return value;
+  };
   const handleClick = (a, b) => {
     if (disForm[a] === false) {
       if (disForm[b] === true) {
@@ -84,7 +84,7 @@ const multipleOn =()=>{
 
   return (
     <div className="list-product-Ad">
-{/* {-----------------------module infomation product select------------------} */}
+      {/* {-----------------------module infomation product select------------------} */}
 
       {productSelect && (
         <InfoProduct
@@ -96,7 +96,7 @@ const multipleOn =()=>{
           data={productSelect}
         />
       )}
-{/* {-----------------------module Create new product------------------} */}
+      {/* {-----------------------module Create new product------------------} */}
 
       <ModuleCreateProduct
         check={disForm.formCreate}
@@ -109,7 +109,7 @@ const multipleOn =()=>{
         }}
         disForm={anima.formCreate}
       />
-{/* {-----------------------module slider------------------} */}
+      {/* {-----------------------module slider------------------} */}
       <ModuleListSlider
         check={disForm.moduleSlide}
         data={productSelect}
@@ -123,55 +123,64 @@ const multipleOn =()=>{
       />
       <div className="main-list">
         <div className="list-product-Ad_header">
-{/* {---------------------------------BUTTON--------------------------} */}
-<div className="btn-group">
-{/* {button add new product} */}
-<button
-            onClick={() => {
-              handleClick("formCreate", "moduleSlide");
-            }}
-          >
-            <i className={ICONADD}> </i> <i className={ICONBAG}></i>
-          </button>
-{/* {---------------------------------BUTTON--------------------------} */}
-{/* {button view list silder} */}
-          <button
-            onClick={() => {
-              handleClick("moduleSlide", "formCreate");
-            }}
-          >LIST SLIDER
-          </button>
-          {/* {list category} */}
-</div>
-
-          <div className="list-product-select" >
-             
-          <select 
-             multiple={muti}
-            onChange={(e) =>{!muti && handleChangeFilter([e.target.value])}}
-            // className="form-select"
-            name=""
-          >
-            <option defaultValue>ALL CATEGORY</option>
-            {listCategory &&
-              listCategory.map((e, i) => (
-                <option key={i} value={e}>
-                  {e}
-                </option>
-              ))}
-          </select>
-         {muti&& <button onClick={(e)=> 
-          handleChangeFilter(handleChange(e))
-          }>Find</button>}
-          <button onClick={multipleOn}>{muti ? <i className={ICONCLOSE}></i> :"Multiple"}</button>
+          {/* {---------------------------------BUTTON--------------------------} */}
+          <div className="btn-group">
+            {/* {button add new product} */}
+            <button
+              onClick={() => {
+                handleClick("formCreate", "moduleSlide");
+              }}
+            >
+              <i className={ICONADD}> </i> <i className={ICONBAG}></i>
+            </button>
+            {/* {---------------------------------BUTTON--------------------------} */}
+            {/* {button view list silder} */}
+            <button
+              onClick={() => {
+                handleClick("moduleSlide", "formCreate");
+              }}
+            >
+              LIST SLIDER
+            </button>
+            {/* {list category} */}
           </div>
-         
+
+          <div className="list-product-select">
+            <select
+              multiple={muti}
+              onChange={(e) => {
+                !muti && handleChangeFilter([e.target.value]);
+              }}
+              // className="form-select"
+              name=""
+            >
+              <option defaultValue>ALL CATEGORY</option>
+              {listCategory &&
+                listCategory.map((e, i) => (
+                  <option key={i} value={e}>
+                    {e}
+                  </option>
+                ))}
+            </select>
+            {muti && (
+              <button onClick={(e) => handleChangeFilter(handleChange(e))}>
+                Find
+              </button>
+            )}
+            <button onClick={multipleOn}>
+              {muti ? <i className={ICONCLOSE}></i> : "Multiple"}
+            </button>
+          </div>
         </div>
-{/* {-----------------------list product render------------------} */}
+        {/* {-----------------------list product render------------------} */}
         {dataOutput &&
           dataOutput.map((e, i) => {
             return (
-              <ItemCategory key={i} setProductSelect={(av)=>setProductSelect(av)} e={e}/>
+              <ItemCategory
+                key={i}
+                setProductSelect={(av) => setProductSelect(av)}
+                e={e}
+              />
             );
           })}
       </div>

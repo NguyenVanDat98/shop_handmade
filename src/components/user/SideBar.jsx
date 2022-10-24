@@ -4,7 +4,6 @@ import {
     ICONBACK,
     ICONCART,
     ICONHOME,
-    ICONMAIL,
     ICONUSER,
 } from "../../Icon";
 import ButtonSidebar from "../admin/ButtonSidebar";
@@ -41,12 +40,6 @@ const SideBar = (props) => {
                 active={page.page2}
                 innerText="Cart"
                 pathName={"/cart"}
-            />
-            <ButtonSidebar
-                iconName={ICONMAIL}
-                active={page.page3}
-                innerText="Mail"
-                pathName="#"
             />
             <ButtonSidebar
                 iconName={ICONUSER}

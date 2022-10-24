@@ -9,9 +9,9 @@ import {
 } from "../../redux/thunk/actionThunk";
 import { ICONTRUCK } from "./../../Icon/index";
 import toast from "react-hot-toast";
+import { useMemo } from "react";
 
 const SHIPPING_FEE = 4;
-const VOUCHER = 0;
 function PaymentUser(props) {
   const [display, setDisplay] = useState(false);
   const [addChoose, setAdd] = useState(null);
@@ -30,7 +30,7 @@ function PaymentUser(props) {
   const { stepPayment, listProfile, listVoucher } = listProduct;
   const { acc, profile } = listProfile;
 
-  const totalBill = () => {
+  const totalBill = useMemo(() => {
     if (stepPayment) {
       const _ = stepPayment.reduce((a, e) => a + parseInt(e.quantity), 0);
       const __ = stepPayment.reduce(
@@ -41,14 +41,13 @@ function PaymentUser(props) {
     } else {
       return { total: 0, amount: 0 };
     }
-  };
-  const TOTAL_BILL = () => {
-    return (
-      parseFloat(totalBill().total) +
-      (totalBill().total === 0 ? 0 : parseFloat(SHIPPING_FEE)) -
-      parseFloat(VOUCHER)
-    );
-  };
+  },[stepPayment]);
+  const TOTAL_BILL = useMemo(() =>  {
+    return(
+      parseFloat(totalBill.total) + (totalBill.total === 0 ? 0 : parseFloat(SHIPPING_FEE)) - (VoucherChoose ? parseInt(VoucherChoose.discount) : 0 )      
+    )}
+    
+    ,[VoucherChoose,totalBill])
   const hangdleChangeForm = (e) => {
     setValueF({ ...valueF, [e.target.name]: e.target.value });
   };
@@ -72,7 +71,6 @@ function PaymentUser(props) {
       });
       setDisplay(false);
       setArr((s) => [...s, valueF]);
-      console.log("sadf");
     }
   };
   const focusVoucher = (e) => {
@@ -87,6 +85,7 @@ function PaymentUser(props) {
   useEffect(() => {
     dispatch(getProfileUser());
     dispatch(FetchListVoucher());
+    window.scroll(0,0)
   }, [dispatch]);
 
   const validVoucher = () => {
@@ -156,7 +155,7 @@ function PaymentUser(props) {
           {/* {-----------------------------------List product---------------------------------------------------} */}
           <div className="user__info--cart">
             <p>
-              Cart <span>Amount list payment: {totalBill().amount}</span>
+              Cart <span>Amount list payment: {totalBill.amount}</span>
             </p>
             {stepPayment &&
               stepPayment.map((item, i) => (
@@ -245,18 +244,18 @@ function PaymentUser(props) {
                   <h5>Information Order</h5>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Provisional Price</p>
-                    <p>$ {totalBill().total}</p>
+                    <p>$ {totalBill.total}</p>
                   </div>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Shipping Fee</p>
-                    <p>$ {totalBill().total === 0 ? 0 : SHIPPING_FEE}</p>
+                    <p>$ {totalBill.total === 0 ? 0 : SHIPPING_FEE}</p>
                   </div>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Voucher</p>
 
                     <p>
                       ${" "}
-                      {totalBill().total > 14
+                      {totalBill.total > 14
                         ? VoucherChoose
                           ? parseInt(VoucherChoose.discount)
                           : 0
@@ -265,7 +264,7 @@ function PaymentUser(props) {
                   </div>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Total:</p>
-                    <p>$ {TOTAL_BILL()}</p>
+                    <p>$ {(TOTAL_BILL).toFixed(2)}</p>
                   </div>
                   <div>
                     <button type="button" onClick={() => setShow(true)}>

@@ -1,4 +1,3 @@
-import { text } from "@fortawesome/fontawesome-svg-core";
 import toast from "react-hot-toast";
 import {
   DeleteDataOrder,
@@ -22,7 +21,6 @@ import {
   ChangeOrder,
   historyOrder,
   listRating,
- 
   saveInfoUser,
   saveOrder,
   saveSlideShow,

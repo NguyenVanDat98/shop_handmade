@@ -1,7 +1,6 @@
 import React from 'react';
 import { ICONUSER } from '../../Icon';
 import { useState } from 'react';
-import { getProfile } from '../../api/apiMethod';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getProfileUser, updateInfoUser } from '../../redux/thunk/actionThunk';
@@ -41,7 +40,7 @@ function ProfileUser(props) {
                 setStep(false)
             }
         }
-    }, [valueform])
+    }, [valueform,acc,profile])
     useEffect(() => {
         profile && setValueform({
             fullname: profile.fullname,
@@ -49,7 +48,7 @@ function ProfileUser(props) {
             email: profile.email,
             address: profile.address
         })
-    }, [profileUsernow])
+    }, [profile,acc])
     const handleCancel = () => {
         setForm(false);
         setInfo(false);

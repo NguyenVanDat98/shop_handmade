@@ -6,7 +6,7 @@ import ItemProductAd from './ItemProductAd';
 
 
 const ItemCategory = ({e,setProductSelect}) => {
-    const [data ,setData ]= useState(e.data)
+    const [data , setData]= useState(e.data)
     useEffect(()=>{
         setData(e.data)
     },[e.data])
