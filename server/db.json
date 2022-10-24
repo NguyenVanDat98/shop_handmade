@@ -6,7 +6,7 @@
       "name": "Boatt",
       "price": 20,
       "description": "Decoration",
-      "discount": "5%",
+      "discount": 5,
       "time_making": "",
       "category": "table decor 1",
       "status": false,
@@ -19,7 +19,7 @@
       "name": "Kitchen",
       "price": 30,
       "description": "Decoration",
-      "discount": "6%",
+      "discount": 6,
       "time_making": "",
       "category": "5 table decor",
       "status": true,
@@ -32,7 +32,7 @@
       "name": "Boat",
       "price": 20,
       "description": "Decoration",
-      "discount": "5%",
+      "discount": 5,
       "time_making": "",
       "category": "5 table decor 3",
       "status": true,
@@ -45,7 +45,7 @@
       "name": "Kitchen",
       "price": 30,
       "description": "Decoration",
-      "discount": "6%",
+      "discount": 6,
       "time_making": "",
       "category": "5 table decor 1",
       "status": true,
@@ -58,7 +58,7 @@
       "name": "Boat",
       "price": 20,
       "description": "Decoration",
-      "discount": "5%",
+      "discount": 5,
       "time_making": "",
       "category": "table decor 1",
       "status": false,
@@ -71,7 +71,7 @@
       "name": "Kitchen",
       "price": 30,
       "description": "Decoration",
-      "discount": "6%",
+      "discount": 6,
       "time_making": "",
       "category": "7 decor 5",
       "status": true,
@@ -84,7 +84,7 @@
       "name": "Boat",
       "price": 20,
       "description": "Decoration",
-      "discount": "5%",
+      "discount": 5,
       "time_making": "",
       "category": "5 decor 4",
       "status": true,
@@ -97,7 +97,7 @@
       "name": "Kitchen",
       "price": 30,
       "description": "Decoration",
-      "discount": "6%",
+      "discount": 6,
       "time_making": "",
       "category": "5 table decor 5",
       "status": true,
@@ -110,7 +110,7 @@
       "name": "Boat",
       "price": 20,
       "description": "Decoration",
-      "discount": "5%",
+      "discount": 5,
       "time_making": "",
       "category": "5 decor 4",
       "status": true,
@@ -123,7 +123,7 @@
       "name": "Kitchen",
       "price": 30,
       "description": "Decoration",
-      "discount": "6%",
+      "discount": 6,
       "time_making": "",
       "category": "5 table decor 5",
       "status": true,
@@ -136,7 +136,7 @@
       "name": "Rickshaw",
       "price": 40,
       "description": "Decoration",
-      "discount": "4%",
+      "discount": 4,
       "time_making": "",
       "category": "5 table decor 4",
       "status": true,
@@ -149,7 +149,7 @@
       "name": "Wells",
       "price": 45,
       "description": "Decoration",
-      "discount": "8%",
+      "discount": 8,
       "time_making": "",
       "category": "table decor",
       "status": true,
@@ -217,10 +217,10 @@
       "id": 17
     },
     {
-      "discount": "12",
+      "discount": 12,
       "time_making": "2022-10-19",
       "name": "name",
-      "price": 12,
+      "price": 30,
       "category": "5 table decor",
       "img": "https://i.etsystatic.com/25107966/c/2716/2158/0/533/il/99d73d/3955124854/il_340x270.3955124854_kowq.jpg",
       "status": true,
@@ -267,6 +267,10 @@
     {
       "id": "7R5on",
       "cart": []
+    },
+    {
+      "id": "fxAgV",
+      "cart": []
     }
   ],
   "listProfile": [
@@ -293,6 +297,12 @@
       "address": "20 Hoang Hoa Tham, Son Tra, Da Nang",
       "fullname": "Nguyen Quoc Cong",
       "email": "ala2311@outlook.com"
+    },
+    {
+      "id": "NETA6",
+      "address": "23 Van Don, Son Tra , Da Nang",
+      "fullname": "nguyen van dat",
+      "email": "ala23@gmail.com"
     }
   ],
   "listVoucher": [
@@ -339,6 +349,12 @@
       "profile_id": "TBCKH",
       "cart_order": [],
       "total": 0
+    },
+    {
+      "id": "qK---",
+      "profile_id": "NETA6",
+      "cart_order": [],
+      "total": 0
     }
   ],
   "listOrder": [
@@ -347,7 +363,7 @@
       "payment_id": 2,
       "profile_id": "UIcXH",
       "time__create": "24-12-2022",
-      "time_complete": "19-10-2022",
+      "time_complete": "22-10-2022",
       "list_product_order": [
         {
           "product_id": 2,
@@ -373,7 +389,7 @@
       "payment_id": 2,
       "profile_id": "UIcXH",
       "time__create": "24-12-2022",
-      "time_complete": "14-10-2022",
+      "time_complete": "22-10-2022",
       "list_product_order": [
         {
           "product_id": 2,
@@ -392,14 +408,14 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": false
+      "status": true
     },
     {
       "id": 5,
       "payment_id": 2,
       "profile_id": "UIcXH",
       "time__create": "24-12-2022",
-      "time_complete": "14-10-2022",
+      "time_complete": "22-10-2022",
       "list_product_order": [
         {
           "product_id": 2,
@@ -418,7 +434,7 @@
       ],
       "voucher_id": "",
       "total_order": 0,
-      "status": false
+      "status": true
     }
   ],
   "listEarning": [

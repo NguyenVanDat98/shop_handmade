@@ -19,7 +19,14 @@ const SideBar = (props) => {
         page2: Url === "/cart",
         page3: Url === "",
     }
-
+    const checkAccount = () => {
+        const locale = localStorage.getItem("infoAccount") ? JSON.parse(localStorage.getItem("infoAccount")) : null;
+        if (locale !== null) {
+            navi("/profileuser");
+        } else {
+            navi("/login");
+        }
+    }
     return (
         <div className="sidebarAd sidebar-user">
             {!page.page1 && <button onClick={() => navi(-1)}><i className={ICONBACK} ></i></button>}

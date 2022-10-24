@@ -88,10 +88,10 @@
                 }
 
                 i {
-                    position: absolute;
+                    position: fixed;
                     font-size: 2rem;
-                    right: 25px;
-                    top: calc(50% - 2rem);
+                    right: 45px;
+                    top: calc(50% - 4.3rem);
                     color: rgb(35, 34, 34);
                     cursor: pointer;
                 }

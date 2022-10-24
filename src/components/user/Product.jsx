@@ -6,7 +6,7 @@ function Product(props) {
     return (
         <div className="product">
             <img src={img} className="product__img" alt="product-top" />
-            {discount ? (<span>-{discount}</span>) : ("")}
+            {discount ? (<span>-{parseInt(discount)}%</span>) : ("")}
             <div className="product__body">
                 <div className='product-info'>
                     <div className='d-flex flex-column'>

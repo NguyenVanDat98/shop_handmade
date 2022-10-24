@@ -34,7 +34,6 @@ function Login(props) {
                     toast.dismiss();
                     switch ("") {
                         case getValues("username"):
-
                             toast.error(`Enter Username again!`)
                             break;
                         case getValues("password"):
