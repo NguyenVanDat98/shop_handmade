@@ -39,3 +39,4 @@ export const ICONCHECK = "fa-solid fa-check";
 export const ICONTRUCK = "fa-solid fa-truck";
 export const ICONCOMMENT = "fa-regular fa-comment";
 
+

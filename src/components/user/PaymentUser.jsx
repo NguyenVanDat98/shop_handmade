@@ -4,21 +4,25 @@ import { ICONCHECK, ICONCREDIT, ICONWALLET } from "../../Icon";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import {
+  createOrder,
   FetchListVoucher,
   getProfileUser,
 } from "../../redux/thunk/actionThunk";
 import { ICONTRUCK } from "./../../Icon/index";
 import toast from "react-hot-toast";
+import { useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SHIPPING_FEE = 4;
 const VOUCHER = 0;
 function PaymentUser(props) {
   const [display, setDisplay] = useState(false);
-  const [addChoose, setAdd] = useState(null);
+  const [addChoose, setAdd] = useState({id:""});
   const [VoucherChoose, setVoucherChoose] = useState(null);
   const [show, setShow] = useState(false);
   const [valueVoucher, setVoucher] = useState("");
   const [arr, setArr] = useState([]);
+  const navi = useNavigate()
   const dispatch = useDispatch();
   const listProduct = useSelector((state) => state.users);
   const [valueF, setValueF] = useState({
@@ -42,13 +46,13 @@ function PaymentUser(props) {
       return { total: 0, amount: 0 };
     }
   };
-  const TOTAL_BILL = () => {
+  const TOTAL_BILL = useMemo(() => {
     return (
       parseFloat(totalBill().total) +
       (totalBill().total === 0 ? 0 : parseFloat(SHIPPING_FEE)) -
       parseFloat(VOUCHER)
     );
-  };
+  },[]);
   const hangdleChangeForm = (e) => {
     setValueF({ ...valueF, [e.target.name]: e.target.value });
   };
@@ -103,6 +107,51 @@ function PaymentUser(props) {
       toast.error("Total not enough condition!", { position: "top-right" });
     }
   };
+  ////////////////////////////////////////////
+  const handleOrder =()=>{
+    
+    if(stepPayment.length){
+        if(Object.hasOwnProperty.call(addChoose,"address")){
+          // console.log(true);
+     const temp =  stepPayment.map(_=>{
+      return {category: _.product_category,discountAfter: _.product_discount,img : _.product_img, name : _.product_name, percent:_.product_percent,quantity:_.quantity , total : _.product_discount*_.quantity }
+     })
+     const dateNow = new Date(Date.now())
+     const dateTemp = `${dateNow.getDate()}-${dateNow.getMonth()<9?"0"+(dateNow.getMonth()+1):dateNow.getMonth()+1}-${dateNow.getFullYear()}`
+     const dataOrder= {
+      payment_id:acc.payment_id,
+      profile_id:acc.profile_id,
+      list_product_order: temp,
+      time__create : dateTemp,
+      fee:SHIPPING_FEE, 
+      total_order : TOTAL_BILL,
+      status:false,
+      email:addChoose.email,
+      telephone:addChoose.telephone,
+      fullname:addChoose.fullname,
+      address: addChoose.address,
+      voucher: VoucherChoose!==null? VoucherChoose.discount :0,
+       payment_method: "COD"
+     }
+    dispatch(createOrder(dataOrder , ()=>{
+        setShow(true)
+        setTimeout(() => {
+          navi('/')
+        }, 2000);
+    }))
+        }
+        else{
+          toast.error("Please, Choosse address!")
+          console.log(stepPayment);          
+    }
+    }
+    else{
+      toast.error("Nothing in your Cart")
+    }
+
+// console.log(dataOrder);
+
+  }
   return (
     <>
       <div className="user">
@@ -117,8 +166,10 @@ function PaymentUser(props) {
             {acc && (
               <div className="info-user">
                 <button
+                style={{backgroundColor: addChoose.id===0? "green": "rgb(48, 72, 159)"}}
                   onClick={() =>
                     setAdd({
+                      id:0,
                       email: profile.email,
                       fullname: profile.fullname,
                       telephone: acc.telephone,
@@ -126,7 +177,8 @@ function PaymentUser(props) {
                     })
                   }
                 >
-                  Choose
+                {addChoose.id===0? <i className={ICONCHECK}></i> : "Choose"}
+                  
                 </button>
                 <h5>
                   {profile.fullname}
@@ -138,13 +190,14 @@ function PaymentUser(props) {
             {/* temp profile */}
             {arr &&
               arr.map((_, i) => (
-                <div className="info-user" key={i}>
+                <div className="info-user"  key={i}>
                   <button
+                  style={{backgroundColor: addChoose.id===parseInt(i+1)? "green": "rgb(48, 72, 159)"}}
                     onClick={() => {
-                      setAdd(_);
+                      setAdd({..._,id : i+1});
                     }}
                   >
-                    Choose
+                    { addChoose.id===parseInt(i+1) ? <i className={ICONCHECK}></i> :"Choose" }
                   </button>
                   <h5>
                     {_.fullname} <span>{_.telephone} </span>{" "}
@@ -265,10 +318,13 @@ function PaymentUser(props) {
                   </div>
                   <div className="d-flex justify-content-between mb-3">
                     <p>Total:</p>
-                    <p>$ {TOTAL_BILL()}</p>
+                    <p>$ {TOTAL_BILL}</p>
                   </div>
                   <div>
-                    <button type="button" onClick={() => setShow(true)}>
+                    {
+                      // ////////////////////////////////////////////////////////////////////////////////////////
+                    }
+                    <button type="button" onClick={handleOrder}>
                       ORDER
                     </button>
                   </div>
