@@ -15,7 +15,7 @@ const Pageroot = (props) => {
   const accLogin = useSelector((state) => state.users.accountLogin);
   const param = useLocation();
   const pathCart = ["/cart", "/payment", "/profileuser"];
-  const pathSearch = ["/", "/cart" ,"/search"];
+  const pathSearch = ["/", "/cart", "/search"];
 
   useEffect(() => {
     dispatch(checkLogin());
@@ -24,7 +24,7 @@ const Pageroot = (props) => {
     <>
       <Header
         search={
-          (param.pathname.includes("/detail") && true) ||
+          (param.pathname.includes("/detail") && true) || (param.pathname.includes("/profileuser") && true) ||
           (pathSearch.includes(param.pathname) ? true : false)
         }
         cart={pathCart.includes(param.pathname) ? false : true}

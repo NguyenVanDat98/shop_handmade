@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     position: relative;
-    padding-top: 25px;
-    height: max-content;
-    min-height: calc(100vh - 80px);
+    // padding-top: 25px;
+    // height: max-content;
+    min-height: 100vh;
     background-image: url(../../img/bglogin.jpg);
+    background-size: cover;
 
     &>form {
         width: 100%;
@@ -23,6 +24,7 @@
             box-shadow: 2px 2px 6px rgb(0, 0, 0);
             z-index: 2;
             background-color: #fff;
+            margin-top: 80px;
 
             &__title {
                 display: flex;
@@ -88,10 +90,10 @@
                 }
 
                 i {
-                    position: fixed;
+                    position: absolute;
                     font-size: 2rem;
-                    right: 45px;
-                    top: calc(50% - 4.3rem);
+                    right: 20px;
+                    top: 20px;
                     color: rgb(35, 34, 34);
                     cursor: pointer;
                 }
