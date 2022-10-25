@@ -56,6 +56,9 @@
 
             .category {
                 position: relative;
+                text-transform: capitalize;
+                font-size: 1.1rem;
+                font-weight: 400;
 
                 &::before {
                     content: '';
