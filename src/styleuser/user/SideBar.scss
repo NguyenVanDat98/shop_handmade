@@ -1,11 +1,11 @@
 .sidebar-user {
     background-color: #57a9a8;
     width: 70px;
-    top: 90px;
+    // top: 90px;
     margin-right: 0;
     box-shadow: none;
     z-index: 1;
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
 
     &>button {
         display: block;
@@ -50,9 +50,12 @@
     .sidebar-user {
         width: 100vw;
     }
+}
 
-    .footer {
-        margin-bottom: 72px;
+@media (min-width: 501px) {
+    .sidebar-user {
+        top: 97px;
+        padding-bottom: 20px;
     }
 }
 
@@ -62,8 +65,4 @@
             display: flex;
         }
     }
-
-
-
-
 }

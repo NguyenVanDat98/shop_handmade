@@ -15,7 +15,7 @@ function CartUser(props) {
     useEffect(() => {
         dispatch(getDataCartItem())
         dispatch(ClearStepPayment())
-        window.scroll(0,0)
+        window.scroll(0, 0)
     }, [dispatch]);
     const handleDeleteItem = (item) => {
         dispatch(deleteItemInCart(item))
@@ -48,7 +48,7 @@ function CartUser(props) {
                 <h4 >Shopping Cart</h4>
                 {checkCart() === false || checkCart() === 0 ? (<div className='list-empty d-flex flex-column align-items-center justify-content-between' style={{ minHeight: "500px", margin: "15px 0" }} >
                     <img src={emptyCart} alt="" style={{ width: "220px", height: "220px" }} />
-                    <h2 style={{ fontWeight: 400, fontSize: "40px" }}>Your cart is currently empty </h2>
+                    <h2 style={{ fontWeight: 400, fontSize: "40px", textAlign: "center" }}>Your cart is currently empty </h2>
                     <p style={{ fontWeight: 400, fontSize: "1.2rem", textAlign: "center" }}>Before proceed to checkout, you must add some products to your cart. You will find alot of interesting products on our "Shop" page.</p>
                     <div>
                         <button className='btn btn-success btn-lg' onClick={() => navigate("/")}><i className={ICONCART} style={{ marginRight: "5px" }}></i> RETURN TO SHOP</button>

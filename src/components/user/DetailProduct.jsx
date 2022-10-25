@@ -99,7 +99,7 @@ function DetailProduct(props) {
                         <div className='detail__info--status--btn'>
                             {itemData.status ? (<button className='button' onClick={() => handleAddToCart(itemData)}>Add To Cart</button>)
                                 : (<button className='btn btn-danger'>Order</button>)}
-                            <button className='btn btn-success btn-lg ms-3' onClick={continueBuy}>Continue Shopping</button>
+                            <button className='button ms-3 color-btn' onClick={continueBuy}>Continue Shopping</button>
                         </div>
                     </div>
                 </div>

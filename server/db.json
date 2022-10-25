@@ -885,7 +885,18 @@
   ],
   "listEarning": [],
   "slideShow": {
-    "data": []
+    "data": [
+      3,
+      5,
+      7,
+      9,
+      12,
+      15,
+      20,
+      33,
+      54,
+      45
+    ]
   },
   "listCategory": {
     "data": [
