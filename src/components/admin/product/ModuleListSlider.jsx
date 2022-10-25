@@ -14,9 +14,6 @@ const ModuleListSlider = ({ data, check, onclickClose, disForm, }) => {
   const dispatch = useDispatch()
   const dataSlider = useSelector(state => state.adminData.slideShow)
 
-  // const newlistSlide = useMemo(() => {
-  //   return (validData === -1 && editSlider === true) ? dataSlider.push(data) : dataSlider
-  // }, [dataSlider, data, editSlider])
   useEffect(()=>{
     const validData = dataSlider.findIndex(e => e.id === data.id)
     if(validData===-1 && editSlider===1){

@@ -62,8 +62,10 @@
                 h6{
                     white-space: nowrap;
                     width: 100%;
+                    text-overflow: ellipsis ;
                     margin: 0;
                     padding-right: 5px;
+                    overflow: hidden;
                     
                 }
                 p{

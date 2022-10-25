@@ -111,9 +111,15 @@ function PaymentUser(props) {
 
     if (stepPayment.length) {
       if (Object.hasOwnProperty.call(addChoose, "address")) {
-        // console.log(true);
         const temp = stepPayment.map(_ => {
-          return { category: _.product_category, discountAfter: _.product_discount, img: _.product_img, name: _.product_name, percent: _.product_percent, quantity: _.quantity, total: _.product_discount * _.quantity }
+          return { category: _.product_category,
+             discountAfter: _.product_discount,
+              img: _.product_img,
+              name: _.product_name, 
+              percent: _.product_percent, 
+              quantity: _.quantity, 
+              product_id:_.product_id,
+              total: _.product_discount * _.quantity }
         })
         const dateNow = new Date(Date.now())
         const dateTemp = `${dateNow.getDate()}-${dateNow.getMonth() < 9 ? "0" + (dateNow.getMonth() + 1) : dateNow.getMonth() + 1}-${dateNow.getFullYear()}`
