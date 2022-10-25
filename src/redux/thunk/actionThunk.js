@@ -15,6 +15,7 @@ import {
   getProfile,
   getSlider,
   SaveCart,
+  savelistCategory,
   savelistVoucher,
 } from "../userReducer/action-reduce";
 import {
@@ -29,6 +30,7 @@ import {
   fetProductSearch,
   fetProfile,
   getCartItem,
+  getCategory,
   getListVoucher,
   updateAccountUser,
   updateCartItem,
@@ -118,6 +120,37 @@ export const fetListProductSearch = (path) => {
     })();
   };
 };
+export const fillCategory = (path) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        const data = await fetProductSearch({
+          page: 1,
+          limit: path.limit,
+          sort: path.sort,
+          filter: path.filter,
+          search: path.category !== "" ? `&category=${path.category}` : ""
+        })
+        dispatch(getProduct(data));
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    })()
+  }
+}
+export const fetCategory = () => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        const data = await getCategory().then(res => res.json())
+        dispatch(savelistCategory(data));
+      } catch (error) {
+        console.log(error);
+      }
+    })()
+  }
+}
 export const getSlide = () => {
   return (dispatch) => {
     (async () => {
@@ -304,15 +337,15 @@ export const deleteItemInCart = (id) => {
           : null;
         const temp = store
           .getState()
-          .users.cart.cart.filter((_) =>{
-            if((Array.isArray(id))){
-              if(id.includes(_.product_id)){
+          .users.cart.cart.filter((_) => {
+            if ((Array.isArray(id))) {
+              if (id.includes(_.product_id)) {
                 return false
-              }else{
+              } else {
                 return _
               }
-            }else{
-              if(id!==_.product_id){
+            } else {
+              if (id !== _.product_id) {
                 return _
               }
             }
@@ -378,16 +411,17 @@ export const FetchListVoucher = () => {
     })();
   };
 };
-export const createOrder = (data ,call) => {
+export const createOrder = (data, call) => {
   return (dispatch) => {
     (async () => {
       try {
-        await FetchListOrder(data).then(()=>call&&call())
-        const {list_product_order }=data
-          const temp =  list_product_order.map(_=>{return _.product_id
-          } )         
+        await FetchListOrder(data).then(() => call && call())
+        const { list_product_order } = data
+        const temp = list_product_order.map(_ => {
+          return _.product_id
+        })
 
-          dispatch(deleteItemInCart(temp))
+        dispatch(deleteItemInCart(temp))
 
       } catch (error) {
         console.log(error);

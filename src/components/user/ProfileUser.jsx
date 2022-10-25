@@ -87,7 +87,7 @@ function ProfileUser(props) {
                     <button className="btn btn-success logout" onClick={logOut}>Logout</button>
                 </div>
                 <div>
-                    <span><i className={ICONUSER}></i></span>
+                    <i className={ICONUSER}></i>
                 </div>
                 <div>
                     {profile && <>

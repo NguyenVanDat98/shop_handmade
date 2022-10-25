@@ -68,6 +68,10 @@ export const userReduce = (state = userInital, action) => {
             return {
                 ...state, listVoucher: action.payload
             }
+        case actionTypes.SAVE_LIST_CATEGORY:
+            return {
+                ...state, listCate: action.payload
+            }
         default:
             return { ...state }
     }

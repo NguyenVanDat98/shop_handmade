@@ -130,3 +130,9 @@ export const savelistVoucher = (data) => {
         payload: data
     }
 }
+export const savelistCategory = (data) => {
+    return {
+        type: actionTypes.SAVE_LIST_CATEGORY,
+        payload: data
+    }
+}

@@ -64,7 +64,7 @@ function DetailProduct(props) {
         <>
             {itemData && <div className='detail '>
                 <div className='detail__photos'>
-                    <div className='detail__photos-img' style={{backgroundImage: `url(${!index ? itemData.img : index})`}}>
+                    <div className='detail__photos-img' style={{ backgroundImage: `url(${!index ? itemData.img : index})` }}>
                         {/* <img 
                         // src={!index ? itemData.img : index}
                          alt="" className='detail__photos--offical' /> */}
@@ -102,8 +102,8 @@ function DetailProduct(props) {
                         </div>
                         <div className='detail__info--status--btn'>
                             {itemData.status ? (<button className='button' onClick={() => handleAddToCart(itemData)}>Add To Cart</button>)
-                                : (<button className='btn btn-danger'>Order</button>)}
-                            <button className='button ms-3 color-btn' onClick={continueBuy}>Continue Shopping</button>
+                                : (<button className="button">Order</button>)}
+                            <button className='button ms-3 color-btn' onClick={continueBuy}>Shopping</button>
                         </div>
                     </div>
                 </div>

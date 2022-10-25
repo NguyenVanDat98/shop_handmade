@@ -30,7 +30,7 @@ function Header({ search, children, cart }) {
             </Link>
             <div className='header__cart' >
                 {search && <SearchUser />}
-                {cart && <p className="header__cart--icon" style={{ marginLeft: "8px" }}>
+                {cart && <p className="header__cart--icon">
                     <input type="text" onBlur={() => {
                         setTimeout(() => {
                             setShow(false)

@@ -9,5 +9,6 @@ export const userInital = {
     listProfile: [],
     listAddress: [],
     listVoucher: [],
-    SearchProduct: []
+    SearchProduct: [],
+    listCate: []
 }
