@@ -27,7 +27,7 @@ const OrderPage = (props) => {
       <div className="orderPage">
         {/* {list Order UI} */}
         <div  className="navigator"> 
-        <span style={{top: index}} className="move">""</span>
+        <span style={{top: index}} className="move"></span>
         <a className="stepA" onClick={selectStep}  href="#list-order" >Order</a>
         <a className="stepB" onClick={selectStep} href="#list-payment" >Payment</a>
         </div>
