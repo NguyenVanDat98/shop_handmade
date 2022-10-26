@@ -1,5 +1,6 @@
 import { userInital } from "./initalValue"
 import * as actionTypes from "./actionType";
+import { historyOrder } from './../adminReducer/adminAction';
 
 
 export const userReduce = (state = userInital, action) => {
@@ -71,6 +72,10 @@ export const userReduce = (state = userInital, action) => {
         case actionTypes.SAVE_LIST_CATEGORY:
             return {
                 ...state, listCate: action.payload
+            }
+        case actionTypes.SAVE_ITEM_ORDER:
+            return {
+                ...state, historyOrder: action.payload
             }
         default:
             return { ...state }

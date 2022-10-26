@@ -136,3 +136,9 @@ export const savelistCategory = (data) => {
         payload: data
     }
 }
+export const saveItemOrder = (data) => {
+    return {
+        type: actionTypes.SAVE_ITEM_ORDER,
+        payload: data
+    }
+}

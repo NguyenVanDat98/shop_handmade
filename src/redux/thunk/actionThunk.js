@@ -15,6 +15,7 @@ import {
   getProfile,
   getSlider,
   SaveCart,
+  saveItemOrder,
   savelistCategory,
   savelistVoucher,
 } from "../userReducer/action-reduce";
@@ -38,6 +39,7 @@ import {
 } from "../../api/apiMethod";
 import { putItemInCart } from "./../../api/apiMethod";
 import store from "./../store";
+import { GetOrder } from "../../api/adminMethodAip/apiMethodAccount";
 
 export const checkLogin = () => {
   return (dispatch) => {
@@ -430,4 +432,19 @@ export const createOrder = (data, call) => {
     })();
   };
 };
+export const fetchOrder = (param) => {
+  return (dispatch) => {
+    (async () => {
+      try {
+        const txt = `?profile_id=${param}`
+        const data = await GetOrder(txt).then(_ => _.json())
+        console.log(data);
+        dispatch(saveItemOrder(data))
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  };
+};
+
 
