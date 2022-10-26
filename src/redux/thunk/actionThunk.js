@@ -82,6 +82,7 @@ export const fetListProduct = (path) => {
           limit: path.limit,
           sort: path.sort,
           filter: path.filter,
+          category: path.category
         });
         const load = await fetProducts({
           ...path,

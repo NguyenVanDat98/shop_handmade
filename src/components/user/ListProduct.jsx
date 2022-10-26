@@ -15,9 +15,10 @@ function ListProduct() {
     const [limit, setLimit] = useState(4);
     const [filter, setFilter] = useState("");
     const [page, setPage] = useState(1);
+    const [category, setCategory] = useState("");
     useEffect(() => {
-        dispatch(fetListProduct({ limit: limit, sort: sort, filter: filter, page: page }));
-    }, [sort, limit, filter, page, dispatch]);
+        dispatch(fetListProduct({ limit: limit, sort: sort, filter: filter, page: page, category: category }));
+    }, [sort, limit, filter, page, category, dispatch]);
     const checkListproducts = () => {
         let products = listProduct || null;
         return (products !== null && products.length)
@@ -35,6 +36,7 @@ function ListProduct() {
     }
     const getCategory = (e) => {
         const cate = e.target.value;
+        setCategory(`&category=${cate}`)
         dispatch(fillCategory({ limit: limit, sort: sort, filter: filter, page: page, category: cate }))
     }
     return (

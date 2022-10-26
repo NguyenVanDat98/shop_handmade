@@ -280,24 +280,25 @@
                 }
             }
         }
-    }
 
-    &__info {
-        margin-left: 0;
-        padding: 5px;
+        &__info {
+            margin-left: 0;
+            padding: 5px;
 
-        &--detail {
-            padding-left: 0;
+            &--detail {
+                padding-left: 0;
+            }
+        }
+
+        &__form {
+            margin-left: 0;
+
+        }
+
+        table {
+            margin-left: 0;
         }
     }
 
-    &__form {
-        margin-left: 0;
-
-    }
-
-    table {
-        margin-left: 0;
-    }
 
 }
