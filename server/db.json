@@ -891,7 +891,11 @@
       "id": 1
     }
   ],
-  "listEarning": [],
+  "listEarning": [
+    {
+      "id": 1
+    }
+  ],
   "slideShow": {
     "data": [
       3,
