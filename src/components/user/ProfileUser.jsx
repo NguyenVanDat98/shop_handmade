@@ -100,12 +100,20 @@ function ProfileUser(props) {
                     </>}
                 </div>
                 <div>
-                    <button className='btn btn-primary' onClick={() => { setOrder(false); setInfo(false); setForm(false) }}>Infomation</button>
-                    <button className='btn btn-danger' onClick={() => { setOrder(true); setInfo(true); setForm(false) }}> History</button>
+                         <a href='#profile__info'>
+                    <button className='btn btn-primary' onClick={(e) => {  setOrder(false); setInfo(false); setForm(false) }}>
+                            Infomation
+                    </button>
+                     </a>
+                        <a href='#profile__bill'>
+                    <button className='btn btn-danger' onClick={(e) => {setOrder(true); setInfo(true); setForm(false) }}>
+                            History
+                            </button>
+                            </a> 
                     <button className="btn btn-success" onClick={logOut}>Logout</button>
                 </div>
             </div>
-            {info ? ("") : (<div className="profile__info">
+            {info ? ("") : (<div id='profile__info' className="profile__info">
                 <div>
                     <button className='btn btn-warning' onClick={() => { setInfo(true); setForm(true); }}>Edit</button>
                 </div>
@@ -117,7 +125,7 @@ function ProfileUser(props) {
                     <h5> Total Orders:      <span> {payment.total}</span></h5>
                 </div>}
             </div>)}
-            {form ? (<div className='profile__form'>
+            {form ? (<div id='profile__form' className='profile__form'>
                 <form action="" >
                     <h4>UPDATE INFORMATION</h4>
                     <div>
@@ -142,7 +150,7 @@ function ProfileUser(props) {
                     </div>
                 </form>
             </div>) : ("")}
-            {order ? <div className="profile__bill">
+            {order ? <div id='profile__bill' className="profile__bill">
                 <h3>History Order</h3>
                 <div className='list__bill'>
                     {historyOrder && historyOrder.map((_, i) => (
