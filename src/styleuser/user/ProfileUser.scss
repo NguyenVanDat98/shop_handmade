@@ -140,10 +140,7 @@
                 font-style: oblique;
             }
 
-            &>div:nth-child(2),
-            &>div:nth-child(3),
-            &>div:nth-child(4),
-            &>div:nth-child(5) {
+            &>div{
                 display: flex;
                 align-items: center;
                 padding: 15px 0;
@@ -394,13 +391,28 @@
             margin-left: 0;
             padding: 5px;
 
-            &--detail {
+            &--detail{
                 padding-left: 0;
             }
         }
 
         &__form {
             margin-left: 0;
+            form{
+                &>div{
+                    flex-direction: column;
+                    padding: 8px 0;
+                    label{
+                        align-self: flex-start;
+                        margin-bottom: 0;
+                        margin-left: 10px;
+                    }
+                    &:last-child{
+                        flex-direction: row;
+                        justify-content: center;
+                    }
+                }
+            }
 
         }
 
