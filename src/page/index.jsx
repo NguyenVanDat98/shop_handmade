@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import { pathNameAd } from '../common/pathName';
 import { DetailProduct } from '../components';
-import TestUpload from '../components/TestUpload';
 import ForgotPage from './user/forgotpage/ForgotPage';
 import LoginPage from './user/loginpage/LoginPage';
 import PageSearch from './user/PageSearch';
@@ -70,11 +69,6 @@ export const userRoute = [
         isExact: true,
         path: "/search/",
         Component: () => <PageSearch />,
-    },
-    {
-        isExact: true,
-        path: "/test/",
-        Component: () => <TestUpload/>,
     }
 ]
 export const CommonComponent = [

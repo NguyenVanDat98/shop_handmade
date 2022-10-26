@@ -1,7 +1,7 @@
 import React, { memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { ICONCLOSE, ICONUSER } from '../../../Icon';
+import { ICONBACK, ICONCLOSE, ICONUSER } from '../../../Icon';
 import { GetListOrder } from '../../../redux/adminReducer/actionThunkAd/actionThunk';
 
 const ModuleUserProfile = memo(({ displayModule, onClick }) => {
@@ -10,6 +10,9 @@ const ModuleUserProfile = memo(({ displayModule, onClick }) => {
     const ItemSelect = useSelector((state)=>state.adminData.ItemDataSelect)
     const dispatch = useDispatch()
     const {acc,profile,payment}=ItemSelect
+    useEffect(()=>{
+      console.log(listOrder);
+    },[dispatch,listOrder])
     useEffect(()=>{
         dispatch(GetListOrder(profile.id))
     },[profile,dispatch]);
@@ -37,7 +40,7 @@ const ModuleUserProfile = memo(({ displayModule, onClick }) => {
 
       </div>
       <div className="control">
-        {
+        {/* {
           !status ? <button onClick={() => setStatus(true)} className="btn btn-danger"> Remove user</button> : <div className={`check-delete`}>
             <span>You sure ?</span>
             <button className=" btn btn-primary allow" onClick={() => setStatus(false)}>
@@ -47,26 +50,36 @@ const ModuleUserProfile = memo(({ displayModule, onClick }) => {
               <i className="fa-sharp fa-solid fa-ban"></i>
             </button>
           </div>
-        }
+        } */}
       </div>
       <details className="history-order">
         <summary> View more history Order</summary>
         <div>
           {listOrder && listOrder.map((_, i) =>
             <div key={i} className="item-order">
+              <div className='time'>
               <h6 className="time_making"> {_.time__create}</h6>
+              {
+                (_.status===true && Object.hasOwnProperty.call(_,"time_complete"))&&<>
+                    <i className={ICONBACK}>  </i>
+                    <h6 className="time_making"> {_.time_complete }</h6>
+                </>
+              }
+              </div>
               <section>
-                {_.list_product_order && _.list_product_order.map((_, i) => <details key={i}>
+                {_.list_product_order && _.list_product_order.map((__, i) => <details key={i}>
                   <summary>
-                    <h6>{_.name_product} <span> {_.price}</span></h6>
+                    <h6> <span> {__.name}</span> <span> {__.discountAfter}</span></h6>
                   </summary>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus aliquid quae explicabo quidem consequatur, quibusdam sed at quas? Non laboriosam deserunt nulla aut vel facilis itaque neque magnam corrupti? Hic?
-                  </p>
+                  <div className='list-item-order'>
+                    <div className='item-product'><span>category: </span> <span> {__.category}</span></div>
+                    <div className='item-product'><span>quantity: </span> <span> {__.quantity}</span></div>
+                    <div className='item-product'><span>discount: </span> <span> {__.percent} %</span></div>
+                  </div>
                 </details>)}
 
 
-              </section>
+              </section>      
             </div>
           )}
 

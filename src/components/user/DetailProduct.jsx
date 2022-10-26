@@ -33,7 +33,6 @@ function DetailProduct(props) {
     const handleAddToCart = () => {
         if (locale.userName) {
             const checkValid = checkCart.cart ? checkCart.cart.findIndex(_ => _.product_id === itemData.id) : -1
-            console.log(checkCart.cart);
             if (checkValid === -1) {
                 dispatch(putCart({
                     data: {
