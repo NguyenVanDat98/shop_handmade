@@ -50,15 +50,18 @@
         }
 
         &>div:last-child {
-            a{
+            a {
                 color: #fff;
-                &:hover{
+
+                &:hover {
                     color: #fff;
                 }
             }
+
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+
             button {
                 width: 110px;
                 margin: 3px 3px;
@@ -80,6 +83,7 @@
         height: 60%;
         justify-content: space-between;
         scroll-margin-top: 250px;
+        min-height: 312px;
 
         &>div:first-child {
             order: 1;
@@ -151,14 +155,15 @@
                 font-style: oblique;
             }
 
-            &>div{
+            &>div {
                 display: flex;
                 align-items: center;
                 padding: 15px 0;
             }
 
             &>div:last-child {
-                text-align: right;
+                display: flex;
+                justify-content: flex-end;
                 padding-right: 15px;
 
                 button:first-child {
@@ -311,7 +316,8 @@
             width: 80%;
             margin-bottom: 20px;
             min-height: max-content;
-            p{
+
+            p {
                 margin-bottom: 10px;
             }
         }
@@ -355,7 +361,7 @@
         }
 
         &__bill {
-            
+
             width: 100%;
             margin-left: 0;
         }
@@ -410,27 +416,35 @@
 
         &__info {
             margin-left: 0;
-            padding: 5px;
+            padding: 10px;
             scroll-margin-top: 100px;
 
-            &--detail{
+            &--detail {
                 padding-left: 0;
                 justify-content: space-around;
+                width: 78%;
+
+                h5 {
+                    font-size: 16px;
+                }
             }
         }
 
         &__form {
             margin-left: 0;
-            form{
-                &>div{
+
+            form {
+                &>div {
                     flex-direction: column;
                     padding: 8px 0;
-                    label{
+
+                    label {
                         align-self: flex-start;
                         margin-bottom: 0;
                         margin-left: 10px;
                     }
-                    &:last-child{
+
+                    &:last-child {
                         flex-direction: row;
                         justify-content: center;
                     }
@@ -438,7 +452,8 @@
             }
 
         }
-        &__bill{
+
+        &__bill {
             scroll-margin-top: 100px;
         }
 
