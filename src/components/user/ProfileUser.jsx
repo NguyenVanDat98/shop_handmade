@@ -154,6 +154,18 @@ function ProfileUser(props) {
                         <td>3</td>
                         <td>$60</td>
                         <td >4-9-2022</td>
+                       <details>
+                        <summary>
+                            asd
+                        </summary>
+                        <ul>
+                            <li>2</li>
+                            <li>6</li>
+                            <li>768</li>
+                            <li>8</li>
+                            <li>6</li>
+                        </ul>
+                       </details>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
