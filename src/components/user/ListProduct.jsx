@@ -44,7 +44,7 @@ function ListProduct() {
             <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
                 <div>
                     <select style={stylebutton} onChange={getCategory}>
-                        <option value="" style={{ fontWeight: 500 }}>Category</option>
+                        <option value="" style={{ fontWeight: 500 }} disabled>Category</option>
                         {listCategory && listCategory.map((item, i) => (
                             <option value={item} key={i} style={{ textTransform: "capitalize", fontWeight: 500 }}>{item}</option>
                         ))}
