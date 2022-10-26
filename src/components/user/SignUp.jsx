@@ -111,7 +111,7 @@ function SignUpFix(props) {
   return (
     <div className="rolemodal">
       <div>
-        <form onSubmit={handleSubmit(onSubmit)} className="sign signInanimation" style={{ width: "560px" }}>
+        <form onSubmit={handleSubmit(onSubmit)} className="sign signInanimation">
           <div className='sign__title'>
             <p onClick={() => navi(-1)}><i className={ICONLEFT}></i></p>
             <h1>Sign Up</h1>
@@ -168,7 +168,7 @@ function SignUpFix(props) {
               name="address"
               type="text"
               placeholder="Shipping Address"
-              style={{ width: "638px" }}
+              className='sign__address--input'
             />
             {errors.address && <p className="error">{errors.address.message}</p>}
           </div>
