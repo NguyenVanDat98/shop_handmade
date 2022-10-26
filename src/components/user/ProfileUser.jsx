@@ -101,7 +101,7 @@ function ProfileUser(props) {
                 </div>
                 <div>
                     <button className='btn btn-primary' onClick={() => { setOrder(false); setInfo(false); setForm(false) }}>Infomation</button>
-                    <button className='btn btn-danger' onClick={() => { setOrder(true); setInfo(true); setForm(false) }}>Order History</button>
+                    <button className='btn btn-danger' onClick={() => { setOrder(true); setInfo(true); setForm(false) }}> History</button>
                     <button className="btn btn-success" onClick={logOut}>Logout</button>
                 </div>
             </div>
