@@ -821,16 +821,6 @@
       "id": "XX8y4",
       "cart": [
         {
-          "product_id": 3,
-          "product_percent": "4",
-          "quantity": 1,
-          "product_img": "https://m.media-amazon.com/images/I/51s---N8t7L._AC_SL1247_.jpg",
-          "product_price": 25,
-          "product_name": "Kinderfeets TinyTot 2-in-1 Wooden Balance Bike and Tricycle - Easily Convert from Bike to Trike | Sustainable and Eco-Friendly | Adjustable Riding Balance Toy for Kids and Toddlers (Sage)",
-          "product_category": "children toy",
-          "product_discount": 24
-        },
-        {
           "product_id": 4,
           "product_percent": 0,
           "quantity": 1,

@@ -24,15 +24,7 @@ function ListProduct() {
         return (products !== null && products.length)
     }
     const stylebutton = {
-        marginRight: "40px",
-        border: "none",
-        borderRadius: "5px",
-        padding: "5px",
-        backgroundColor: "#fff",
-        boxShadow: "4px 4px 8px #ccc",
-        fontWeight: 500,
-        outline: "none",
-        textTransform: "capitalize",
+
     }
     const getCategory = (e) => {
         const cate = e.target.value;
@@ -41,9 +33,9 @@ function ListProduct() {
     }
     return (
         <>
-            <div className='feature-filter d-flex justify-content-end ' style={{ paddingRight: "30px" }}  >
+            <div className='feature-filter'  >
                 <div>
-                    <select style={stylebutton} onChange={getCategory}>
+                    <select className="feature-category" onChange={getCategory}>
                         <option value="" style={{ fontWeight: 500 }} disabled>Category</option>
                         {listCategory && listCategory.map((item, i) => (
                             <option value={item} key={i} style={{ textTransform: "capitalize", fontWeight: 500 }}>{item}</option>
