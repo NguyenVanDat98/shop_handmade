@@ -72,7 +72,7 @@ const snipCategory =(e)=>{
     toast.loading("Waiting....!")
     const itemProduct = {
       ...data, 
-      category: (data.category.replace(/\s+/g, ' ')).trim(),
+      category: (data.category.replace(/\s+/g,' ')).trim().toLowerCase(),
       price: parseInt(data.price),
       discount: parseInt(data.discount)
           ? data.discount

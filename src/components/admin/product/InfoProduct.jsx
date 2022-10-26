@@ -62,7 +62,7 @@ const InfoProduct = ({ data, handleClose }) => {
     return valid
   }
   const handleEditInfoProduct = (pram) => {
-    pram.category=pram.category.trim()
+    pram.category= pram.category.trim().replace(/\s+/g, ' ').toLowerCase( )
 
     toast.loading("Creating....");
     dispatch(PutProductThunk(pram))
