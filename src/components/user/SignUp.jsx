@@ -18,6 +18,23 @@ const schema = yup.object().shape({
   email: yup.string().email(),
 
 })
+const InputItem =({name,type,register,errors})=>{
+  return(
+    <div className="sign__input">
+              <input
+                {...register(name)}
+                autoComplete="off"
+                name={name}
+                type={type}
+
+                placeholder={name}
+              />
+              {errors[name] && <p className="error">{errors[name].message}</p>}
+            </div>
+  )
+}
+
+
 function SignUpFix(props) {
   const navi = useNavigate();
   const dispatch = useDispatch();
@@ -110,95 +127,30 @@ function SignUpFix(props) {
   }
   return (
     <div className="rolemodal">
-      <div>
         <form onSubmit={handleSubmit(onSubmit)} className="sign signInanimation">
           <div className='sign__title'>
             <p onClick={() => navi(-1)}><i className={ICONLEFT}></i></p>
             <h1>Sign Up</h1>
           </div>
-          <div className="d-flex justify-content-between">
-            <div className="sign__name">
-              <input
-                {...register("user_name")}
-                autoComplete="off"
-                name="user_name"
-                type="text"
+          <div className="input--group">
+            <InputItem register={register} name={"user_name"} type={"text"} errors={errors}/>
+            <InputItem register={register} name={"fullname"} type={"text"} errors={errors}/>            
+          </div>
+          <div className="input--group">
+            <InputItem register={register} name={"telephone"} type={"number"} errors={errors}/>
+            <InputItem register={register} name={"email"} type={"text"} errors={errors}/>
 
-                placeholder="UserName"
-              />
-              {errors.user_name && <p className="error">{errors.user_name.message}</p>}
-            </div>
-            <div className="sign__name">
-              <input
-                {...register("fullname")}
-                autoComplete="off"
-                name="fullname"
-                type="text"
-                placeholder="FullName"
-              />
-              {errors.fullname && <p className="error">{errors.fullname.message}</p>}
-            </div>
           </div>
-          <div className="d-flex justify-content-between">
-            <div className="sign__phone">
-              <input
-                {...register("telephone")}
-                autoComplete="off"
-                name="telephone"
-                type="number"
-                placeholder="Phone"
-              />
-              {errors.telephone && <p className="error">{errors.telephone.message}</p>}
-            </div>
-            <div className="sign__address">
-              <input
-                {...register("email")}
-                autoComplete="off"
-                name="email"
-                type="text"
-                placeholder="Email"
-              />
-              {errors.email && <p className="error">{errors.email.message}</p>}
-            </div>
-          </div>
-          <div className="sign__address">
-            <input
-              {...register("address")}
-              autoComplete="off"
-              name="address"
-              type="text"
-              placeholder="Shipping Address"
-              className='sign__address--input'
-            />
-            {errors.address && <p className="error">{errors.address.message}</p>}
-          </div>
-          <div className="d-flex justify-content-between">
-            <div className="sign__password">
-              <input
-                {...register("password")}
-                autoComplete="off"
-                name="password"
-                type="password"
-                placeholder="Password"
-              />
-              {errors.password && <p className="error">{errors.password.message}</p>}
-            </div>
-            <div className="sign__repassword">
-              <input
-                {...register("re_password")}
-                autoComplete="off"
-                name="re_password"
-                type="password"
-                placeholder="Confirm password"
-              />
-              {errors.re_password && <p className="error">{errors.re_password.message}</p>}
-            </div>
+          <InputItem register={register} name={"address"} type={"text"} errors={errors}/>
+          <div className="input--group">
+            <InputItem register={register} name={"password"} type={"password"} errors={errors}/>
+            <InputItem register={register} name={"re_password"} type={"password"} errors={errors}/>
+
           </div>
           <div className="sign__btn">
             <button type="submit" >Create Account</button>
           </div>
         </form>
-      </div>
     </div>
 
   );
