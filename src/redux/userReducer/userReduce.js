@@ -1,6 +1,5 @@
 import { userInital } from "./initalValue"
 import * as actionTypes from "./actionType";
-import { historyOrder } from './../adminReducer/adminAction';
 
 
 export const userReduce = (state = userInital, action) => {
