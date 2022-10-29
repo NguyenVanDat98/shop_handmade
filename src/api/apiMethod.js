@@ -5,6 +5,7 @@ export const getAccount = async (path = "") => {
   const data = await fetch(API_URL + `/listAccount${path}`)
   return data;
 }
+
 export const getCategory = async (path = "") => {
   const data = await fetch(API_URL + `/listCategory${path}`)
   return data;
@@ -120,6 +121,7 @@ export const updateAccountUser = (data) => {
     body: JSON.stringify(data)
   })
 }
+
 export const getListVoucher = (param = "") => {
   const data = fetch(API_URL + `/listVoucher/`)
   return data;

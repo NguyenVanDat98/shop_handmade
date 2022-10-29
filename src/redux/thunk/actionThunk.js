@@ -26,6 +26,7 @@ import {
 } from "./../userReducer/action-reduce";
 import {
   createItemPayment,
+  fetAccountUser,
   FetchListOrder,
   fetPayment,
   fetProductSearch,
@@ -230,6 +231,7 @@ export const updateInfoUser = (data, call) => {
     })();
   };
 };
+
 export const createAccountAsyn = (data) => {
   return (dispatch) => {
     (async () => {

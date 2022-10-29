@@ -38,8 +38,8 @@ function Forgot(props) {
     _.preventDefault()
     console.log(codee);
     console.log(valueForm.reCode);
-    if (valueForm.reCode === codee) {
-      console.log(true);
+    if (valueForm.reCode === codee && valueForm.newPass === valueForm.reNewPass) {
+
     } else {
       refReCode.current.focus()
       refReCode.current.value = ""
