@@ -9,6 +9,34 @@ import {
 } from "./../../index";
 import ItemCategory from "./ItemCategory";
 
+const CategoryList = ({listCategory}) => {
+  const [select , setSelect]=useState()
+  return (
+    <div> 
+    <h3>Category</h3>
+  <ul className="list-category">
+  {listCategory &&
+        listCategory.map((e, i) => (
+          <li key={i} onClick={(e)=>{
+            let _ = document.querySelectorAll(".select")
+            _.forEach((_e,i)=>{
+              _e.classList.remove("select")
+            })
+            console.dir(e.target.classList.add("select")
+
+          )}} value={e}>
+          <a href={`#${e.replace(/\W+/g,'')}`}> {e}</a>
+          </li>
+        ))}
+  </ul>
+  </div>
+  );
+};
+
+CategoryList.propTypes = {
+  
+};
+
 const ListProductAd = (props) => {
   const data = useSelector((state) => state.adminData.dataProducts);
   const [productSelect, setProductSelect] = useState("");
@@ -85,7 +113,7 @@ const ListProductAd = (props) => {
     <div className="list-product-Ad">
       {/* {-----------------------module infomation product select------------------} */}
 
-      {productSelect && (
+      {/* {productSelect && (
         <InfoProduct
           handleClose={() => {
             setTimeout(() => {
@@ -94,10 +122,10 @@ const ListProductAd = (props) => {
           }}
           data={productSelect}
         />
-      )}
+      )} */}
       {/* {-----------------------module Create new product------------------} */}
 
-      <ModuleCreateProduct
+      {/* <ModuleCreateProduct
         check={disForm.formCreate}
         listCategory={listCategory}
         onclickClose={() => {
@@ -107,9 +135,9 @@ const ListProductAd = (props) => {
           }, 500);
         }}
         disForm={anima.formCreate}
-      />
+      /> */}
       {/* {-----------------------module slider------------------} */}
-      <ModuleListSlider
+      {/* <ModuleListSlider
         check={disForm.moduleSlide}
         data={productSelect}
         onclickClose={() => {
@@ -119,32 +147,23 @@ const ListProductAd = (props) => {
           }, 500);
         }}
         disForm={anima.moduleSlide}
-      />
+      /> */}
       <div className="main-list">
         <div className="list-product-Ad_header">
-          {/* {---------------------------------BUTTON--------------------------} */}
-          <div className="btn-group">
-            {/* {button add new product} */}
-            <button
-              onClick={() => {
-                handleClick("formCreate", "moduleSlide");
-              }}
-            >
-              <i className={ICONADD}> </i> <i className={ICONBAG}></i>
-            </button>
-            {/* {---------------------------------BUTTON--------------------------} */}
-            {/* {button view list silder} */}
-            <button
-              onClick={() => {
-                handleClick("moduleSlide", "formCreate");
-              }}
-            >
-              LIST SLIDER
-            </button>
-            {/* {list category} */}
-          </div>
+          <CategoryList listCategory={listCategory}/>
+          {/* <div> 
+            <h3>Category</h3>
+          <ul className="list-category">
+          {listCategory &&
+                listCategory.map((e, i) => (
+                  <li key={i} value={e}>
+                  <a href={`#${e.replace(/\W+/g,'')}`}> {e}</a>
+                  </li>
+                ))}
+          </ul>
+          </div> */}
 
-          <div className="list-product-select">
+          {/* <div className="list-product-select">
             <select className={muti? "muti":""}
               multiple={muti}
               onChange={(e) => {
@@ -170,9 +189,10 @@ const ListProductAd = (props) => {
             <button onClick={multipleOn}>
               {muti ? <i className={ICONCLOSE}></i> : "Multiple"}
             </button>
-          </div>
+          </div> */}
         </div>
         {/* {-----------------------list product render------------------} */}
+        <div className="list-all">
         {dataOutput &&
           dataOutput.map((e, i) => {
             return (
@@ -183,6 +203,8 @@ const ListProductAd = (props) => {
               />
             );
           })}
+
+        </div>
       </div>
     </div>
   );

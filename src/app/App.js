@@ -14,6 +14,7 @@ import RootPage from "../page/admin/RootPage.jsx";
 function App() {
   return (
     <div className="App">
+
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           {CommonComponent.map((e, i) => <Route key={i} path={e.path} element={<e.Component />} exact={e.isExact} />)}

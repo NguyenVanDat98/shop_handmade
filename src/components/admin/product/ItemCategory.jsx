@@ -14,7 +14,7 @@ const ItemCategory = ({e,setProductSelect}) => {
        setData(SortProduct(data,item))
     }
     return (
-        <div className="list-allProduct">
+        <div id={e.name.replace(/\W+/g,'')} className="list-allProduct">
         <div className=" d-flex justify-content-between line-title">
           <span>{e.name} <span>({e.data.length})</span> </span>
           <select onChange={(el)=>handleSort(el.target.value)} >
@@ -42,7 +42,6 @@ const ItemCategory = ({e,setProductSelect}) => {
       </div>
     );
 };
-
 
 
 export default ItemCategory;
